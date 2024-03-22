@@ -11,7 +11,11 @@
       {% for block in blocks %}
         {% liquid
           assign heading = block.settings.heading
+          assign heading_color = block.settings.heading_color
+          assign heading_size = block.settings.heading_size
           assign small_text = block.settings.small_text
+          assign small_text_color = block.settings.small_text_color
+          assign small_text_size = block.settings.small_text_size
           assign spilit = block.settings.spilit
           assign nav_link = block.settings.nav_link
           assign activeClass = ''
@@ -34,11 +38,23 @@
           <li class="nav-link {{ activeClass }}">
             <a href="{{nav_link}}">
               {% if spilit %}
-                <span class="small-case">{{ small_text }}</span>
+                <span 
+                  class="small-case"
+                  style="font-size:{{small_text_size}}px;color:{{small_text_color}};"
+                >
+                  {{ small_text }}
+                </span>
               {% endif %}
-              <span>{{ heading }}</span>
+              <span style="font-size:{{heading_size}}px;color:{{heading_color}};">
+                {{ heading }}
+              </span>
               {% if spilit == false %}
-                <span class="small-case">{{ small_text }}</span>
+                <span 
+                  class="small-case"
+                  style="font-size:{{small_text_size}}px;color:{{small_text_color}};"
+                >
+                  {{ small_text }}
+                </span>
               {% endif %}
             </a>
           </li>

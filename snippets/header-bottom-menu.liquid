@@ -562,8 +562,8 @@
                   aria-label="{{ link.title | escape }}"
                 >
                   {% if icon != blank %}
-                    <span>
-                      <img src="{{icon | img_url:"master" }}" style="max-width:{{ icon.width }}" alt="{{icon.alt }}">
+                    <span class="icon">
+                      <img src="{{icon | img_url:"master" }}" style="max-width:{{ icon.width }}px" alt="{{icon.alt }}">
                     </span>
                   {% endif %}
                   <span

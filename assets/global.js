@@ -1139,17 +1139,19 @@ class VariantRadios extends VariantSelects {
 }
 
 customElements.define("variant-radios", VariantRadios);
+$('.paint-calculator-area .paint-calculator .paint-calculator__calculator').hide();
+$('.paint-calculator__faqs').hide();
 
 $(".promo-icons-area > .row > :first-child").on('click', () => {
-	$('.paint-calculator-area .paint-calculator .paint-calculator__calculator').toggle();
+	$('.paint-calculator-area .paint-calculator .paint-calculator__calculator').slideToggle(1000);
 });
 
 $(".promo-icons-area > .row > :nth-child(2)").on('click', () => {
-	$('.paint-calculator__faqs > :first-child + h4, .paint-calculator__faqs > :first-child + h4 + p').toggle();
+	$('.paint-calculator__faqs > :first-child + h4, .paint-calculator__faqs > :first-child + h4 + p').slideToggle(500);
 });
 
 $(".promo-icons-area > .row > :nth-child(3)").on('click', () => {
-	$('.paint-calculator__faqs').toggle();
+	$('.paint-calculator__faqs').slideToggle(800);
 });
 
 $(".promo-card-wrap").on('click', (e) => {
