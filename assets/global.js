@@ -1141,15 +1141,15 @@ class VariantRadios extends VariantSelects {
 customElements.define("variant-radios", VariantRadios);
 
 $(".promo-icons-area > .row > :first-child").on('click', () => {
-	$('.paint-calculator-area .paint-calculator .paint-calculator__calculator').collapse('toggle');
+	$('.paint-calculator-area .paint-calculator .paint-calculator__calculator').toggle();
 });
 
 $(".promo-icons-area > .row > :nth-child(2)").on('click', () => {
-	$('.paint-calculator__faqs > :first-child + h4, .paint-calculator__faqs > :first-child + h4 + p').collapse('toggle');
+	$('.paint-calculator__faqs > :first-child + h4, .paint-calculator__faqs > :first-child + h4 + p').toggle();
 });
 
 $(".promo-icons-area > .row > :nth-child(3)").on('click', () => {
-	$('.paint-calculator__faqs').collapse('toggle');
+	$('.paint-calculator__faqs').toggle();
 });
 
 $(".promo-card-wrap").on('click', (e) => {

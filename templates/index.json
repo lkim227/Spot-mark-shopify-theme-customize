@@ -124,11 +124,11 @@
         "products_limit": 12,
         "image_ratio": "square",
         "image_fit": "contain",
-        "cart_btn_text_color": "#000",
-        "cart_btn_background_color": "#FFF",
-        "option_btn_text_color": "#FFF",
-        "option_btn_background_color": "#0000FF",
-        "stock_badge_background_color": "#00cF72",
+        "cart_btn_text_color": "#000000",
+        "cart_btn_background_color": "#ffffff",
+        "option_btn_text_color": "#ffffff",
+        "option_btn_background_color": "#0000ff",
+        "stock_badge_background_color": "#00cf72",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_button": true,
@@ -576,35 +576,35 @@
         "0b341a60-54b4-4221-b456-31e1b5cc08d6": {
           "type": "image_icon",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Group_1.svg",
+            "image": "shopify:\/\/shop_images\/Group__1_983945c8-7c45-4349-ac87-d3ea8af255b3.svg",
             "text": "HIGH-GRADE   UK IN HOUSE quality"
           }
         },
         "54d54bc3-9786-4e0a-8587-b6785dcf7541": {
           "type": "image_icon",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Group.svg",
+            "image": "shopify:\/\/shop_images\/Brand_2.svg",
             "text": "HIGH-GRADE   UK IN HOUSE quality"
           }
         },
         "262d5d82-ebdd-4cde-9254-6599a40e60b9": {
           "type": "image_icon",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Group_2.svg",
+            "image": "shopify:\/\/shop_images\/Brand_3.svg",
             "text": "HIGH-GRADE   UK IN HOUSE quality"
           }
         },
         "809bbb82-847b-4303-9afd-5772e8e321d7": {
           "type": "image_icon",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Group_3.svg",
+            "image": "shopify:\/\/shop_images\/Brand_4.svg",
             "text": "HIGH-GRADE   UK IN HOUSE quality"
           }
         },
         "310d6bb6-1921-4ec6-9d5c-e7daad859aa5": {
           "type": "image_icon",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Group_4.svg",
+            "image": "shopify:\/\/shop_images\/Brand_5.svg",
             "text": "HIGH-GRADEUK IN HOUSE quality"
           }
         }
