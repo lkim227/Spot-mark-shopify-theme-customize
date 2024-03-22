@@ -1,0 +1,254 @@
+
+.feature-products-section{
+  position: relative;
+  padding: 70px 0;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.feature-products-section .container{
+  z-index: 2;
+  position: relative;
+}
+
+.feature-products-section .section-heading{
+    color: #000;
+    text-align: center;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal; /* 34.8px */
+    margin: 0 0 24px;
+}
+
+.section-dsc{
+color: #000;
+text-align: center;
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+line-height: 140%; /* 28px */
+}
+
+.section-dsc p{
+  margin: 0;
+}
+.tab-row{
+  margin-top: 24px;
+  position: relative;
+}
+
+.tabs {
+  padding: 0px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 10px;
+  justify-content:center;
+  margin: 0;
+}
+
+
+.scroll{
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  margin: 0px 0 20px;
+}
+
+  .scroll::-webkit-scrollbar {
+    height: 2px;
+  }
+  
+  .scroll::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0);
+  }
+  
+  .scroll::-webkit-scrollbar-thumb {
+    height: 2px;
+    background-color: #e7e7e7;
+  }
+  
+  .scroll::-webkit-scrollbar-thumb:hover {
+    background-color: #e7e7e7;
+  }
+  
+  /* .scroll::-webkit-scrollbar:vertical {
+    display: none;
+  } */
+
+
+
+.tabs li {
+  min-width: 124px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0 20px;
+  line-height: 50px;
+  border-radius: 108px;
+  border: 2px solid #AFE4D4;
+  color: #000;
+  text-align: center;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+  font-family: var(--font-body-family);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.tabs li:hover {
+  background: #00C172;
+  box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.20) inset;
+  color: #fff;
+}
+.tabs li.current {
+  color: #fff;
+  background: #00C172;
+  box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.20) inset;
+}
+.tab-content {
+  display: none;
+}
+.tab-content.current {
+  display: inherit;
+}
+
+.collection-product__inner{
+  margin: 10px;
+}
+.collection-product__inner .card-wrapper{
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+
+
+@media screen and (max-width: 991px){
+  .feature-products-section{
+    position: relative;
+    padding: 48px 0;
+  }
+  .tabs {
+    justify-content: start;
+}
+.feature-products-section .section-heading {
+    font-size: 32px;
+}
+  .scroll {
+    margin: 0 0 40px;
+}
+.tab-row {
+  margin-top: 20px;
+}
+
+}
+
+
+@media screen and (min-width: 576px){
+  .featured-products__grid {
+    grid-template-columns: repeat(2,1fr);
+}
+}
+
+
+@media screen and (min-width: 750px){
+  .featured-products__grid {
+    grid-template-columns: repeat(3,1fr);
+}
+
+/* .collection-product-card {
+  flex-basis: 32.28%;
+} */
+}
+
+@media screen and (min-width: 1200px){
+  .featured-products__grid {
+    grid-template-columns: repeat(3,1fr);
+}
+
+
+}
+
+
+
+
+.featured-products-navigation{
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 0;
+}
+
+
+.featured-products-navigation .swiper-button-next, .featured-products-navigation .swiper-button-prev{
+  width: auto;
+  height: auto;
+  background-color: transparent;
+}
+
+
+.fb-shape .shape-position-1{
+  position: absolute;
+  left: -8px;
+  top: 305px
+}
+
+.fb-shape .shape-position-1 img{
+  max-width: 263px;
+}
+
+.fb-shape .shape-position-2{
+  position: absolute;
+  right: 30px;
+  top: 50px;
+}
+
+.shape-position-2 img{
+  max-width: 320px;
+}
+
+.fb-shape .shape-position-3{
+  position: absolute;
+  right: -8%;
+  top: 36%;
+}
+
+.fb-shape .shape-position-3 img{
+  max-width: 300px;
+}
+
+.fb-shape .shape-position-4{
+  position: absolute;
+  left: 13%;
+  top: 88%;
+}
+.fb-shape .shape-position-4 img{
+  max-width: 238px;
+}
+
+.fb-shape .shape-position-5{
+  position: absolute;
+  right: 4%;
+  top: 80%;
+}
+
+.fb-shape .shape-position-5 img{
+  max-width: 230px;
+}
+
+@media screen and (max-width: 991px){
+.fb-shape{
+  display: none;
+}
+
+
+}

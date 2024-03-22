@@ -1,0 +1,30 @@
+.list-social {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 4.4rem);
+  justify-content: flex-start;
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 990px) {
+  .list-social {
+    justify-content: flex-start;
+  }
+}
+.list-social__item .icon {
+  height: 2rem;
+  width: 2rem;
+  color: rgba(var(--color-social));
+  transition: var(--duration-default);
+}
+
+.list-social__item:hover .icon {
+  color: rgb(var(--color-accent));
+}
+
+.list-social__link {
+  align-items: center;
+  display: flex;
+  padding: 1.2rem;
+}

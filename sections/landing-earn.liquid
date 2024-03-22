@@ -1,0 +1,418 @@
+{% assign value = section.settings %}
+
+{{ 'section-landing-earn.css' | asset_url | stylesheet_tag: preload: true }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    margin-top: {{ section.settings.margin_top-m }}px;
+    margin-bottom: {{ section.settings.margin_bottom-m }}px;
+    padding-top: {{ section.settings.padding_top_m  }}px;
+    padding-bottom: {{ section.settings.padding_bottom_m }}px;
+
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.color }};
+  }
+  @media screen and (min-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+{% assign slidesDesktop = section.settings.desktop_item %}
+{% assign slidesLaptop = section.settings.laptop_item %}
+{% assign slidesTab = section.settings.tab_item %}
+{% assign slidesMobile = section.settings.mobile_item %}
+{% assign direction = section.settings.reverse %}
+{% assign autoPlay = section.settings.autoplay_enabled %}
+{% assign loop = section.settings.loop_enabled %}
+{% assign delay = section.settings.autoplay_timeout | times: 1000 %}
+<div class="section-{{ section.id }}-padding" id="section-{{ section.id }}">
+  <div class="landing-earn-wrapper" style="background-image:url('{{ value.bg_img | image_url }}');">
+    <div class="container">
+      {% for block in section.blocks %}
+        {% if block.type == 'title_1' %}
+          <h3 class="section-heading" style="color: {{ value.color }};" {{ block.shopify_attributes }}>{{ block.settings.title }}</h3>
+        {% endif %}
+      {% endfor %}
+      <div class="landing-earn-card-box">
+        <slider-component>
+          <div
+            class="common__slideshow landing__earn_swiper swiper"
+            data-slidesDesktop="{{ slidesDesktop }}"
+            data-slidesdesktop="{{ slidesDesktop }}"
+            data-slidesLaptop="{{ slidesLaptop }}"
+            data-slidesTab="{{ slidesTab }}"
+            data-slidesMobile="{{ slidesMobile }}"
+            data-direction="{{ direction }}"
+            data-autoPlay="{{ autoPlay }}"
+            data-delay="{{ delay }}"
+            data-loop="{{ loop }}"
+            data-freemode="false"
+            data-freemomentum="false"
+            data-speed="1000"
+            data-desktopspace="200"
+            data-laptopspace="150"
+            data-tabspace="50"
+            data-mobilespace="50"
+          >
+            <div class="swiper-wrapper">
+              {% for block in section.blocks %}
+                {% if block.type == 'card' %}
+                  {% assign val = block.settings %}
+                  <div class="swiper-slide earn-slide">
+                    <div class="landing-earn-card-item" style="background-color: {{ val.bg_color }};">
+                      <h4 style="color: {{ val.color }};">{{ val.title }}</h4>
+                      <div class="text" style="color: {{ val.color }};">{{ val.text }}</div>
+                      {% if val.img != blank %}
+                        <div class="landing-earn-card-img">
+                          <img src="{{ val.img | image_url }}" alt="Card image">
+                        </div>
+                      {% endif %}
+                      <div
+                        class="landing-earn-card-btn"                        
+                      >
+                        <a style="color: {{ val.btn_text_color }};background-color: {{ val.btn_bg_color }};" href="{{ val.btn_link }}"
+                          ><span>{{ val.btn_title }}</span
+                          ><span>{% render 'all-icons', name: 'left-arrow-btn', color: val.btn_bg_color %}</span></a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+          <div class="landing-paint-navigation">
+            <div class="landing-earn-prev swiper-button-prev">
+              {% render 'all-icons', name: 'paint-left-nav' %}
+            </div>
+            <div class="landing-earn-next swiper-button-next">
+              {% render 'all-icons', name: 'paint-right-nav' %}
+            </div>
+          </div>
+        </slider-component>
+      </div>
+    </div>
+  </div>
+  <div class="landing-earn-bottom" style="background-color: {{ value.background_color }};">
+    <div class="container">
+      {% for block in section.blocks %}
+        {% if block.type == 'title_2' %}
+          <h3 class="section-heading" style="color: {{ value.color }};" {{ block.shopify_attributes }}>{{ block.settings.title }}</h3>
+        {% endif %}
+      {% endfor %}
+      <div class="landing-earn-image-text-container">
+        {% for block in section.blocks %}
+          {% if block.type == 'image_text' %}
+            {% assign val = block.settings %}
+            <div class="landing-earn-image-text-item">
+              {% if val.img != blank %}
+                <div class="landing-earn-image">
+                  {{ val.img }}
+                </div>
+              {% endif %}
+              <div class="text" style="color: {{ value.color }};">{{ val.text }}</div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Landing Earn",
+  "class": "landing-earn-section",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_img",
+      "label": "Background Image"
+    },
+    {
+      "type": "range",
+      "id": "desktop_item",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "default": 4,
+      "label": "Desktop (1440+)"
+    },
+    {
+      "type": "range",
+      "id": "laptop_item",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "default": 4,
+      "label": "Laptop (991+)"
+    },
+    {
+      "type": "range",
+      "id": "tab_item",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "default": 4,
+      "label": "Tab (480+)"
+    },
+    {
+      "type": "range",
+      "id": "mobile_item",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "default": 4,
+      "label": "Mobile (360+)"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay_enabled",
+      "label": "Enable Autoplay",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "loop_enabled",
+      "label": "Enable Loop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse",
+      "label": "Enable Reverse",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_timeout",
+      "label": "Change Slides Every",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 7,
+      "unit": "s"
+    },
+    {
+      "type": "header",
+      "content": "Section Color"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "linear-gradient(180deg, #0232D9 0%, #0029BB 21.46%, #05207A 83.33%)"
+    },
+    {
+      "type": "header",
+      "content": "Spacing (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Spacing (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top-m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom-m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 68
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Title 1",
+      "type": "title_1",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Be a part of the change and earn with us!"
+        }
+      ]
+    },
+    {
+      "name": "Title 2",
+      "type": "title_2",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Real world problems we aim to solve"
+        }
+      ]
+    },
+    {
+      "name": "Card",
+      "type": "card",
+      "settings": [
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Text color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background color",
+          "default": "#000"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Refferal"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Give vouchers away & earn Vouchers"
+        },
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "btn_link",
+          "label": "Button link"
+        },
+        {
+          "type": "text",
+          "id": "btn_title",
+          "label": "Button Title",
+          "default": "LEARN MORE"
+        },
+        {
+          "type": "color",
+          "id": "btn_text_color",
+          "label": "Button Text color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "btn_bg_color",
+          "label": "Button Background color",
+          "default": "#000"
+        }
+      ]
+    },
+    {
+      "name": "Image Text",
+      "type": "image_text",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "html",
+          "id": "img",
+          "label": "SVG image"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "The energy crisis and insulation problems"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing Earn"
+    }
+  ]
+}
+{% endschema %}

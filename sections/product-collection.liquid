@@ -1,0 +1,377 @@
+
+
+{{ 'section-product-collection.css' | asset_url | stylesheet_tag: preload: true }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    margin-top: {{ section.settings.margin_top-m }}px;
+    margin-bottom: {{ section.settings.margin_bottom-m }}px;
+    padding-top: {{ section.settings.padding_top_m  }}px;
+    padding-bottom: {{ section.settings.padding_bottom_m }}px;
+
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.color }};
+    overflow: hidden;
+    /* display: none; */
+  }
+  .pc_sm_text,
+  .pc_details_item_left h4,
+  .pc_price,
+  .pc_details_item_right .text,
+  .product-collection-wrapper h3{
+    color: {{ section.settings.color }};
+  }
+  .product-collection-wrapper{
+    overflow: hidden;
+  }
+  {% if section.settings.product_bg_color %}
+    .pc_item_img:before{
+      background: {{ section.settings.product_bg_color }} ;
+    }
+  {% endif %}
+  {% if section.settings.product_bottom_bg_color %}
+    .pc_item_img:after{
+      background: {{ section.settings.product_bottom_bg_color }} ;
+    }
+  {% endif %}
+  {% if section.settings.product_des_bg_color %}
+    .pc_details_item{
+      background: {{ section.settings.product_des_bg_color }} ;
+    }
+  {% endif %}
+  @media screen and (min-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+    .pc_img_wrapper{
+      display: flex;
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+  }
+{%- endstyle -%}
+
+
+
+{%liquid
+
+assign s = section.settings
+assign products = section.blocks | where: 'type', 'product'
+
+
+%}
+
+
+
+{% assign nextnavclass = '.nav-next' %}
+{% assign prevnavclass = '.nav-prev' %}
+{% assign nextnav = '.section-' | append: section.id | append: '-padding ' | append: nextnavclass %}
+{% assign prevnav = '.section-' | append: section.id | append: '-padding ' | append: prevnavclass %}
+
+<div class="section-{{ section.id }}-padding" id="section-{{ section.id }}">
+  <div class="container-fluid">
+    <div class="product-collection-wrapper">
+        {% if s.title != blank %}
+          <h3>{{ s.title }}</h3>
+        {% endif %}
+
+      <div class="pc_swiper_img_container">
+   
+          <div
+            class="pc_img_swiper swiper"
+          >
+            <div class="pc_img_wrapper swiper-wrapper">
+
+          
+
+              {% for block in products %}
+                {%liquid
+                assign b = block.settings 
+                assign product = b.choose_product
+    
+
+              %}
+     
+                <div class="pc_img_slide swiper-slide">
+                  <a href="{{ product.url }}" class="pc_img_item">
+                    {% if product.featured_media != blank %}
+                      <div class="pc_item_img">
+                        {{ product.featured_media | image_url: width: 300 | image_tag }}
+                      </div>
+                    {% endif %}
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
+            <div class="pc_swiper_navigation">
+              <div class="pc_prev swiper-button-prev">
+                {% render 'all-icons', name: 'pc-left-nav' %}
+              </div>
+              <div class="pc_next swiper-button-next">
+                {% render 'all-icons', name: 'pc-right-nav' %}
+              </div>
+            </div>
+          </div>
+      
+      </div>
+      <div class="pc_swiper_details_container">
+ 
+          <div
+            class="pc_details_swiper swiper" 
+          >
+            <div class="swiper-wrapper">
+              {% for block in products %}
+                {%liquid
+                assign b = block.settings 
+                assign product = b.choose_product
+                assign text = b.text
+
+              %}
+                <div class="pc_details_slide swiper-slide">
+                  <div class="pc_details_item">
+                    <div class="pc_details_item_left">
+                      <div class="pc_sm_text">{{ product.vendor }}</div>
+                      <h4>{{ product.title }}</h4>
+                      <div class="pc_price">{{ product.price | money }}</div>
+                      <div class="pc_btn">
+                        {%- liquid
+                          assign product_form_id = 'quick-add-' | append: section.id | append: product.id
+                          assign qty_rules = false
+                          if product.selected_or_first_available_variant.quantity_rule.min > 1 or product.selected_or_first_available_variant.quantity_rule.max != null or product.selected_or_first_available_variant.quantity_rule.increment > 1
+                            assign qty_rules = true
+                          endif
+                        -%}
+                        <product-form class="card__add-to-cart card__button card__button--{%- if settings.show_on_mobile -%}show{%- endif -%}">
+                          {%- form 'product',
+                            product,
+                            id: product_form_id,
+                            class: 'form',
+                            novalidate: 'novalidate',
+                            data-type: 'add-to-cart-form'
+                          -%}
+                            <input
+                              type="hidden"
+                              name="id"
+                              value="{{ product.selected_or_first_available_variant.id }}"
+                              disabled
+                            >
+                            <button
+                              id="{{ product_form_id }}-submit"
+                              type="submit"
+                              class=" button-color"
+                              name="add"
+                              aria-haspopup="dialog"
+                              aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ product.id }}"
+                              aria-live="polite"
+                              data-sold-out-message="true"
+                              {% if product.selected_or_first_available_variant.available == false %}
+                                disabled
+                              {% endif %}
+                              tabindex="-1"
+                            >
+                              <span>
+                                {{ 'products.product.add_to_cart' | t }}
+                              </span>
+                              {% if settings.quickview_button_style == 'link' %}
+                                {% render 'all-icons', name: 'pc-cart' %}
+                              {% endif %}
+                              <span class="sold-out-message hidden">
+                                {{ 'products.product.sold_out' | t }}
+                              </span>
+                              <div class="loading-overlay__spinner hidden">
+                                <svg
+                                  aria-hidden="true"
+                                  focusable="false"
+                                  role="presentation"
+                                  class="spinner"
+                                  viewBox="0 0 66 66"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                                </svg>
+                              </div>
+                            </button>
+                          {%- endform -%}
+                        </product-form>
+                      </div>
+                    </div>
+                    <div class="pc_details_item_right">
+                      <div class="text">{{ text }}</div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Collection",
+  "class": "product-collection-section",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+  "settings": [
+     {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "HQC COLLECTION"
+      },
+    {
+      "type": "header",
+      "content": "Section Color"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Text color",
+      "default": "#cceef2"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "linear-gradient(180deg, #0232D9 0%, #0029BB 21.46%, #05207A 83.33%)"
+    },
+    {
+      "type": "color",
+      "id": "product_bg_color",
+      "label": "Product Card Background Circle Color",
+      "default": "transparent"
+    },
+    {
+      "type": "color_background",
+      "id": "product_bottom_bg_color",
+      "label": "Product Card Bottom Part Color",
+      "default": "transparent"
+    },
+    {
+      "type": "color",
+      "id": "product_des_bg_color",
+      "label": "Product Description Background Color",
+      "default": "transparent"
+    },
+    {
+      "type": "header",
+      "content": "Spacing (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Spacing (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top-m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom-m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 68
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Product",
+      "type": "product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "choose_product",
+          "label": "Choose Product"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Collection"
+    }
+  ]
+}
+{% endschema %}

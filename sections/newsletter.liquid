@@ -1,0 +1,222 @@
+{{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  {% render 'section-padding' %}
+{%- endstyle -%}
+
+<div class="newsletter section-{{ section.id }}-padding newsletter--{{ section.settings.align_content }}">
+  <div class="container">
+    <div class="newsletter__form {% if section.settings.full_width %}newsletter__form--fullwidth{% endif %}">
+      <h3 class="newsletter__title h3 title--section title--section-m-none">
+        {{ section.settings.heading }}
+      </h3>
+      {% form 'customer', class: 'newsletter-form' %}
+        <div class="newsletter-form__inner">
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="newsletter-form__field-wrapper">
+            <div class="field">
+              <input
+                id="NewsletterForm--{{ section.id }}"
+                type="email"
+                name="contact[email]"
+                class="field__input field"
+                value="{{ form.email }}"
+                aria-required="true"
+                autocorrect="off"
+                autocapitalize="off"
+                autocomplete="email"
+                {% if form.errors %}
+                  autofocus
+                  aria-invalid="true"
+                  aria-describedby="Newsletter-error--{{ section.id }}"
+                {% elsif form.posted_successfully? %}
+                  aria-describedby="Newsletter-success--{{ section.id }}"
+                {% endif %}
+                placeholder="{{ 'newsletter.label' | t }}"
+                required
+              >
+              <label class="field__label" for="NewsletterForm--{{ section.id }}" type="hidden">
+                {{- 'newsletter.label' | t -}}
+              </label>
+            </div>
+            {%- if form.errors -%}
+              <small
+                class="newsletter-form__message form__message"
+                id="Newsletter-error--{{ section.id }}"
+              >
+                {%- render 'icon-error' -%}
+                {{- form.errors.translated_fields.email | capitalize }}
+                {{ form.errors.messages.email -}}
+              </small>
+            {%- endif -%}
+          </div>
+          <button
+            type="submit"
+            class="newsletter__button button button--{{ section.settings.button_style }}"
+            name="commit"
+          >
+            <span>{{ 'newsletter.button_label' | t }}</span>
+          </button>
+        </div>
+        {%- if form.posted_successfully? -%}
+          <h3
+            class="newsletter-form__message newsletter-form__message--success form__message"
+            id="Newsletter-success--{{ section.id }}"
+            tabindex="-1"
+            autofocus
+          >
+            {% render 'icon-success' -%}
+            {{- 'newsletter.success' | t }}
+          </h3>
+        {%- endif -%}
+      {% endform %}
+      <div class="newsletter__text">
+        {{ section.settings.newsletter_text }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.newsletter.name",
+  "tag": "section",
+  "class": "spaced-section",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "align_content",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.newsletter.settings.align_content.options__1.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.newsletter.settings.align_content.options__2.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.newsletter.settings.align_content.options__3.label"
+        }
+      ],
+      "default": "left",
+      "label": "t:sections.newsletter.settings.align_content.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": true,
+      "label": "t:sections.newsletter.settings.full_width.label"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "default": "<p>Heading for subscribe form</p>",
+      "label": "t:sections.newsletter.settings.heading.label"
+    },
+    {
+      "type": "richtext",
+      "id": "newsletter_text",
+      "default": "<p>Additional text for subscribe form.</p>",
+      "label": "t:sections.newsletter.settings.newsletter_text.label"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:sections.newsletter.settings.button_style.options__1.label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.newsletter.settings.button_style.options__2.label"
+        }
+      ],
+      "default": "primary",
+      "label": "t:sections.newsletter.settings.button_style.label"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.newsletter.settings.paragraph.content"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.section-padding.header.content"
+    },
+    {
+      "type": "select",
+      "id": "padding_top",
+      "options": [
+        {
+          "value": "no-indent",
+          "label": "t:sections.all.section-padding.options__1.label"
+        },
+        {
+          "value": "xs",
+          "label": "t:sections.all.section-padding.options__2.label"
+        },
+        {
+          "value": "s",
+          "label": "t:sections.all.section-padding.options__3.label"
+        },
+        {
+          "value": "m",
+          "label": "t:sections.all.section-padding.options__4.label"
+        },
+        {
+          "value": "l",
+          "label": "t:sections.all.section-padding.options__5.label"
+        },
+        {
+          "value": "xl",
+          "label": "t:sections.all.section-padding.options__6.label"
+        }
+      ],
+      "default": "m",
+      "label": "t:sections.all.section-padding.padding_top.label"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom",
+      "options": [
+        {
+          "value": "no-indent",
+          "label": "t:sections.all.section-padding.options__1.label"
+        },
+        {
+          "value": "xs",
+          "label": "t:sections.all.section-padding.options__2.label"
+        },
+        {
+          "value": "s",
+          "label": "t:sections.all.section-padding.options__3.label"
+        },
+        {
+          "value": "m",
+          "label": "t:sections.all.section-padding.options__4.label"
+        },
+        {
+          "value": "l",
+          "label": "t:sections.all.section-padding.options__5.label"
+        },
+        {
+          "value": "xl",
+          "label": "t:sections.all.section-padding.options__6.label"
+        }
+      ],
+      "default": "m",
+      "label": "t:sections.all.section-padding.padding_bottom.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter"
+    }
+  ]
+}
+{% endschema %}

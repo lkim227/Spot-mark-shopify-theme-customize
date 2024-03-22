@@ -1,0 +1,175 @@
+.about-steps-wrapper {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+.about-steps-wrapper .section-gradient {
+  width: 1678px;
+  height: 1675px;
+  border-radius: 1678px;
+  position: absolute;
+  right: -50%;
+  top: 50%;
+  z-index: -1;
+  background: radial-gradient(37.13% 37.13% at 50% 50%, rgba(255, 196, 68, 0.3) 0%, rgba(14, 21, 19, 0.79) 100%);
+}
+.about-steps-wrapper .container {
+  max-width: 1600px;
+}
+
+.about-step-section-title {
+  padding-bottom: 12px;
+}
+
+.about-step-section-title .about-steps-title {
+  display: flex;
+  justify-content: center;
+}
+
+.about-step-section-title .about-steps-title h1 {
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+  text-transform: uppercase;
+  margin: 0;
+  max-width: 800px;
+}
+
+@media only screen and (max-width: 1440px) {
+  .about-step-section-title .about-steps-title h1 {
+    font-size: 42px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .about-step-section-title .about-steps-title h1 {
+    font-size: 32px;
+  }
+}
+.about-step-section-title .about-steps-sub_title {
+  margin-bottom: 12px;
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 767px) {
+  .about-step-section-title .about-steps-sub_title {
+    max-width: 100%;
+    margin: auto;
+  }
+}
+.about-step-section-title .about-steps-sub_title p {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  margin: 0;
+  max-width: 600px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 767px) {
+  .about-step-section-title .about-steps-sub_title p {
+    font-size: 18px;
+  }
+}
+.about-step-section-title .about-steps-sub_title p strong {
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.about-steps-card {
+  padding: 25px 20px 25px;
+  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+  min-height: 352px;
+}
+
+.about-steps-card .about-step-card-top {
+  padding-bottom: 40px;
+}
+
+.about-steps-card .about-step-card-top .step-count span {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 160%; /* 25.6px */
+}
+
+.about-steps-card .step-title {
+  padding: 10px 0 16px;
+}
+
+.about-steps-card .step-title h3 {
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 140%;
+  margin: 0;
+}
+
+@media only screen and (max-width: 1440px) {
+  .about-steps-card .step-title h3 {
+    font-size: 24px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .about-steps-card .step-title h3 {
+    font-size: 22px;
+  }
+}
+.about-steps-card .step-info {
+  padding: 16px 0 0;
+  border-top: 3px solid #00C172;
+}
+
+.about-steps-card .step-info p {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  margin: 0;
+}
+
+.about-steps-card .step-icons {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 120px;
+  height: 120px;
+}
+
+.about-steps-card .step-icons img {
+  width: 120px;
+  height: 120px;
+}
+
+.step-bottom-icons {
+  max-width: 875px;
+  margin: 45px auto 0;
+}
+
+.bottom-icon-card {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.bottom-icon-card .icons-title {
+  max-width: 150px;
+  margin: 0 auto;
+}
+
+.bottom-icon-card .icons-title h5 {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  margin: 0;
+}
+@media only screen and (max-width: 767px) {
+  .about-steps-card .step-title h3 {
+    font-size: 18px;
+  }
+}

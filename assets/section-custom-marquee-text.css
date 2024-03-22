@@ -1,0 +1,38 @@
+.cmt-item{
+  color: #FFF;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+}
+.dot{
+  margin: 0 50px;
+}
+.dot svg{
+  transform: translateY(-50%);
+}
+.custom-marquee-text-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media all and (max-width: 1440px){
+  .dot svg{
+    transform: translateY(0);
+  }
+
+}
+@media all and (max-width: 768px){
+  .custom-marquee-text-wrapper{
+    gap: 10px;
+    flex-direction: column;
+  }
+  .dot{
+    display: none;
+  }
+  .cmt-item{
+    font-size: 16px;
+    text-align: center;
+  }
+}

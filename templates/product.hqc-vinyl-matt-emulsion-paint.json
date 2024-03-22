@@ -1,0 +1,1123 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "bf977822-fc54-46a6-adcc-9d42d216879a": {
+          "type": "share",
+          "settings": {
+            "show_share_facebook": true,
+            "show_share_twitter": true,
+            "show_share_pinterest": true,
+            "show_share_copy": true
+          }
+        },
+        "00d96f12-2d89-403f-830d-23e3b1e7b05f": {
+          "type": "shopify:\/\/apps\/loox-reviews\/blocks\/loox-rating\/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "contentSize": 13,
+            "pattern": "[count] reviews",
+            "hideText": false,
+            "alignment": "",
+            "layout": "",
+            "textColor": "",
+            "starColor": "",
+            "showAllReviews": false,
+            "looxOpenFloatingWidget": true,
+            "emptyRatingWidget": true
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h2"
+          }
+        },
+        "0ac1c304-e336-4462-94f8-414e0006eb83": {
+          "type": "manufacture",
+          "settings": {
+            "manufacture_text": "Manufacturer's warranty is 10 years"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_quantity": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "pickup_availability": {
+          "type": "pickup_availability",
+          "settings": {
+          }
+        },
+        "64599f7b-1d41-4d7c-9536-f0281c7f23f9": {
+          "type": "payment",
+          "settings": {
+            "heading": "Payment & Security",
+            "text": "<p>Your payment information is processed securely. We do not store credit card details nor have access to your credit card information.<\/p>"
+          }
+        },
+        "about_brand_fntdNN": {
+          "type": "about_brand",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/HQC_BACKGRONG_LESS_300x_1.png",
+            "heading": "About this Brand",
+            "text": "High Quality Coatings is the smartest way to decorate Experience. Cost Saving. Simple packaging. A Paint Outlet favourite."
+          }
+        },
+        "certificate_Fmqqep": {
+          "type": "certificate",
+          "settings": {
+            "heading": "Our Certificate",
+            "pdf_label_1": "PDF 12Mb",
+            "pdf_url_1": "https:\/\/www.paintoutlet.co.uk\/cdn\/shop\/files\/dummy.pdf?v=4457909464436904884",
+            "text_1": "Product instructions, detailed descriptions.",
+            "pdf_label_2": "PDF 12Mb",
+            "pdf_url_2": "https:\/\/www.paintoutlet.co.uk\/cdn\/shop\/files\/dummy.pdf?v=4457909464436904884",
+            "text_2": "Product instructions, detailed descriptions.",
+            "pdf_label_3": "PDF 12Mb",
+            "pdf_url_3": "https:\/\/www.paintoutlet.co.uk\/cdn\/shop\/files\/dummy.pdf?v=4457909464436904884",
+            "text_3": "Product instructions, detailed descriptions.",
+            "pdf_label_4": "PDF 12Mb",
+            "pdf_url_4": "https:\/\/www.paintoutlet.co.uk\/cdn\/shop\/files\/dummy.pdf?v=4457909464436904884",
+            "text_4": "Product instructions, detailed descriptions.",
+            "pdf_label_5": "PDF 12Mb",
+            "pdf_url_5": "https:\/\/www.paintoutlet.co.uk\/cdn\/shop\/files\/dummy.pdf?v=4457909464436904884",
+            "text_5": "Product instructions, detailed descriptions."
+          }
+        },
+        "step_rQPtCT": {
+          "type": "step",
+          "settings": {
+            "heading": "DON’T KNOW WHAT TO BUY?",
+            "text_1": "Try a Colour tester pouch",
+            "text_2": "Accessories & Brushes",
+            "text_3": "Primer",
+            "text_4": "Paint",
+            "text_5": "Sealer if required",
+            "button_label": "SHOP LIKE A PRO",
+            "button_link": "shopify:\/\/products\/hqc-vinyl-matt-emulsion-paint"
+          }
+        },
+        "benefits_fcDx7W": {
+          "type": "benefits",
+          "settings": {
+            "heading": "TOP BENEFITS: 🌟",
+            "text": "<ul><li>Good covering power and high level opacity<\/li><li>Provides a matte Excellent finish to the surface<\/li><li>Long-lasting fresh appearance<\/li><li>Environmentally-friendly<\/li><li>Simply Wipe- to-clean finish<\/li><li>Great pigment to give a solid coverage.<\/li><li>High Scrub Resistance<\/li><li>Can be used on a wide range of surface<\/li><\/ul>"
+          }
+        },
+        "feature_text_zHQaQ9": {
+          "type": "feature_text",
+          "settings": {
+            "color": "",
+            "image": "shopify:\/\/shop_images\/Group_7ae06567-bb88-42dc-9c8d-15d904ad2138.svg",
+            "heading": "Brush, Roller OR Spray",
+            "sub_title": "APPLICATION METHOD:"
+          }
+        },
+        "feature_text_3gWWQp": {
+          "type": "feature_text",
+          "settings": {
+            "color": "#addfe4",
+            "image": "shopify:\/\/shop_images\/Frame.svg",
+            "heading": "100%",
+            "sub_title": "Water Based:"
+          }
+        },
+        "feature_text_GxQr8k": {
+          "type": "feature_text",
+          "settings": {
+            "color": "#bdebb6",
+            "image": "shopify:\/\/shop_images\/Group_1_61449d3b-6fb4-409e-b2a4-7e47b6538a3d.svg",
+            "heading": "Glass",
+            "sub_title": "Finish:"
+          }
+        },
+        "feature_text_ACDr8e": {
+          "type": "feature_text",
+          "settings": {
+            "color": "#ffaea6",
+            "image": "shopify:\/\/shop_images\/Group_2_c42909aa-37e2-4048-ae13-1608a72d4edc.svg",
+            "heading": "Coverage:",
+            "sub_title": "12-16 per 1 coat"
+          }
+        }
+      },
+      "block_order": [
+        "bf977822-fc54-46a6-adcc-9d42d216879a",
+        "00d96f12-2d89-403f-830d-23e3b1e7b05f",
+        "title",
+        "0ac1c304-e336-4462-94f8-414e0006eb83",
+        "variant_picker",
+        "price",
+        "buy_buttons",
+        "pickup_availability",
+        "64599f7b-1d41-4d7c-9536-f0281c7f23f9",
+        "about_brand_fntdNN",
+        "certificate_Fmqqep",
+        "step_rQPtCT",
+        "benefits_fcDx7W",
+        "feature_text_zHQaQ9",
+        "feature_text_3gWWQp",
+        "feature_text_GxQr8k",
+        "feature_text_ACDr8e"
+      ],
+      "custom_css": [
+
+      ],
+      "settings": {
+        "desktop_alignment": "left",
+        "image_fit": "cover",
+        "enable_autoheight": false,
+        "heading_description": "",
+        "heading_size_description": "h2",
+        "padding_top": "no-indent",
+        "padding_bottom": "xs"
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "background-1",
+        "heading": "Check Out These Related Products",
+        "link": "Explore",
+        "products_limit": 6,
+        "columns_mobile": "1",
+        "image_ratio": "square",
+        "image_fit": "cover",
+        "show_secondary_image": true,
+        "show_vendor": true,
+        "show_desc": false,
+        "show_sku": false,
+        "padding_top": "m",
+        "padding_bottom": "m"
+      }
+    },
+    "featured-blog": {
+      "type": "featured-blog",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "background-2",
+        "color_scheme_card": "background-2",
+        "subheading": "",
+        "heading": "Latest Articles",
+        "heading_size": "h2",
+        "post_layout": "column-icon",
+        "image_width": "medium",
+        "image_fit": "contain",
+        "icon_background": "background-2",
+        "blog": "",
+        "post_limit": 6,
+        "post_limit_mobile": 3,
+        "show_image": true,
+        "show_tags": false,
+        "show_date": false,
+        "show_author": false,
+        "show_excerpt": false,
+        "show_view_all": true,
+        "show_view_all_mobile": true,
+        "button_label": "Button label",
+        "button_style": "secondary",
+        "padding_top": "m",
+        "padding_bottom": "m"
+      }
+    },
+    "426ec76b-be41-4327-b667-c3bcdddbdfd5": {
+      "type": "product-quality",
+      "blocks": {
+        "overlay_text_jTVDAq": {
+          "type": "overlay_text",
+          "settings": {
+            "text": "Mould killng barrier"
+          }
+        },
+        "overlay_text_cDxfz6": {
+          "type": "overlay_text",
+          "settings": {
+            "text": "Easy clean"
+          }
+        },
+        "overlay_text_mFnweQ": {
+          "type": "overlay_text",
+          "settings": {
+            "text": "Hard wearing"
+          }
+        },
+        "quality_items_MThwfd": {
+          "type": "quality_items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Vector_3_3b20ade0-c41b-4cae-930d-3633881aa89e.svg",
+            "text": "Quick-Drying, Hassle-Free Application"
+          }
+        },
+        "quality_items_xLYTJf": {
+          "type": "quality_items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1002_febb7380-ea4c-4874-b69f-9f1122904424.svg",
+            "text": "Extreme Durability with Unrivalled Scrub Resistance"
+          }
+        },
+        "quality_items_wptkjz": {
+          "type": "quality_items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_3_d8e1e7f7-5ce5-4932-bb63-e3f1cd8cc266.svg",
+            "text": "Vibrant Colour Selection"
+          }
+        },
+        "quality_items_DB9hXw": {
+          "type": "quality_items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1132_f1e17a30-954a-45b1-872d-d903e4442df4.svg",
+            "text": "Versatile Application"
+          }
+        },
+        "quality_items_P7TPmw": {
+          "type": "quality_items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_4_a3ee4002-42b0-448f-aa48-a92f95a9bde9.svg",
+            "text": "Environmentally-Friendly Composition"
+          }
+        }
+      },
+      "block_order": [
+        "overlay_text_jTVDAq",
+        "overlay_text_cDxfz6",
+        "overlay_text_mFnweQ",
+        "quality_items_MThwfd",
+        "quality_items_xLYTJf",
+        "quality_items_wptkjz",
+        "quality_items_DB9hXw",
+        "quality_items_P7TPmw"
+      ],
+      "settings": {
+        "background_color": "#252489",
+        "background_image": "shopify:\/\/shop_images\/Rectangle_610.webp",
+        "image": "shopify:\/\/shop_images\/Group_1261_1_39c04bcd-393c-40f3-b663-58b8da729432.webp",
+        "logo_image": "shopify:\/\/shop_images\/HQC_BACKGRONG_LESS_300x_2.png",
+        "shape": "shopify:\/\/shop_images\/shape-flower_968e3000-9601-4127-9eab-c27c752f73e9.svg",
+        "heading": "TRANSFORM YOUR SPACE",
+        "description": "WITH HQC VINYL MATT EMULSION PAINT",
+        "button_label": "BUY NOW",
+        "button_url": "https:\/\/www.paintoutlet.co.uk\/products\/hqc-vinyl-matt-emulsion-paint",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "margin_top-m": 0,
+        "margin_bottom-m": 0,
+        "padding_top_m": 24,
+        "padding_bottom_m": 24
+      }
+    },
+    "2d4a927b-76f8-44fd-b623-f57b354309ac": {
+      "type": "product-benefits",
+      "blocks": {
+        "items_76kabg": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_3_e7e6f22e-913f-450f-bd6d-e3ae9536922f.svg",
+            "heaing": "BENEFITS",
+            "title": "Quick-Drying, Hassle-Free Application",
+            "text": "Achieve a flawless matt finish with rapid drying times, simplifying your painting projects.",
+            "button_label_1": "view collection",
+            "button_url_1": "",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_myWfrz": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1001_af0dcc4a-db03-477a-8ea2-ad1767bea226.svg",
+            "heaing": "Extreme Durability with Unrivalled Scrub Resistance",
+            "title": "Extreme Durability with Unrivalled Scrub Resistance",
+            "text": "Formulated with premium quality acrylic resin for long-lasting protection against wear and tear.",
+            "button_label_1": "view collection",
+            "button_url_1": "",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_E9zz8W": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1002_0e1043d7-32eb-4f35-a205-c1cd2550ade8.svg",
+            "heaing": "Vibrant Colour Selection",
+            "title": "Vibrant Colour Selection",
+            "text": "Choose from 32 exquisite colours, each designed to provide rich, pigmented coverage for a stunning result.",
+            "button_label_1": "view collection",
+            "button_url_1": "",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_MmDPdb": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/vector5_b1df4cd2-56e9-423e-b907-09979fc1c0eb.svg",
+            "heaing": "Versatile Application",
+            "title": "Versatile Application",
+            "text": "Suitable for a variety of surfaces including walls, ceilings, woodwork, and radiators when used with HQC Universal Primer.",
+            "button_label_1": "view collection",
+            "button_url_1": "",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_WMGUcL": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Vector_3_15d3cfdb-d1ab-4ae3-a2bb-1a6e221d3c47.svg",
+            "heaing": "Environmentally-Friendly Composition",
+            "title": "Environmentally-Friendly Composition",
+            "text": "Water-based and low VOC, ensuring minimal environmental impact while maintaining excellent performance.",
+            "button_label_1": "view collection",
+            "button_url_1": "",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_MkriXP": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_4_d88f1f1b-54d5-4dbf-bdb4-e369ee5f5ed8.svg",
+            "heaing": "Good Covering Power and High Opacity",
+            "title": "Good Covering Power and High Opacity",
+            "text": "Achieve excellent coverage with fewer coats, saving time and effort.",
+            "button_label_1": "view collection",
+            "button_url_1": "",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_CYMkdz": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1003_7576886f-a910-4993-af2c-25f067ed90a2.svg",
+            "heaing": "Long-Lasting Fresh Appearance",
+            "title": "Long-Lasting Fresh Appearance",
+            "text": "Enjoy a beautifully refreshed space with a durable finish that stands the test of time.",
+            "button_label_1": "view collection",
+            "button_url_1": "",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_K9i9nY": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1004_ade3bb3a-b42c-417b-b675-2e1afa310d9d.svg",
+            "heaing": "Simply Wipe-to-Clean Finish",
+            "title": "Simply Wipe-to-Clean Finish",
+            "text": "Maintain your walls effortlessly by wiping away dirt and marks without damaging the paint.",
+            "button_label_1": "view collection",
+            "button_url_1": "",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_AhW8cb": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_5_7a1cf096-5fba-4f87-9807-6afeb4ef78b5.svg",
+            "heaing": "Excellent Value for Money",
+            "title": "Excellent Value for Money",
+            "text": "Enjoy premium quality at an affordable price, ensuring a cost-effective solution for your decorating needs.",
+            "button_label_1": "view collection",
+            "button_url_1": "",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_3tVe3Y": {
+          "type": "items",
+          "settings": {
+            "heaing": "Transformative Colour Selection",
+            "title": "Transformative Colour Selection",
+            "text": "Choose from a wide range of trendy colours to express your personal style and enhance your living space.",
+            "button_label_1": "view collection",
+            "button_url_1": "",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "items_76kabg",
+        "items_myWfrz",
+        "items_E9zz8W",
+        "items_MmDPdb",
+        "items_WMGUcL",
+        "items_MkriXP",
+        "items_CYMkdz",
+        "items_K9i9nY",
+        "items_AhW8cb",
+        "items_3tVe3Y"
+      ],
+      "settings": {
+        "background_color": "#252489",
+        "image": "shopify:\/\/shop_images\/Group_1267.webp",
+        "sticker_image": "shopify:\/\/shop_images\/sticker_09781686-2ab2-4c91-945c-98973a6adbef.svg",
+        "heading": "Reasons to choose HQC",
+        "shape_1": "shopify:\/\/shop_images\/Group_1268.svg",
+        "shape_2": "shopify:\/\/shop_images\/Group_711.svg",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 88,
+        "padding_bottom": 78,
+        "margin_top-m": 0,
+        "margin_bottom-m": 0,
+        "padding_top_m": 24,
+        "padding_bottom_m": 24
+      }
+    },
+    "552aca1d-2e3f-4b20-b8f5-6b6872718102": {
+      "type": "product-ingredient",
+      "blocks": {
+        "items_P4atbQ": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1261_3_35bc526d-0a09-4738-9fe2-8c8c6c00bdf5.webp",
+            "heading": "Additives",
+            "text": "We've harnessed the power of advanced additives and innovative technologies to elevate your painting experience. From improved adhesion to enhanced durability, our paints are equipped. Unleash the Power of highest grade additive's Formulation with HQC paint."
+          }
+        },
+        "items_7Uc4kz": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1262_3ebac73a-9a37-4c1a-9525-47b085b80602.webp",
+            "heading": "Pigment",
+            "text": "Our paints feature the finest-grade pigments that create captivating and vibrant colours, transforming any space into a visual masterpiece. Prepare to be amazed by the richness and depth our pigments bring to your walls, expect Vibrant & Luxuriousness."
+          }
+        },
+        "items_KLtkji": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1263_a06628a6-cc3a-4ead-a26c-cec26b9fc05a.webp",
+            "heading": "Resin",
+            "text": "Our paint formulation is a carefully crafted blend of high-grade resins & premium materials. Resins specially formulated & combined with the highest grade materials which allows the paint itself to become - breathable , waterproof, superior coverage, mould resistant, etc This unique combination allows our paint to not only provide excellent coverage but also unleash its extraordinary capabilities. Say goodbye to ordinary paint and experience the extraordinary."
+          }
+        }
+      },
+      "block_order": [
+        "items_P4atbQ",
+        "items_7Uc4kz",
+        "items_KLtkji"
+      ],
+      "settings": {
+        "background_color": "#252489",
+        "shape_1": "shopify:\/\/shop_images\/flower_ingridents.svg",
+        "shape_2": "shopify:\/\/shop_images\/cloud-ingrident.svg",
+        "shape_3": "shopify:\/\/shop_images\/stciker-ingriedent.svg",
+        "heading": "INGREDIENTS",
+        "text": "Pay for the product, not the added branded value, all of our products are made at the highest quality offered at the lowest price with no branded value Experience high-grade formulation without inflated prices.",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 120,
+        "padding_bottom": 50,
+        "margin_top-m": 0,
+        "margin_bottom-m": 0,
+        "padding_top_m": 130,
+        "padding_bottom_m": 48
+      }
+    },
+    "9f5744af-addc-432f-a926-07ee8c167af9": {
+      "type": "product-comparison",
+      "blocks": {
+        "items_xUGypE": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_3_1d096ef1-679c-408b-a501-80347a1f82e1.svg",
+            "title": "Price",
+            "our_store_text": "Fixed price + WITH up to 50% in discount + Free shipping + no retail Markups",
+            "store_status": "tick",
+            "other_store_text": "5L £85+ NO DISCOUNT + shipping cost + retail markups",
+            "other_store_status": "cross"
+          }
+        },
+        "items_JAhTqF": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1001.svg",
+            "title": "STRENGTH",
+            "our_store_text": "Only Hard wearing & long lasting performance",
+            "store_status": "tick",
+            "other_store_text": "Options vary from High grade, Fair, Poor Wear",
+            "other_store_status": "cross"
+          }
+        },
+        "items_bKBaiM": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1002_1861b3c8-e447-4345-9d8a-67873f7e2907.svg",
+            "title": "MAINTENANCE",
+            "our_store_text": "Easy clean",
+            "store_status": "tick",
+            "other_store_text": "Stains and Marks",
+            "other_store_status": "cross"
+          }
+        },
+        "items_TgGt8b": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/vector5.svg",
+            "title": "CONVENIENCE",
+            "our_store_text": "Paint once, and simply  wipe to refresh your walls",
+            "store_status": "tick",
+            "other_store_text": "Makes you Repaint to Refresh your Walls",
+            "other_store_status": "cross"
+          }
+        },
+        "items_bGC37d": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Vector_3_235a270c-5945-4d99-aa6f-88bbe8c52f96.svg",
+            "title": "MOULD",
+            "our_store_text": "Mould killing barrier fights against moulds and tough humid conditions for years",
+            "store_status": "tick",
+            "other_store_text": "Added Chemicals that fight mould a short time before they wear out",
+            "other_store_status": "cross"
+          }
+        },
+        "items_rYMAAj": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_4_c544c077-94dc-450a-a855-dcaba1439485.svg",
+            "title": "COLOUR",
+            "our_store_text": "Choose the trendiest colours in season at no extra cost",
+            "store_status": "tick",
+            "other_store_text": "Basic Colours that fade quick at extra cost",
+            "other_store_status": "cross"
+          }
+        },
+        "items_Ub6p93": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1003.svg",
+            "title": "ECO-FRIENDLY",
+            "our_store_text": "Our product is freshly made, only when it's needed in the world.",
+            "store_status": "tick",
+            "other_store_text": "Made in big batches un guaranteed to be sold that Causes Huge Waste in the World",
+            "other_store_status": "cross"
+          }
+        },
+        "items_3BkBtr": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1004.svg",
+            "title": "VALUE FOR MONEY",
+            "our_store_text": "Highest quality at low costs",
+            "store_status": "tick",
+            "other_store_text": "Too Cheap or Too Expensive",
+            "other_store_status": "cross"
+          }
+        },
+        "items_cpMUaD": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_5_7a1cf096-5fba-4f87-9807-6afeb4ef78b5.svg",
+            "title": "INSULATING PRODUCT OPTIONS",
+            "our_store_text": "Insulates your walls",
+            "store_status": "tick",
+            "other_store_text": "Insulating options available (Choose the correct product from the HQC range)",
+            "other_store_status": "cross"
+          }
+        }
+      },
+      "block_order": [
+        "items_xUGypE",
+        "items_JAhTqF",
+        "items_bKBaiM",
+        "items_TgGt8b",
+        "items_bGC37d",
+        "items_rYMAAj",
+        "items_Ub6p93",
+        "items_3BkBtr",
+        "items_cpMUaD"
+      ],
+      "settings": {
+        "background_color": "",
+        "heading": "US Vs. THEM",
+        "our_store_image": "shopify:\/\/shop_images\/Black_and_Beige_Modern_Minimal_Design_Studio_Logo_1.png",
+        "our_store_label": "HQC Vinyl Matt Emulsion Paint",
+        "other_store_image": "shopify:\/\/shop_images\/water-bucket_9538647_2_1.svg",
+        "other_store_label": "Other Product in the market",
+        "autoplay_enabled": false,
+        "loop_enabled": false,
+        "reverse": false,
+        "autoplay_timeout": 7,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 18,
+        "padding_bottom": 60,
+        "margin_top-m": 0,
+        "margin_bottom-m": 0,
+        "padding_top_m": 24,
+        "padding_bottom_m": 24
+      }
+    },
+    "bc4da305-f621-4869-acc6-1c1f90f022ff": {
+      "type": "product-work",
+      "blocks": {
+        "items_nBhata": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_1.webp",
+            "title": "Seamless Finish",
+            "text": "Achieves a seamless matt finish on walls and ceilings, adding elegance and depth to any room."
+          }
+        },
+        "items_hrQAVe": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_2.png",
+            "title": "Rapid Drying",
+            "text": "Ensures rapid drying times, allowing for efficient application and reducing waiting times between coats."
+          }
+        },
+        "items_fp4w6m": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_3.png",
+            "title": "Robust Protection",
+            "text": "Provides robust protection against scuffs, stains, and general wear and tear, thanks to its premium acrylic resin composition."
+          }
+        },
+        "items_8Mbb4y": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_4.png",
+            "title": "Versatile Application",
+            "text": "Offers versatile application on various surfaces, ensuring consistent coverage and a uniform finish throughout your home."
+          }
+        },
+        "items_84TxfV": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_5.png",
+            "title": "Environmentally-Friendly Composition",
+            "text": "Minimises VOC emissions and promotes a healthier indoor environment with its environmentally-friendly composition."
+          }
+        },
+        "items_9yCWBx": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_6.png",
+            "title": "Easy Maintenance",
+            "text": "Facilitates effortless maintenance with its easy-to-clean surface, keeping your walls looking fresh for longer."
+          }
+        },
+        "items_7KfRhr": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_7.png",
+            "title": "Vibrant Colour Selection",
+            "text": "Enhances your space with a vibrant colour selection, reflecting your unique taste and style."
+          }
+        },
+        "items_9nGjDR": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_8.png",
+            "title": "User-Friendly Application",
+            "text": "Suitable for DIY enthusiasts and professionals alike, offering ease of use and exceptional results with every application."
+          }
+        }
+      },
+      "block_order": [
+        "items_nBhata",
+        "items_hrQAVe",
+        "items_fp4w6m",
+        "items_8Mbb4y",
+        "items_84TxfV",
+        "items_9yCWBx",
+        "items_7KfRhr",
+        "items_9nGjDR"
+      ],
+      "settings": {
+        "background_color": "#252489",
+        "heading": "HOW VINYL MATT EMULSION PAINT WORKS",
+        "image": "shopify:\/\/shop_images\/Group_1040.png",
+        "loop": false,
+        "autoplay": true,
+        "disableoninteraction": false,
+        "reversedirection": false,
+        "speed": "1000",
+        "delay": "3000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 10,
+        "padding_bottom": 60,
+        "margin_top-m": 0,
+        "margin_bottom-m": 0,
+        "padding_top_m": 0,
+        "padding_bottom_m": 24
+      }
+    },
+    "427acd04-a074-4abe-9d87-af9c52160db9": {
+      "type": "product-process",
+      "blocks": {
+        "c213274a-0fae-4091-a5be-ac21dd4e24e9": {
+          "type": "side-image",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Spatula_1_9e8e8610-8c2d-40ae-91f1-392000a8ba1d.png",
+            "pretext": "Step 1",
+            "heading": "PREP",
+            "text": "<p>Prep your area and walls by sanding, cleaning, and ensuring the surface is smooth & dry - use primer (or mist coat) on bare surfaces or fresh plaster board<\/p>"
+          }
+        },
+        "52ea6670-1b63-43eb-ab2a-45eb3a761fd4": {
+          "type": "side-image",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Spatula_2_982a9cb2-567a-4610-b98e-c6e9066e3272.png",
+            "pretext": "Step 2",
+            "heading": "PAINT",
+            "text": "<p>Paint with either a roller, brush or spray Paint with either a roller, brush or spray Paint with either a roller, brush or spray Paint with either a roller, brush or spray<\/p>"
+          }
+        },
+        "ecabd154-d50a-4a36-ba02-35e13c325431": {
+          "type": "side-image",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Spatula_3_e94629f0-d72b-45a1-a4b6-f8a31304a9ab.png",
+            "pretext": "Step 3",
+            "heading": "CLEAN",
+            "text": "<p>Clean up any excess paint with cloths and any type you’ve used Clean up any excess paint with cloths and any type you’ve used Clean up any excess <\/p>"
+          }
+        },
+        "3de3636d-9001-45dc-a026-5ebfc2ea74ce": {
+          "type": "side-image",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Spatula_4_212c43a9-1933-4ebc-a9f5-5ec8d9c265e5.png",
+            "pretext": "Step 4",
+            "heading": "ENJOY",
+            "text": "<p>Enjoy your newly decorated spaces and decor Enjoy your newly decorated spaces and decor Enjoy your newly decorated spaces and decor<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "c213274a-0fae-4091-a5be-ac21dd4e24e9",
+        "52ea6670-1b63-43eb-ab2a-45eb3a761fd4",
+        "ecabd154-d50a-4a36-ba02-35e13c325431",
+        "3de3636d-9001-45dc-a026-5ebfc2ea74ce"
+      ],
+      "settings": {
+        "heading": "HOW DOES IT WORK?",
+        "button_label": "SEE GUIDE HOW TO DECORATE",
+        "button_link": "",
+        "desktop_item": 4,
+        "laptop_item": 4,
+        "tab_item": 1,
+        "mobile_item": 1,
+        "autoplay_enabled": false,
+        "loop_enabled": false,
+        "reverse": false,
+        "autoplay_timeout": 7,
+        "color": "#ffffff",
+        "background_color": "#252489",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 16,
+        "padding_bottom": 24,
+        "margin_top-m": 0,
+        "margin_bottom-m": 0,
+        "padding_top_m": 0,
+        "padding_bottom_m": 24
+      }
+    },
+    "7c81fc37-0852-4ff1-8e48-7c88e2bedc11": {
+      "type": "product-expanding-card",
+      "blocks": {
+        "c7687da9-16a7-4c57-bceb-273316aa71bc": {
+          "type": "card_item",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Rectangle_572.png",
+            "text": "HQC Paint's Unmatched Versatility"
+          }
+        },
+        "6c29607a-4179-43dd-9a87-914d23478281": {
+          "type": "faq",
+          "settings": {
+            "handle": "HQC Paint's Unmatched Versatility",
+            "heading": "<p>Environmental Impact<\/p>",
+            "text": "<p>HQC Paint takes a stand for the planet with formulations that encourage less frequent application, reducing environmental strain and promoting sustainable living.<\/p>"
+          }
+        },
+        "faq_NEzzGP": {
+          "type": "faq",
+          "settings": {
+            "handle": "HQC Paint's Unmatched Versatility",
+            "heading": "<p>Cutting-Edge Technology<\/p>",
+            "text": "<p>Paint integrates only high-grade ingredients and advanced resin technology to offer a finish that is not only long-lasting but also vibrant and full of life.<\/p>"
+          }
+        },
+        "faq_FbGrTP": {
+          "type": "faq",
+          "settings": {
+            "handle": "HQC Paint's Unmatched Versatility",
+            "heading": "<p>Cost Efficiency<\/p>",
+            "text": "<p>Designed to reduce the need for multiple coats, HQC Paint is a cost-effective option that doesn't compromise on quality, providing substantial savings over time.<\/p>"
+          }
+        },
+        "9cc15fd9-4d45-4c81-82cb-f752dfee8e82": {
+          "type": "card_item",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Rectangle_572.png",
+            "text": "The HQC Paint Difference"
+          }
+        },
+        "e7355bb1-0675-49a3-bfe4-10c41be759de": {
+          "type": "faq",
+          "settings": {
+            "handle": "The HQC Paint Difference",
+            "heading": "<p>No more multiple products<\/p>",
+            "text": "<p>HQC Paint revolutionises painting with its simplicity. One paint does it all, reducing the need for multiple products and streamlining the decorating process.<\/p>"
+          }
+        },
+        "faq_rB96Ft": {
+          "type": "faq",
+          "settings": {
+            "handle": "The HQC Paint Difference",
+            "heading": "<p>Diamond durability<\/p>",
+            "text": "<p>With diamond durability and superior coverage, The versatility of HQC Paint allows it to be used on a variety of surfaces, from interior & exterior walls to garden fences, without compromising on performance.<\/p>"
+          }
+        },
+        "faq_jiiNpf": {
+          "type": "faq",
+          "settings": {
+            "handle": "The HQC Paint Difference",
+            "heading": "<p>Low Price & High Quality<\/p>",
+            "text": "<p>HQC Paint delivers in-house quality without the retail markup, making professional-grade results accessible and affordable for everyone.<\/p>"
+          }
+        },
+        "4934a52c-6d5c-4e05-b8a5-ebbe07f1091f": {
+          "type": "card_item",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Rectangle_572.svg",
+            "text": "HQC Paint's Commitment to Quality"
+          }
+        },
+        "2ce21371-5c6d-493b-86b6-00b877112696": {
+          "type": "faq",
+          "settings": {
+            "handle": "HQC Paint's Commitment to Quality",
+            "heading": "<p>Industry-Leading Ingredients<\/p>",
+            "text": "<p>HQC paints are formulated with water-based solutions, making them environmentally friendly and safe for use in any setting. Say goodbye to harmful chemicals and toxins, and embrace a greener, more sustainable approach to decorating.<\/p>"
+          }
+        },
+        "faq_MqPhKx": {
+          "type": "faq",
+          "settings": {
+            "handle": "HQC Paint's Commitment to Quality",
+            "heading": "<p>Scrub and Clean with Ease<\/p>",
+            "text": "<p>Experience minimal odour levels with HQC paints, ensuring a pleasant painting experience without the discomfort of strong fumes. Perfect for indoor applications where air quality is a concern.<\/p>"
+          }
+        },
+        "faq_E4gBGR": {
+          "type": "faq",
+          "settings": {
+            "handle": "HQC Paint's Commitment to Quality",
+            "heading": "<p>Trusted by Professionals<\/p>",
+            "text": "<p>With water-based formulations, cleanup is a breeze. Simply use soap and water to clean your tools and surfaces, reducing waste and environmental impact.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "c7687da9-16a7-4c57-bceb-273316aa71bc",
+        "6c29607a-4179-43dd-9a87-914d23478281",
+        "faq_NEzzGP",
+        "faq_FbGrTP",
+        "9cc15fd9-4d45-4c81-82cb-f752dfee8e82",
+        "e7355bb1-0675-49a3-bfe4-10c41be759de",
+        "faq_rB96Ft",
+        "faq_jiiNpf",
+        "4934a52c-6d5c-4e05-b8a5-ebbe07f1091f",
+        "2ce21371-5c6d-493b-86b6-00b877112696",
+        "faq_MqPhKx",
+        "faq_E4gBGR"
+      ],
+      "settings": {
+        "background_color": "",
+        "heading": "<p><strong>HIGH QUALITY<\/strong> COATINGS: <em>YOUR<\/em> All-IN-ONE <span style=\"text-decoration:underline\">MODERN DECORATING<\/span> SOLUTION<\/p>",
+        "text": "<p>HQC Paint transforms the decorating industry with its all-encompassing solution that epitomises convenience, quality, and environmental responsibility. HQC Paint delivers in-house quality without the retail markup, making professional-grade results accessible and affordable for everyone. This innovative paint brand makes buying paint simple with its multi-surface adaptability and enduring finish, delivering premium results without the premium price tag. Its smart packaging reflects the brand's commitment to long term environmental sustainability & customer-centric values. HQC offers a long-term solution making it the smartest choice for your decorating needs.<\/p>",
+        "btn_link": "shopify:\/\/products\/hqc-vinyl-matt-emulsion-paint",
+        "btn_text": "BUY NOW",
+        "padding_top": 0,
+        "padding_bottom": 30,
+        "padding_top_m": 0,
+        "padding_bottom_m": 32
+      }
+    },
+    "14962891-2601-4116-8c6f-2759ae0c8268": {
+      "type": "product-collection",
+      "blocks": {
+        "product_7zLJ8t": {
+          "type": "product",
+          "settings": {
+            "choose_product": "hqc-masonry-paint",
+            "text": "<p>High quality product with leading weatherproof technology.  Formulated with acrylic resin that provides ultimate protection to your property. The paint will offer years of protection against extreme weather conditions, ensuring unrivalled durability and long lasting protection. <br\/><br\/>HQC Masonry paint wont not only colour your walls but also protects your home against extreme weather and adverse environmental conditions.<br\/><br\/>isn't it something that you have been looking for?<br\/><br\/>All these features of HQC masonry paint for walls enhance the overall value with the assurance of reduced spending on regular maintenance.<br\/><br\/>The outlook that this product facilitates is cleaner, better looking, and protected.<\/p>"
+          }
+        },
+        "product_EUPDHB": {
+          "type": "product",
+          "settings": {
+            "choose_product": "hqc-anti-condensation-insulating-paint",
+            "text": "<p>The time it was on the market, speaks for the product itself. It eliminates mould of damp areas and prevents in future, it won't happen again. It is a long term solution, which offers premium quality, very low odour levels, and maximum performance, you can be assured HQC Anti Condensation Insulating Paint will prevent future condensation problems including mould, blistering paint, discolouration, staining and peeling wallpaper – with just 2 coats. It also reduces heat loss.<br\/><br\/>HQC Anti Condensation coating is the perfect answer for applications requiring long-lasting protection from continuous and severe condensation. Use in kitchens and bathrooms in homes, hotels, schools, universities, restaurants, service stations, gyms, swimming pools and spas. Paint can easily be applied by brush, roller or spray. Use the product in just the same areas as conventional emulsions.<\/p>"
+          }
+        },
+        "product_DFeqRY": {
+          "type": "product",
+          "settings": {
+            "choose_product": "hqc-durable-kitchen-matt-paint",
+            "text": ""
+          }
+        },
+        "product_Qbm8d6": {
+          "type": "product",
+          "settings": {
+            "choose_product": "hqc-furniture-paint",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_7zLJ8t",
+        "product_EUPDHB",
+        "product_DFeqRY",
+        "product_Qbm8d6"
+      ],
+      "settings": {
+        "title": "HQC COLLECTION",
+        "color": "#ffffff",
+        "background_color": "#252489",
+        "product_bg_color": "transparent",
+        "product_bottom_bg_color": "transparent",
+        "product_des_bg_color": "transparent",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "margin_top-m": 0,
+        "margin_bottom-m": 0,
+        "padding_top_m": 0,
+        "padding_bottom_m": 68
+      }
+    },
+    "7fc994d7-8584-4a77-bcad-c0d3c29fbb62": {
+      "type": "about-hero",
+      "blocks": {
+        "8cc173c7-14d9-4c6d-9a73-710cd64f49a6": {
+          "type": "title",
+          "settings": {
+            "title": "PAINT OUTLET"
+          }
+        },
+        "65a1b8c1-0a26-410e-a865-f85f8d798d87": {
+          "type": "sub_title",
+          "settings": {
+            "sub_title": "DEAL DIRECTLY WITH THE SUPPLIER AND REAP THE BENEFITS"
+          }
+        },
+        "bbce03af-1e2a-4baf-bca9-43498f09e1d1": {
+          "type": "info",
+          "settings": {
+            "info": "<p>We’re revolutionizing the decorating industry with higher quality products at a lower cost, while striving to eliminate paint waste.<\/p>"
+          }
+        },
+        "6ec42857-5f7c-4050-aba8-f19598a9b346": {
+          "type": "video",
+          "settings": {
+            "logo_svg": "",
+            "logo_img": "shopify:\/\/shop_images\/Group_5.png",
+            "background": "shopify:\/\/shop_images\/Rectangle_656.png",
+            "hosted_video": "shopify:\/\/files\/videos\/00_fdf2f0f3-a1f8-4a70-9064-47b9ce56a1f5.mp4",
+            "video_url": "",
+            "enable_video_looping": false
+          }
+        }
+      },
+      "block_order": [
+        "8cc173c7-14d9-4c6d-9a73-710cd64f49a6",
+        "65a1b8c1-0a26-410e-a865-f85f8d798d87",
+        "bbce03af-1e2a-4baf-bca9-43498f09e1d1",
+        "6ec42857-5f7c-4050-aba8-f19598a9b346"
+      ],
+      "settings": {
+        "color": "#ffffff",
+        "border_color": "#ffffff",
+        "background_color": "#0e1513",
+        "padding_top": 40,
+        "padding_bottom": 60,
+        "padding_top_m": 50,
+        "padding_bottom_m": 50
+      }
+    },
+    "promises_section_8UhgXf": {
+      "type": "promises-section",
+      "blocks": {
+        "items_rdhgXa": {
+          "type": "items",
+          "settings": {
+            "heaing": "See Our Trust & gaurentee"
+          }
+        },
+        "items_R7gCXp": {
+          "type": "items",
+          "settings": {
+            "heaing": "See Our Trust & gaurentee"
+          }
+        },
+        "items_Xq7hbW": {
+          "type": "items",
+          "settings": {
+            "heaing": "See Our Trust & gaurentee"
+          }
+        },
+        "items_RH8LqT": {
+          "type": "items",
+          "settings": {
+            "heaing": "See Our Trust & gaurentee"
+          }
+        }
+      },
+      "block_order": [
+        "items_rdhgXa",
+        "items_R7gCXp",
+        "items_Xq7hbW",
+        "items_RH8LqT"
+      ],
+      "settings": {
+        "heading": "Still Unsure about your purchase?",
+        "text": "Check Our Promisies & assurance"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product-recommendations",
+    "featured-blog",
+    "426ec76b-be41-4327-b667-c3bcdddbdfd5",
+    "2d4a927b-76f8-44fd-b623-f57b354309ac",
+    "552aca1d-2e3f-4b20-b8f5-6b6872718102",
+    "9f5744af-addc-432f-a926-07ee8c167af9",
+    "bc4da305-f621-4869-acc6-1c1f90f022ff",
+    "427acd04-a074-4abe-9d87-af9c52160db9",
+    "7c81fc37-0852-4ff1-8e48-7c88e2bedc11",
+    "14962891-2601-4116-8c6f-2759ae0c8268",
+    "7fc994d7-8584-4a77-bcad-c0d3c29fbb62",
+    "promises_section_8UhgXf"
+  ]
+}

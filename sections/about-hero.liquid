@@ -1,0 +1,299 @@
+{{ 'section-about-hero.css' | asset_url | stylesheet_tag: preload: true }}
+<script src="{{ 'about-hero.js' | asset_url }}" defer="defer"></script>
+{%- style -%}
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_m  }}px;
+      padding-bottom: {{ section.settings.padding_bottom_m }}px;
+      background: {{ section.settings.background_color }};
+      color: {{ section.settings.color }};
+    }
+    .section-{{ section.id }}-padding .about-hero-title h1,
+    .section-{{ section.id }}-padding .about-hero-sub_title h3{
+        color: {{ section.settings.color }};
+    }
+    .section-{{ section.id }}-padding .about-hero-sub_title{
+        border-color: {{ section.settings.border_color }};
+    }
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+{%- endstyle -%}
+<div 
+class="about-hero-wrapper section-{{ section.id }}-padding" 
+id="section-{{ section.id }}">
+<div class="section-gradient"></div>
+    {% for block in section.blocks %}
+        {%- case block.type -%}
+            {%- when 'title' -%}
+                {%- liquid
+                assign title = block.settings.title
+                -%}
+                <div class="about-hero-title" {{ block.shopify_attributes }}>
+                    {%- if title != blank -%}
+                        <marquee behavior="scroll" direction="right">
+                            <h1>{{ title }}</h1>
+                        </marquee>
+                    {%- endif -%}
+                </div>
+            {%- endcase -%}
+        {% endfor %}
+    <div class="container">
+        <div class="row align-items-center">
+        {% for block in section.blocks %}
+            {%- case block.type -%}
+                {% when 'sub_title' %}
+                {%- liquid
+                assign sub_title = block.settings.sub_title
+                -%}
+                   <div class="col-lg-12" {{ block.shopify_attributes }}>
+                        <div class="about-hero-sub_title">
+                            {%- if sub_title != blank -%}
+                                <h3>{{ sub_title }}</h3>
+                            {%- endif -%}
+                        </div>
+                   </div>
+                {% when 'info' %}
+                {%- liquid
+                assign info = block.settings.info
+                -%}
+                <div class="col-lg-8" {{ block.shopify_attributes }}>
+                    <div class="about-hero-info">
+                        {%- if info != blank -%}
+                            {{ info }}
+                        {%- endif -%}
+                    </div>
+                </div>
+                {% when 'video' %}
+                    {%- liquid
+                    assign logo_svg = block.settings.logo_svg
+                    assign logo_img = block.settings.logo_img
+                    assign background = block.settings.background
+                    assign hosted_video = block.settings.hosted_video
+                    assign video_id = block.settings.video_url.id
+                    -%}
+                    <div class="col-lg-4" {{ block.shopify_attributes }}>
+                        <div class="about-hero-video-wrapper">
+                            <div class="video-background">
+                                {%- if background != blank -%}
+                                    {{
+                                    background
+                                    | image_url: width: auto
+                                    | image_tag: loading: 'lazy'
+                                    }}
+                                {%- endif -%}
+                            </div>
+                            <div class="video-button-wrap">
+                                <div class="video-logo">
+                                    {%- if logo_svg != blank -%}
+                                        {{ logo_svg }}
+                                    {%- endif -%}
+                                    {%- if logo_img != blank -%}
+                                        {{
+                                        logo_img
+                                        | image_url: width: auto
+                                        | image_tag: loading: 'lazy'
+                                        }}
+                                    {%- endif -%}
+                                </div>
+                                <div class="video-play-button">
+                                    {%- if hosted_video or video_id != blank -%}
+                                        <a href="#" class="video-button">
+                                            <svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="32.5" cy="32.5" r="31.5" stroke="black" stroke-width="2"/>
+                                            <path d="M47 32L26 44.1244L26 19.8756L47 32Z" fill="black"/>
+                                            </svg>
+                                        </a>
+                                    {%- endif -%}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            {%- endcase -%}
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% for block in section.blocks %}
+{%- if block.type == 'video' -%}
+    {%- liquid
+        assign hosted_video = block.settings.hosted_video
+        assign video_id = block.settings.video_url.id
+        assign loop = ''
+        if block.settings.enable_video_looping
+        assign loop = '&loop=1&playlist=' | append: video_id
+        endif
+    -%}
+<div class="about-video-popup">
+    <div class="video-wrap">
+        <span class="popup-close">&times;</span>
+        {%- if hosted_video != blank -%}
+            {{ hosted_video | video_tag: width: "900x", loop: block.settings.enable_video_looping, controls: true, muted: false }}
+        {%- endif -%}
+        {% if video_id != blank %}
+            <iframe
+            width="900" height="506"
+            src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1&autoplay=1{{ loop }}"
+            class="js-youtube"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+            title="Video Popup"
+            ></iframe>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+{% schema %}
+{
+  "name": "About Hero",
+  "class": "about-hero-section",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+"settings": [
+    {
+        "type" : "color",
+        "id" : "color",
+        "label": "Text Color",
+        "default": "#FFFFFF"
+    },
+    {
+        "type" : "color",
+        "id" : "border_color",
+        "label": "Border Color",
+        "default": "#FFFFFF"
+    },
+    {
+        "type" : "color",
+        "id" : "background_color",
+        "label": "Section Bakground",
+        "default": "#0E1513"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_top_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 68
+    }
+],
+"blocks": [
+    {
+    "name": "Title",
+    "type": "title",
+    "settings": [
+                {
+                    "type" : "text",
+                    "id" : "title",
+                    "label": "Title"
+                }
+            ]
+    },
+    {
+    "name": "Sub Title",
+    "type": "sub_title",
+    "settings": [
+                {
+                    "type" : "textarea",
+                    "id" : "sub_title",
+                    "label": "Sub Title"
+                }
+            ]
+    },
+    {
+    "name": "Info",
+    "type": "info",
+    "settings": [
+                {
+                    "type" : "richtext",
+                    "id" : "info",
+                    "label": "Info"
+                }
+            ]
+    },
+    {
+    "name": "Video",
+    "type": "video",
+    "settings": [
+                {
+                    "type" : "html",
+                    "id" : "logo_svg",
+                    "label": "Logo (SVG)"
+                },
+                {
+                    "type" : "image_picker",
+                    "id" : "logo_img",
+                    "label": "Logo (Image)"
+                },
+                {
+                    "type" : "image_picker",
+                    "id" : "background",
+                    "label": "Background"
+                },
+                {
+                    "type" : "video",
+                    "id" : "hosted_video",
+                    "label": "Hosted Video"
+                },
+                {
+                    "type" : "video_url",
+                    "id" : "video_url",
+                    "accept": ["youtube"],
+                    "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+                    "label": "Youtube Video"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "enable_video_looping",
+                    "label": "Loop Enable",
+                    "default": false
+                }
+            ]
+    }
+],
+"presets": [{
+"name": "About Hero"
+}]
+}
+{% endschema %}

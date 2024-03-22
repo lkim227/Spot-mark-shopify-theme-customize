@@ -1,0 +1,422 @@
+{{ 'component-sidebar-search-panel.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'component-badge.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+<div class="sidebar-search-panel">
+    <a href="#" class="search-panel-close" alt="Close">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M 38.982422 6.9707031 A 2.0002 2.0002 0 0 0 37.585938 7.5859375 L 24 21.171875 L 10.414062 7.5859375 A 2.0002 2.0002 0 0 0 8.9785156 6.9804688 A 2.0002 2.0002 0 0 0 7.5859375 10.414062 L 21.171875 24 L 7.5859375 37.585938 A 2.0002 2.0002 0 1 0 10.414062 40.414062 L 24 26.828125 L 37.585938 40.414062 A 2.0002 2.0002 0 1 0 40.414062 37.585938 L 26.828125 24 L 40.414062 10.414062 A 2.0002 2.0002 0 0 0 38.982422 6.9707031 z"></path></svg>
+    </a>
+    <div class="sidebar-header text-left"><span class="title">Browse</span></div>
+    
+	<div class="sidebar-wrapper">
+		<div class="sidebar__search search" role="dialog" aria-modal="true" aria-label="{{ 'general.search.search' | t }}">
+			<div class="header__overlay"></div>
+			<div class="search__content color-background-2">
+				{%- if settings.predictive_search_enabled -%}
+					<predictive-search class="search-modal__form" data-loading-text="{{ 'accessibility.loading' | t }}">
+				{%- endif -%}
+					<form action="{{ routes.search_url }}" method="get" role="search" class="search search__form">
+						<div class="field">
+							<input class="search__input field__input"
+								id="Search-In-Modal-sidebar-search"
+								type="search"
+								name="q"
+								value="{{ search.terms | escape }}"
+								placeholder="{{ 'general.search.placeholder' | t }}"
+								{%- if settings.predictive_search_enabled -%}
+									role="combobox"
+									aria-expanded="false"
+									aria-owns="predictive-search-results-list"
+									aria-controls="predictive-search-results-list"
+									aria-haspopup="listbox"
+									aria-autocomplete="list"
+									autocorrect="off"
+									autocomplete="off"
+									autocapitalize="off"
+									spellcheck="false"
+								{%- endif -%}
+							>
+							<label class="field__label" for="Search-In-Modal-sidebar-search">{{ 'general.search.placeholder' | t }}</label>
+							<input type="hidden" name="options[prefix]" value="last">
+
+							
+
+
+							<button class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
+								{% render 'icon-search' %}
+							</button>
+						</div>
+						
+						{% if section.settings.enable_search_modal %}
+							{% render 'search-modal' %}
+						{%- endif -%}
+
+						{%- if settings.predictive_search_enabled -%}
+							<div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
+								<div class="predictive-search__loading-state">
+									{% render 'icon-spinner' %}
+								</div>
+							</div>
+			
+							<span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+						{%- endif -%}
+					</form>
+				{%- if settings.predictive_search_enabled -%}
+					</predictive-search>
+				{%- endif -%}
+				
+			</div>
+		</div>
+
+
+		<div class="custom__scroller"> 
+
+		{%- for block in section.blocks -%}
+			{%- case block.type -%}
+
+				{%- when 'top_collection' -%}
+					{% if block.settings.collection_list != blank %}
+						<div class="top_collection-wrapper">
+
+							{% if block.settings.heading != blank %}
+								<h3 class="top_collection-heading">{{block.settings.heading}}</h3>
+							{% endif %}
+
+
+							<div class="top_collection  top_collection__slider list-unstyled" role="list">
+								<div class="swiper-button-prev">
+									<svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+								   <rect width="3" height="12.2217" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 15 7.90625)" fill="black"/>
+								   <rect width="3" height="7.87027" transform="matrix(0.707107 -0.707107 -0.707107 -0.707107 6.01562 11.9062)" fill="black"/>
+								   <rect width="3" height="7.87027" transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 8.13672 2.89941)" fill="black"/>
+								   </svg>
+								   
+							   </div>
+							   <div class="swiper-button-next">
+								  <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+								   <rect y="7.90625" width="3" height="12.2217" transform="rotate(-90 0 7.90625)" fill="black"/>
+								   <rect x="8.98438" y="11.9062" width="3" height="7.87027" transform="rotate(-135 8.98438 11.9062)" fill="black"/>
+								   <rect x="6.86328" y="2.89941" width="3" height="7.87027" transform="rotate(-45 6.86328 2.89941)" fill="black"/>
+								   </svg>
+							   </div>
+								<div class="swiper-wrapper">
+								{%- for collection in block.settings.collection_list -%}
+								<div class="top_collection__item swiper-slide">
+			
+									<a href="{{collection.url}}">
+										{% if collection.image != blank %}
+										<div class="img-wrap">
+												<img class="child-link-image" src="{{ collection.image.src | img_url: 'master'}}" alt="{{ collection.image.title}}"> 
+										</div>
+											{% endif %}
+										<div class="top_collection-title">
+										{{collection.title }}
+										</div>
+									
+									</a>
+			
+								</div>
+								{%- endfor -%}
+							</div>
+							</div>
+
+						</div>
+					{% endif %}
+
+				{%- when 'product_list' -%}
+
+					{% if block.settings.product_list != blank %}
+						<div class="top_product-wrapper">
+
+							{% if block.settings.heading != blank %}
+								<h3 class="top_product-heading">{{block.settings.heading}}</h3>
+							{% endif %}
+
+
+							<div class="top_product  top_product__slider list-unstyled" role="list">
+								<div class="swiper-button-prev">
+									<svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+								   <rect width="3" height="12.2217" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 15 7.90625)" fill="black"/>
+								   <rect width="3" height="7.87027" transform="matrix(0.707107 -0.707107 -0.707107 -0.707107 6.01562 11.9062)" fill="black"/>
+								   <rect width="3" height="7.87027" transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 8.13672 2.89941)" fill="black"/>
+								   </svg>
+								   
+							   </div>
+							   <div class="swiper-button-next">
+								  <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+								   <rect y="7.90625" width="3" height="12.2217" transform="rotate(-90 0 7.90625)" fill="black"/>
+								   <rect x="8.98438" y="11.9062" width="3" height="7.87027" transform="rotate(-135 8.98438 11.9062)" fill="black"/>
+								   <rect x="6.86328" y="2.89941" width="3" height="7.87027" transform="rotate(-45 6.86328 2.89941)" fill="black"/>
+								   </svg>
+							   </div>
+								<div class="swiper-wrapper">
+								{%- for product in block.settings.product_list -%}
+								<div class="top_product__item swiper-slide">
+			
+									<a
+										href="{{ product.url }}"
+										class="top_product__items-link link link--text"
+										tabindex="-1"
+									  >
+										{%- if product.featured_media != blank -%}
+										  <div class="top_product-items__img-wrap">
+										  <img
+											class="top_product__items-image"
+											src="{{ product.featured_media | image_url: width: 150 }}"
+											alt="{{ product.featured_media.alt }}"
+											width="50"
+											height="50"
+											loading="lazy"
+										  >
+										  </div>
+										{%- endif -%}
+										<div class="top_product__items-content">
+										  {%- if  block.settings.show_vendor -%}
+											<span class="visually-hidden subtitle">
+											  {{- 'accessibility.vendor' | t -}}
+											</span>
+											<div class="top_product__items-vendor caption-with-letter-spacing subtitle">
+											  {{ product.vendor }}
+											</div>
+										  {%- endif -%}
+										  <p class="top_product__items-heading h5">
+											{{ product.title }}
+										  </p>
+										  {%- if  block.settings.show_price -%}
+											{% render 'price', product: product, use_variant: true %}
+										  {%- endif -%}
+										</div>
+									  </a>
+					  
+			  
+						  {%- assign product_form_id = 'product-form-' | append: section.id | append: forloop.index  -%}
+			  
+			  
+						  {% if block.settings.show_add_to_cart %}
+							
+					
+			  
+									  <product-form class="card__add-to-cart ">
+									  
+									  {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+			  
+														<input
+														type="hidden"
+														name="id"
+														value="{{ product.selected_or_first_available_variant.id }}"
+														{% if product.selected_or_first_available_variant.available == false %}
+															disabled
+														{% endif %}
+														>
+											<button
+											  id="{{ product_form_id }}-submit"
+											  type="submit"
+											  class="button add-to-cart-top card-focused"
+											  name="add"
+											  aria-haspopup="dialog"
+											  aria-labelledby="{{ product_form_id }}-submit title-{{ section.id }}-{{ product.id }}"
+											  aria-live="polite"
+											  data-sold-out-message="true"
+											  {% if product.selected_or_first_available_variant.available == false %}
+												disabled
+											  {% endif %}
+											  tabindex="-1"
+											>
+										  
+											  <span>
+												{{ 'products.product.add_to_cart' | t }}
+											  </span>
+											  <span class="sold-out-message hidden">
+												{{ 'products.product.sold_out' | t }}
+											  </span>
+											  <div class="loading-overlay__spinner hidden">
+												<svg
+												  aria-hidden="true"
+												  focusable="false"
+												  role="presentation"
+												  class="spinner"
+												  viewBox="0 0 66 66"
+												  xmlns="http://www.w3.org/2000/svg"
+												>
+												  <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+												</svg>
+											  </div>
+											</button>
+										  {%- endform -%}
+										</product-form>
+									{% endif %}
+			
+								</div>
+								{%- endfor -%}
+							</div>
+							</div>
+
+						</div>
+					{% endif %}
+
+				{%- when 'top_categories' -%}
+			{% if block.settings.collection_list != blank %}
+				<div class="collection__list-wrapper">
+					{% if block.settings.heading != blank %}
+						<h3 class="collection__list-heading">{{block.settings.heading}}</h3>
+					{% endif %}
+
+				<ul class="collection__list list-unstyled" role="list">
+					{%- for collection in block.settings.collection_list -%}
+					<li class="collection__item">
+
+						<a href="{{collection.url}}">
+							{% if collection.image != blank %}
+							<div class="img-wrap">
+									<img class="child-link-image" src="{{ collection.image.src | img_url: 'master'}}" alt="{{ collection.image.title}}"> 
+							</div>
+								{% endif %}
+							<div class="collection-title">
+							{{collection.title }}
+							</div>
+						
+						</a>
+
+					</li>
+					{%- endfor -%}
+				</ul>
+			</div>
+			{% endif %}
+
+		{%- endcase -%}
+	{%- endfor -%}
+
+		</div>
+		</div>
+   
+</div>
+
+{% schema %}
+{
+  "name": "Search Panel Mobile",
+  "settings": [
+	{
+		"type": "checkbox",
+		"id": "enable_search",
+		"default": true,
+		"label": "t:sections.header.settings.enable_search.label",
+		"info": "t:sections.header.settings.enable_search.info"
+	},
+	{
+		"type": "checkbox",
+		"id": "enable_search_modal",
+		"default": false,
+		"label": "t:sections.header.settings.enable_search_modal.label"
+	},
+	{
+		"type": "checkbox",
+		"id": "show_collection_card",
+		"default": false,
+		"label": "t:sections.header.settings.show_collection_card.label"
+	},
+	{
+		"type": "collection_list",
+		"id": "collection_list",
+		"label": "t:sections.header.settings.collection_list.label"
+	},
+	{
+		"type": "checkbox",
+		"id": "show_items",
+		"default": false,
+		"label": "t:sections.header.settings.show_items.label",
+		"info": "t:sections.header.settings.show_items.info"
+    	},
+		{
+		"type": "product_list",
+		"id": "product_list",
+	   "label": "t:sections.header.settings.product_list.label"
+		},
+		{
+		"type": "checkbox",
+		"id": "show_vendor",
+		"default": false,
+		"label": "t:sections.header.settings.show_vendor.label"
+		},
+		{
+		"type": "checkbox",
+		"id": "show_price",
+		"default": false,
+		"label": "t:sections.header.settings.show_price.label"
+		}
+  ],
+  "blocks": [
+    {
+      "type": "top_collection",
+      "name": "Collections List",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Top Collection"
+        },
+		{
+			"type": "collection_list",
+			"id": "collection_list",
+			"label": "t:sections.header.settings.collection_list.label"
+		}
+      ]
+    },
+	{
+		"type": "top_categories",
+		"name": "Top Categories",
+		"settings": [
+		  {
+			"type": "text",
+			"id": "heading",
+			"label": "Heading",
+			"default": "Top Categories"
+		  },
+		  {
+			  "type": "collection_list",
+			  "id": "collection_list",
+			  "label": "t:sections.header.settings.collection_list.label"
+		  }
+		]
+	  },
+    {
+      "type": "product_list",
+      "name": "Product List",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Top Product Sales"
+        },
+        {
+          "type": "product_list",
+          "id": "product_list",
+          "label": "t:sections.header.settings.product_list.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_vendor",
+          "default": false,
+          "label": "t:sections.header.settings.show_vendor.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_price",
+          "default": false,
+          "label": "t:sections.header.settings.show_price.label"
+        },
+		{
+			"type": "checkbox",
+			"id": "show_add_to_cart",
+			"default": false,
+			"label": "Show Cart Button"
+		  }
+      ]
+    }
+  ]
+}
+{% endschema %}

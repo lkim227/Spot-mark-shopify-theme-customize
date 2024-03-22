@@ -1,0 +1,113 @@
+.home-newsletter-wrapper .container {
+  max-width: 1560px;
+}
+
+
+.home-newletter-item {
+  margin-bottom: 20px;
+}
+
+.newsletter-heading h3 {
+  margin: 0;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 87%; /* 34.8px */
+}
+@media only screen and (max-width: 767px) {
+  .newsletter-heading h3 {
+    font-size: 26px;
+    text-align: center;
+  }
+}
+
+.newsletter-info {
+  max-width: 355px;
+  margin: 0 auto 20px;
+}
+.newsletter-info p {
+  margin: 0;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.home-newsletter-form {
+  padding-left: 24px;
+}
+
+@media only screen and (max-width: 991px) {
+  .home-newsletter-form {
+    padding-left: 0;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .home-newsletter-form {
+    padding: 0;
+  }
+}
+.home-newsletter-form .newsletter-form-inner {
+  display: flex;
+  gap: 12px;
+}
+@media only screen and (max-width: 767px) {
+  .home-newsletter-form .newsletter-form-inner {
+    flex-direction: column;
+  }
+}
+.home-newsletter-form .newsletter-form-inner .newsletter-form-field-wrap {
+  flex: 0 0 59%;
+  max-width: 360px;
+}
+@media only screen and (max-width: 767px) {
+  .home-newsletter-form .newsletter-form-inner .newsletter-form-field-wrap {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+.home-newsletter-form .newsletter-form-inner .newsletter-form-field-wrap .field__label {
+  display: none;
+}
+.home-newsletter-form .newsletter-form-inner .newsletter-form-field-wrap .field__input {
+  padding: 20px 25px;
+  width: 100%;
+  height: 50px;
+  border-radius: 53px;
+  background: #FFF;
+  border: none;
+  outline: none;
+}
+.home-newsletter-form .newsletter-form-inner .newsletter-form-field-wrap .field__input:placeholder {
+  color: #C4C4C4;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+.home-newsletter-form .newsletter-form-inner .button {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 50px;
+       column-gap: 50px;
+  color: #FFF;
+  flex: 0 0 41%;
+  max-width: 242px;
+  min-height: 50px;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-radius: 51px;
+  background: #000;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.2) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.2) inset;
+}
+.home-newsletter-form .newsletter-form-inner .button:hover {
+  background: #fff;
+  color: #000;
+}
+@media only screen and (max-width: 767px) {
+  .home-newsletter-form .newsletter-form-inner .button {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}/*# sourceMappingURL=section-home-newsletter.css.map */

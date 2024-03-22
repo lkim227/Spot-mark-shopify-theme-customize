@@ -1,0 +1,130 @@
+.compare__box {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 2rem;
+}
+@media screen and (max-width: 1200px) {
+  .compare__box {
+    gap: 3rem;
+    flex-direction: column;
+  }
+}
+.compare__content {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (max-width: 1200px) {
+  .compare__content {
+    width: 100%;
+  }
+}
+.compare__slide {
+  width: 66%;
+}
+@media screen and (max-width: 1200px) {
+  .compare__slide {
+    width: 100%;
+  }
+}
+.compare .title-wrapper {
+  margin-bottom: 1.6rem;
+}
+.compare .compare__description {
+  margin-bottom: 2.4rem;
+}
+.compare__title {
+  width: 100%;
+  margin: 0;
+}
+@media screen and (min-width: 1200px) {
+  .compare__title {
+    max-width: 74.2rem;
+  }
+}
+.compare__text {
+  width: 100%;
+  margin: 0;
+}
+@media screen and (min-width: 1200px) {
+  .compare__text {
+    max-width: 44.4rem;
+  }
+}
+.compare__product {
+  max-width: 47.5rem;
+  margin-top: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  place-content: flex-end;
+}
+.compare__default {
+  height: 56.2rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.compare__button {
+  margin-top: auto;
+}
+@media screen and (min-width: 750px) {
+  .compare__button {
+    max-width: 44.3rem;
+  }
+}
+
+.twentytwenty-container {
+  max-height: 56.2rem;
+}
+@media screen and (max-width: 990px) {
+  .twentytwenty-container {
+    max-height: 30rem;
+  }
+}
+.twentytwenty-container img {
+  width: 100%;
+  height: 56.2rem;
+  object-fit: cover;
+  border-radius: 0.6rem;
+}
+@media screen and (max-width: 990px) {
+  .twentytwenty-container img {
+    height: 30rem;
+  }
+}
+.twentytwenty-container svg {
+  width: 100%;
+  height: 56.2rem;
+  object-fit: cover;
+}
+@media screen and (max-width: 990px) {
+  .twentytwenty-container svg {
+    height: 30rem;
+  }
+}
+.twentytwenty-container .twentytwenty-handle {
+  width: 5rem;
+  height: 5rem;
+  margin-left: -2.5rem;
+  background: var(--bg-color, #ffffff);
+  border: none;
+  box-shadow: none;
+}
+.twentytwenty-container .twentytwenty-overlay {
+  display: none;
+}
+.twentytwenty-container .twentytwenty-left-arrow {
+  width: 2rem;
+  height: 2rem;
+  top: 20px;
+  left: 32px;
+  background-image: url("burger-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+  border: none;
+}
+.twentytwenty-container .twentytwenty-right-arrow {
+  display: none;
+}

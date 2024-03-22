@@ -1,0 +1,201 @@
+{% assign value = section.settings %}
+
+{{ 'section-custom-marquee-text.css' | asset_url | stylesheet_tag: preload: true }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    margin-top: {{ section.settings.margin_top-m }}px;
+    margin-bottom: {{ section.settings.margin_bottom-m }}px;
+    padding-top: {{ section.settings.padding_top_m  }}px;
+    padding-bottom: {{ section.settings.padding_bottom_m }}px;
+
+    background: {{ section.settings.background_color }};
+    color: {{ section.settings.color }};
+  }
+  @media screen and (min-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+  {% unless value.enable_slide %}
+    .dot svg{
+      transform: translateY(0);
+    }
+  {% endunless %}
+  {% if value.enable_slide %}
+    @media all and (max-width: 768px){
+      .dot{
+        display: initial;
+      }
+    }
+  {% endif  %}
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-padding" id="section-{{ section.id }}">
+  <div class="custom-marquee-text-wrapper">   
+    {% if value.enable_slide %}
+      <marquee>
+        {% for i in (1..10) %}
+          {% for block in section.blocks %}
+            {% assign val = block.settings %}
+            <span class="cmt-item" {{ block.shopify_attributes }}>{{ val.title }}</span>
+            {% unless i == 10 and forloop.last == true %}
+              <span class="dot">{% render 'all-icons', name: 'dot' %}</span>
+            {% endunless %}
+          {% endfor %}
+        {% endfor %}
+      </marquee>
+    {% else %}
+      {% for block in section.blocks %}
+        {% assign val = block.settings %}
+        <span class="cmt-item" {{ block.shopify_attributes }}>{{ val.title }}</span>
+        {% unless forloop.last %}
+          <span class="dot">{% render 'all-icons', name: 'dot' %}</span>
+        {% endunless %}
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Marquee Text",
+  "class": "custom-marquee-text-section",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_slide",
+      "label": "Enable Slide",
+      "default": true
+    },    
+    {
+      "type": "header",
+      "content": "Section Color"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "linear-gradient(180deg, #0232D9 0%, #0029BB 21.46%, #05207A 83.33%)"
+    },
+    {
+      "type": "header",
+      "content": "Spacing (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Spacing (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top-m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom-m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 68
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Text",
+      "type": "text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Marquee Text"
+    }
+  ]
+}
+{% endschema %}

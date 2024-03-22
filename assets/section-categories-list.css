@@ -1,0 +1,95 @@
+.categories-list .price--on-sale .price__sale {
+  justify-content: flex-end;
+}
+.categories-list .price dd:not(:last-child) {
+  margin: 0;
+}
+.categories-list .price__sale dd {
+  margin-left: 0.8rem;
+}
+.categories-list .card-extended-wrapper {
+  height: auto;
+  max-height: 78.3rem;
+}
+.categories-list .card-extended-information__wrapper {
+  padding: 1.6rem 4rem;
+}
+.categories-list__wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 0.8rem;
+  row-gap: 3.2rem;
+}
+.categories-list__wrapper--2, .categories-list__wrapper--3, .categories-list__wrapper--4, .categories-list__wrapper--5, .categories-list__wrapper--6 {
+  grid-template-columns: repeat(2, 1fr);
+}
+@media screen and (min-width: 750px) {
+  .categories-list__wrapper--3, .categories-list__wrapper--4, .categories-list__wrapper--5, .categories-list__wrapper--6 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (min-width: 990px) {
+  .categories-list__wrapper--4, .categories-list__wrapper--5, .categories-list__wrapper--6 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (min-width: 1200px) {
+  .categories-list__wrapper--5, .categories-list__wrapper--6 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+@media screen and (min-width: 1360px) {
+  .categories-list__wrapper--6 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+.categories-list__heading {
+  margin-top: 0;
+  margin-bottom: 3.2rem;
+}
+.categories-list__item {
+  position: relative;
+}
+.categories-list__item-title {
+  margin-top: 2.4rem;
+  margin-bottom: 0;
+  text-align: center;
+}
+.categories-list__image {
+  position: relative;
+  border-radius: 0.6rem;
+  background-color: #e7e7e7;
+  overflow: hidden;
+}
+.categories-list__image--landscape {
+  padding-bottom: 50%;
+}
+.categories-list__image--portrait {
+  padding-bottom: 130%;
+}
+.categories-list__image--square {
+  padding-bottom: 100%;
+}
+.categories-list__image img, .categories-list__image svg.placeholder-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.categories-list__image--contain img, .categories-list__image--contain svg.placeholder-svg {
+  object-fit: contain;
+}
+.categories-list__link {
+  text-decoration: none;
+  color: rgb(var(--color-foreground-title));
+  transition: color var(--duration-default) ease;
+}
+.categories-list__link:hover {
+  color: rgb(var(--color-button));
+}
+.categories-list__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}

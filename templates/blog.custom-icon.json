@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "main": {
+      "type": "alternative-blog",
+      "settings": {
+        "show_image": true,
+        "show_tags": false,
+        "show_date": false,
+        "show_author": false,
+        "show_excerpt": false
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

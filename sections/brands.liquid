@@ -1,0 +1,233 @@
+{{ 'section-brands.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  {% render 'section-padding' %}
+{%- endstyle -%}
+
+<div class="brands color-{{ section.settings.color_scheme }}">
+	<div class="container">
+		<div class="section-{{ section.id }}-padding {% if section.settings.border_top %}brands__border-top{% endif %} {% if section.settings.border_bottom %}brands__border-bottom{% endif %}">
+			<div class="brands__items">
+				{%- for block in section.blocks -%}
+					<a
+						class="brands__item"
+						{% if block.settings.brand_link.url != blank %}
+							href="{{ block.settings.brand_link }}"
+						{% endif %}
+						{% if block.settings.brand_link.url == blank %}
+							aria-disabled="true"
+						{% endif %}
+						{{ block.shopify_attributes }}
+					>
+						{%- assign width = block.settings.image_width -%}
+						{%- assign sizes = '(min-width: 1100px) 750, (min-width: 750px) 550, 275' -%}
+						{%- if block.settings.image_2 != blank or block.settings.image_1 != blank -%}
+							{%- if block.settings.image_2 != blank -%}
+								{{
+									block.settings.image_2
+									| image_url: width: 710
+									| image_tag:
+										loading: 'lazy',
+										sizes: sizes,
+										widths: '275, 550, 750',
+										height: 'auto',
+										width: width,
+										class: 'brands__image brands__image--dark'
+								}}
+							{%- endif -%}
+							{%- if block.settings.image_1 != blank -%}
+								{{
+									block.settings.image_1
+									| image_url: width: 710
+									| image_tag:
+										loading: 'lazy',
+										sizes: sizes,
+										widths: '275, 550, 750',
+										height: 'auto',
+										width: width,
+										class: 'brands__image brands__image--light'
+								}}
+							{%- endif -%}
+						{% else %}
+							<div class="brands__placeholder">Brand</div>
+						{%- endif -%}
+					</a>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.brands.name",
+  "class": "spaced-section brands-section",
+  "tag": "section",
+  "max_blocks": 16,
+  "enabled_on": {
+    "templates": ["*"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "background-1",
+          "label": "t:sections.all.color_scheme.options__1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.color_scheme.options__2.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "border_top",
+      "default": false,
+      "label": "t:sections.all.border_top.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "border_bottom",
+      "default": false,
+      "label": "t:sections.all.border_bottom.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.section-padding.header.content"
+    },
+    {
+      "type": "select",
+      "id": "padding_top",
+      "options": [
+        {
+          "value": "no-indent",
+          "label": "t:sections.all.section-padding.options__1.label"
+        },
+        {
+          "value": "xs",
+          "label": "t:sections.all.section-padding.options__2.label"
+        },
+        {
+          "value": "s",
+          "label": "t:sections.all.section-padding.options__3.label"
+        },
+        {
+          "value": "m",
+          "label": "t:sections.all.section-padding.options__4.label"
+        },
+        {
+          "value": "l",
+          "label": "t:sections.all.section-padding.options__5.label"
+        },
+        {
+          "value": "xl",
+          "label": "t:sections.all.section-padding.options__6.label"
+        }
+      ],
+      "default": "s",
+      "label": "t:sections.all.section-padding.padding_top.label"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom",
+      "options": [
+        {
+          "value": "no-indent",
+          "label": "t:sections.all.section-padding.options__1.label"
+        },
+        {
+          "value": "xs",
+          "label": "t:sections.all.section-padding.options__2.label"
+        },
+        {
+          "value": "s",
+          "label": "t:sections.all.section-padding.options__3.label"
+        },
+        {
+          "value": "m",
+          "label": "t:sections.all.section-padding.options__4.label"
+        },
+        {
+          "value": "l",
+          "label": "t:sections.all.section-padding.options__5.label"
+        },
+        {
+          "value": "xl",
+          "label": "t:sections.all.section-padding.options__6.label"
+        }
+      ],
+      "default": "s",
+      "label": "t:sections.all.section-padding.padding_bottom.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "t:sections.brands.blocks.column.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "t:sections.brands.blocks.column.settings.image_1.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "t:sections.brands.blocks.column.settings.image_2.label"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "min": 10,
+          "max": 300,
+          "step": 5,
+          "default": 60,
+          "unit": "px",
+          "label": "t:sections.brands.blocks.column.settings.image_width.label"
+        },
+        {
+          "type": "url",
+          "id": "brand_link",
+          "label": "t:sections.brands.blocks.column.settings.brand_link.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.brands.name",
+      "blocks": [
+        {
+          "type": "column"
+        },
+        {
+          "type": "column"
+        },
+        {
+          "type": "column"
+        },
+        {
+          "type": "column"
+        },
+        {
+          "type": "column"
+        },
+        {
+          "type": "column"
+        },
+        {
+          "type": "column"
+        },
+        {
+          "type": "column"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

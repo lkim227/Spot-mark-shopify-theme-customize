@@ -1,0 +1,78 @@
+{{ 'section-custom-block.css' | asset_url | stylesheet_tag: preload: true }}
+
+<div class="custom-block-wrapper"> 
+
+      <ul class="custom-block-list">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+          {%- when 'custom_block' -%}
+              {%liquid 
+            
+                  assign heading = block.settings.heading 
+                  assign text = block.settings.text 
+                  assign link = block.settings.link 
+       
+                %}
+          <li class="block-item">
+         
+                <div class="text-wtap">
+                  {% if link != blank %}
+                    <a href="{{link}}">
+                  {% endif %}
+             
+                  {% if heading != blank %}
+                    <span class="custom__heading">{{heading}}</span>
+                   {% endif %} 
+                   {% if link != blank %}  </a>  {% endif %}
+                  {% if text != blank %}
+                    {{text }}
+                  {% endif %}
+
+                </div>
+               
+          </li>
+      {%- endcase -%}
+  {%- endfor -%}
+     
+      </ul>
+
+    </div>
+
+{% schema %}
+  {
+    "name": "Custom Block",
+    "settings": [
+    ],
+    "blocks": [
+      {
+        "name": "Block Item",
+        "type": "custom_block",
+        "settings": [
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default":"PREMIUM TRACKED & FAST SHIPPING"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default":"<p>MON - FRI Nextday - 48 hour shipping</p>"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom Block"
+      }
+    ]
+
+  }
+{% endschema %}

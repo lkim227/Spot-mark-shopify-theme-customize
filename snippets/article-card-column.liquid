@@ -1,0 +1,85 @@
+<article class="article-card-column" aria-labelledby="Article-{{ article.id }}">
+  <div class="article-card-column-top">
+    {% if show_image == true %} 
+      {% if article.metafields.custom.icon != blank or article.metafields.custom.icon_dark != blank %}
+        <div class="article-card-column__image-wrapper article-card-column__image-wrapper--{{ image_size }} color-{{ background }}">
+          {% if article.metafields.custom.icon != blank %}
+            {%- assign height = article.metafields.custom.icon.height -%}
+            {%- assign width = article.metafields.custom.icon.width -%}
+            {%- assign sizes = '(min-width: 1100px) 750, (min-width: 750px) 550, 275' -%}
+            {%- capture style -%}object-fit: {{ image_fit }};{%- endcapture -%}
+            {{
+              article.metafields.custom.icon
+              | image_url: width: 710
+              | image_tag:
+                loading: 'lazy',
+                sizes: sizes,
+                widths: '275, 550, 750',
+                height: height,
+                width: width,
+                style: style
+            }}
+          {% endif %}
+          {% if article.metafields.custom.icon_dark != blank %}
+            {%- assign height = article.metafields.custom.icon_dark.height -%}
+            {%- assign width = article.metafields.custom.icon_dark.width -%}
+            {{
+              article.metafields.custom.icon_dark
+              | image_url: width: 710
+              | image_tag:
+                loading: 'lazy',
+                sizes: sizes,
+                widths: '275, 550, 750',
+                height: height,
+                width: width,
+                style: style
+            }}
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endif %}
+
+    <header class="article-card__header">
+      {%- if show_tags and article.tags != blank -%}
+        <ul class="article-card-column__tags">
+          {% for tag in article.tags %}
+            <li class="article-card-column__tag subtitle">
+              <a href="{{ blog.url }}/tagged/{{ tag | handle }}">
+                <span title="{{ tag }}">{{ tag }}</span>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {%- endif -%}
+      <h2 class="article-card-column__title h3"  id="Article-{{ article.id }}">
+        {{ article.title | escape }} 
+      </h2>
+      {%- if show_author or show_date -%}
+        <div class="article-card-column__meta">
+          {%- if show_author -%}
+            <span class="article-card-column__author line-divider line-divider_vertical">by<span>{{- article.author -}}</span></span>
+          {%- endif -%}
+
+          {%- if show_date -%}
+            <span class="line-divider line-divider_vertical">
+            {{- article.published_at | time_tag: '%B %d, %Y' -}}
+          </span>
+          {%- endif -%}
+
+          {%- if article.comments_count > 0 and blog.comments_enabled? -%}
+            <span>{{ 'blogs.article.comments' | t: count: article.comments_count }}</span>
+          {%- endif -%}
+        </div>
+      {% endif %}
+    </header>
+    {%- if show_excerpt and article.excerpt_or_content.size > 0 -%}
+      <p class="article-card__excerpt {% if template == 'search' %} article-card__excerpt_small {% endif %}">
+          {{ article.excerpt_or_content | strip_html | truncate: 70 }}
+      </p>
+    {%- endif -%}
+  </div>
+  <a href="{{ article.url }}" class="article-card-column__link button button--simple">
+    <span>{{ 'sections.featured_blog.read_more' | t }}</span>
+  </a>
+</article>
+

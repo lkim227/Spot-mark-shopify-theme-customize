@@ -1,0 +1,426 @@
+{{ 'section-newsroom.css' | asset_url | stylesheet_tag: preload: true }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_m }}px;
+    padding-bottom: {{ section.settings.padding_bottom_m }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="newsroom section-{{ section.id }}-padding">
+  <div class="container">
+    <div class="row newsroom-header">
+      <div class="col-lg-4">
+        <div class="section-title">
+          {% if section.settings.heading != blank %}
+            <h2>{{ section.settings.heading }}</h2>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="section-info">
+          {% if section.settings.text != blank %}
+            {{ section.settings.text }}
+          {% endif %}
+
+          {% if section.settings.btn_label %}
+            <div class="blogs-btn">
+            <a href="{{section.settings.btn_url }}" class="button">{{section.settings.btn_label }}</a>
+            </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xl-12 col-xxl-12 m-auto">
+        <div class="scroll">
+          <ul class="newsroom-blog-tabs">
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'blog' %}
+                  {% assign heading = block.settings.heading %}
+                  <li
+                    {{ block.shopify_attributes }}
+                    class="newsroom-blog-tab {% if forloop.index == 1 %} current {% endif %}"
+                    data-tab="tab-{{block.id}}-{{forloop.index}}"
+                  >
+                    {{ heading }}
+                  </li>
+              {% endcase %}
+            {%- endfor -%}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'blog' %}
+          <div
+            id="tab-{{block.id}}-{{forloop.index}}"
+            class="newsroom-blog-content {% if forloop.index == 1 %} current {% endif %} "
+          >
+            <div class="newsroom-blog-list">
+              {% assign count = 1 %}
+              {%- for article in block.settings.choose_blog.articles limit: block.settings.blogs_limit -%}
+                {% assign featured_blog = article.metafields.custom.featured_blog.value %}
+                {% assign comment_layout = article.metafields.custom.comment_layout.value %}
+
+                <div
+                  {{ block.shopify_attributes }}
+                  class="newsroom-blog-card  {%if featured_blog ==  true %}newsroom-blog-card-featured {% else %} newsroom-blog-card-default {%endif %} {%if comment_layout ==  true %}newsroom-blog-card-comment-layout{%endif %}"
+                >
+                  <div class="article-card__image-wrapper">
+                    {% if article.image %}
+                      {% if comment_layout == false or comment_layout == blank %}
+                        <div class="img-wrap">
+                          <a href="{{ article.url }}" class="overlay-link"></a>
+                          {{ article.image | image_url: width: auto | image_tag: loading: 'lazy' }}
+                        </div>
+                      {% endif %}
+                    {% endif %}
+                    <div class="newsroom__overlay-text">
+                      <div class="newsroom__inner-text">
+                        {% comment %} {%if featured_blog ==  true %} <a href="{{ article.url }}" class="overlay-link"></a>    {%endif %}                                  {% endcomment %}
+                        <h2 class="article-card__title h4">
+                          <a href="{{ article.url }}">
+                            {{ article.title | escape }}
+                          </a>
+                        </h2>
+                      </div>
+                    </div>
+                    {% if featured_blog == true %}
+                      <a href="{{ article.url }}" class="read-more-btn"
+                        >Read
+                        <span>
+                          <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <circle cx="11.9062" cy="11.9062" r="11.9062" fill="black"/>
+                            <rect x="5" y="13.9062" width="3" height="12.2217" transform="rotate(-90 5 13.9062)" fill="white"/>
+                            <rect x="13.9844" y="17.9062" width="3" height="7.87027" transform="rotate(-135 13.9844 17.9062)" fill="white"/>
+                            <rect x="11.8633" y="8.89941" width="3" height="7.87027" transform="rotate(-45 11.8633 8.89941)" fill="white"/>
+                          </svg>
+                        </span>
+                      </a>
+                    {% else %}
+                      <a href="{{ article.url }}" class="share-btn"
+                        ><span>
+                          <svg
+                            width="60"
+                            height="60"
+                            viewBox="0 0 60 60"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <circle cx="30" cy="30" r="30" fill="white"/>
+                            <rect x="26.2368" y="36.5918" width="3" height="12.2217" transform="rotate(-135 26.2368 36.5918)" fill="black"/>
+                            <rect x="35.4181" y="33.0674" width="3" height="7.87027" transform="rotate(180 35.4181 33.0674)" fill="black"/>
+                            <rect x="27.5494" y="28.1982" width="3" height="7.87027" transform="rotate(-90 27.5494 28.1982)" fill="black"/>
+                          </svg>
+                        </span>
+                      </a>
+                    {% endif %}
+                  </div>
+                </div>
+
+                {% for block in section.blocks %}
+                  {% case block.type %}
+                    {% when 'review' %}
+                      {% assign position = block.settings.position | to_i %}
+
+                      {% if position == count %}
+                        <div class="newsroom-blog-card review-card {{block.settings.position }}">
+                          <div
+                            class="review-content-wrap"
+                            {% if block.settings.image != blank %}
+                              style="background-image:url({{block.settings.image | img_url:"master" }})"
+                            {% endif %}
+                          >
+                            <div class="review-wrap">
+                              {% if block.settings.heading != blank %}
+                                <h3>{{ block.settings.heading }}</h3>
+                              {% endif %}
+
+                              {% if block.settings.btn_label != blank %}
+                                <a href="{{block.settings.btn_url }}">
+                                  <span>{{ block.settings.btn_label }}</span>
+                                  <span>
+                                    <svg
+                                      width="25"
+                                      height="25"
+                                      viewBox="0 0 25 25"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <ellipse cx="12.3631" cy="12.873" rx="11.8753" ry="11.9062" fill="white"/>
+                                      <rect x="5.47473" y="14.873" width="3" height="12.19" transform="rotate(-90 5.47473 14.873)" fill="black"/>
+                                      <rect width="2.9961" height="7.86004" transform="matrix(-0.706186 -0.708027 0.706186 -0.708027 14.4358 18.873)" fill="black"/>
+                                      <rect width="2.9961" height="7.86004" transform="matrix(0.706186 -0.708027 0.706186 0.708027 12.3202 9.86621)" fill="black"/>
+                                    </svg></span
+                                ></a>
+                              {% endif %}
+                            </div>
+                          </div>
+                        </div>
+                      {% endif %}
+
+                    {% when 'author' %}
+                      {% assign position = block.settings.position | to_i %}
+
+                      {% if position == count %}
+                        <div class="newsroom-blog-card author-card  {{block.settings.position }}">
+                          <div class="author-content-wrap">
+                            {% if block.settings.heading != blank %}
+                              <h3 class="authore-title">{{ block.settings.heading }}</h3>
+                            {% endif %}
+
+                            <div class="author-flex">
+                              <div class="author-content">
+                                {% if block.settings.text != blank %}
+                                  {{ block.settings.text }}
+                                {% endif %}
+
+                                {% if block.settings.btn_label != blank %}
+                                  <a href="{{block.settings.btn_url }}">
+                                    <span>{{ block.settings.btn_label }}</span>
+                                    <span>
+                                      <svg
+                                        width="25"
+                                        height="25"
+                                        viewBox="0 0 25 25"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      >
+                                        <ellipse cx="12.3631" cy="12.873" rx="11.8753" ry="11.9062" fill="white"/>
+                                        <rect x="5.47473" y="14.873" width="3" height="12.19" transform="rotate(-90 5.47473 14.873)" fill="black"/>
+                                        <rect width="2.9961" height="7.86004" transform="matrix(-0.706186 -0.708027 0.706186 -0.708027 14.4358 18.873)" fill="black"/>
+                                        <rect width="2.9961" height="7.86004" transform="matrix(0.706186 -0.708027 0.706186 0.708027 12.3202 9.86621)" fill="black"/>
+                                      </svg></span
+                                  ></a>
+                                {% endif %}
+                              </div>
+                              {% if block.settings.image != blank %}
+                                <div class="author-img">
+                                  <img
+                                    src="{{block.settings.image | img_url:"master" }}"
+                                    alt="{{block.settings.image.alt }}"
+                                  >
+                                </div>
+                              {% endif %}
+                            </div>
+                          </div>
+                        </div>
+                      {% endif %}
+                  {% endcase %}
+                {% endfor %}
+
+                {% assign count = count | plus: 1 %}
+              {%- endfor -%}
+            </div>
+          </div>
+      {% endcase %}
+    {%- endfor -%}
+
+
+
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Newsroom",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "heading",
+      "default": "Paint Outlet Tutorials",
+      "label": "Text"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "default": "<p>We understand how important it is finding the right product, so whether you're a business or a first time painter, We've made the best possible product finder to find the right product.</p>",
+      "label": "Description"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 126
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 76
+    },
+    {
+      "type": "range",
+      "id": "padding_top_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 70
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "default": "Learn More",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button Url"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Blog",
+      "type": "blog",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "blog",
+          "id": "choose_blog",
+          "label": "Choose Blog"
+        },
+        {
+          "type": "range",
+          "id": "blogs_limit",
+          "min": 4,
+          "max": 24,
+          "step": 1,
+          "default": 12,
+          "label": "Blogs Limit"
+        }
+      ]
+    },
+    {
+      "name": "Review",
+      "type": "review",
+      "settings": [
+        {
+          "type": "number",
+          "id": "position",
+          "label": "Postion",
+          "default": 3,
+          "info": "Position Should be Number like 1, 2, ,3 ,4, 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "btn_label",
+          "default": "Expert review",
+          "label": "Button Label"
+        },
+        {
+          "type": "url",
+          "id": "btn_url",
+          "label": "Button Url"
+        }
+      ]
+    },
+    {
+      "name": "Author",
+      "type": "author",
+      "settings": [
+        {
+          "type": "number",
+          "id": "position",
+          "label": "Postion",
+          "default": 4,
+          "info": "Position Should be Number like 1, 2, ,3 ,4, 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Become an author"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>We love to hear from those who use our paint in an industry context. Let’s hear what you’ve got to say</p>"
+        },
+        {
+          "type": "text",
+          "id": "btn_label",
+          "default": "Become an author",
+          "label": "Button Label"
+        },
+        {
+          "type": "url",
+          "id": "btn_url",
+          "label": "Button Url"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsroom"
+    }
+  ]
+}
+{% endschema %}

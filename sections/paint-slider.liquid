@@ -1,0 +1,3459 @@
+{{ 'section-paint-slider.css' | asset_url | stylesheet_tag: preload: true }}
+
+
+{% assign sectId = section.id | prepend: 'shopify-section-' %}
+{% assign code = sectId | slice: -8, 8 | replace: "-", "" %}
+
+<div class="hidden-data" style="height:0px; overflow: hidden; ">
+{% paginate collections.all.products by 175 %}
+{% for product in collections.all.products %}
+{{ forloop.index }}
+<div class="hidden-product" data-productname="{{ product.title }}" data-producturl="{{ shop.url }}{{ product.url }}" data-productbrand="{% for tag in product.tags %}{% if tag contains "Brand-" %}{{ tag | remove: "Brand-" }}{% endif %}{% endfor %}">
+<div class="hidden-product-variants">
+{% for variant in product.variants %}
+<p class="hidden-product-variant-item" data-variantname="{{ variant.title }}" data-variantid="{{ variant.id }}" data-variantlink= "{{ shop.url }}{{ product.url }}?variant={{ variant.id }}" data-variantimage="{{ shop.url }}/cdn/shop/{{ variant.image }}" data-variantbrand="{% for tag in product.tags %}{% if tag contains "Brand-" %}{{ tag | remove: "Brand-" }}{% endif %}{% endfor %}">
+{{ variant.title }}
+</p>
+{% endfor %}
+</div>
+<div class="hidden-product-tags">
+{% for tag in product.tags %}
+<p class="hidden-product-tag-item" data-tagname="{{ tag }}">{{ tag }}</p>
+  
+{% if tag contains "Brand-" %}
+{% endif %}
+  
+{% endfor %}
+</div>
+</div>
+{% endfor %}
+{{- paginate | default_pagination }}
+{% endpaginate %}
+</div>
+
+<script>
+const data{{ code }} = document.querySelector("#{{ sectId }} .hidden-data");
+const products{{ code }} = data{{ code }}.querySelectorAll(".hidden-product");
+const jsProducts{{ code }} = [];
+const globalColors{{ code }} = new Set();
+const globalBrands{{ code }} = new Set();
+
+products{{ code }}.forEach(product => {
+  const productName = product.dataset.productname;
+  const productUrl = product.dataset.producturl;
+  const productBrand = product.dataset.productbrand;
+
+  const variantArray = [];
+  const variants = product.querySelectorAll(".hidden-product-variants .hidden-product-variant-item");
+  variants.forEach(variant => {
+    let variantName = variant.dataset.variantname;
+    const variantId = variant.dataset.variantid;
+    const variantLink = variant.dataset.variantlink;
+    const variantImage = variant.dataset.variantimage;
+    const variantBrand = variant.dataset.variantbrand;
+
+    if (variantName.includes("RAL")) {
+      variantName = variantName.replace(/RAL \d{4}\s/, "").trim();
+    }
+
+    const variantObject = {
+      "name": variantName,
+      "id": variantId,
+      "link": variantLink,
+      "image": variantImage,
+      "brand": variantBrand
+    };
+
+    var pattern = /RAL \d{4}/;
+    var containsPattern = pattern.test(variantName);
+
+    if (!containsPattern) {
+      if (!(variantName == undefined)) {
+        if (!(productName == "TRADE - HQC Blackboard And Chalkboard Paint")) {
+          if (variantName.includes("/")) {
+            if (!variantName.toLowerCase().includes("custom")) {
+              if (!variantName.toLowerCase().includes("clear")) {
+                variantArray.push(variantObject);
+              }
+            }
+          }
+        }
+      }
+    }
+  });
+
+  const tagArray = [];
+  const tags = product.querySelectorAll(".hidden-product-tags .hidden-product-tag-item");
+  tags.forEach(tag => {
+    const tagName = tag.dataset.tagname;
+    const tagObject = {
+      "name": tagName
+    };
+    tagArray.push(tagObject);
+  });
+
+  const paintColors = {};
+
+  variantArray.forEach(obj => {
+{% comment %}     console.log(obj.brand); {% endcomment %}
+    const nameParts = obj.name.split(' / ');
+    let paintColor = nameParts[1];
+    if (paintColor.includes("/")) {
+      paintColor = paintColor.split('/')[0];
+    }
+
+    globalColors{{ code }}.add(paintColor);
+
+    paintColors[paintColor] = obj;
+  });
+
+  const result = Object.values(paintColors);
+
+  const productObject = {
+    "name": productName,
+    "url": productUrl,
+    "variants": result,
+    "tags": tagArray,
+    "brand": productBrand
+  };
+
+  jsProducts{{ code }}.push(productObject);
+});
+
+// Create the globalColorsWithBrand array
+const globalColorsWithBrand{{ code }} = [];
+
+globalColors{{ code }}.forEach(colorname => {
+  const brands = [];
+
+  // Find all the brands associated with the current color
+  jsProducts{{ code }}.forEach(product => {
+    product.variants.forEach(variant => {
+      if (variant.name.includes(colorname)) {
+        if (!brands.includes(variant.brand)) {
+          brands.push(variant.brand);
+          globalBrands{{ code }}.add(variant.brand);
+        }
+      }
+    });
+  });
+
+  globalColorsWithBrand{{ code }}.push({
+    colorname: colorname,
+    brands: brands
+  });
+});
+
+//console.log(globalColorsWithBrand{{ code }});
+//console.log(jsProducts{{ code }});
+//console.log(globalBrands{{ code }});
+
+</script>
+
+
+
+
+<script>
+  function waitForElm(selector) {
+      return new Promise(resolve => {
+          if (document.querySelector(selector)) {
+              return resolve(document.querySelector(selector));
+          }
+  
+          const observer = new MutationObserver(mutations => {
+              if (document.querySelector(selector)) {
+                  resolve(document.querySelector(selector));
+                  observer.disconnect();
+              }
+          });
+  
+          observer.observe(document.body, {
+              childList: true,
+              subtree: true
+          });
+      });
+  }
+  waitForElm('#{{ sectId }} .paint-bucket-color-swatch').then((elm) => {
+    // console.log('Element is ready');
+    const swatchColors = document.querySelectorAll("#{{ sectId }} .paint-bucket-color-swatch");
+    swatchColors.forEach(swatch => {
+      const colorName = swatch.dataset.colorname;
+      const xd = globalColorsWithBrand{{ code }}.find(item => item["colorname"] === colorName);
+      // console.log(xd)
+      if(xd.colorname == colorName){
+        // console.log(xd.colorname, colorName, xd.colorname == colorName, swatch)
+        swatch.dataset.brand = xd.brands
+      }
+    });
+
+    waitForElm('#{{ sectId }} #paint-selector-brand-dropdown').then((elm) => {
+
+      elm.innerHTML = `<option value="ALL">Show all brands </option>`;
+      globalBrands{{ code }}.forEach(brand => {
+          const optionElement = document.createElement("option");
+          optionElement.setAttribute("data-brandid", brand);
+          optionElement.setAttribute("value", brand);
+          optionElement.textContent = brand;
+          if(brand){
+            elm.appendChild(optionElement);
+          }
+      });
+ 
+      
+    });
+    
+      
+      
+
+
+
+    
+  });
+</script>
+
+
+
+
+{% capture featuredPaint %}
+<div class="featured-paint">
+<style>
+  #shopify-section-{{ section.id }},
+  #shopify-section-{{ section.id }} .heading {
+    color: {{ section.settings.color }};
+  }
+
+  #{{ sectId }} .featured-paint{
+    display: block;
+    position: relative;
+    z-index: 1;
+    height: 100%;
+  }
+
+  #{{ sectId }} .page__header{
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 100%;
+  }
+
+  #{{ sectId }} .featured-paint-swiper-container{
+    height: 100%;
+  }
+
+  .featured-paint .page__description{
+    {% unless section.settings.text_alignment == 'center' %}min-width: 800px;{% endunless %}
+  }
+
+  .featured-paint .page__description span{
+    {% unless section.settings.text_alignment == 'center' %} display: block; max-width: 400px; {% endunless %} 
+    {% if section.settings.text_alignment == 'right' %}margin-left: auto;{% endif %}
+  }
+
+  @media screen and (max-width: 850px){
+    .featured-paint .page__description{
+      min-width: 100%;
+    }
+  }
+</style>
+<!--  -->
+<div class="featured-paint-swiper-container">
+
+<!-- swiper slides -->
+<div class="swiper-wrapper">
+<!--        -->
+  {% comment %}{% endcomment %}
+
+{%- for block in section.blocks -%}
+{%- case block.type -%}
+    {%- when 'featured-image' -%}  
+<header class="swiper-slide page__header page__header--stack page__header--centered page__header--image {% if block.settings.show_image_overlay %}page__header--overlay{% endif %} {% if block.settings.image_edge_to_edge %}page__header--edge2edge{% endif %}">
+  {%- if block.settings.image != blank -%}
+    {%- capture supported_sizes -%}{%- render 'image-size', sizes: '300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000', image: block.settings.image -%}{%- endcapture -%}
+    {%- assign image_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+    <img data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto" alt="{{ block.settings.image.alt | escape }}" class="lazyload image--fade-in page__header-image">
+  {%- else -%}
+    
+    {% comment %}{{ 'lifestyle-1' | placeholder_svg_tag: 'page__header-image page__header-image--placeholder' }}{% endcomment %}
+    <img data-src="https://cdn.shopify.com/s/files/1/0286/4729/2987/files/7_50e940e6-95f3-4637-89c8-893c32b4aa55.png" data-widths="[{{ supported_sizes }}]" data-sizes="auto" alt="{{ block.settings.image.alt | escape }}" class="lazyload image--fade-in page__header-image">
+  {%- endif -%}
+
+  {%- if block.settings.content != blank -%}
+    <div class="page__header-content container--narrow" style="text-align:{{ block.settings.text_alignment }};">
+      {%- if block.settings.title != blank -%}
+        <h1 class="page__title heading h1" style="color: {{ block.settings.color }};">{{ block.settings.title | escape }}</h1>
+      {%- endif -%}
+
+      <div class="page__description rte">
+        <span style="color: {{ block.settings.color }}; {% if block.settings.text_alignment == "right"  %}margin-left: auto;{% endif %} {% if block.settings.text_alignment == "center"  %}margin: auto;{% endif %}">
+        {{ block.settings.content }}
+        </span>
+      </div>
+
+      {% if block.settings.button_text != blank %}
+        <a href="{{ block.settings.button_link }}">
+          <span class="promo-block__cta button button--floating" style="color: {{ block.settings.btn_text_color }}; background: {{ block.settings.btn_bg_color }}; line-height: 20px; padding: 10px;">{{ block.settings.button_text }}</span>
+        </a>
+      {% endif %}
+    </div>
+  {%- endif -%}
+</header>
+
+{% endcase %}
+{%- endfor -%}
+
+  
+  <!--  -->
+</div>
+    
+    <!-- next / prev arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <!-- !next / prev arrows -->
+    
+    <!-- pagination dots -->
+<!--     <div class="swiper-pagination"></div> -->
+    <!-- !pagination dots -->
+</div>
+<!--        -->
+</div>
+{% endcapture %}
+
+{% capture paintSelector %}
+<div class="paint-selector">
+  <div class="paint-sample-image-area">
+    <div class="paint-sample-image-foreground">
+      <div class="paint-name-full-preview" style="background-color: rgb(255, 255, 255); color: black; display: none; position: absolute;"></div>
+    </div>
+    <div class="paint-sample-image-background">
+<!--       <div class="paint-sector" style="background-color:{{ section.settings.paint_color }}; width:100%;"></div> -->
+      <div class="paint-color-full-preview" style="background-color: rgb(255, 255, 255); color: black; display: none; position: absolute;"></div>
+    </div>
+    <div class="paint-room-options">
+      {% comment %}
+      <span class="paint-room-option-item selected" data-room="Living Room">Living Room</span>
+      <span class="paint-room-option-item" data-room="Bedroom">Bedroom</span>
+      <span class="paint-room-option-item" data-room="Bathroom">Bathroom</span>
+      <span class="paint-room-option-item" data-room="Tarmac">Tarmac</span>
+      <span class="paint-room-option-item" data-room="Garden">Garden</span>
+      <span class="paint-room-option-item" data-room="Roof">Roof</span>
+      {% endcomment %}
+
+{% assign roomImageSpan = 0 %}
+{%- for block in section.blocks -%}
+{%- case block.type -%}
+{%- when 'room-image' -%}
+<span style="display:none;">{% increment roomSpanCount %}</span>
+  {% if block.settings.title != blank %}
+<span class="paint-room-option-item {% if roomImageSpan == 0 %}selected{% endif %}" data-room="{{ block.settings.title }}">{{ block.settings.title }}</span>  
+    {% endif %}
+{% endcase %}
+{% endfor %}
+    </div>
+
+    
+    {%- assign image = "https://cdn.shopify.com/s/files/1/0573/1627/8355/files/living-room.png"  -%}
+    {%- assign image2 = "https://cdn.shopify.com/s/files/1/0573/1627/8355/files/bedroom.png" -%}
+    {%- assign image3 = "https://cdn.shopify.com/s/files/1/0573/1627/8355/files/bathroom-lr.png" -%}
+
+    {% comment %}
+    <img data-room="Living Room" width=""  height="" src={{ image }} class="lazyload image--fade-in page__header-image paint-image" style=""/>
+    <img data-room="Bedroom" width=""  height="" src={{ image2 }} class="lazyload image--fade-in page__header-image paint-image" style="opacity:0;"/>
+    <img data-room="Bathroom" width=""  height="" src={{ image3 }} class="lazyload image--fade-in page__header-image paint-image" style="opacity:0;"/>
+    <img data-room="Tarmac" width=""  height="" src={{ image }} class="lazyload image--fade-in page__header-image paint-image" style="opacity:0;"/>
+    <img data-room="Garden" width=""  height="" src={{ image2 }} class="lazyload image--fade-in page__header-image paint-image" style="opacity:0;"/>
+    <img data-room="Roof" width=""  height="" src={{ image3 }} class="lazyload image--fade-in page__header-image paint-image" style="opacity:0;"/>
+    {% endcomment %}
+
+{% assign roomImageCount = 0 %}
+{%- for block in section.blocks -%}
+{%- case block.type -%}
+{%- when 'room-image' -%}  
+<span style="display:none;">{% increment roomImageCount %}</span>
+<img data-room="{{ block.settings.title }}" width=""  height="" src="{% if block.settings.image == blank %}{{ image }}{% else %}{{ block.settings.image | img_url: 'master' }}{% endif %}" class="h-full lazyload image--fade-in page__header-image paint-image" {% unless roomImageCount == 0 %}style="opacity:0;"{% endunless %}/>
+{% endcase %}
+{% endfor %}
+
+
+
+
+
+    
+  </div>
+  <div class="paint-sample-selection">
+    {% if true %}
+    <h3>Filter by Brand</h3>
+    <span class="a-dropdown-container">
+      <select name="" autocomplete="off" id="paint-selector-brand-dropdown" tabindex="0" data-action="a-dropdown-select" class="a-native-dropdown a-declarative" aria-pressed="false">
+            <option value="ALL">
+                Show all brands
+            </option>
+            
+            <option data-brandid="HQC" value="HQC">
+                HQC
+            </option>
+        
+            <option data-brandid="Landlords Paint" value="Landlords Paint">
+                Landlords Paint
+            </option>
+        
+            <option data-brandid="Evelyn Grant" value="Evelyn Grant">
+                Evelyn Grant
+            </option>
+        
+            <option data-brandid="Thermilate" value="Thermilate">
+                Thermilate
+            </option>
+        
+            <option data-brandid="Insopaint" value="Insopaint">
+                Insopaint
+            </option>
+
+                   
+            <option data-brandid="PRO range" value="PRO range">
+                PRO range
+            </option>
+
+                    
+            <option data-brandid="Warmtouch" value="Warmtouch">
+                Warmtouch
+            </option>
+            
+        </select>
+    </span>
+    {% endif %}
+    
+    <div class="hix-scw-swatch-tabs-container">
+    	<img alt="" src="https://m.media-amazon.com/images/G/01/hix/test/paint-roller-light.svg" class="hix-scw-swatch-tabs-icon">
+    	
+    	<div tabindex="0" class="hix-scw-swatch-tab-link hix-scw-swatch-tab-link-selected" data-name="swatch-tab-neutrals">
+    		Neutrals
+    	</div>
+    	
+    	<div tabindex="0" class="hix-scw-swatch-tab-link" data-name="swatch-tab-browns">
+    		Browns
+    	</div>
+    	
+    	<div tabindex="0" class="hix-scw-swatch-tab-link" data-name="swatch-tab-reds">
+    		Reds
+    	</div>
+    	
+    	<div tabindex="0" class="hix-scw-swatch-tab-link" data-name="swatch-tab-oranges">
+    		Oranges
+    	</div>
+    	
+    	<div tabindex="0" class="hix-scw-swatch-tab-link" data-name="swatch-tab-yellows">
+    		Yellows
+    	</div>
+    	
+    	<div tabindex="0" class="hix-scw-swatch-tab-link" data-name="swatch-tab-greens">
+    		Greens
+    	</div>
+    	
+    	<div tabindex="0" class="hix-scw-swatch-tab-link" data-name="swatch-tab-blues">
+    		Blues
+    	</div>
+    	
+    	<div tabindex="0" class="hix-scw-swatch-tab-link" data-name="swatch-tab-purples">
+    		Purples
+    	</div>
+    </div>
+
+
+    <div class="paint-sample-wrapper">
+      <div class="paint-bucket">
+      
+      </div>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture selectedPaint %}
+<div class="paint-selected">
+    <div class="paint-selected-header" style="display: flex; flex-wrap: wrap; column-gap: 10px;">
+      <div style="display: inline-block;">
+          <span class="paint-selected-header-text">Selected Colors</span>
+          <span class="paint-selected-header-count">(0)</span>
+          <span style="font-size: 12px; padding-left: 10px;" class="a-declarative" data-action="hix-deselect-all-colors"><a id="paint-deselect-all-colors" class="paint-deselect-all-colors" href="#"> Deselect all colours </a></span>
+      </div>
+      {% if false %}
+      <div style="display: inline-block;">
+        <h3 style="display: inline;">Filter by Brand</h3>
+        <span class="brand-dropdown-container" style="margin-left: 5px;">
+      <select name="" autocomplete="off" id="paint-selector-brand-dropdown" tabindex="0" data-action="a-dropdown-select" class="a-native-dropdown a-declarative" aria-pressed="false">
+            <option value="ALL">
+                Show all brands
+            </option>
+            
+            <option data-brandid="HQC" value="HQC">
+                HQC
+            </option>
+        
+            <option data-brandid="Landlords Paint" value="Landlords Paint">
+                Landlords Paint
+            </option>
+        
+            <option data-brandid="Evelyn Grant" value="Evelyn Grant">
+                Evelyn Grant
+            </option>
+        
+            <option data-brandid="Thermilate" value="Thermilate">
+                Thermilate
+            </option>
+        
+            <option data-brandid="Insopaint" value="Insopaint">
+                Insopaint
+            </option>
+
+                   
+            <option data-brandid="PRO range" value="PRO range">
+                PRO range
+            </option>
+
+                    
+            <option data-brandid="Warmtouch" value="Warmtouch">
+                Warmtouch
+            </option>
+            
+        </select>
+    </span>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="paint-selected-container">
+      
+    </div>
+  </div>
+{% endcapture %}
+
+{% capture paintCalculator %}
+<div class="paint-calculator-area">
+
+
+<div class="paint-calculator-container" style="background: white;">
+    <div class="paint-calculator-white-background"></div>
+    <div class="paint-calculator">
+        <div class="paint-calculator__bckgrnd-img-wrapper">
+            
+            <div class="paint-calculator__bckgrnd-img">
+            </div>
+            <div class="paint-calculator__calculator">
+                <div class="paint-calculator__calculator-intro">
+                    {{ section.settings.calculator_title }}
+                </div>
+                <div class="paint-calculator__calculator-wrapper">
+                    <div class="paint-calculator__calculator-inputs-wrapper">
+                        <ul id="paint-calculatorulator-inputs" class="paint-calculator__calculator-walls">
+                            <li class="paint-calculator__calculator-wall-input" data-total="0">
+                                <div class="paint-calculator__calculator-wall">
+                                    
+                                    <img alt="Wall Icon" src="https://m.media-amazon.com/images/G/01/hix/paintcalculatorwidget/wall._CB428460093_.svg" class="paint-calculator__calculator-wall-img" id="paint-calculator__wall-img">
+                                    <span class="paint-calculator__calculator-wall-text">
+                                        Wall
+                                    </span>
+                                </div>
+                                <div class="paint-calculator__calculator-length">
+                                    <div class="a-input-text-wrapper paint-calculator__calculator-length-input"><input type="number" id="paint-calculator__calculator-length-input" min="0" autocomplete="off" placeholder="0" aria-labelledby="paint-calculator__calculator-length-text"></div>
+                                    <span id="paint-calculator__calculator-length-text" class="paint-calculator__calculator-length-text">
+                                        Length (m)
+                                    </span>
+                                </div>
+                                <div class="paint-calculator__calculator-height">
+                                    <div class="a-input-text-wrapper paint-calculator__calculator-height-input"><input type="number" id="paint-calculator__calculator-height-input" min="0" autocomplete="off" placeholder="0" aria-labelledby="paint-calculator__calculator-height-text"></div>
+                                    <span id="paint-calculator__calculator-height-text" class="paint-calculator__calculator-height-text">
+                                        Height (m)
+                                    </span>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="paint-calculator__calculator-add-wall-wrapper">
+                            <div class="paint-calculator__add-wall-img-wrapper">
+                                
+                                <img alt="Wall Icon" src="https://m.media-amazon.com/images/G/01/hix/paintcalculatorwidget/wall._CB428460093_.svg" class="paint-calculator__add-wall-img" id="paint-calculator__add-wall-img">
+                            </div>
+                            
+                            <img alt="Plus Sign" src="https://m.media-amazon.com/images/G/01/hix/paintcalculatorwidget/plus_icon._CB410969616_.svg" class="paint-calculator__plus-sign-img" id="paint-calculator__plus-sign-img">
+                            <button class="paint-calculator__add-wall-btn" id="paint-calculatorulator-addWallBtn" type="button">
+                                <span class="paint-calculator__add-wall-text">
+                                    Add another wall
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="paint-calculatorulator-output-container">
+                        <div class="paint-calculator__sqr-m" aria-atomic="true" aria-live="polite">
+                            <div class="paint-calculator__sqr-m-number">0</div>
+                            <span class="paint-calculator__sqr-m-text">
+                                sq m
+                            </span>
+                        </div>
+                        <div class="paint-calculator__sq-m-gal-divider"></div>
+                        <div class="paint-calculator__gal" aria-atomic="true" aria-live="polite">
+                            <div class="paint-calculator__gal-number">0</div>
+                            <span class="paint-calculator__gal-text">
+                                litres*
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <span class="paint-calculator__calculator-recommended-text">
+                    *Recommendation assumes 2 coats of paint
+                </span>
+            </div>
+        </div>
+        
+            <div class="paint-calculator__faqs">
+  {{ section.settings.calculator_text }}
+  {% comment %}
+                <h3 class="paint-calculator__faqs-title">
+                    FAQs
+                </h3>
+                <div class="paint-calculator__faqs-primer">
+                    <h4>
+                        Do I need primer?
+                    </h4>
+                    <span>
+                        Most modern interior paint has primer in it. Be sure to check the paint's page for specification information on primer.
+                    </span>
+                </div>
+                <div class="paint-calculator__faqs-coats">
+                    <h4>
+                        How many coats of paint do I need?
+                    </h4>
+                    <span>
+                        Generally at least two coats of interior paint are needed, but you might need more if you're painting over a dark wall. Our paint calculator assumes that a gallon covers 350 sq ft. using two coats of paint.
+                    </span>
+                </div>
+  {% endcomment %}
+            </div>
+        
+    </div>
+</div>
+</div>  
+{% endcapture %}
+<div class="paint-slider-wrapper">
+
+<div class="container">
+    <div class="row">
+     <div class="col-12">
+         <div class="section-header-paint text-center">
+             {% if section.settings.heading  != blank %}
+                 <h2 class="paint-heading">{{section.settings.heading }}</h2>
+             {% endif %}
+             {% if section.settings.description  != blank %} 
+                <div class="paint-dec">
+                
+                  <p> {{section.settings.description  }}</p>
+                </div>
+             {% endif %}
+         </div>
+     
+     </div>
+   </div>
+ </div>
+</div>
+
+<div class="paint-slider-v1">
+    {% unless section.settings.stacked %}
+    <div class="paint-slider-top-nav">
+      <span class="paint-slider-top-nav-item paint-slider-top-nav-item-selected">Featured Colours</span>
+      <span class="paint-slider-top-nav-item">Colour Finder</span>
+    </div>
+    <div class="paint-slider-bottom-nav">
+      <span class="paint-slider-bottom-nav-item paint-slider-bottom-nav-item-selected"></span>
+      <span class="paint-slider-bottom-nav-item"></span>
+    </div>
+    {% endunless %}
+  <div class="paint-slider-inner-container">
+    <div class="slide-1" style="display:none;">{{ featuredPaint }}</div>
+    <div class="slide-2">{{ paintSelector }}</div>
+  </div>
+</div>
+<div class="selected-paint-pro">
+  {{ selectedPaint }}
+</div>
+<div class="paint-calculator-pro">
+  {{ paintCalculator }}
+</div>
+
+
+<style>
+  .paint-calculator__calculator-intro {
+    color: {{ section.settings.calculator_title_color }} !important;
+  }
+  .paint-calculator__faqs {
+    color: {{ section.settings.calculator_text_color }} !important;
+    background: {{ section.settings.calculator_bg_color }} !important;
+  }
+  .paint-calculator__faqs h3{
+    margin: 5px 0 5px 0;
+    font-family: sans-serif;
+    font-weight: 200;
+    font-size: 22px;
+  }
+  
+  .paint-calculator__faqs h4 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.35;
+  }
+
+  .paint-calculator__faqs {
+    font-family: sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+  }
+</style>
+
+
+<!-- Featured Paint Style & Scripts  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js" integrity="sha512-XlJ5OxV+f3wJcGwgHf01GolB3Av3I6+gFcCewcgVIQrbdZ5M5EDcoW30Pu13cAbomLKnuy8uz3nF25bjmHWUJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<style>
+  .featured-paint-swiper-container {
+    width: 100%;
+    --swiper-navigation-size: 21px;
+}
+
+
+.swiper-pagination {
+    &-bullet {
+        background-color: transparent;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        width: 12px;
+        height: 12px;
+        opacity: 1;
+    }
+
+    &-bullet-active {
+        background-color: #fff;
+    }
+}
+
+  .swiper-button-next:after,.swiper-button-prev:after {
+    font-family: swiper-icons;
+    font-size: var(--swiper-navigation-size);
+    text-transform: none!important;
+    letter-spacing: 0;
+    text-transform: none;
+    font-variant: initial;
+    color: white;
+    line-height: 1
+}
+
+
+.swiper-button-prev, .swiper-rtl .swiper-button-next {
+    left: 30px;
+    right: auto;
+    text-shadow: 1px 2px 4px rgba(0,0,0,.2);
+}
+.swiper-button-next, .swiper-rtl .swiper-button-prev {
+    right: 30px;
+    left: auto;
+    text-shadow: 1px 2px 4px rgba(0,0,0,.2);
+}
+
+  @media screen and (max-width: 789px){
+    .swiper-button-prev, .swiper-rtl .swiper-button-next {
+    left: 10px;
+    right: auto;
+}
+.swiper-button-next, .swiper-rtl .swiper-button-prev {
+    right: 10px;
+    left: auto;
+
+}
+  }
+
+
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+  var Swipes = new Swiper('#{{ sectId }} .featured-paint-swiper-container', {
+      loop: true,
+      speed: 1500,
+      {% if section.settings.autoplay %}autoplay:  {
+       delay: 7000,
+     },{% endif %}
+      navigation: {
+          nextEl: '#{{ sectId }} .swiper-button-next',
+          prevEl: '#{{ sectId }} .swiper-button-prev',
+      }
+  });
+});
+</script>
+
+<!--End Featured Paint Style & Scripts -->
+
+
+
+
+<!-- Paint Calculator Style & Scripts  -->
+<style>
+
+#{{sectId}} .a-input-text, #{{sectId}} input[type=text], #{{sectId}} input[type=search], #{{sectId}} input[type=number], 
+  #{{sectId}} input[type=tel], #{{sectId}} input[type=password], #{{sectId}} input[type=date], #{{sectId}} input[type=email] {
+    background-color: #fff;
+    height: 31px;
+    padding: 3px 7px;
+    line-height: normal;
+}
+.a-input-text-wrapper input {
+    line-height: 1;
+    border: 0;
+    float: none;
+    width: 100%;
+    background-color: transparent;
+    margin: 0.2rem 0 0;
+    padding: 0 1.1rem;
+    height: 4.3rem;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: none;
+}
+
+/*   Desktop */
+  @media only screen and (min-width: 768px){
+    .paint-calculator {
+      max-width: 1500px;
+      margin: 0 auto;
+      grid-template-columns: 70% 30%;
+      display: grid;
+      display: -ms-grid;
+      -ms-grid-columns: 70% 30%;
+      font-family: sans-serif;
+      background-color: #eaeaea;
+    } 
+    
+    .paint-calculator__bckgrnd-img-wrapper {
+        min-height: 418px;
+        width: 100%;
+        grid-template-columns: 40% 60%;
+        position: relative;
+        display: grid;
+        display: -ms-grid;
+        -ms-grid-columns: 40% 60%;
+        -ms-grid-column: 1;
+    }
+
+    .paint-calculator__bckgrnd-img {
+        background-repeat: no-repeat;
+        background-color: #eaeaea;
+        background-image: {% if section.settings.calculator_bg != blank %} url({{ section.settings.calculator_bg | img_url: 'master' }}) {% else %} url(https://m.media-amazon.com/images/G/01/hix/paintcalculatorwidget/paint-calculator-background.jpg) {% endif %};
+        background-size: {% if section.settings.calculator_bg != blank %} cover {% else %}contain{% endif %};
+        {% if section.settings.calculator_bg == blank %}background-position: 0 100%;{% endif %}
+        {% if section.settings.calculator_bg != blank %}
+        height: 100%;
+        width: 100%;
+        {% endif %}
+        display: block;
+        position: absolute;
+        {% if section.settings.calculator_bg == blank %}
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: -150px;
+        {% endif %}
+    }
+
+    .paint-calculator__calculator {
+        padding: 40px 0 0 10px;
+        width: 100%;
+        -ms-grid-column: 2;
+        grid-column: 2;
+        z-index: 1;
+    }
+
+    .paint-calculator__calculator-intro {
+        width: 100%;
+        text-align: left;
+        font-family: sans-serif;
+        font-weight: 200;
+        font-size: 30px;
+        line-height: 30px;
+        color: #6c7778;
+        position: relative;
+    }   
+
+    .paint-calculator__calculator-wrapper {
+        grid-template-columns: 4fr 1.4fr;
+        display: grid;
+        display: -ms-grid;
+        -ms-grid-columns: 4fr 1.4fr;
+        margin-top: 15px;
+        width: 100%;
+        border-top: thin solid #b9b7b7;
+        border-bottom: thin solid #b9b7b7;
+        position: relative;
+    }
+
+
+
+    .paint-calculator__calculator-recommended-text {
+        display: inline-block;
+        margin: 5px 0 37px 0;
+        font-family: sans-serif;
+        font-weight: 400;
+        font-size: 13px;
+        color: #373D3E;
+    }
+    
+
+    .paint-calculator__faqs {
+        width: 100%;
+        min-height: 418px;
+        padding: 40px 20px 20px;
+        background: #fff 0 0 no-repeat padding-box;
+        color: #6c7778;
+        -ms-grid-column: 2;
+        position: relative;
+    }
+    
+    .paint-calculator__faqs-title {
+        margin: 5px 0 5px 0;
+        font-family: sans-serif;
+        font-weight: 200;
+        font-size: 22px;
+    }
+    
+    .paint-calculator__faqs div {
+        padding-bottom: 20px;
+    }
+
+    .paint-calculator__faqs div h4 {
+        font-weight: 700;
+        font-size: 1.5rem;
+        line-height: 1.35;
+    }
+    
+    .paint-calculator__faqs span {
+        font-family: sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+    }
+
+    .paint-calculator__faqs div {
+        padding-bottom: 20px;
+    }
+
+    .paint-calculator__calculator-inputs-wrapper {
+        width: 100%;
+        padding: 8px 15px 0 0;
+        border-right: thin solid #b9b7b7;
+        -ms-grid-column: 1;
+    }
+
+    .paint-calculator__calculator-walls {
+        padding-left: 0;
+        list-style: none;
+        margin: 10px 0 0 0;
+    }
+
+    .paint-calculator__calculator-wall-input {
+        display: grid;
+        grid-template-columns: 50px 1fr 1fr;
+        display: -ms-grid;
+        -ms-grid-columns: 50px 1fr 1fr;
+        grid-gap: 5px;
+        padding: 0 15px 8px 0;
+    }
+
+    .paint-calculator__calculator-wall {
+        background: #FFF;
+        display: grid;
+        display: -ms-grid;
+        border: thin solid #b9b7b7;
+        border-radius: 3px;
+        margin-right: 5px;
+        max-height: 75px;
+        -ms-grid-column: 1;
+    }
+
+    .paint-calculator__calculator-wall-text {
+        margin-top: 2px;
+        text-align: center;
+        font-size: 11px;
+        color: #4c5758;
+    }
+
+    .paint-calculator__calculator-length {
+        display: grid;
+        margin-right: 5px;
+        -ms-grid-column: 2;
+    }
+
+    .paint-calculator__calculator-length-input {
+        width: 100%;
+        min-height: 75px;
+        font-family: sans-serif;
+        font-weight: 100;
+        font-size: 30px;
+        color: #6c6c6c;
+        text-align: center;
+        border: thin solid #b9b7b7;
+        border-radius: 3px;
+        -moz-appearance: textfield;
+        background: white;
+    }
+
+    .paint-calculator__calculator-length-input input{
+     text-align: center;
+    }
+
+    .a-input-text-wrapper:after {
+        clear: both;
+    }
+
+    .a-input-text-wrapper input {
+        line-height: 1;
+        border: 0;
+        float: none;
+        width: 100%;
+        background-color: transparent;
+        margin: 0.2rem 0 0;
+        padding: 0 1.1rem;
+        height: 4.3rem;
+        -webkit-appearance: none;
+        -webkit-tap-highlight-color: transparent;
+        box-shadow: none;
+    }
+
+    .paint-calculator__calculator-length-text {
+        margin-top: -18px;
+        text-align: center;
+        font-size: 11px;
+        color: #4c5758;
+    }
+
+    .paint-calculator__calculator-height {
+        display: grid;
+        -ms-grid-column: 3;
+    }
+
+    .paint-calculator__calculator-height-input {
+        width: 100%;
+        min-height: 75px;
+        font-family: sans-serif;
+        font-weight: 100;
+        font-size: 30px;
+        color: #6c6c6c;
+        text-align: center;
+        border: thin solid #b9b7b7;
+        border-radius: 3px;
+        -moz-appearance: textfield;
+        background: white;
+    }
+
+    .paint-calculator__calculator-height-input input{
+      text-align: center;
+    }
+
+    .paint-calculator__calculator-height-text {
+        margin-top: -18px;
+        text-align: center;
+        font-size: 11px;
+        color: #4c5758;
+    }
+
+    .paint-calculator__calculator-add-wall-wrapper {
+        display: flex;
+        padding-bottom: 10px;
+    }
+
+    .paint-calculator__add-wall-img-wrapper {
+        background: #fff;
+        min-height: 40px;
+        border: thin solid #b9b7b7;
+        border-radius: 3px;
+    }
+
+    .paint-calculator__add-wall-img {
+        height: 30px;
+        min-width: 44px;
+        object-fit: cover;
+        object-position: 0 110%;
+    }
+
+    .paint-calculator__plus-sign-img {
+        margin: 0 0 18px -52px;
+        transform: scale(1,1);
+    }
+    
+    .paint-calculator__add-wall-btn {
+        display: inline-block;
+        padding-left: 60px;
+        margin-left: -10px;
+        border: none;
+        background: 0 0;
+        text-decoration: underline;
+    }
+
+   .paint-calculator__add-wall-text {
+        font-size: 13px;
+        font-weight: 200;
+        color: #373d3e;
+    }  
+
+    .paint-calculator__sqr-m {
+        display: flex;
+        margin: 20px 0 0 20px;
+        font-weight: 700;
+        font-size: 15px;
+        color: #5f5f5f;
+    }
+
+
+    .paint-calculator__sqr-m-text {
+        margin-left: 5px;
+    }
+    
+    .paint-calculator__sq-m-gal-divider {
+        margin-top: 20px;
+        width: 100px;
+        border-top: thin solid #b9b7b7;
+    }
+    
+    .paint-calculator__gal {
+        display: flex;
+        margin: 0 0 0 10px;
+        font-family: sans-serif;
+        font-weight: 200;
+        font-size: 17px;
+        color: #373d3e;
+        flex-wrap: wrap;
+        align-items: flex-end;
+    }
+
+    .paint-calculator__gal-number {
+        font-weight: 200;
+        font-size: 50px;
+        line-height: 50px;
+        padding-right: 10px;
+    }
+
+    .paint-calculator__gal-text {
+        margin: 50px 0 0 5px;
+      margin: 0;
+    }
+
+
+    .paint-calculator__calculator-recommended-text {
+        display: inline-block;
+        margin: 5px 0 37px 0;
+        font-family: sans-serif;
+        font-weight: 400;
+        font-size: 13px;
+        color: #373D3E;
+    }
+    
+    
+
+  }
+
+/*   Mobile */
+  @media only screen and (max-width: 767px){
+    .paint-calculator {
+      position: relative;
+      margin-top: 15px;
+      font-family: sans-serif;
+      overflow: hidden;
+    }
+    
+    .paint-calculator__bckgrnd-img-wrapper {
+        min-height: 418px;
+        position: relative;
+        width: 100%;
+    }
+
+    .paint-calculator__bckgrnd-img {
+        background-repeat: no-repeat;
+        background-color: #eaeaea;
+        background-image: url(https://m.media-amazon.com/images/G/01/hix/paintcalculatorwidget/paint-calculator-background.jpg);
+        background-size: contain;
+        background-position: 0 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: -100px;
+        height: 240px;
+    }
+
+    .paint-calculator__calculator {
+        padding: 55px 0 0;
+        position: relative;
+    }
+
+    .paint-calculator__calculator-intro {
+        height: 185px;
+        padding-left: 40%;
+        font-family: sans-serif;
+        font-weight: 200;
+        font-size: 25px;
+        line-height: 25px;
+        color: #6c7778;
+        line-height: 1.2;
+    }
+
+
+    .paint-calculator__calculator-wrapper {
+        display: grid;
+        grid-template-columns: 4fr 1.4fr;
+        width: 100%;
+        border-top: thin solid #b9b7b7;
+        border-bottom: thin solid #b9b7b7;
+        padding-left: 15px;
+    }
+
+    .paint-calculator__calculator-inputs-wrapper {
+        border-right: thin solid #b9b7b7;
+    }
+
+    
+
+    .paint-calculator__calculator-recommended-text {
+        display: inline-block;
+        padding: 10px;
+        color: #373D3E;
+        font-family: sans-serif;
+        font-weight: 400;
+        font-size: 13px;
+    }
+
+    .paint-calculator__calculator-walls {
+        list-style: none;
+        margin: 10px 0 0 0;
+        width: 100%;
+        padding-right: 15px;
+    }
+
+    .paint-calculator__calculator-wall-input {
+        display: grid;
+        grid-template-columns: 50px 1fr 1fr;
+        grid-gap: 5px;
+        padding: 0 0 10px 5px;
+    }
+
+    .paint-calculator__calculator-wall {
+        display: grid;
+        border: 1px solid #b9b7b7;
+    }
+
+    .paint-calculator__calculator-wall-img {
+        display: grid;
+        width: 100%;
+    }
+
+    .paint-calculator__calculator-wall-text {
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+        font-weight: 300;
+        font-size: 11px;
+        color: #4c5758;
+    }
+
+    .paint-calculator__calculator-length {
+        display: grid;
+        margin-right: 5px;
+    }
+
+    .paint-calculator__calculator-length-input {
+        width: 100%;
+        min-height: 75px;
+        font-family: sans-serif;
+        font-weight: 100;
+        font-size: 30px;
+        color: #6c6c6c;
+        text-align: center;
+        border: thin solid #b9b7b7;
+        border-radius: 3px;
+        -moz-appearance: textfield;
+        background: white;
+    }
+
+    .a-input-text-wrapper:after {
+        clear: both;
+    }
+
+    #paint-calculator__calculator-length-input {
+        text-align: center;
+        padding-top: 10%;
+        color: #565959;
+    }
+
+    #paint-calculator__calculator-length-input input {
+        text-align: center;
+    }
+
+
+    .paint-calculator__calculator-length-text {
+        position: relative;
+        margin-top: -18px;
+        text-align: center;
+        font-size: 11px;
+        color: #4c5758;
+    }
+
+    .paint-calculator__calculator-height {
+        display: grid;
+    }
+
+    .paint-calculator__calculator-height-input {
+        width: 100%;
+        min-height: 75px;
+        font-family: sans-serif;
+        font-weight: 100;
+        font-size: 30px;
+        color: #6c6c6c;
+        text-align: center;
+        border: thin solid #b9b7b7;
+        border-radius: 3px;
+        -moz-appearance: textfield;
+        background: white;
+    }
+
+    .paint-calculator__calculator-height-input input{
+      text-align: center;
+    }
+
+    #paint-calculator__calculator-height-input {
+        text-align: center;
+        padding-top: 10%;
+        color: #565959;
+    }
+    
+    .paint-calculator__calculator-height-text {
+        position: relative;
+        margin-top: -18px;
+        text-align: center;
+        font-size: 11px;
+        color: #4c5758;
+    }
+
+    .paint-calculator__calculator-add-wall-wrapper {
+        display: flex;
+        margin: 0 0 10px 5px;
+    }
+
+    .paint-calculator__add-wall-img-wrapper {
+        background: #fff;
+        min-height: 40px;
+        border: thin solid #b9b7b7;
+        border-radius: 3px;
+        width: 50px;
+    }
+
+    .paint-calculator__add-wall-img {
+        height: 30px;
+        width: 100%;
+        object-fit: cover;
+        object-position: 0 110%;
+    }
+
+    .paint-calculator__plus-sign-img {
+        margin: 0 0 18px -52px;
+        transform: scale(1,1);
+    }
+
+    .paint-calculator__add-wall-btn {
+        display: inline-block;
+        padding-left: 60px;
+        margin-left: -10px;
+        border: none;
+        background: 0 0;
+        text-decoration: underline;
+    }
+
+    .paint-calculator__add-wall-text {
+        font-size: 13px;
+        font-weight: 200;
+        color: #373d3e;
+    }
+    
+    .paint-calculator__sqr-m {
+        display: flex;
+        margin: 20px 0 0 20px;
+        word-break: break-word;
+        font-weight: 700;
+        font-size: 15px;
+        color: #5f5f5f;
+    }
+
+    .paint-calculator__sqr-m-text {
+        margin-left: 5px;
+    }
+
+    .paint-calculator__sq-m-gal-divider {
+        margin-top: 15px;
+        width: 100px;
+        border-top: thin solid #b9b7b7;
+    }
+
+    .paint-calculator__gal {
+        display: flex;
+        margin: 0 0 0 10px;
+        font-family: sans-serif;
+        font-weight: 100;
+        font-size: 17px;
+        color: #373D3E;
+        flex-wrap: wrap;
+    }
+
+    .paint-calculator__gal-number {
+        font-size: 30px;
+        line-height: 30px;
+        flex-basis: 100%;
+        padding-right: 10px;
+    }
+
+    .paint-calculator__gal-text {
+        margin: 50px 0 0 5px;
+        margin: 0;
+    }
+
+    .paint-calculator__calculator-recommended-text {
+        display: inline-block;
+        padding: 10px;
+        color: #373D3E;
+        font-family: sans-serif;
+        font-weight: 400;
+        font-size: 13px;
+    }
+
+
+
+    
+    
+    .paint-calculator__faqs {
+        background: #fff 0 0 no-repeat padding-box;
+        width: 100%;
+        min-height: 290px;
+        padding: 15px;
+        padding-right: 15px;
+        color: #6c7778;
+    }
+
+    .paint-calculator__faqs-title {
+        font-family: sans-serif;
+        font-weight: 200;
+        font-size: 22px;
+    }
+
+    .paint-calculator__faqs div {
+        padding-bottom: 15px;
+    }
+
+    .paint-calculator__faqs div h4 {
+        font-weight: 700;
+        font-size: 1.5rem;
+        line-height: 1.35;
+    }
+
+    .paint-calculator__faqs span {
+        font-family: sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+    }
+    
+    .paint-calculator__faqs div {
+        padding-bottom: 15px;
+    }
+  }
+  
+</style>
+<script>
+  const addWallBtn{{ code }} = document.querySelector("#{{ sectId }} .paint-calculator__add-wall-btn");
+  const wallsArea{{ code }} =  document.querySelector("#{{ sectId }} #paint-calculatorulator-inputs");
+  addWallBtn{{ code }}.addEventListener("click", e => {
+    e.preventDefault();
+    //console.log("click")
+
+ 
+    var html = `<li class="paint-calculator__calculator-wall-input" data-total="0">
+                    <div class="paint-calculator__calculator-wall">
+                        <img alt="Wall Icon" src="https://m.media-amazon.com/images/G/01/hix/paintcalculatorwidget/wall._CB428460093_.svg" class="paint-calculator__calculator-wall-img" id="paint-calculator__wall-img">
+                        <span class="paint-calculator__calculator-wall-text">
+                            Wall
+                        </span>
+                    </div>
+                    <div class="paint-calculator__calculator-length">
+                        <div class="a-input-text-wrapper paint-calculator__calculator-length-input"><input type="number" id="paint-calculator__calculator-length-input" min="0" autocomplete="off" placeholder="0" aria-labelledby="paint-calculator__calculator-length-text" class=""></div>
+                        <span id="paint-calculator__calculator-length-text" class="paint-calculator__calculator-length-text">
+                            Length (m)
+                        </span>
+                    </div>
+                    <div class="paint-calculator__calculator-height">
+                        <div class="a-input-text-wrapper paint-calculator__calculator-height-input"><input type="number" id="paint-calculator__calculator-height-input" min="0" autocomplete="off" placeholder="0" aria-labelledby="paint-calculator__calculator-height-text"></div>
+                        <span id="paint-calculator__calculator-height-text" class="paint-calculator__calculator-height-text">
+                            Height (m)
+                        </span>
+                    </div>
+                </li>`;
+    
+    wallsArea{{ code }}.insertAdjacentHTML('beforeend', html);
+    paintCalculations();
+    
+  });
+
+
+   function paintCalculations(){
+      const wallInput =  document.querySelectorAll("#{{ sectId }} .paint-calculator__calculator-wall-input");
+      const squareM = document.querySelector("#{{ sectId }} .paint-calculatorulator-output-container .paint-calculator__sqr-m .paint-calculator__sqr-m-number");
+      const litres = document.querySelector("#{{ sectId }} .paint-calculatorulator-output-container .paint-calculator__gal .paint-calculator__gal-number");
+    
+      
+      wallInput.forEach(item => {
+      
+        const length = item.querySelector("#paint-calculator__calculator-length-input");
+        const height = item.querySelector("#paint-calculator__calculator-height-input");
+        // console.log(length.value);
+        // console.log(height.value);
+    
+        length.addEventListener("input", () => {
+          // console.log(length.value);
+          // console.log(height.value);
+          onChangeWallInput(item, length.value, height.value);
+          
+        });
+        
+        height.addEventListener("input", () => {
+          // console.log(length.value);
+          // console.log(height.value);
+          onChangeWallInput(item, length.value, height.value);
+        });
+      });
+
+      function onChangeWallInput(item, length, height){
+        
+         if(length != "" && height != "" || length != 0 && height != 0) {
+            let totalSq = 0;
+            
+            
+            const sq = length * height;
+            item.dataset.total = sq;
+
+            wallInput.forEach(wall => {
+              totalSq += Number(wall.dataset.total);
+            });
+
+            squareM.textContent = (totalSq);
+            litres.textContent= calcLitres(totalSq);
+            
+          }else{
+            let totalSq = 0;
+            item.dataset.total = 0;
+
+            wallInput.forEach(wall => {
+              totalSq += Number(wall.dataset.total);
+            });
+           
+            squareM.textContent = (totalSq);
+            litres.textContent= calcLitres(totalSq);
+           
+            
+          }  
+      }
+    
+      function calcLitres(sq) {
+        return Math.ceil(sq / 8.59);
+      }
+  }
+
+   paintCalculations();
+ 
+</script>
+<!-- End Paint Calculator Style & Scripts  -->
+
+
+
+
+<!-- Slide Style & Scripts -->
+<style>
+  #{{ sectId }} .paint-slider-v1 {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  #{{ sectId }} .paint-slider-inner-container {
+    {% if section.settings.stacked %} width: 100% {% else %} width: 200% {% endif %};
+    height: 100%;
+    position: relative;
+    left: 0;
+    transition: all 500ms ease;
+  }
+
+  #{{ sectId }} .slide-1, #{{ sectId }} .slide-2{
+    display: block;
+    height: 650px;
+    float: left;
+    {% if section.settings.stacked %} width: 100% {% else %} width: 50% {% endif %};
+    overflow: hidden;
+  }
+
+  #{{ sectId }} .slide-1{
+    background: white;
+  }
+
+  #{{ sectId }} .slide-2{
+    background: white;
+  }
+
+  #{{ sectId }} .paint-slider-navigation {
+    display: grid;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 5;
+  }
+
+  #{{ sectId }} .paint-slider-top-nav {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 0px;
+    width: fit-content;
+    padding: 10px;
+    margin-inline: auto;
+    position: absolute;
+    z-index: 5;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    white-space: nowrap;
+  }
+
+  #{{ sectId }} .paint-slider-top-nav-item {
+    opacity: 0.35;
+    cursor: pointer;
+    font-size: 17px;
+    line-height: 17px;
+  }
+
+  #{{ sectId }} .paint-slider-top-nav-item-selected {
+    opacity: 1;
+  }
+
+  #{{ sectId }} .paint-slider-bottom-nav {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+    margin-bottom: 0px;
+    width: fit-content;
+    padding: 10px;
+    margin-inline: auto;
+    margin-top: auto;
+    position: absolute;
+    z-index: 5;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+  }
+
+  #{{ sectId }} .paint-slider-bottom-nav-item {
+    opacity: 0.35;
+    cursor: pointer;
+    background: black;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  #{{ sectId }} .paint-slider-bottom-nav-item-selected {
+    opacity: 1;
+  }
+
+
+  @media screen and (max-width: 769px){
+    #{{ sectId }} .paint-slider-v1 {
+      {% if section.settings.stacked %}
+        height: auto;
+      {% else %}
+        height: 95vh;
+      {% endif %}
+      
+    }
+
+    #{{ sectId }} .paint-slider-top-nav-item {
+      white-space: nowrap;
+      font-size: 15px;
+      line-height: 17px;
+    }
+
+    #{{ sectId }} .slide-1, #{{ sectId }} .slide-2 {
+      {% if section.settings.stacked %}
+        height: auto;
+      {% else %}
+        height: 95vh;
+      {% endif %}
+      
+    }
+  }
+</style>
+<script>
+  const sliderV{{ code }} = document.querySelector("#{{ sectId }} .paint-slider-v1");
+  const sliderInner{{ code }} = document.querySelector("#{{ sectId }} .paint-slider-inner-container");
+  const topNav{{ code }} = sliderV{{ code }}.querySelectorAll("#{{ sectId }} .paint-slider-top-nav .paint-slider-top-nav-item");
+  const bottomNav{{ code }} = sliderV{{ code }}.querySelectorAll("#{{ sectId }} .paint-slider-bottom-nav .paint-slider-bottom-nav-item");
+
+  topNav{{ code }}.forEach((item, index) => {
+    item.addEventListener("click", (e)=> {
+      const target = e.target;
+      
+      moveSlide(index);
+      switchSelectedNav(target, index);
+
+    });
+  });
+
+  
+  bottomNav{{ code }}.forEach((item, index) => {
+    item.addEventListener("click", (e)=> {
+      const target = e.target;
+      
+      moveSlide(index);
+      switchSelectedNav(target, index);
+      
+    });
+  });
+
+  function switchSelectedNav(target, index) {
+    topNav{{ code }}.forEach((item, i) =>  {
+      if(i == index){
+        item.classList.add("paint-slider-top-nav-item-selected");
+      }else {
+        item.classList.remove("paint-slider-top-nav-item-selected");
+      }
+    });
+    
+    bottomNav{{ code }}.forEach((item, i) =>  {
+      if(i == index){
+        item.classList.add("paint-slider-bottom-nav-item-selected");
+      }else {
+        item.classList.remove("paint-slider-bottom-nav-item-selected");
+      }
+    });
+  }
+
+  function moveSlide(index) {
+    //console.log("move", index)
+      if(index == 1) {
+        //console.log("true")
+        sliderInner{{ code }}.style.left = "-100%";
+      }else{
+        sliderInner{{ code }}.style.left = "0%";
+      }
+  }
+</script>
+<!-- End Slide Style & Scripts -->
+
+
+
+<!-- Paint Selector Style & Scripts -->
+<style>
+#{{ sectId }} .hix-scw-swatch-tabs-container {
+    margin-top: 25px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    width: 100%;
+    padding-left: 40px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #d5dbdb;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+#{{ sectId }} .hix-scw-swatch-tabs-icon {
+    width: 14px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+#{{ sectId }} .hix-scw-swatch-tab-link {
+    color: #6c7778;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#{{ sectId }} .hix-scw-swatch-tab-link {
+    position: relative;
+    margin: 0 10px 0 0;
+    word-wrap: break-word;
+}
+  
+#{{ sectId }} .hix-scw-swatch-tab-link:hover {
+    color: #373d3e;
+    transition: color .2s;
+}
+
+#{{ sectId }} .hix-scw-swatch-tab-link-selected {
+    color: #373d3e;
+}
+  
+#{{ sectId }} .hix-scw-swatch-tab-link-selected::after {
+    content: "";
+    position: absolute;
+    transform: translate(-50%);
+    left: 50%;
+    bottom: -5px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #6c7778;
+}
+
+#{{ sectId }} .hix-scw-swatch-tab-link-disabled {
+    opacity: .4;
+    cursor: text;
+}
+
+#{{ sectId }} .paint-sample-selection h3 {
+  margin-top: 10px !important;
+  margin-left: 5px; 
+  margin-bottom: 5px; 
+  line-height: 17px;
+}
+  
+#{{ sectId }} .a-dropdown-container{
+  margin-left: 5px; 
+}
+
+
+  
+@media only screen and (min-width: 768px){
+  #{{ sectId }} .hix-scw-swatch-tabs-container {
+    position: relative;
+    background-color: #fff;
+    z-index: 2;
+    padding: 10px 10px 5px;
+    margin: 0;
+    overflow-x: hidden;
+    white-space: nowrap;
+  } 
+}
+
+ @media only screen and (max-width: 769px){ 
+  #{{ sectId }} .hix-scw-swatch-tabs-container {
+    padding-left: 10px;
+  }
+  #{{ sectId }} .paint-sample-selection h3 {
+    margin-top: 10px; 
+    margin-left: 10px; 
+    margin-bottom: 5px; 
+    line-height: 17px;
+  }
+  #{{ sectId }} .a-dropdown-container{
+    margin-left: 10px; 
+  }
+ }
+</style>
+<style>
+  #{{ sectId }} .paint-selected{
+/*     padding: 25px; */
+    grid-column: span 2;
+    height: 0px;
+    padding: 0px;
+    overflow: hidden;
+    transition: all 300ms ease 0s;
+  }
+
+  #{{ sectId }} .paint-selected-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(350px,1fr));
+    grid-gap: 10px;
+  }
+
+  #{{ sectId }} .paint-selected-item{
+    width: 100%;
+    height: auto;
+    min-height: 135px;
+    padding: 5px;
+    border: 1px solid #eaeded;
+/*     background-color: #fff; */
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 5px;
+    -ms-flex-align: center;
+    align-items: center;
+/*     height: 100%; */
+  }
+
+  #{{ sectId }} .paint-selected-image-container, #{{ sectId }} .paint-selected-info-container{
+    width: 100%;
+    height: 100%;
+  }
+
+  #{{ sectId }} .paint-selected-image-container{
+    border-radius: 3px;
+    border: 0.5px solid gainsboro;
+  }
+
+  #{{ sectId }} .paint-selected-info-container{
+    background: white;
+    padding: 10px;
+  }
+
+  #{{ sectId }} .paint-selected-delete{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    line-height: 9px;
+    cursor: pointer;
+  }
+
+  @media screen and (max-width:769px){
+    #{{ sectId }} .paint-selected-container {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+<style>
+  #{{ sectId }} .paint-sample-image-foreground{
+    position: absolute;
+    height: 36px;
+    width: 100%;
+/*     background: blue; */
+    font-size: 0;
+  }
+  #{{ sectId }} .paint-sample-image-background{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+/*     background: black; */
+    z-index: -2;
+    font-size: 0;
+  }
+
+  #{{ sectId }} .paint-sector{
+    height: 100%;
+  }
+
+  #{{ sectId }} .paint-name-sector, #{{ sectId }} .paint-name-full-preview{
+    width: 100%;
+    font-size: 13px;
+    box-shadow: 0 3px 5px rgba(0,0,0,.1);
+    height: 36px;
+    line-height: 36px;
+    display: inline-block;
+    vertical-align: top;
+    padding: 2px 6px;
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+  }
+  #{{ sectId }} .paint-color-sector, #{{ sectId }} .paint-color-full-preview{
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+  }
+</style>
+<style>
+ #{{ sectId }} .paint-selector{
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1.3fr 1fr;
+    grid-template-columns: 1.3fr 1fr;
+    height: 100%;
+   {% unless section.settings.stacked %}
+    padding-top: 37px !important;
+    
+    padding-bottom: 37px !important;
+   {% endunless %}
+  }
+
+ #{{ sectId }} .paint-sample-image-area{
+    display: -ms-grid;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    isolation: isolate;
+    min-height: unset !important;
+  }
+
+  #{{ sectId  }} .paint-sample-selection{
+    width: 100%;
+    height: 100%;
+    background: white;
+    overflow: hidden;
+    max-height: none !important;
+    display: grid;
+    align-content: flex-start;
+  }
+
+   #{{ sectId }} .paint-room-options{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    gap:10px;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 10px;
+    justify-content: center;
+  }
+  
+   #{{ sectId }} .paint-room-option-item{
+    display: inline-block;
+    border: 1px solid rgba(0,0,0,.2);
+    background: white;
+    padding: 5px;
+    font-size: 13px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 50%);
+            box-shadow: 0 2px 5px 0 rgb(0 0 0 / 50%);
+    padding: 2px 10px;
+    line-height: 17px;
+    cursor: pointer;
+  }
+
+  #{{ sectId }} .paint-room-option-item.selected{
+    outline: 2.5px solid red;
+  }
+
+  #{{ sectId }} .paint-sample-wrapper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding-top: 1px;
+    z-index: 1;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  #{{ sectId }} .paint-sample-wrapper::-webkit-scrollbar {
+      width: 11px;
+      height: 11px;
+  }
+
+  #{{ sectId }} .paint-sample-wrapper::-webkit-scrollbar-thumb {
+      background-color: #373d3e;
+      border-radius: 6px;
+      border: 3px solid #eaeded;
+  }
+
+  #{{ sectId }} .paint-sample-wrapper::-webkit-scrollbar-track {
+      background: #eaeded;
+  }
+
+  #{{ sectId }} .paint-bucket{
+    white-space: nowrap;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 50px 3px 50px 3px 50px 3px 50px 3px 50px;
+    grid-template-rows: repeat(5,50px);
+    grid-gap: {{ section.settings.paint_gap }}px;
+    grid-auto-flow: column;
+    grid-auto-columns: 50px 50px;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 15px;
+  }
+
+  #{{ sectId }} .paint-bucket-color-swatch {
+    display: inline-block;
+    padding: 2px;
+    height: 50px;
+    min-width: 50px;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+    background-color: orange;
+    border: 0.5px solid gainsboro;
+  }
+
+  #{{ sectId }} .paint-bucket-color-swatch-highlight{
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,.8),0 0 7px rgba(0,0,0,.45);
+    transform: scale(1.2,1.2);
+    transition: transform 150ms ease-out;
+    border-radius: 5px;
+    z-index: 2
+  }
+
+  #{{ sectId }} .paint-bucket-color-swatch-selected {
+    border: 1px solid #000;
+  }
+  
+  #{{ sectId }} .paint-bucket-color-swatch-selected::after {
+    content: "";
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+    height: 14px;
+    width: 14px;
+    background-image: url(https://m.media-amazon.com/images/G/01/hix/test/check-circle-solid.svg);
+  }
+
+  @media only screen and (min-width: 768px){
+    #{{ sectId }} .paint-bucket{
+        grid-column: 2;
+        -ms-grid-column: 2;
+        grid-template-columns: repeat(auto-fill,minmax(50px,1fr));
+        overflow-y: hidden;
+        grid-auto-flow: row;
+        grid-auto-columns: unset;
+        -ms-grid-rows: unset;
+        grid-template-rows: unset;
+        padding: 5px;
+        overflow-x: hidden;
+    }
+  }
+
+  @media only screen and (max-width: 769px){
+    #{{ sectId }} .paint-selector {
+      display: -ms-grid !important;
+      display: grid !important;
+      -ms-grid-columns: 1fr !important;
+      grid-template-columns: 1fr !important;
+      height: 100% !important;
+      grid-auto-rows: 1fr;
+    }
+    
+    #{{ sectId }} .paint-sample-selection {
+      height: auto !important;
+      align-content: unset;
+    }
+    
+    #{{ sectId }} .paint-sample-image-area{
+      max-width: 100vw !important;
+      min-height: 430px !important;
+    }
+
+    #{{ sectId }} .paint-sample-wrapper{
+      overflow-x: auto !important;
+    }
+    #{{ sectId }} .paint-selected {
+/*       padding: 25px; */
+      grid-column: span 1;
+    }
+    #{{ sectId }} .paint-bucket{
+      grid-template-rows: repeat(4,50px) !important;
+    }
+  }
+</style>
+
+
+<!-- Imports for tooltip -->
+<script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://unpkg.com/tippy.js@6.3.6/dist/tippy.umd.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+
+       // Load the CSS files
+    var cssFile1 = document.createElement('link');
+    cssFile1.rel = 'stylesheet';
+    cssFile1.href = 'https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.css';
+
+    var cssFile2 = document.createElement('link');
+    cssFile2.rel = 'stylesheet';
+    cssFile2.href = 'https://unpkg.com/tippy.js@6.3.6/dist/tippy.css';
+
+    // Append the CSS files to the <head>
+    document.head.appendChild(cssFile1);
+    document.head.appendChild(cssFile2);
+
+
+    
+    // Get all elements with the class 'swatch-tooltip'
+    var buttons = document.querySelectorAll('#{{ sectId }} .swatch-tooltip');
+
+    // Iterate over each button and create tooltips
+    buttons.forEach(function(button) {
+      var colorName = button.getAttribute('data-colorname');
+      
+      // Initialize the tooltip for each button
+      tippy(button, {
+        content: colorName,
+      });
+    });
+  });
+</script>
+<!-- End Imports for tooltip  -->
+
+<script>
+  function scrollToSection(tabName) {
+    var container = document.querySelector("#{{ sectId }} .paint-sample-wrapper");
+    var section = document.getElementById(`${tabName}`);
+    
+    // Check if the current screen width matches the media query
+    if (window.matchMedia("(max-width: 769px)").matches) {
+      //console.log(section.offsetLeft)
+      container.scrollTo({
+        left: section.offsetLeft,
+        behavior: 'smooth'
+      });
+    } else {
+      //console.log(section.offsetTop)
+      container.scrollTo({
+        top: section.offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  
+  const paintWrapperContainer{{ code }} = document.querySelector("#{{ sectId }} .paint-sample-wrapper");
+  const swatchTabs{{ code }} = document.querySelectorAll("#{{ sectId }} .hix-scw-swatch-tabs-container .hix-scw-swatch-tab-link");
+  swatchTabs{{ code }}.forEach(tab => {
+    tab.addEventListener("click", e => {
+      //console.log(e.target.dataset.name)
+      swatchTabs{{ code }}.forEach(item => {
+        item.classList.remove("hix-scw-swatch-tab-link-selected");
+      });
+      
+      tab.classList.add("hix-scw-swatch-tab-link-selected");
+      scrollToSection(e.target.dataset.name)
+    });
+  });
+</script>
+
+
+  
+<script>
+function productItemUpdate(selectedOption){
+    const paintProductsAmount{{ code }} = document.querySelectorAll("#{{ sectId }} .paint-selected-item[data-type='paint-main']"); 
+  console.log(selectedOption)
+    paintProductsAmount{{ code }}.forEach(item => {
+      // .paint-selected-product-amount
+      // console.log(item.dataset.id)
+      
+      const visible = item.querySelector(".paint-selected-product-link").dataset.bool;
+      // console.log(visible);
+      let paintProductItem{{ code }} = document.querySelectorAll(`#{{ sectId }} .paint-selected-item[data-type='product-item'][data-id='${item.dataset.id}'][data-brand*='${selectedOption}']`); 
+     
+      
+      if(selectedOption == "ALL"){
+        paintProductItem{{ code }} = document.querySelectorAll(`#{{ sectId }} .paint-selected-item[data-type='product-item'][data-id='${item.dataset.id}']`); 
+      }
+
+      const itemCount = Array.from(paintProductItem{{ code }}).length;
+      console.log(itemCount); 
+
+   
+      
+      const productShowLink = item.querySelector(".paint-selected-product-link");
+      if(selectedOption == "ALL"){
+        if(visible){
+          productShowLink.textContent = "Show All Products With This Color";
+        }else{
+          productShowLink.textContent = "Hide All Products With This Color";
+        }
+        
+      }else{
+        if(visible){
+          productShowLink.textContent = "Show All Products With This Color & Brand";
+        }else{
+          productShowLink.textContent = "Hide All Products With This Color & Brand";
+        }
+      }
+
+      if(itemCount == 0){
+        productShowLink.style.textDecoration = "line-through";
+        productShowLink.style.pointerEvents = "none";
+      }else{
+        productShowLink.style.textDecoration = "none";
+        productShowLink.style.pointerEvents = "all";
+      }
+
+      
+      const productAmounts = item.querySelector(".paint-selected-product-amount");
+      productAmounts.textContent = `${itemCount} Product(s) Available`;
+
+      if(visible == "true"){
+        const paintProductsX{{ code }} = document.querySelectorAll(`#{{ sectId }} .paint-selected-item[data-type='product-item'][data-id='${item.dataset.id}']`);
+        paintProductsX{{ code }}.forEach(itemx => {
+          //console.log(itemx)
+          if(selectedOption == "ALL"){
+            itemx.style.display = "grid";
+          }else{
+            if(!(itemx.dataset.brand == selectedOption)){
+              itemx.style.display = "none";
+            }else{
+              itemx.style.display = "grid";
+            }
+          }
+        });
+      }
+      
+      
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const selectPaintBrand{{ code }} = document.querySelector("#{{ sectId }} #paint-selector-brand-dropdown");
+    const paintBucket{{ code }} = document.querySelectorAll("#{{ sectId }} .paint-bucket .paint-bucket-color-swatch");
+    
+    selectPaintBrand{{ code }}.addEventListener("change", e => {
+      // console.log(e.target);
+      // console.log(e.target.value);
+      const selectedOption = e.target.value;
+      paintBucket{{ code }}.forEach(item => {
+        // console.log(item)
+        if(selectedOption == "ALL"){
+          item.style.display = "inline-block";
+        }else{
+          if(!(item.dataset.brand.includes(selectedOption) )){
+            item.style.display = "none";
+          }else{
+            item.style.display = "inline-block";
+          }
+        }
+  
+        
+      });
+
+      productItemUpdate(selectedOption)
+      
+      
+    });
+
+
+});
+
+{% comment %}
+// New brand select
+document.addEventListener('DOMContentLoaded', function() {
+  const selectPaintBrand{{ code }} = document.querySelector("#{{ sectId }} #paint-selector-brand-dropdown");
+ 
+
+  
+  selectPaintBrand{{ code }}.addEventListener("change", e => {
+    // console.log(e.target);
+    // console.log(e.target.value);
+    
+    
+    
+    const selectedOption = e.target.value;
+
+    {% comment %}
+    const paintProducts{{ code }} = document.querySelectorAll("#{{ sectId }} .paint-selected-item[data-type='product-item']");
+    paintProducts{{ code }}.forEach(item => {
+      //console.log(item)
+      if(selectedOption == "ALL"){
+        item.style.display = "grid";
+      }else{
+        if(!(item.dataset.brand == selectedOption)){
+          item.style.display = "none";
+        }else{
+          item.style.display = "grid";
+        }
+      }
+    });
+    {% endcomment %}
+
+    {% comment %}
+    function productItemUpdate(){
+          const paintProductsAmount{{ code }} = document.querySelectorAll("#{{ sectId }} .paint-selected-item[data-type='paint-main']"); 
+
+    paintProductsAmount{{ code }}.forEach(item => {
+      // .paint-selected-product-amount
+      console.log(item.dataset.id)
+      const visible = item.querySelector(".paint-selected-product-link").dataset.bool;
+      console.log(visible);
+      let paintProductItem{{ code }} = document.querySelectorAll(`#{{ sectId }} .paint-selected-item[data-type='product-item'][data-id='${item.dataset.id}'][data-brand='${selectedOption}']`); 
+     
+      
+      if(selectedOption == "ALL"){
+        paintProductItem{{ code }} = document.querySelectorAll(`#{{ sectId }} .paint-selected-item[data-type='product-item'][data-id='${item.dataset.id}']`); 
+      }
+
+      const itemCount = Array.from(paintProductItem{{ code }}).length;
+      console.log(itemCount); 
+
+      const productAmounts = item.querySelector(".paint-selected-product-amount");
+      productAmounts.textContent = `${itemCount} Product(s) Available`;
+
+      if(visible == "true"){
+        const paintProductsX{{ code }} = document.querySelectorAll(`#{{ sectId }} .paint-selected-item[data-type='product-item'][data-id='${item.dataset.id}']`);
+        paintProductsX{{ code }}.forEach(itemx => {
+          //console.log(itemx)
+          if(selectedOption == "ALL"){
+            itemx.style.display = "grid";
+          }else{
+            if(!(itemx.dataset.brand == selectedOption)){
+              itemx.style.display = "none";
+            }else{
+              itemx.style.display = "grid";
+            }
+          }
+        });
+      }
+      
+      
+    });
+    }
+      {% endcomment %}
+   
+
+
+
+  
+
+    {% comment %}
+    setTimeout(() => {
+      const itemCount = Array.from(paintProductsAmount{{ code }}).length;
+      console.log(itemCount); 
+  
+      var selectedPaintInfoProductAmount = document.createElement("small");
+      selectedPaintInfoProductAmount.textContent = `${itemCount-1} Product(s) Available`;
+      selectedPaintInfoProductAmount.style.opacity = "0.5";
+
+    }, 250); 
+    {% endcomment %}
+  {% comment %}  
+  });
+});
+{% endcomment %}
+{% endcomment %}
+</script>
+
+  
+
+<script>
+{% comment %} 
+const colors{{ code }} = [
+{ name: "White", color: "#FFFFFF", brand: "HQC", productlink: "https://www.paintoutlet.co.uk/products/hqc-garden-paint?variant=36641993916576" },
+{ name: "Black", color: "#252525", brand: "HQC", productlink: "https://www.paintoutlet.co.uk/products/hqc-garden-paint?variant=36641993752736" },
+{ name: "Dark Brown", color: "#463428", brand: "HQC", productlink: "https://www.paintoutlet.co.uk/products/hqc-garden-paint?variant=36641994047648" },
+{ name: "Leaf Brown", color: "#672B17", brand: "HQC", productlink: "https://www.paintoutlet.co.uk/products/hqc-garden-paint?variant=36641994178720" },
+{ name: "Light Grey", color: "#EEEEEE", brand: "HQC", productlink: "https://www.paintoutlet.co.uk/products/hqc-garden-paint?variant=36641994309792" },
+{ name: "Classic Grey", color: "#4E5253", brand: "HQC", productlink: "https://www.paintoutlet.co.uk/products/hqc-garden-paint?variant=36641994440864" },
+{ name: "Dove Grey", color: "#C9C9C9", brand: "HQC", productlink: "https://www.paintoutlet.co.uk/products/hqc-garden-paint?variant=36641994571936" },
+{ name: "Duck Egg", color: "#E0E7EA", brand: "HQC", productlink: "https://www.paintoutlet.co.uk/products/hqc-garden-paint?variant=36641994703008" },
+{ name: "Light Blue", color: "#CDEDF2", brand: "HQC", productlink: "https://www.paintoutlet.co.uk/products/hqc-garden-paint?variant=36641994834080" },
+{ name: "Pale Blue", color: "#5AADC8", brand: "HQC", productlink: "https://www.paintoutlet.co.uk/products/hqc-garden-paint?variant=36641994965152" },
+{ name: "Marina Blue", color: "#086F8C", brand: "HQC", productlink: "https://www.paintoutlet.co.uk/products/hqc-garden-paint?variant=36641995096224" },
+{ name: "Ivory", color: "#FEE6D1", brand: "HQC", productlink: "https://www.paintoutlet.co.uk/products/hqc-garden-paint?variant=36641995227296" },
+{ name: "Baby Pink", color: "#F6E6E3", brand: "HQC", productlink: "https://www.paintoutlet.co.uk/products/hqc-garden-paint?variant=36641995358368" },
+{ name: "Racing Green", color: "#2A4823", brand: "HQC", productlink: "https://www.paintoutlet.co.uk/products/hqc-garden-paint?variant=36641995489440" },
+{ name: "Sage Green", color: "#C6CEB1", brand: "HQC", productlink: "https://www.paintoutlet.co.uk/products/hqc-garden-paint?variant=36641995620512" },
+{ name: "Terracotta", color: "#C26938", brand: "HQC", productlink: "https://www.paintoutlet.co.uk/products/hqc-garden-paint?variant=36641995751584" },
+{ name: "Sandstone", color: "#B8A78B", brand: "HQC", productlink: "https://www.paintoutlet.co.uk/products/hqc-garden-paint?variant=36641995882656" },
+{ name: "Light Beige", color: "#F2DBB9", brand: "HQC", productlink: "https://www.paintoutlet.co.uk/products/hqc-garden-paint?variant=36641996013728" },
+{ name: "Bagles", color: "#F5DDB9", brand: "HQC", productlink: "https://www.paintoutlet.co.uk/products/hqc-garden-paint?variant=36641996144800" },
+{ name: "Magnolia", color: "#FEE6D1", brand: "HQC", productlink: "https://www.paintoutlet.co.uk/products/hqc-garden-paint?variant=36641996275872" },
+{ name: "Red Brick", color: "#932413", brand: "HQC", productlink: "https://www.paintoutlet.co.uk/products/hqc-garden-paint?variant=36641996406944" },
+{ name: "Pine Forrest", color: "#D3F5DC", brand: "HQC", productlink: "https://www.paintoutlet.co.uk/products/hqc-garden-paint?variant=36641996538016" }  
+];
+{% endcomment %} 
+  
+// jsProducts{{ code }}
+// globalColors{{ code }}
+  
+let colo{{ code }} = Array.from(globalColors{{ code }}, (item) => ({ name: item }));
+// console.log(colo);
+
+
+
+
+let colors{{ code }} = [
+{{ section.settings.colors }}
+];
+
+
+
+
+const paintBucket{{ code }} = document.querySelector("#{{ sectId }} .paint-bucket");
+const paintImageArea{{ code }} = document.querySelector("#{{ sectId }} .paint-sample-image-area .paint-sector");
+const paintImages{{ code }} = document.querySelectorAll("#{{ sectId }} .paint-sample-image-area .paint-image");
+const foreground{{ code }} = document.querySelector("#{{ sectId }} .paint-sample-image-foreground");
+const background{{ code }} = document.querySelector("#{{ sectId }} .paint-sample-image-background");
+let selectedColors{{ code }} = [];
+
+function isColorDark(color) {
+  // console.log(color)
+  const rgbValues = color.match(/\d+/g);
+  const r = parseInt(rgbValues[0]);
+  const g = parseInt(rgbValues[1]);
+  const b = parseInt(rgbValues[2]);
+
+  const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+  return brightness < 128;
+}
+  
+function adjustTextColor(element) {
+  // console.log(element)
+  // const backgroundElement = document.querySelector('#{{ sectId }} .paint-name-sector');
+  // const textElement = document.querySelector('#{{ sectId }} .paint-name-sector');
+  
+
+  const backgroundColor = element.style.backgroundColor;
+  const isBackgroundDark = isColorDark(backgroundColor);
+
+  if (isBackgroundDark) {
+    element.style.color = 'white';
+  } else {
+    element.style.color = 'black';
+  } 
+}
+
+function handleSplit(item, hovered) {
+  //console.log("handle", item, hovered)
+  //console.log(selectedColors{{ code }})
+  const color = item.dataset.hexcolor;
+  const colorname = item.dataset.colorname;
+  const foregroundSectors = document.querySelectorAll("#{{ sectId }} .paint-name-sector");
+  const backgroundSectors = document.querySelectorAll("#{{ sectId }} .paint-color-sector");
+  const itemIndex = selectedColors{{ code }}.indexOf(item.dataset.id);
+  // console.log(selectedColors{{ code }})
+  // console.log(item.dataset.id)
+  
+  if (itemIndex > -1) {
+    // Element exists, remove it
+    selectedColors{{ code }}.splice(itemIndex, 1);
+    // console.log("negative")
+
+    if(!hovered)
+    {
+            const foregroundSectors = document.querySelectorAll("#{{ sectId }} .paint-name-sector");
+    foregroundSectors.forEach(item => {
+      item.style.width = `${100/selectedColors{{ code }}.length}%`;
+    });
+
+     const backgroundSectors = document.querySelectorAll("#{{ sectId }} .paint-color-sector");
+    backgroundSectors.forEach(item => {
+      item.style.width = `${100/selectedColors{{ code }}.length}%`;
+    });
+    }
+
+
+    
+  } else {
+    // Element doesn't exist, add it
+    selectedColors{{ code }}.push(item.dataset.id);
+    // console.log("postive")
+    
+    var foregroundName = document.createElement("div");
+    foregroundName.className = "paint-name-sector";
+    foregroundName.dataset.hexcolor = color;
+    foregroundName.dataset.id = `foreground-${item.dataset.id}`;
+    foregroundName.style.backgroundColor = color;
+
+    const foregroundSectors = document.querySelectorAll("#{{ sectId }} .paint-name-sector");
+    foregroundSectors.forEach(item => {
+      item.style.width = `${100/selectedColors{{ code }}.length}%`;
+    });
+
+
+
+    var backgroundName = document.createElement("div");
+    backgroundName.className = "paint-color-sector";
+    backgroundName.dataset.hexcolor = color;
+    backgroundName.dataset.id = `background-${item.dataset.id}`;
+    backgroundName.style.backgroundColor = color;
+
+    const backgroundSectors = document.querySelectorAll("#{{ sectId }} .paint-color-sector");
+    backgroundSectors.forEach(item => {
+      item.style.width = `${100/selectedColors{{ code }}.length}%`;
+    });
+    
+  }
+}
+  
+function removeUnselected(){
+  const foregroundSectors = document.querySelectorAll("#{{ sectId }} .paint-name-sector");
+  foregroundSectors.forEach(fSector => {
+    const id = fSector.dataset.id.split("foreground-")[1];
+    const containsSwatch = selectedColors{{ code }}.some(element => element.includes(id));
+    
+    if(!containsSwatch){
+      fSector.remove(); 
+    }
+  });
+
+  const backgroundSectors = document.querySelectorAll("#{{ sectId }} .paint-color-sector");
+  backgroundSectors.forEach(bSector => {
+    const id = bSector.dataset.id.split("background-")[1];
+    const containsSwatch = selectedColors{{ code }}.some(element => element.includes(id));
+    
+    if(!containsSwatch){
+      bSector.remove(); 
+    }
+  });
+}
+
+  
+// Remove the foreground element when not hovering over a swatch
+paintBucket{{ code }}.addEventListener('mouseleave', () => {
+  removeUnselected();
+  Array.from(paintBucket{{ code }}.getElementsByClassName("paint-bucket-color-swatch")).forEach(swatch => {
+    swatch.classList.remove("paint-bucket-color-swatch-highlight");
+  });
+  const x = document.querySelectorAll("#{{ sectId }} .paint-name-sector");
+  x.forEach(item => {
+    // console.log(item, selectedColors{{ code }}.length)
+    item.style.width = `${100/selectedColors{{ code }}.length}%`;
+  });
+
+  const y = document.querySelectorAll("#{{ sectId }} .paint-color-sector");
+  y.forEach(item => {
+    // console.log(item, selectedColors{{ code }}.length)
+    item.style.width = `${100/selectedColors{{ code }}.length}%`;
+  });
+});
+
+  
+// Add swatches
+colors{{ code }}.forEach((item, index) => {
+  var swatch = document.createElement("div");
+  swatch.className = "paint-bucket-color-swatch";
+  swatch.classList.add("swatch-tooltip");
+  swatch.dataset.hexcolor = item.color;
+  swatch.dataset.colorname = item.name;
+  swatch.dataset.brand = item.brand;
+  swatch.dataset.id = `swatch-${index}`;
+  swatch.dataset.productlink = item.productlink;
+  swatch.style.backgroundColor = item.color;
+  
+  if(item.category == "Neutrals"){
+    swatch.id = `swatch-tab-neutrals`
+  }
+  if(item.category == "Browns"){
+    swatch.id = `swatch-tab-browns`
+  }
+  if(item.category == "Reds"){
+    swatch.id = `swatch-tab-reds`
+  }
+  if(item.category == "Oranges"){
+    swatch.id = `swatch-tab-oranges`
+  }
+  if(item.category == "Yellows"){
+    swatch.id = `swatch-tab-yellows`
+  }
+  if(item.category == "Greens"){
+    swatch.id = `swatch-tab-greens`
+  }
+  if(item.category == "Blues"){
+    swatch.id = `swatch-tab-blues`
+  }
+  if(item.category == "Purples"){
+    swatch.id = `swatch-tab-purples`
+  }
+
+  swatch.addEventListener('mouseover', (event) => {
+    // paintImageArea{{ code }}.style.backgroundColor = item.color;
+    const swatchElement = event.target;
+
+    const containsSwatch = selectedColors{{ code }}.some(element => element.includes(swatchElement.dataset.id));
+    const foregroundFullPreview = document.querySelector("#{{ sectId }} .paint-name-full-preview");
+    const backgroundFullPreview = document.querySelector("#{{ sectId }} .paint-color-full-preview");
+    
+    if(!containsSwatch){
+      foregroundFullPreview.style.display= "none";
+      backgroundFullPreview.style.display= "none";
+      
+      var foregroundName = document.createElement("div");
+      var backgroundName = document.createElement("div");
+      if(selectedColors{{ code }}.length == 0){
+        foregroundName.style.width = `100%`;
+        backgroundName.style.width = `100%`;
+      }else{
+        const selectedCount = selectedColors{{ code }}.length + 1;
+
+        
+        foregroundName.style.width = `${100/selectedCount}%`;
+        const foregroundSectors = document.querySelectorAll("#{{ sectId }} .paint-name-sector");
+        foregroundSectors.forEach(fore => {
+          fore.style.width = `${100/selectedCount}%`;
+        });
+
+        
+        backgroundName.style.width = `${100/selectedCount}%`;
+        const backgroundSectors = document.querySelectorAll("#{{ sectId }} .paint-color-sector");
+        backgroundSectors.forEach(back => {
+          back.style.width = `${100/selectedCount}%`;
+        });
+      }
+      
+      foregroundName.className = "paint-name-sector";
+      foregroundName.dataset.hexcolor = item.color;
+      foregroundName.dataset.id = `foreground-${swatchElement.dataset.id}`;
+      foregroundName.style.backgroundColor = item.color;
+      foregroundName.textContent = item.name;
+      adjustTextColor(foregroundName)
+
+
+
+      backgroundName.className = "paint-color-sector";
+      backgroundName.dataset.hexcolor = item.color;
+      backgroundName.dataset.id = `background-${swatchElement.dataset.id}`;
+      backgroundName.style.backgroundColor = item.color;
+      // backgroundName.textContent = item.name;
+    }
+    else{
+      const selectedCount = selectedColors{{ code }}.length;
+      const foregroundSectors = document.querySelectorAll("#{{ sectId }} .paint-name-sector");
+      
+      
+      foregroundFullPreview.style.backgroundColor = item.color;
+      foregroundFullPreview.textContent = item.name;
+      foregroundFullPreview.style.display= "inline-block";
+      
+      foregroundSectors.forEach(fore => {
+        fore.style.width = `${100/selectedCount}%`;
+      });  
+
+
+      const backgroundSectors = document.querySelectorAll("#{{ sectId }} .paint-color-sector");
+      
+      backgroundFullPreview.style.backgroundColor = item.color;
+      // backgroundFullPreview.textContent = item.name;
+      backgroundFullPreview.style.display= "inline-block";
+      
+      backgroundSectors.forEach(back => {
+        back.style.width = `${100/selectedCount}%`;
+      });  
+    }
+
+    removeUnselected();
+    foreground{{ code }}.append(foregroundName);
+    background{{ code }}.append(backgroundName);
+  });
+
+  swatch.addEventListener('click', (event) => {
+    let element = event.target;
+    if (element.classList.contains('paint-bucket-color-swatch-selected')) {
+      // If the class is already present, remove it
+      element.classList.remove('paint-bucket-color-swatch-selected');
+    } else {
+      // If the class is not present, add it
+      element.classList.add('paint-bucket-color-swatch-selected');
+    }
+
+    handleSplit(event.target, true);
+    // populateSelected(event.target, index)
+    // event.target.classList.add("paint-bucket-color-swatch-selected");
+
+
+    populateSelectedWithProducts(swatch, index);
+
+
+
+
+
+    
+  });
+
+  paintBucket{{ code }}.append(swatch);
+});
+
+  
+// Swatch hover lift
+paintBucket{{ code }}.addEventListener('mouseover', (event) => {
+    const target = event.target;
+    
+    if (target.classList.contains("paint-bucket-color-swatch")) {
+      // Remove the hover class from all color swatch elements
+      Array.from(paintBucket{{ code }}.getElementsByClassName("paint-bucket-color-swatch")).forEach(swatch => {
+        swatch.classList.remove("paint-bucket-color-swatch-highlight");
+      });
+      
+      // Add the hover class to the current color swatch element
+      target.classList.add("paint-bucket-color-swatch-highlight");
+    }
+  });
+
+  
+// Room selection
+const room{{ code }} = document.querySelectorAll("#{{ sectId }} .paint-room-options .paint-room-option-item");
+room{{ code }}.forEach(item => {
+    item.addEventListener('click', ()=>{
+      // console.log(item.dataset.room);
+      room{{ code }}.forEach(ro => {
+        ro.classList.remove("selected");
+      });
+      paintImages{{ code }}.forEach(image=>{
+        // console.log(image);
+        if(image.dataset.room == item.dataset.room){
+          image.style.opacity = "1";
+        }else{
+          image.style.opacity = "0";
+        }
+      })
+      item.classList.add("selected");
+    });
+  });
+
+
+{% comment %}
+// Populate selected
+function populateSelected(swatch, index) {
+  const selectedPaintArea = document.querySelector("#{{ sectId }} .paint-selected");
+  const paintCount = selectedPaintArea.querySelector("#{{ sectId }} .paint-selected-header-count");
+  const selectedPaintContainer = selectedPaintArea.querySelector("#{{ sectId }} .paint-selected-container");
+
+  paintCount.textContent = `(${selectedColors{{ code }}.length})`;
+
+  if(selectedColors{{ code }}.length == 0){
+    selectedPaintArea.style.height = "0px";
+    selectedPaintArea.style.padding = "0px";
+  }else {
+    selectedPaintArea.style.height = "auto";
+    selectedPaintArea.style.padding = "25px";
+  }
+
+
+  const id = swatch.dataset.id
+  const containsSwatch = selectedColors{{ code }}.some(element => element.includes(id));
+    
+  if(!containsSwatch){
+      const selectedPaint = selectedPaintContainer.querySelector(`div[data-id='selectedPaintItem-${id}']`);
+      selectedPaint.remove();
+  }else{
+    var selectedPaintItem = document.createElement("div");
+    selectedPaintItem.className = "paint-selected-item";
+    selectedPaintItem.dataset.hexcolor = swatch.dataset.hexcolor;
+    selectedPaintItem.dataset.colorname = swatch.dataset.colorname;
+    selectedPaintItem.dataset.id = `selectedPaintItem-swatch-${index}`;
+    selectedPaintItem.style.position = "relative";
+    // selectedPaintItem.style.backgroundColor = swatch.dataset.hexcolor;
+    
+  // .paint-selected-image-container
+    
+    
+    selectedPaintContainer.append(selectedPaintItem);
+
+    var selectedPaintDelete = document.createElement("a");
+    selectedPaintDelete.className = "paint-selected-delete";
+    selectedPaintDelete.textContent = "x";
+
+    selectedPaintDelete.addEventListener("click", e => {
+      e.preventDefault();
+      
+      const selectedPaint = selectedPaintContainer.querySelector(`div[data-id='selectedPaintItem-${id}']`);
+      selectedPaintItem.remove();
+      
+
+      
+      removeSelection(id);
+      removeUnselected();
+      paintCount.textContent = `(${selectedColors{{ code }}.length})`;
+    });
+    
+    selectedPaintItem.append(selectedPaintDelete);
+  
+
+    
+    var selectedPaintImage = document.createElement("div");
+    selectedPaintImage.className = "paint-selected-image-container";
+    selectedPaintImage.style.backgroundColor = swatch.dataset.hexcolor;
+  
+    var selectedPaintInfo = document.createElement("div");
+    selectedPaintInfo.className = "paint-selected-info-container";
+    selectedPaintInfo.style.display = "grid";
+    selectedPaintInfo.style.alignContent = "center";
+    
+  
+    var selectedPaintInfoColorName = document.createElement("p");
+    selectedPaintInfoColorName.textContent = swatch.dataset.colorname;
+    selectedPaintInfoColorName.style.margin = "0"; 
+    selectedPaintInfoColorName.style.fontSize = "17px";
+    selectedPaintInfoColorName.style.lineHeight = "17px";
+  
+  
+    var selectedPaintInfoColorHex = document.createElement("small");
+    selectedPaintInfoColorHex.textContent = swatch.dataset.hexcolor;
+    selectedPaintInfoColorHex.style.opacity = "0.5";
+
+    var selectedPaintProductLink = document.createElement("a");
+    selectedPaintProductLink.className = "paint-selected-product-link";
+    selectedPaintProductLink.textContent = "Shop Now";
+    selectedPaintProductLink.href = swatch.dataset.productlink;
+    selectedPaintProductLink.target="_blank";
+    selectedPaintProductLink.style.fontSize = "14px";
+    selectedPaintProductLink.style.lineHeight = "14px";
+
+  
+
+
+
+    selectedPaintInfo.append(selectedPaintInfoColorName);
+    selectedPaintInfo.append(selectedPaintInfoColorHex);
+    selectedPaintInfo.append(selectedPaintProductLink);
+
+    selectedPaintItem.append(selectedPaintImage);
+    selectedPaintItem.append(selectedPaintInfo);
+  }
+}
+{% endcomment %}
+
+function removeSelection(id){
+  const highlightedItems = document.querySelectorAll("#{{ sectId }} .paint-bucket-color-swatch-selected");
+  highlightedItems.forEach(item => {
+    // console.log(item)
+    if(item.dataset.id == id){
+      
+      handleSplit(item, false)
+      removeUnselected(); 
+      item.classList.remove('paint-bucket-color-swatch-selected');
+      item.classList.remove('paint-bucket-color-swatch-highlight');
+    }
+  });
+}
+  
+
+const deselectPaint{{ code }} = document.querySelector("#{{ sectId }} #paint-deselect-all-colors");
+deselectPaint{{ code }}.addEventListener("click", e => {
+  e.preventDefault();
+  selectedColors{{ code }} = [];
+  const selectedPaintArea = document.querySelector("#{{ sectId }} .paint-selected");
+  const paintCount = selectedPaintArea.querySelector(".paint-selected-header-count");
+  paintCount.textContent = `(0)`;
+  removeUnselected();
+
+  selectedPaintArea.style.height = "0px";
+  selectedPaintArea.style.padding = "0px";
+  
+
+  const selectedHighlights = document.querySelectorAll("#{{ sectId }} .paint-bucket-color-swatch-selected");
+  selectedHighlights.forEach(item => {
+    item.classList.remove('paint-bucket-color-swatch-selected');
+  });
+
+  const selectedPaints = selectedPaintArea.querySelectorAll("#{{ sectId }} .paint-selected-item");
+  selectedPaints.forEach(item => {
+    item.remove();
+  });
+  
+});
+
+
+
+function populateSelectedWithProducts(swatch, index){
+  const selectedPaintArea = document.querySelector("#{{ sectId }} .paint-selected");
+  const paintCount = selectedPaintArea.querySelector(".paint-selected-header-count");
+  const selectedPaintContainer = selectedPaintArea.querySelector(".paint-selected-container");
+
+  paintCount.textContent = `(${selectedColors{{ code }}.length})`;
+
+  
+  if(selectedColors{{ code }}.length == 0){
+    selectedPaintArea.style.height = "0px";
+    selectedPaintArea.style.padding = "0px";
+  }else {
+    selectedPaintArea.style.height = "auto";
+    selectedPaintArea.style.padding = "25px";
+  }
+
+
+  
+  const id = swatch.dataset.id
+  const containsSwatch = selectedColors{{ code }}.some(element => element.includes(id));
+    
+  if(!containsSwatch){
+      const selectedPaintProducts = selectedPaintContainer.querySelectorAll(".paint-selected-item");
+      selectedPaintProducts.forEach(item => {
+        if(item.dataset.colorname === swatch.dataset.colorname){
+          item.remove();
+        }
+      });
+  }else{
+
+  
+  //console.log(swatch.dataset.colorname)
+  //console.log(jsProducts{{ code }})
+  const selectedProducts = jsProducts{{ code }}.filter(product => {
+    return product.variants.some(variant => variant.name.includes(swatch.dataset.colorname));
+  });
+  //console.log(selectedProducts);
+
+
+
+
+  function showAll() {
+  var selectedPaintItem = document.createElement("div");
+    selectedPaintItem.className = "paint-selected-item";
+    selectedPaintItem.dataset.hexcolor = swatch.dataset.hexcolor;
+    selectedPaintItem.dataset.colorname = swatch.dataset.colorname;
+    selectedPaintItem.dataset.id = `selectedPaintItem-swatch-${index}`;
+    selectedPaintItem.dataset.type = "paint-main";
+    selectedPaintItem.style.position = "relative";
+    // selectedPaintItem.style.backgroundColor = swatch.dataset.hexcolor;
+    selectedPaintItem.style.border = `3px solid ${swatch.dataset.hexcolor}`;
+    
+  // .paint-selected-image-container
+    
+    
+    selectedPaintContainer.append(selectedPaintItem);
+
+    var selectedPaintDelete = document.createElement("a");
+    selectedPaintDelete.className = "paint-selected-delete";
+    selectedPaintDelete.textContent = "x";
+
+    selectedPaintDelete.addEventListener("click", e => {
+      e.preventDefault();
+      
+      // const selectedPaint = selectedPaintContainer.querySelector(`div[data-id='selectedPaintItem-${id}']`);
+      const selectedPaintProducts = selectedPaintContainer.querySelectorAll(".paint-selected-item");
+      selectedPaintProducts.forEach((item, i) => {
+        if(item.dataset.id == `selectedPaintItem-${id}`){
+          item.remove();
+        }
+      });
+      
+      
+
+      
+      removeSelection(id);
+      removeUnselected();
+      paintCount.textContent = `(${selectedColors{{ code }}.length})`;
+    });
+    
+    selectedPaintItem.append(selectedPaintDelete);
+  
+
+    
+    var selectedPaintImage = document.createElement("div");
+    selectedPaintImage.className = "paint-selected-image-container";
+    selectedPaintImage.style.backgroundColor = swatch.dataset.hexcolor;
+  
+    var selectedPaintInfo = document.createElement("div");
+    selectedPaintInfo.className = "paint-selected-info-container";
+    selectedPaintInfo.style.display = "grid";
+    selectedPaintInfo.style.alignContent = "center";
+    
+  
+    var selectedPaintInfoColorName = document.createElement("p");
+    selectedPaintInfoColorName.textContent = swatch.dataset.colorname;
+    selectedPaintInfoColorName.style.margin = "0"; 
+    selectedPaintInfoColorName.style.fontSize = "17px";
+    selectedPaintInfoColorName.style.lineHeight = "17px";
+  
+  
+    var selectedPaintInfoColorHex = document.createElement("small");
+    selectedPaintInfoColorHex.textContent = swatch.dataset.hexcolor;
+    selectedPaintInfoColorHex.style.opacity = "0.5";
+
+    var selectedPaintProductLink = document.createElement("a");
+    selectedPaintProductLink.className = "paint-selected-product-link";
+    selectedPaintProductLink.textContent = "Show All Products With This Color";
+    selectedPaintProductLink.href = swatch.dataset.productlink;
+    selectedPaintProductLink.target="_blank";
+    selectedPaintProductLink.style.fontSize = "14px";
+    selectedPaintProductLink.style.lineHeight = "14px";
+    selectedPaintProductLink.dataset.bool = "false";
+
+    selectedPaintProductLink.addEventListener("click", e => {
+      e.preventDefault();
+      const brandSelector = document.querySelector("#{{ sectId }} #paint-selector-brand-dropdown");
+      const selectedBrand = brandSelector.value;
+      // console.log(selectedBrand, index)
+      let selectedPaintProducts = selectedPaintContainer.querySelectorAll(`.paint-selected-item[data-brand*='${selectedBrand}'][data-id='selectedPaintItem-swatch-${index}'][data-type='product-item']`);
+      // let selectedPaintProducts = selectedPaintContainer.querySelectorAll(`.paint-selected-item[data-id='selectedPaintItem-swatch-${index}'][data-type='product-item']`);
+      
+      // console.log(selectedBrand);
+      // console.log(selectedPaintProducts);
+      
+      if(selectedBrand == "ALL"){
+        selectedPaintProducts = selectedPaintContainer.querySelectorAll(`.paint-selected-item[data-type='product-item'][data-id='selectedPaintItem-swatch-${index}']`);
+      }
+      console.log(selectedPaintProducts);
+      
+      
+      if(e.target.dataset.bool == "false"){
+        e.target.dataset.bool = "true";
+        if(selectedBrand == "ALL"){
+          e.target.textContent = "Hide All Products With This Color";
+        }else{
+          e.target.textContent = "Hide All Products With This Color & Brand";
+        }
+        selectedPaintProducts.forEach((item, i) => {
+          //console.log(i);
+          if(i>0){}
+            if(item.dataset.id === `selectedPaintItem-swatch-${index}`){
+              item.style.display = "grid";
+            }
+          
+        });
+        
+      }else{
+        e.target.dataset.bool = "false";
+        if(selectedBrand == "ALL"){
+          e.target.textContent = "Show All Products With This Color";
+        }else{
+          e.target.textContent = "Show All Products With This Color & Brand";
+        }
+        selectedPaintProducts.forEach((item, i) => {
+          //console.log(i);
+          if(i>0){}
+            if(item.dataset.id === `selectedPaintItem-swatch-${index}`){
+              item.style.display = "none";
+            }
+          
+        });
+      }
+
+    });
+
+  setTimeout(() => {
+    const brandSelector = document.querySelector("#{{ sectId }} #paint-selector-brand-dropdown");
+    const selectedBrand = brandSelector.value;
+    let selectedPaintProducts = selectedPaintContainer.querySelectorAll(`.paint-selected-item[data-brand*='${selectedBrand}'][data-id='selectedPaintItem-swatch-${index}'][data-type='product-item']`);
+    if(selectedBrand == "ALL"){
+        selectedPaintProducts = selectedPaintContainer.querySelectorAll(`.paint-selected-item[data-type='product-item'][data-id='selectedPaintItem-swatch-${index}']`);
+    }
+    
+    const itemCount = Array.from(selectedPaintProducts).length;
+    //console.log(itemCount); 
+
+    var selectedPaintInfoProductAmount = document.createElement("small");
+    selectedPaintInfoProductAmount.textContent = `${itemCount} Product(s) Available`;
+    selectedPaintInfoProductAmount.style.opacity = "0.5";
+    selectedPaintInfoProductAmount.className = "paint-selected-product-amount";
+
+  
+
+
+
+    selectedPaintInfo.append(selectedPaintInfoColorName);
+    selectedPaintInfo.append(selectedPaintInfoColorHex);
+    selectedPaintInfo.append(selectedPaintProductLink);
+    selectedPaintInfo.append(selectedPaintInfoProductAmount);
+  
+
+    selectedPaintItem.append(selectedPaintImage);
+    selectedPaintItem.append(selectedPaintInfo);
+  }, 250); 
+  }
+
+
+  showAll();
+
+  
+
+  selectedProducts.forEach((product, i) => {
+    // console.log(product);
+    const selectedVariant = product.variants.find(variant => variant.name.includes(swatch.dataset.colorname));
+    // console.log(selectedVariant);
+
+    
+    var selectedPaintItem = document.createElement("div");
+    selectedPaintItem.className = "paint-selected-item";
+    selectedPaintItem.dataset.hexcolor = swatch.dataset.hexcolor;
+    selectedPaintItem.dataset.colorname = swatch.dataset.colorname;
+    selectedPaintItem.dataset.id = `selectedPaintItem-swatch-${index}`;
+    selectedPaintItem.dataset.type = "product-item";
+    selectedPaintItem.dataset.brand = selectedVariant.brand;
+    
+    
+    selectedPaintItem.style.position = "relative";
+    selectedPaintItem.style.display = "none";
+    
+
+    selectedPaintContainer.append(selectedPaintItem);
+
+//console.log(selectedVariant.image)
+    
+    var selectedPaintImage = document.createElement("div");
+    selectedPaintImage.className = "paint-selected-image-container";
+<!--     selectedPaintImage.style.backgroundColor = swatch.dataset.hexcolor; -->
+    selectedPaintImage.style.backgroundImage = `url(${selectedVariant.image})`;
+    selectedPaintImage.style.backgroundRepeat = 'no-repeat';
+    selectedPaintImage.style.backgroundSize = 'contain';
+  
+    var selectedPaintInfo = document.createElement("div");
+    selectedPaintInfo.className = "paint-selected-info-container";
+    selectedPaintInfo.style.display = "grid";
+    selectedPaintInfo.style.alignContent = "center";
+    
+    var selectedPaintInfoColorName = document.createElement("small");
+    selectedPaintInfoColorName.textContent = swatch.dataset.colorname;
+    selectedPaintInfoColorName.style.marginBottom = "5px"; 
+    selectedPaintInfoColorName.style.fontSize = "14px";
+    selectedPaintInfoColorName.style.lineHeight = "14px";
+    selectedPaintInfoColorName.style.opacity = "0.5";
+    selectedPaintInfoColorName.style.textTransform = "uppercase";
+
+    var selectedPaintProductName = document.createElement("p");
+    selectedPaintProductName.textContent = product.name;
+    selectedPaintProductName.style.marginBottom = "10px";  
+    selectedPaintProductName.style.fontSize = "17px";
+    selectedPaintProductName.style.lineHeight = "17px";
+    selectedPaintProductName.style.fontWeight = "bold";
+  
+  
+    // var selectedPaintInfoColorHex = document.createElement("small");
+    // selectedPaintInfoColorHex.textContent = swatch.dataset.hexcolor;
+    // selectedPaintInfoColorHex.style.opacity = "0.5";
+
+    var selectedPaintProductLink = document.createElement("a");
+    selectedPaintProductLink.className = "paint-selected-product-link";
+    selectedPaintProductLink.textContent = "Shop Now >";
+    selectedPaintProductLink.href = selectedVariant.link;
+    selectedPaintProductLink.target="_blank";
+    selectedPaintProductLink.style.fontSize = "14px";
+    selectedPaintProductLink.style.lineHeight = "14px";
+    selectedPaintProductLink.style.textTransform = "uppercase";
+
+  
+
+
+    
+
+    selectedPaintInfo.append(selectedPaintInfoColorName);
+    selectedPaintInfo.append(selectedPaintProductName);
+    selectedPaintInfo.append(selectedPaintProductLink);
+
+    selectedPaintItem.append(selectedPaintImage);
+    selectedPaintItem.append(selectedPaintInfo);
+  });
+  
+  }
+
+
+
+
+
+
+
+  
+
+}
+  
+</script>
+<!-- End Paint Selector Style & Scripts -->
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Paint Slider",
+    "limit": 1,
+    "settings": [
+        {
+            "type": "textarea",
+            "id": "heading",
+            "default": "Pick your perfect palette",
+            "label": "t:sections.popular-products.settings.heading.label"
+          },
+          {
+              "type": "inline_richtext",
+              "id": "description",
+              "default": "We understand how important it is finding the right product, so whether you're a business or a first time painter, We've made the best possible product finder to find the right product.",
+              "label": "Description"
+         },
+      {
+        "type": "checkbox",
+        "id": "stacked",
+        "label": "Stacked Layout",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "autoplay",
+        "label": "Autoplay Featured Slide",
+        "default": true
+      },
+      {
+        "type": "textarea",
+        "id": "colors",
+        "label": "Colors List",
+        "info":"Format { \"category\": \"Neutrals\", \"name\": \"White\", \"color\": \"#FFFFFF\" }",
+        "default": "{ \"category\": \"Neutrals\", \"name\": \"White\", \"color\": \"#FFFFFF\" },\n  { \"category\": \"Neutrals\", \"name\": \"Ultra White\", \"color\": \"#F7FBFF\" },\n  { \"category\": \"Neutrals\", \"name\": \"Shining White\", \"color\": \"#FCFCFC\" },\n  { \"category\": \"Neutrals\", \"name\": \"Signal White\", \"color\": \"#E5E5E5\" },\n  { \"category\": \"Neutrals\", \"name\": \"Light Grey\", \"color\": \"#EEEEEE\" },\n  { \"category\": \"Neutrals\", \"name\": \"Dove Grey\", \"color\": \"#C9C9C9\" },\n  { \"category\": \"Neutrals\", \"name\": \"Pigeon Grey\", \"color\": \"#CBCBCB\" },\n  { \"category\": \"Neutrals\", \"name\": \"Slate Grey\", \"color\": \"#BDC6CA\" },\n  { \"category\": \"Neutrals\", \"name\": \"Classic Grey\", \"color\": \"#4E5253\" },\n  { \"category\": \"Neutrals\", \"name\": \"Equinox\", \"color\": \"#53575A\" },\n  { \"category\": \"Neutrals\", \"name\": \"Jet Black\", \"color\": \"#0D0D0D\" },\n  { \"category\": \"Neutrals\", \"name\": \"Black\", \"color\": \"#221E1F\" },\n\n\n \n\n\n  { \"category\": \"Browns\", \"name\": \"Soft Almond\", \"color\": \"#C99663\" },\n  { \"category\": \"Browns\", \"name\": \"Sandstone\", \"color\": \"#B8A78B\" },\n  { \"category\": \"Browns\", \"name\": \"Moroccan Sand\", \"color\": \"#BCA78C\" },\n   \n  { \"category\": \"Browns\", \"name\": \"Terracota\", \"color\": \"#E2725B\" },\n  { \"category\": \"Browns\", \"name\": \"Winter Racing Green\", \"color\": \"#082E2B\" },\n  { \"category\": \"Browns\", \"name\": \"Dark Mud Brown\", \"color\": \"#463428\" },\n  { \"category\": \"Browns\", \"name\": \"Red Mud Brown\", \"color\": \"#672B17\" },\n  { \"category\": \"Browns\", \"name\": \"Brown\", \"color\": \"#463428\" },\n  { \"category\": \"Browns\", \"name\": \"Leaf Brown\", \"color\": \"#5D3521\" },\n  { \"category\": \"Browns\", \"name\": \"Light Brown\", \"color\": \"#D5964E\" },\n  { \"category\": \"Browns\", \"name\": \"Truffle\", \"color\": \"#A0644B\" },\n  { \"category\": \"Browns\", \"name\": \"Rustic Rich Red\", \"color\": \"#791B08\" },\n  { \"category\": \"Browns\", \"name\": \"Canyon\", \"color\": \"#9C4432\" },\n  { \"category\": \"Browns\", \"name\": \"Dark Brown\", \"color\": \"#463428\" },\n  \n\n\n  { \"category\": \"Reds\", \"name\": \"Red\", \"color\": \"#7E321D\" },\n  { \"category\": \"Reds\", \"name\": \"Rustic Red\", \"color\": \"#922312\" },\n  { \"category\": \"Reds\", \"name\": \"Red Brick\", \"color\": \"#9C4331\" },\n  { \"category\": \"Reds\", \"name\": \"Rich Red\", \"color\": \"#7E321D\" },\n  { \"category\": \"Reds\", \"name\": \"Bright Autumn\", \"color\": \"#C25F45\" },\n  { \"category\": \"Reds\", \"name\": \"Red Tile\", \"color\": \"#A73E24\" },\n\n\n  { \"category\": \"Oranges\", \"name\": \"Gentle Rose\", \"color\": \"#F9E7E6\" },\n   { \"category\": \"Oranges\", \"name\": \"Terracota\", \"color\": \"#E2725B\" },\n  { \"category\": \"Oranges\", \"name\": \"Terracotta\", \"color\": \"#C15E43\" },\n\n  { \"category\": \"Oranges\", \"name\": \"Spanish Sands\", \"color\": \"#E8B275\" },\n  { \"category\": \"Oranges\", \"name\": \"Lemon Spirit\", \"color\": \"#FFF5C2\" },\n  { \"category\": \"Oranges\", \"name\": \"Lemon Pie\", \"color\": \"#FCEBA1\" },\n  { \"category\": \"Oranges\", \"name\": \"Bright Lemon\", \"color\": \"#FFE78F\" },\n\n\n  { \"category\": \"Yellows\", \"name\": \"Morning Light\", \"color\": \"#FEF3E4\" },\n  { \"category\": \"Yellows\", \"name\": \"London's Magnolia\", \"color\": \"#FFEED2\" },\n  { \"category\": \"Yellows\", \"name\": \"Traffic Yellow\", \"color\": \"#FFFF00\" },\n  { \"category\": \"Yellows\", \"name\": \"Light Yellow\", \"color\": \"#FFF3B6\" },\n  { \"category\": \"Yellows\", \"name\": \"Ivory\", \"color\": \"#FBF7EC\" },\n  { \"category\": \"Yellows\", \"name\": \"Trench Coat\", \"color\": \"#F5DEB8\" },\n  { \"category\": \"Yellows\", \"name\": \"Magnolia\", \"color\": \"#FEE6D1\" },\n  \n\n\n  { \"category\": \"Greens\", \"name\": \"Racing Green\", \"color\": \"#2A4823\" },\n  { \"category\": \"Greens\", \"name\": \"Winter Green\", \"color\": \"#455E2D\" },\n  { \"category\": \"Greens\", \"name\": \"Sage Green\", \"color\": \"#C5CEB0\" },\n  { \"category\": \"Greens\", \"name\": \"Green Drop\", \"color\": \"#F4FDF1\" },\n  { \"category\": \"Greens\", \"name\": \"Olive Green\", \"color\": \"#809745\" },\n  { \"category\": \"Greens\", \"name\": \"The Garden\", \"color\": \"#D3F5DC\" },\n  { \"category\": \"Greens\", \"name\": \"Mint Green\", \"color\": \"#D3F5DD\" },\n  { \"category\": \"Greens\", \"name\": \"Green\", \"color\": \"#2A4823\" },\n  { \"category\": \"Greens\", \"name\": \"Light Green\", \"color\": \"#CDEBC7\" },\n\n\n  { \"category\": \"Blues\", \"name\": \"Classic Anthracite Grey\", \"color\": \"#474B4F\" },\n  { \"category\": \"Blues\", \"name\": \"Greek Blue\", \"color\": \"#1C6D8D\" },\n  { \"category\": \"Blues\", \"name\": \"Clouded Sky\", \"color\": \"#DFE7EB\" },\n  { \"category\": \"Blues\", \"name\": \"Milky Blue\", \"color\": \"#CFEEF3\" },\n  { \"category\": \"Blues\", \"name\": \"Ocean Blue\", \"color\": \"#58AEC8\" },\n  { \"category\": \"Blues\", \"name\": \"Sky Blue\", \"color\": \"#0A708D\" },\n  { \"category\": \"Blues\", \"name\": \"Light Blue\", \"color\": \"#CDEDF2\" },\n  { \"category\": \"Blues\", \"name\": \"Marina Blue\", \"color\": \"#086F8C\" },\n\n\n  { \"category\": \"Pinks\", \"name\": \"Baby Pink\", \"color\": \"#F6E6E3\" }"
+      },
+      {
+        "type": "range",
+        "id": "paint_gap",
+        "min": 5,
+        "max": 25,
+        "step": 1,
+        "unit": "px",
+        "label": "Paint Gap",
+        "default": 15
+      },
+      { 
+        "type": "header",
+        "content": "Paint Calculator"
+      },
+      {
+        "type": "image_picker",
+        "id": "calculator_bg",
+        "label": "Calculator Background",
+        "info": "2000 x 650px .jpg recommended"
+      },
+      {
+        "type": "text",
+        "id": "calculator_title",
+        "label": "Calculator Title",
+        "default": "How much paint do you need?"
+      },
+      {
+        "type": "color",
+        "id": "calculator_title_color",
+        "label": "Calculator Title Color",
+        "default": "#000000"
+      },
+      {
+        "type": "richtext",
+        "id": "calculator_text",
+        "label": "Calculator Text",
+        "default": "<p>FAQs Do I need primer?</p>"
+      },
+      {
+        "type": "color",
+        "id": "calculator_text_color",
+        "label": "Calculator Text Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "calculator_bg_color",
+        "label": "Calculator Text background",
+        "default": "#ffffff"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Featured Image",
+        "type": "featured-image",
+        "settings":[
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "2000 x 650px .jpg recommended"
+          },
+          {
+            "type": "header",
+            "content": "Title"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Image with text overlay"
+          },
+          {
+            "type": "header",
+            "content": "Description"
+          },
+          {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content",
+            "default": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.</p>"
+          },
+          {
+            "type": "select",
+            "id": "text_alignment",
+            "label": "Text alignment",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ],
+            "default": "center"
+          },
+          {
+            "type": "color",
+            "id": "color",
+            "label": "Text",
+            "default": "#ffffff"
+          },
+          {
+            "type": "header",
+            "content": "Button"
+          },
+          {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+              "type": "color",
+              "id": "btn_text_color",
+              "label": "Button Text Color",
+              "default": "#000000"
+          },
+          {
+            "type": "color",
+            "id": "btn_bg_color",
+            "label": "Button Color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_image_overlay",
+            "label": "Show image overlay",
+            "info": "Increase text readability on busy images.",
+            "default": false
+          }   
+        ]
+      },
+      {
+        "name": "Room Image",
+        "type": "room-image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Room Image",
+            "info": "2000 x 650px .jpg recommended"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Room Name",
+            "default": "Room"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Paint Slider",        
+        "blocks": [
+          {
+            "type":"featured-image"
+          },
+          {
+            "type":"room-image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

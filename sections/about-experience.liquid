@@ -1,0 +1,355 @@
+{{ 'section-about-experience.css' | asset_url | stylesheet_tag: preload: true }}
+{%- style -%}
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_m  }}px;
+      padding-bottom: {{ section.settings.padding_bottom_m }}px;
+      background: {{ section.settings.background_color }};
+    }
+    .section-{{ section.id }}-padding .about-experience-title h1,
+    .section-{{ section.id }}-padding .about-experience-sub_title p{
+        color: {{ section.settings.color }};
+    }
+    .section-{{ section.id }}-padding .about-experience-card {
+        background: {{ section.settings.card_bg }};
+        border-color: {{ section.settings.card_border }};
+    }
+    .section-{{ section.id }}-padding .about-experience-card .exp-title h3,
+    .section-{{ section.id }}-padding .about-experience-card .exp-info p{
+        color: {{ section.settings.card_text }};
+    }
+    .section-{{ section.id }}-padding .bottom-icon-card .icons-title h5{
+        color: {{ section.settings.icon_text }};
+    }
+    .section-{{ section.id }}-padding .about-experience-card .about-exp-card-top .exp-count span{
+        color: {{ section.settings.card_border }};
+    }
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+{%- endstyle -%}
+{% assign slidesDesktop = section.settings.desktop_item %}
+{% assign slidesLaptop = section.settings.laptop_item %}
+{% assign slidesTab = section.settings.tab_item %}
+{% assign slidesMobile = section.settings.mobile_item %}
+{% assign direction = section.settings.reverse %}
+{% assign autoPlay = section.settings.autoplay_enabled %}
+{% assign loop = section.settings.loop_enabled %}
+{% assign delay = section.settings.autoplay_timeout | times: 1000 %}
+<div 
+class="about-experience-wrapper section-{{ section.id }}-padding" 
+id="section-{{ section.id }}">
+<div class="section-gradient"></div>
+<div class="section-gradient2"></div>
+<div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-2">
+                <div class="section-image-wrap">
+                    {%- if section.settings.image != blank -%}
+                        {{
+                          section.settings.image
+                        | image_url: width: auto
+                        | image_tag: loading: 'lazy'
+                        }}
+                    {%- endif -%}
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="about-exp-section-title">
+                    {%- liquid
+                    assign title = section.settings.title
+                    assign sub_title = section.settings.sub_title
+                    -%}
+                    <div class="about-experience-title">
+                        {%- if title != blank -%}
+                            <h1>{{ title }}</h1>
+                        {%- endif -%}
+                    </div>
+                    <div class="about-experience-sub_title">
+                        {%- if sub_title != blank -%}
+                            {{ sub_title }}
+                        {%- endif -%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="experience-slider-wrapper">
+            <div class="swiper-navigation-wrapper">
+            <div class="swiper-button-next">
+                <svg xmlns="http://www.w3.org/2000/svg" width="62" height="62" viewBox="0 0 62 62" fill="none">
+                    <circle cx="30.9561" cy="30.9561" r="30.4561" transform="matrix(1 0 0 -1 0.0859375 61.9121)" stroke="#C9AA3B"/>
+                    <path d="M50.3232 30.2487C50.7137 30.6392 50.7137 31.2724 50.3232 31.6629L43.9592 38.0269C43.5687 38.4174 42.9355 38.4174 42.545 38.0269C42.1545 37.6364 42.1545 37.0032 42.545 36.6127L48.2019 30.9558L42.545 25.299C42.1545 24.9084 42.1545 24.2753 42.545 23.8847C42.9355 23.4942 43.5687 23.4942 43.9592 23.8847L50.3232 30.2487ZM12.4688 29.9558H49.6161V31.9558H12.4688V29.9558Z" fill="#C9AA3B"/>
+                </svg>
+            </div>
+            <div class="swiper-button-prev">
+                <svg xmlns="http://www.w3.org/2000/svg" width="62" height="62" viewBox="0 0 62 62" fill="none">
+                    <circle cx="30.9561" cy="30.9561" r="30.4561" transform="matrix(-1 8.74228e-08 8.74228e-08 1 61.9141 0)" stroke="#C9AA3B"/>
+                    <path d="M11.6768 31.6634C11.2863 31.2729 11.2863 30.6397 11.6768 30.2492L18.0408 23.8852C18.4313 23.4947 19.0645 23.4947 19.455 23.8852C19.8455 24.2758 19.8455 24.9089 19.455 25.2994L13.7981 30.9563L19.455 36.6132C19.8455 37.0037 19.8455 37.6368 19.455 38.0274C19.0645 38.4179 18.4313 38.4179 18.0408 38.0274L11.6768 31.6634ZM49.5313 31.9563L12.3839 31.9563L12.3839 29.9563L49.5312 29.9563L49.5313 31.9563Z" fill="#C9AA3B"/>
+                </svg>
+            </div>
+        </div>
+        <slider-component >
+        <div class="common__slideshow swiper about-experience-slider"
+            data-slidesDesktop="{{ slidesDesktop }}"
+            data-slidesLaptop="{{ slidesLaptop }}"
+            data-slidesTab="{{ slidesTab }}"
+            data-slidesMobile="{{ slidesMobile }}"
+            data-direction="{{ direction }}"
+            data-autoPlay="{{ autoPlay }}"
+            data-delay="{{ delay }}"
+            data-loop="{{ loop }}"
+            data-freemode="false"
+            data-freemomentum="false"
+            data-speed="3000"
+            data-desktopspace="40"
+            data-laptopspace="30"
+            data-tabspace="25"
+            data-mobilespace="15"
+        >
+          <div class="swiper-wrapper">
+                {% for block in section.blocks %}
+                    {%- case block.type -%}
+                        {%- when 'experience' -%}
+                            <div class="swiper-slide" {{ block.shopify_attributes }}>
+                                <div class="about-experience-card">
+                                    {%- if block.settings.exp_icon or block.settings.exp_svg != blank -%}
+                                    <div class="exp-icons-wrap">
+                                        <div class="exp-icon-bg">
+                                            <img src="{{ 'icon-bg.png' | asset_img_url: 'medium' }}" alt="Icon BG">
+                                        </div>
+                                        <div class="exp-icons">
+                                        {%- if block.settings.exp_icon != blank -%}
+                                            {{
+                                            block.settings.exp_icon
+                                            | image_url: width: auto
+                                            | image_tag: loading: 'lazy'
+                                            }}
+                                        {%- endif -%}
+                                        {%- if block.settings.exp_svg != blank -%}
+                                            {{ block.settings.exp_svg }}
+                                        {%- endif -%}
+                                    </div>
+                                    </div>
+                                    {%- endif -%}
+                                    <div class="exp-title">
+                                        <h3>{{ block.settings.exp_title }}</h3>
+                                    </div>
+                                    <div class="exp-info">
+                                        <p>{{ block.settings.exp_info }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                    {%- endcase -%}
+                {% endfor %}
+            </div>
+            </div>
+        </slider-component>
+        </div>
+</div>
+{% schema %}
+{
+  "name": "About Experience",
+  "class": "about-experience-section",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+"settings": [
+    {
+        "type" : "text",
+        "id" : "title",
+        "label": "Title"
+    },
+    {
+        "type" : "richtext",
+        "id" : "sub_title",
+        "label": "SUb Title"
+    },
+    {
+        "type" : "image_picker",
+        "id" : "image",
+        "label": "Image"
+    },
+    {
+      "type": "range",
+      "id": "desktop_item",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "default": 4,
+      "label": "Desktop (1440+)"
+    },
+    {
+      "type": "range",
+      "id": "laptop_item",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "default": 4,
+      "label": "Laptop (991+)"
+    },
+    {
+      "type": "range",
+      "id": "tab_item",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "default": 4,
+      "label": "Tab (480+)"
+    },
+    {
+      "type": "range",
+      "id": "mobile_item",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "default": 4,
+      "label": "Mobile (360+)"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay_enabled",
+      "label": "Enable Autoplay",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "loop_enabled",
+      "label": "Enable Loop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse",
+      "label": "Enable Reverse",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_timeout",
+      "label": "Change Slides Every",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 7,
+      "unit": "s"
+    },
+    {
+      "type": "header",
+      "content": "Section Color"
+    },
+    {
+        "type" : "color",
+        "id" : "color",
+        "label": "Text",
+        "default": "#C9AA3B"
+    },
+    {
+        "type" : "color",
+        "id" : "background_color",
+        "label": "Bakground",
+        "default": "#0E1513"
+    },
+    {
+      "type": "header",
+      "content": "exp Card Color"
+    },
+    {
+        "type" : "color",
+        "id" : "card_text",
+        "label": "Text",
+        "default": "#C9AA3B"
+    },
+    {
+        "type" : "color",
+        "id" : "card_border",
+        "label": "Border",
+        "default": "#00C172"
+    },
+    {
+        "type" : "color",
+        "id" : "card_bg",
+        "label": "Bakground",
+        "default": "transparent"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_top_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 68
+    }
+],
+"blocks": [
+    {
+    "name": "Experience",
+    "type": "experience",
+    "settings": [
+                {
+                    "type" : "textarea",
+                    "id" : "exp_title",
+                    "label": "Title"
+                },
+                {
+                    "type" : "html",
+                    "id" : "exp_svg",
+                    "label": "Icon (SVG)"
+                },
+                {
+                    "type" : "image_picker",
+                    "id" : "exp_icon",
+                    "label": "Icon (Image)"
+                },
+                {
+                    "type" : "textarea",
+                    "id" : "exp_info",
+                    "label": "Info"
+                }
+            ]
+    }
+],
+"presets": [{
+"name": "About Experience"
+}]
+}
+{% endschema %}

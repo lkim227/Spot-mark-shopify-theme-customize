@@ -1,0 +1,387 @@
+.about-says-main-wrapper {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background: linear-gradient(180deg, #000 20.31%, #BC002D 77.08%);
+}
+
+.about-says-main-wrapper .section-bg img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 115px;
+  left: 0;
+  z-index: -1;
+}
+
+@media only screen and (min-width: 1441px) {
+  .about-says-main-wrapper .container {
+    max-width: 1615px;
+  }
+
+  .about-says-main-wrapper .row {
+    --bs-gutter-x: 70px;
+  }
+
+}
+
+
+.about-says-title h3 {
+  margin: 0;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+  /* 67.2px */
+}
+
+@media only screen and (max-width: 767px) {
+  .about-says-title h3 {
+    font-size: 26px;
+  }
+}
+
+.about-says-sub_title h1 {
+  margin: 0;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 140%;
+  /* 67.2px */
+}
+
+@media only screen and (max-width: 767px) {
+  .about-says-sub_title h1 {
+    font-size: 32px;
+  }
+}
+
+.about-says-card {
+  padding: 25px 30px;
+  border-radius: 30px;
+  min-height: 260px;
+}
+
+.about-says-card .say-count {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 160%;
+  /* 25.6px */
+  letter-spacing: 0.8px;
+  margin: 0;
+}
+
+.about-says-card .say-title {
+  margin: 10px 0 10px;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%;
+  /* 41.6px */
+}
+
+.about-says-card .say-info {
+  padding-top: 15px;
+  border-top: 3px solid #F6462E;
+}
+
+.about-says-card .say-info p {
+  margin: 0;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 160%;
+  /* 25.6px */
+}
+
+.about-says-wrapper {
+  padding-top: 40px;
+}
+
+@media only screen and (max-width: 767px) {
+  .about-says-wrapper {
+    padding-top: 30px;
+  }
+}
+
+.about-says-middle {
+  padding-top: 40px;
+}
+
+@media only screen and (max-width: 767px) {
+  .about-says-middle {
+    padding-top: 50px;
+  }
+}
+
+.about-says-middle .says-middle-text {
+  max-width: 260px;
+  margin: 0 auto;
+}
+
+.about-says-middle .says-middle-text p {
+  text-align: center;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  margin: 10px 0 0;
+}
+
+.about-says-middle .says-middle-text p strong {
+  font-weight: 600;
+}
+
+.about-says-middle .says-right-text {
+  max-width: 375px;
+  margin-left: auto;
+}
+
+@media only screen and (max-width: 767px) {
+  .about-says-middle .says-right-text {
+    max-width: 100%;
+    margin: auto;
+  }
+}
+
+.about-says-middle .says-right-text p {
+  text-align: right;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 160%;
+}
+
+@media only screen and (max-width: 767px) {
+  .about-says-middle .says-right-text p {
+    font-size: 16px;
+    text-align: center;
+  }
+}
+
+.says-middle-icons .says-middle-top-icons {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  max-width: 490px;
+  margin: 0 auto;
+}
+
+.says-middle-icons .says-middle-top-icons::before {
+  content: "";
+  left: 49%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: 235px;
+  height: 24px;
+  background: linear-gradient(90deg, rgb(224, 76, 66) 0%, rgba(217, 217, 217, 0) 100%);
+  z-index: 3;
+}
+
+.says-middle-icons .says-middle-top-icons .says-middle-icon1 {
+  flex: 0 0 137px;
+  width: 137px;
+  height: 137px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #E04C42;
+  /* border: 5px solid transparent;
+  filter: drop-shadow(0px 0px 23px rgba(0,193,114,.5)); */
+  border-radius: 50%;
+  z-index: 4;
+  position: relative;
+}
+
+
+.says-middle-icons .says-middle-top-icons .says-middle-icon2 {
+  width: 137px;
+  flex: 0 0 137px;
+  height: 137px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, rgba(224, 76, 66, 0.368627451) 0%, rgba(217, 217, 217, 0) 100%);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.says-middle-icons .says-middle-icon3 {
+  text-align: center;
+}
+
+.placeholder-circle {
+  width: 146px;
+  height: 146px;
+  display: block;
+  justify-content: center;
+  background: #E04C42;
+  border-radius: 50%;
+  position: absolute;
+  top: -4px;
+  left: -6px;
+  border: 5px solid #000;
+  filter: drop-shadow(0px 0px 23px rgba(0, 193, 114, .5));
+  z-index: 1;
+  transition: 0.3s ease all;
+}
+
+.placeholder-circle.dragging {
+  transition: 0.3s ease all;
+}
+
+
+@media only screen and (max-width: 767px) {}
+
+.back-panel {
+  display: none;
+}
+
+@media only screen and (min-width: 1441px) {
+  .about-says-back-main-wrapper .container {
+    max-width: 1615px;
+  }
+
+  .about-says-back-main-wrapper .row {
+    --bs-gutter-x: 70px;
+  }
+
+}
+
+.about-says-back-main-wrapper {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.back-panel .says-middle-icons .says-middle-top-icons .says-middle-icon1 {
+  background: #526f73;
+  filter: drop-shadow(0px 0px 23px rgba(82, 111, 115, .9));
+}
+
+.back-panel .says-middle-top-icons .says-middle-icon1 img {
+  border: 5px solid #fff;
+  border-radius: 50%;
+}
+
+.back-panel .placeholder-circle {
+  background: #526f73;
+  border: 5px solid #ffffff;
+  filter: drop-shadow(0px 0px 23px rgba(82, 111, 115, .9));
+}
+
+.back-panel .says-middle-icons .says-middle-top-icons:before {
+  background: linear-gradient(90deg, #526f73 0%, rgba(217, 217, 217, 0) 100%);
+}
+
+.back-panel .says-middle-icons .says-middle-top-icons .says-middle-icon2 {
+  background: linear-gradient(90deg, #637381 0%, rgba(217, 217, 217, 0) 100%);
+}
+
+
+.about-says-back-title h3 {
+  margin: 0;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+  color: #526F73;
+}
+
+.about-says-back-sub_title h1 {
+  margin: 0;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 140%;
+  color: #526F73;
+}
+
+.says-text-back {
+  max-width: 375px;
+  margin-right: auto;
+  text-align: left;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+  color: #526F73;
+}
+
+.back-panel .says-middle-text {
+  max-width: 260px;
+  margin: 0 auto;
+}
+
+.back-panel .says-middle-text p {
+  text-align: center;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  color: #526F73;
+}
+
+.back-panel .says-middle-text p strong {
+  font-weight: 600;
+}
+
+.about-says-back-card {
+  padding: 25px 30px;
+  border-radius: 30px;
+  min-height: 260px;
+}
+
+.about-says-back-card .say-count-back {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 160%;
+  letter-spacing: .8px;
+  margin: 0;
+  color: #526F73;
+}
+
+.about-says-back-card .say-title-back {
+  margin: 10px 0 10px;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%;
+  color: #526F73;
+}
+
+.about-says-back-card .say-info-back {
+  padding-top: 15px;
+  border-top: 3px solid #526F73;
+}
+
+.about-says-back-card .say-info-back p {
+  margin: 0;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 160%;
+  color: #526F73;
+}
+
+.about-says-back-middle {
+  margin-top: 60px;
+}
+
+.about-says-back-wrapper {
+  margin-top: 60px;
+}
+
+@media only screen and (max-width: 991px) {
+  .about-says-card .say-title,
+  .about-says-back-card .say-title-back {
+    font-size: 22px;
+  }
+}
+
+@media only screen and (max-width: 1442px) {}
+
+@media only screen and (max-width: 1080px) {}

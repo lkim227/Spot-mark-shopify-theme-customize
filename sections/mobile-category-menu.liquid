@@ -1,0 +1,131 @@
+
+<ul class="site_mobile_menu">
+    {% for block in section.blocks %}
+    {% if block.type == 'category_menu' %}
+    <li class="mm_item">
+      <div class=" mm_heading-item">
+        <a href="#" class="{% if block.settings.menu != blank %}mm_links{% else %}mm_link{% endif %}">
+            {% if block.settings.icon_svg != blank %}
+                <span class="link-icon">
+                  <img src="{{block.settings.icon_svg | img_url:"master" }}"  alt="{{block.settings.icon_svg.alt }}">
+                </span>
+              {% endif %}
+          <span class="link-text">{{ block.settings.title }}</span>
+        </a>
+  
+        {% if block.settings.menu != blank %}
+        <span class="arrow-icon">{% render 'icon-caret' %}</span>
+        {% endif %}
+      </div>
+
+      {% if block.settings.menu != blank %}
+      <div class="mm_dropdown mm_slide">
+        <ul>
+          {% for link in linklists[block.settings.menu].links %}
+          <li class="mm_subitem">
+            <div class="mm_heading-item">
+              <a href="#" class="mm_link_1">{{ link.title }}</a>
+              {% if link.links.size > 0 %}
+              <span class="arrow-icon">{% render 'icon-caret' %}</span>
+              {% endif %}
+            </div>
+            {% if link.links.size > 0 %}
+            <div class="mm_megamenu mm_slide">
+              <ul>                     
+                {% for child_link in link.links %}
+                <li class="mm_megaitem"><a href="{{ child_link.url }}" class="mm_link_2">{{ child_link.title }}</a></li>
+                {% endfor %}   
+              </ul>
+            </div>
+            {% endif %}
+          </li>
+          {% endfor %}              
+        </ul>
+      </div>
+      {% endif %}
+    </li>
+    {% endif %}
+    {% endfor %}        
+  </ul>
+  
+  <style>
+    .site_mobile_menu li a {
+      color: {{ section.settings.main_menu_color }};
+      font-size: {{ section.settings.font_size }}px;
+    }
+    .site_mobile_menu li ul li a {
+      color: {{ section.settings.sub_menu_color }};
+    }
+    .site_mobile_menu li .mm_dropdown {
+      background-color: {{ section.settings.sub_menu_bg }};
+    }
+  </style>
+  {% schema %}
+    {
+      "name": "Mobile Categories Menu",
+      "settings": [
+        {
+        "type": "range",
+        "id": "font_size",
+        "min": 10,
+        "max": 120,
+        "step": 2,
+        "unit": "px",
+        "label": "Font Size",
+        "default": 14
+      },
+      {
+      "type":"color",
+      "id":"main_menu_color",
+      "label":"Main Menu Color"
+    },
+        {
+      "type":"color",
+      "id":"sub_menu_color",
+      "label":"Sub Menu Color"
+    },
+        {
+      "type":"color",
+      "id":"sub_menu_bg",
+      "label":"Sub Menu BG"
+    }
+      ],
+      "blocks": [
+        {
+          "type":"category_menu",
+          "name":"Category Menu",
+          "settings": [
+            {
+              "type": "text",
+              "id": "title",
+              "label": "Navigation Title",
+              "default": "Home"
+            },
+            {
+              "type": "url",
+              "id": "link",
+              "label": "Navigation link"
+            },
+            {
+                "id": "icon_svg",
+                "type": "image_picker",
+                "label": "Icon"
+            },
+            {
+              "type": "link_list",
+              "id": "menu",
+              "label": "Select menu"
+            }
+          ]
+        }
+     
+    ]
+    }
+  {% endschema %}
+  
+  {% stylesheet %}
+  {% endstylesheet %}
+  
+  {% javascript %}
+  {% endjavascript %}
+  

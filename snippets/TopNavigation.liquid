@@ -1,0 +1,490 @@
+{{ 'component-top-navigation.css' | asset_url | stylesheet_tag: preload: true }}
+
+<div class="section-top-navigation"> 
+<div class="top-navigation-wrapper">
+  <div class="navigation-wrap">
+    <ul class="top-navigation">
+        {% liquid
+            assign blocks = section.blocks | where: 'type', 'navlink'
+          %}
+
+      {% for block in blocks %}
+        {% liquid
+          assign heading = block.settings.heading
+          assign small_text = block.settings.small_text
+          assign spilit = block.settings.spilit
+          assign nav_link = block.settings.nav_link
+          assign activeClass = ''
+
+          if template.name == 'index'
+            if forloop.first
+              assign activeClass = 'active'
+            else
+              assign activeClass = ''
+            endif
+          else
+            assign activeClass = ''
+
+            if nav_link contains request.path
+              assign activeClass = 'active'
+            endif
+          endif
+        %}
+        {% if heading != blank %}
+          <li class="nav-link {{ activeClass }}">
+            <a href="{{nav_link}}">
+              {% if spilit %}
+                <span class="small-case">{{ small_text }}</span>
+              {% endif %}
+              <span>{{ heading }}</span>
+              {% if spilit == false %}
+                <span class="small-case">{{ small_text }}</span>
+              {% endif %}
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    <div class="utility-wrap">
+      <div class="lang-box">
+        {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+          <div class="header__localization">
+            <noscript>
+              {%- form 'localization', id: 'HeaderTopCountryFormNoScript', class: 'localization-form' -%}
+                <div class="localization-form__select">
+                  <select
+                    class="localization-selector link"
+                    name="country_code"
+                    aria-labelledby="HeaderTopCountryFormNoScript"
+                  >
+                    {%- for country in localization.available_countries -%}
+                      <option
+                        value="{{ country.iso_code }}"
+                        {%- if country.iso_code == localization.country.iso_code %}
+                          selected
+                        {% endif %}
+                      >
+                        {{ country.name }} ({{ country.currency.iso_code }}
+                        {{ country.currency.symbol }})
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                  {% render 'icon-caret' %}
+                </div>
+                <button class="button button--small">{{ 'localization.update_country' | t }}</button>
+              {%- endform -%}
+            </noscript>
+            <localization-form>
+              {%- form 'localization', id: 'HeaderTOpCountryForm', class: 'localization-form' -%}
+                <div class="no-js-hidden">
+                  <div class="disclosure">
+                    <button
+                      type="button"
+                      class="header__localization-button disclosure__button localization-form__select localization-selector link link--text caption-large"
+                      aria-expanded="false"
+                      aria-controls="HeaderTopCountryList"
+                      aria-describedby="HeaderTOpCountryForm"
+                      aria-label="Localization"
+                    >
+                       <div style="display: inline" class="currency-flag" data-value="{{ localization.country.iso_code }}" aria-hidden="true"></div> 
+                      <span class="currency-country">
+                        {{ localization.country.currency.iso_code }}</span
+                      >
+                      {% render 'icon-caret' %}
+                    </button>
+                    <ul
+                      id="HeaderTopCountryList"
+                      role="list"
+                      class="disclosure__list list-unstyled color-background-2"
+                      hidden
+                    >
+                      {%- for country in localization.available_countries -%}
+                        <li class="disclosure__item" tabindex="-1">
+                          <a
+                            class="link link--text disclosure__link disclosure__link--flag caption-large{% if country.iso_code == localization.country.iso_code %} disclosure__link--active{% endif %} focus-inset"
+                            href="#"
+                            {% if country.iso_code == localization.country.iso_code %}
+                              aria-current="true"
+                            {% endif %}
+                            data-value="{{ country.iso_code }}"
+                            data-flag="{{ country.currency.iso_code }}"
+                          >
+                            <span>
+                              {{ country.name }}
+                              <span class="localization-form__currency"
+                                >({{ country.currency.iso_code }}
+                                {{ country.currency.symbol }})</span
+                              >
+                            </span>
+                          </a>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  </div>
+                  <input type="hidden" name="country_code" value="{{ localization.country.iso_code }}">
+                </div>
+              {%- endform -%}
+            </localization-form>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {% if section.settings.btn_label != blank %}
+        <div class="help-box">
+          <a href="javascript:void(0)" class="help-btn-toggle">
+            <span>
+              <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.5295 18.2084C16.5493 18.2084 19.808 14.9497 19.808 10.9299C19.808 6.91008 16.5493 3.65137 12.5295 3.65137C8.50969 3.65137 5.25098 6.91008 5.25098 10.9299C5.25098 14.9497 8.50969 18.2084 12.5295 18.2084Z" fill="white"/>
+                <path d="M24.0712 8.90258C23.6032 8.64263 23.2913 8.22671 23.1353 7.70682C21.2637 1.88399 14.973 -1.33936 9.15016 0.532263C5.71885 1.62404 3.06738 4.3275 1.9756 7.70682C1.81963 8.22671 1.5077 8.64263 1.03979 8.90258C0.415916 9.21451 0 9.89038 0 10.5662V15.1933C0 15.7132 0.415916 16.1291 0.935812 16.1291H2.80743C3.37932 16.1291 3.79524 15.6612 3.79524 15.1413V11.0341C3.79524 6.35509 7.33052 2.3519 12.0096 2.09195C12.1656 2.09195 12.3735 2.09195 12.5295 2.09195C12.6854 2.09195 12.8934 2.09195 13.0494 2.09195C17.6764 2.3519 21.2637 6.35509 21.2637 11.0341V12.9578C21.2637 13.3737 21.2117 13.7896 21.0558 14.1535C19.964 17.2729 17.2085 19.5604 13.8812 20.0803C12.9454 19.3525 11.5937 19.4565 10.8138 20.3923C10.6059 20.6522 10.4499 20.9641 10.3979 21.2761C10.086 22.4199 10.8138 23.6156 11.9576 23.9276C13.1014 24.2395 14.2971 23.5116 14.6091 22.3679C14.6091 22.2639 14.661 22.1599 14.661 22.0559C17.8844 21.4321 20.6398 19.4045 22.2515 16.493C22.3555 16.2851 22.6154 16.1291 22.8234 16.1291H24.0712C24.591 16.1291 25.007 15.7132 25.007 15.1933V10.5662C25.059 9.89038 24.695 9.21451 24.0712 8.90258Z" fill="white"/>
+              </svg>
+            </span>
+            <span>{{ section.settings.btn_label }}</span>
+          </a>
+
+          <div class="help-panel">
+            <div class="live_help_group_wrap text-left">
+              {% if section.settings.pre_sale_heading != blank %}
+                <div class="live-ask-an-expert">
+                  <h4>{{ section.settings.pre_sale_heading }}</h4>
+                  <div class="desc">
+                    {{ section.settings.pre_sale_content }}
+                  </div>
+                  <button
+                    type="button"
+                    class="button button--secondary"
+                    title=" {{section.settings.pre_sale_button_label}}"
+                    data-open-ask-an-expert
+                  >
+                    <svg
+                      class="live-chat-icon"
+                      version="1.1"
+                      id="Capa_1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      x="0px"
+                      y="0px"
+                      viewBox="0 0 442 442"
+                      style="enable-background:new 0 0 442 442;"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      xml:space="preserve"
+                    >
+                      <path d="M431.706,232.827h-1.108c-3.863-17.348-17.544-31.03-34.892-34.892v-23.229C395.706,78.373,317.333,0,221,0 	S46.294,78.373,46.294,174.706v23.229c-17.348,3.863-31.03,17.544-34.892,34.892h-1.108c-5.523,0-10,4.478-10,10s4.477,10,10,10 	h1.108c3.962,17.796,18.257,31.735,36.242,35.173c4.159,17.647,20.027,30.827,38.926,30.827c22.056,0,40-17.944,40-40v-72 	c0-22.056-17.944-39.999-40-39.999c-7.384,0-14.303,2.019-20.246,5.523C67.589,88.128,136.482,20,221,20 	c84.464,0,153.325,68.042,154.674,152.191c-5.881-3.404-12.698-5.363-19.968-5.363c-22.056,0-40,17.943-40,39.999v72 	c0,22.056,17.944,40,40,40c18.918,0,34.799-13.205,38.938-30.879c6.229-1.232,12.007-3.724,17.062-7.201v44.167 	c0,18.786-9.134,36.63-25.72,50.244C368.827,389.243,345.999,397,321.706,397h-64.907c-2.082-15.648-9.245-25-19.726-25h-37.5 	c-19.299,0-35,15.701-35,35s15.701,35,35,35h37.5c10.482,0,17.645-9.352,19.726-25h64.907c60.654,0,110-41.31,110-92.086v-72.087 	c5.523,0,10-4.478,10-10S437.229,232.827,431.706,232.827z M66.57,206.827c0-11.027,8.972-19.999,20-19.999 	c11.028,0,20,8.972,20,19.999v72c0,11.028-8.972,20-20,20c-11.028,0-20-8.972-20-20c0-5.522-4.477-10-10-10 	c-0.047,0-0.092,0.006-0.138,0.007c-0.047,0-0.092-0.007-0.138-0.007c-14.336,0-26-11.663-26-26c0-10.9,6.744-20.248,16.276-24.106 	v25.996c0,5.522,4.477,10,10,10s10-4.478,10-10V206.827z M234.938,422h-35.366c-8.271,0-15-6.729-15-15s6.729-15,15-15h35.366 	c1.049,2.163,2.489,7.271,2.489,15S235.987,419.837,234.938,422z M385.706,268.827c-5.523,0-10,4.478-10,10c0,11.028-8.972,20-20,20 	s-20-8.972-20-20v-72c0-11.027,8.972-19.999,20-19.999s20,8.972,20,19.999v37.89c0,5.522,4.477,10,10,10s10-4.478,10-10V218.83 	c9.387,3.926,16,13.203,16,23.997C411.706,257.164,400.042,268.827,385.706,268.827z"></path>
+                    </svg>
+                    {{ section.settings.pre_sale_button_label }}
+                  </button>
+                  <span class="text">{{ section.settings.pre_sale_content2 }}</span>
+                </div>
+              {% endif %}
+              {% if section.settings.after_sale_heading != blank %}
+                <div class="live-contact-us">
+                  <h4>{{ section.settings.after_sale_heading }}</h4>
+                  <div class="desc">{{ section.settings.after_sale_content }}</div>
+                  <a
+                    class="button button--secondary"
+                    href="{{section.settings.after_sale_button_link}}"
+                    title="Contact Us"
+                  >
+                    {{- section.settings.after_sale_button_label -}}
+                  </a>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      <div class="login-box">
+        {%- if shop.customer_accounts_enabled -%}
+          <details-disclosure class="header__account">
+            <details>
+              <summary
+                class="header__icon header__icon--account link--text  header__icon--summary focus-inset modal__toggle"
+                aria-haspopup="dialog"
+                role="button"
+              >
+              {% if customer %}
+                <span>My Account</span>
+                {% else %}
+                <span>Login</span>
+              {% endif %}
+                <span>
+                  <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.1167 13.2941C9.92743 13.4818 9.82095 13.7374 9.82095 14.0041C9.82095 14.2709 9.92743 14.5264 10.1167 14.7142C10.3044 14.9035 10.56 15.0099 10.8268 15.0099C11.0935 15.0099 11.3491 14.9035 11.5368 14.7142L15.5368 10.7142C15.7261 10.5264 15.8326 10.2709 15.8326 10.0041C15.8326 9.73736 15.7261 9.4818 15.5368 9.29406L11.5368 5.29406C11.283 5.04049 10.9134 4.94138 10.5669 5.03424C10.2203 5.12709 9.94974 5.39763 9.85689 5.74429C9.76403 6.09072 9.86314 6.46035 10.1167 6.71418L12.4167 9.00412H0V9.50435V10.0043V11.0043L12.4167 11.0041L10.1167 13.2941Z" fill="white"/>
+                    <rect x="1" width="2" height="6" fill="white"/>
+                    <rect x="19" width="2" height="18" transform="rotate(90 19 0)" fill="white"/>
+                    <rect x="19" y="18" width="2" height="18" transform="rotate(90 19 18)" fill="white"/>
+                    <rect x="1" y="14" width="2" height="6" fill="white"/>
+                    <rect x="17" width="2" height="20" fill="white"/>
+                  </svg>
+                </span>
+              </summary>
+              <div class="header__account-modal modal__toggle color-background-2" role="dialog" aria-modal="true">
+                {%- if customer -%}
+                  <div class="header__account__account">
+                    <div class="header__account__name">{{ customer.name }}</div>
+                    <ul class="header__account__body">
+                      <li class="header__account__link">
+                        <a href="{{ routes.account_url }}">
+                          {{ 'customer.account_fallback' | t }}
+                        </a>
+                      </li>
+                      <li class="header__account__address">
+                        <a href="{{ routes.account_addresses_url }}">{{ 'customer.addresses.book' | t }}</a>
+                      </li>
+                    </ul>
+                    <a class="header__account__logout button button--primary" href="{{ routes.account_logout_url }}">
+                      {{ 'customer.log_out' | t }}
+                    </a>
+                  </div>
+
+                {%- else -%}
+                  <a
+                    href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+                    class="button button--primary header__account__login link  focus-inset"
+                  >
+                    {% render 'icon-account' %}
+                    {%- liquid
+                      if customer
+                        echo 'customer.account_fallback' | t
+                      else
+                        echo 'customer.log_in' | t
+                      endif
+                    -%}
+                  </a>
+
+                  <a class="header__account__register link " href="{{ routes.account_register_url }}"
+                    ><span>{{ 'customer.login_page.create_account' | t }}</span></a
+                  >
+                {%- endif -%}
+              </div>
+            </details>
+          </details-disclosure>
+        {%- endif -%}
+      </div>
+
+      <div class="wishlist-box">
+        <a href="">
+          <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5016 3L15.2951 9.12411L22 9.89768L17.0253 14.4746L18.3559 21.05L12.5016 17.7494L6.64728 21.05L7.97795 14.4746L3 9.89446L9.67916 9.12088L12.5016 3Z" stroke="white" stroke-width="2.4"/>
+          </svg>
+
+          <span class="count wishlist-count">0</span>
+        </a>
+      </div>
+
+      <div class="cart-box">
+        <a
+          href="{{ routes.cart_url }}"
+          class=" {% if request.page_type != 'cart' %}header__cart{% endif %} header__icon header__icon--cart link link--text focus-inset"
+          id="cart-icon-bubble-desktop"
+          aria-label="{{ 'accessibility.cart_link' | t }}"
+        >
+          {% render 'icon-cart' %}
+          <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+          {%- if cart != empty -%}
+            <div class="cart-count-bubble">
+              {%- if cart.item_count < 100 -%}
+                <span aria-hidden="true">{{ cart.item_count }}</span>
+              {%- endif -%}
+              <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+            </div>
+          {%- endif -%}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="outlet-popup outlet-ask-an-expert-popup customPopup-medium"
+  data-ask-an-expert-popup
+  id="outlet-ask-an-expert-popup"
+>
+  <div class="outlet-popup-wrapper">
+    <div class="outlet-popup-header">
+      <button type="button" class="outlet-popup-close clearfix" data-close-ask-an-expert="" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 48 48">
+          <path d="M 38.982422 6.9707031 A 2.0002 2.0002 0 0 0 37.585938 7.5859375 L 24 21.171875 L 10.414062 7.5859375 A 2.0002 2.0002 0 0 0 8.9785156 6.9804688 A 2.0002 2.0002 0 0 0 7.5859375 10.414062 L 21.171875 24 L 7.5859375 37.585938 A 2.0002 2.0002 0 1 0 10.414062 40.414062 L 24 26.828125 L 37.585938 40.414062 A 2.0002 2.0002 0 1 0 40.414062 37.585938 L 26.828125 24 L 40.414062 10.414062 A 2.0002 2.0002 0 0 0 38.982422 6.9707031 z"></path>
+        </svg>
+        Close
+      </button>
+      <h5 class="outlet-popup-title text-center">Have Questions?</h5>
+    </div>
+    <div class="outlet-popup-content outlet-popup-scroll custom-scrollbar">
+      <div class="ask-an-expert outlet-ask-an-expert">
+        <h4 class="heading text-center">Ask The Fashion Expert Anything On PaintOutlet</h4>
+        <span class="text text-center">We will follow up with you via email within 24-36 hours</span>
+        <div class="intro text-center">Please answer the following questionnaire</div>
+
+
+
+        {%- form 'contact', id: 'ContactForm-ask', class: 'outlet-ask-an-expert-form contact-form' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="form-status form-status-list form__message" tabindex="-1" autofocus>
+              {% render 'icon-success' %}
+              {{ 'templates.contact.form.post_success' | t }}
+            </div>
+          {%- elsif form.errors -%}
+          {%- endif -%}
+
+          <input type="hidden" name="contact[Form]" value="Ask An Expert">
+    
+            <div class="field field__name">
+              <input
+                class="field__input"
+                autocomplete="name"
+                type="text"
+                id="ContactForm-name"
+                name="contact[{{ 'templates.contact.form.name' | t }}]"
+                value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                placeholder="{{ 'templates.contact.form.name' | t }}"
+              >
+              <label
+                class="field__label"
+                for="ContactForm-name"
+                placeholder="{{ 'templates.contact.form.name' | t }}"
+              >
+                {{ 'templates.contact.form.name' | t }}
+              </label>
+            </div>
+            <div class="field field--with-error">
+              <input
+                autocomplete="email"
+                type="email"
+                id="ContactForm-email"
+                class="field__input"
+                name="contact[email]"
+                spellcheck="false"
+                autocapitalize="off"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                aria-required="true"
+                {% if form.errors contains 'email' %}
+                  aria-invalid="true"
+                  aria-describedby="ContactForm-email-error"
+                {% endif %}
+                placeholder="{{ 'templates.contact.form.email' | t }}"
+                required
+              >
+              <label
+                class="field__label"
+                for="ContactForm-email"
+                placeholder="{{ 'templates.contact.form.email' | t }}"
+              >
+                {{ 'templates.contact.form.email' | t }}
+              </label>
+              {%- if form.errors contains 'email' -%}
+                <small class="contact-form__field-error" id="ContactForm-email-error">
+                  <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+                  <span class="form__message">
+                    {{- form.errors.translated_fields.email | capitalize }}
+                    {{ form.errors.messages.email -}}
+                  </span>
+                </small>
+              {%- endif -%}
+            </div>
+         
+          <div class="field">
+            <input
+              type="tel"
+              id="ContactForm-phone"
+              class="field__input"
+              autocomplete="tel"
+              name="contact[{{ 'templates.contact.form.phone' | t }}]"
+              pattern="[0-9\-]*"
+              value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+              placeholder="{{ 'templates.contact.form.phone' | t }}"
+            >
+            <label
+              class="field__label"
+              for="ContactForm-phone"
+              placeholder="{{ 'templates.contact.form.phone' | t }}"
+            >
+              {{- 'templates.contact.form.phone' | t -}}
+            </label>
+          </div>
+
+          <div class="field form-field-radio">
+            <label class="form-label">Do You Need</label
+            ><input
+              class="form-radio"
+              checked=""
+              id="askAnExpertRadio1"
+              type="radio"
+              name="contact[Do You Need]"
+              value="Pricing"
+            >
+            <label class="form-label form-label--radio" for="askAnExpertRadio1">Pricing</label
+            ><input class="form-radio" id="askAnExpertRadio2" type="radio" name="contact[Do You Need]" value="Answers">
+            <label class="form-label form-label--radio" for="askAnExpertRadio2">Answers</label
+            ><input class="form-radio" id="askAnExpertRadio3" type="radio" name="contact[Do You Need]" value="Both">
+            <label class="form-label form-label--radio" for="askAnExpertRadio3">Both</label>
+          </div>
+
+
+          <div class="field">
+            <textarea
+              rows="10"
+              id="ContactForm-body"
+              class="text-area field__input"
+              name="contact[What can i help you with today?]"
+              placeholder="{{ 'templates.contact.form.comment' | t }}"
+              aria-required="true"
+              required
+            >
+              {{- form.body -}}
+            </textarea>
+            <label
+              class="form__label field__label"
+              for="ContactForm-body"
+              placeholder="{{ 'templates.contact.form.comment' | t }}"
+            >
+              What Can I Help You With Today?
+            </label>
+          </div>
+          <div class="field form-field-radio form-field-radio-2">
+            <label class="form-label">How would you like me to contact you?</label
+            ><input
+              class="form-radio"
+              checked=""
+              id="askAnExpertRadio21"
+              type="radio"
+              name="contact[How would you like me to contact you?]"
+              value="Phone"
+            >
+            <label class="form-label form-label--radio" for="askAnExpertRadio21">Phone</label
+            ><input
+              class="form-radio"
+              id="askAnExpertRadio22"
+              type="radio"
+              name="contact[How would you like me to contact you?]"
+              value="Email"
+            >
+            <label class="form-label form-label--radio" for="askAnExpertRadio22">Email</label
+            ><input
+              class="form-radio"
+              id="askAnExpertRadio23"
+              type="radio"
+              name="contact[How would you like me to contact you?]"
+              value="Both"
+            >
+            <label class="form-label form-label--radio" for="askAnExpertRadio23">Both</label>
+          </div>
+
+          <div class="contact-form__bottom">
+            <button type="submit" class="button button--primary button--full-width">
+              {{ 'templates.contact.form.send' | t }}
+            </button>
+
+            <div class="contact-form__add-text">
+              {{ section.settings.additional_text }}
+            </div>
+          </div>
+        {%- endform -%}
+
+        <div class="message"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

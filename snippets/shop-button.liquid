@@ -1,0 +1,231 @@
+<details-disclosure class="header__shop focus-inset" {{ block.shopify_attributes }}>
+  <details>
+    <summary class="header__shop-button button button--{{ block.settings.button_style }}">
+      {% render 'icon-menu' %}
+      {%- if block.settings.shop_button_label != blank -%}
+        <span>{{- block.settings.shop_button_label -}}</span>
+      {%- endif -%}
+    </summary>
+    <div class="header__shop-wrapper color-background-2">
+      {%- if block.settings.shop_button_menu != blank -%}
+        <ul
+          class="header__submenu list-menu list-menu--disclosure caption-large motion-reduce"
+          role="list"
+        >
+          {%- for link in block.settings.shop_button_menu.links -%}
+            <li>
+              <a
+                href="{{ link.url }}"
+                class="header__menu-item list-menu__item link focus-inset"
+                {% if link.current %}
+                  aria-current="page"
+                {% endif %}
+                aria-label="{{ link.title | escape }}"
+              >
+                <span
+                  {%- if link.active %}
+                    class="header__active-menu-item"
+                  {% endif %}
+                  title="{{ link.title | escape }}"
+                >
+                  {{ link.title | escape }}
+                </span>
+              </a>
+              {% if link.links != blank %}
+                <ul
+                  class="list-menu--disclosure list-menu motion-reduce color-background-2"
+                  role="list"
+                >
+                  {%- for childlink in link.links -%}
+                    <li>
+                      <a
+                        href="{{ childlink.url }}"
+                        class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} header__menu-item--active{% endif %}"
+                        {% if childlink.current %}
+                          aria-current="page"
+                        {% endif %}
+                      >
+                        <span>
+                          {{ childlink.title | escape }}
+                        </span>
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {% endif %}
+            </li>
+          {%- endfor -%}
+					{% if section.settings.small_menu != blank %}
+						{%- for link in section.settings.small_menu.links limit: 3 -%}
+							<li class="header__shop-small-menu-item">
+								{%- if link != blank -%}
+									<a href="{{ link.url }}" class="header__menu-item list-menu__item link focus-inset">
+										<span
+											{%- if link.active %}
+												class="header__active-menu-item"
+											{% endif %}
+										>
+											{{ link.title | escape }}
+										</span>
+									</a>
+								{% endif %}
+							</li>
+						{% endfor %}
+					{% endif %}
+        </ul>
+        {% if block.settings.show_promo_1 or block.settings.show_promo_2 %}
+          <div class="mega-menu__items">
+            {% if block.settings.show_promo_1 %}
+              <div class="mega-menu__item mega-menu__item--{{ block.settings.color_scheme_1 }}">
+                <span class="mega-menu__overlay" style="opacity: {{ block.settings.overlay_opacity_1 }}"></span>
+                {% if block.settings.image_1 != blank %}
+                  {%- capture sizes -%}
+										(min-width: 1700px) 1700px, (min-width: 1420px) 1420px, (min-width: 1100px) 1100px, (min-width: 710px) 710px, calc(100vw - 30px)
+									{%- endcapture -%}
+                  {{
+                    block.settings.image_1
+                    | image_url: width: block.settings.image_1.width
+                    | image_tag:
+                      loading: 'lazy',
+                      sizes: sizes,
+                      widths: '360, 550, 710, 1100, 1420, 1700, 1920',
+                      width: block.settings.image_1.width,
+                      class: 'mega-menu__item-image'
+                  }}
+                {%- endif -%}
+                {% if block.settings.heading_1 != blank %}
+                  <div class="mega-menu__item-heading h3">
+                    {{ block.settings.heading_1 }}
+                  </div>
+                {%- endif -%}
+                {% if block.settings.description_1 != blank %}
+                  <div class="mega-menu__item-description">
+                    {{ block.settings.description_1 }}
+                  </div>
+                {%- endif -%}
+                {%- if block.settings.show_button_1 and block.settings.button_label_1 != blank -%}
+                  <div class="mega-menu__item-button-wrapper">
+                    <a
+                      {% if block.settings.button_link_1.url != blank %}
+                        href="{{ block.settings.button_link_1 }}"
+                      {% endif %}
+                      class="mega-menu__item-button button button--arrow button--{{ block.settings.button_style_1 }}"
+                      {% if block.settings.button_link_1.url == blank %}
+                        aria-disabled="true"
+                      {% endif %}
+                    >
+                      <span>
+                        {{ block.settings.button_label_1 | escape }}
+                      </span>
+                      <span>
+                        {% render 'icon-button-arrow' %}
+                      </span>
+                    </a>
+                    {% if block.settings.text_1 or block.settings.text_accent_1 != blank %}
+                      <div class="mega-menu__item-text-wrapper">
+                        {% if block.settings.text_1 != blank %}
+                          <div class="mega-menu__item-text">
+                            {{ block.settings.text_1 }}
+                          </div>
+                        {% endif %}
+                        {% if block.settings.text_accent_1 != blank %}
+                          <div class="mega-menu__item-text mega-menu__item-text--accent">
+                            {{ block.settings.text_accent_1 }}
+                          </div>
+                        {% endif %}
+                      </div>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+                <a
+                  {% if block.settings.button_link_1.url != blank %}
+                    href="{{ block.settings.button_link_1 }}"
+                  {% endif %}
+                  class="header__shop-link-overlay"
+                  {% if block.settings.button_link_1.url == blank %}
+                    aria-disabled="true"
+                  {% endif %}
+                  aria-label="Promo banner"
+                ></a>
+              </div>
+            {% endif %}
+            {% if block.settings.show_promo_2 %}
+              <div class="mega-menu__item mega-menu__item--{{ block.settings.color_scheme_2 }} ">
+                <span class="mega-menu__overlay" style="opacity: {{ block.settings.overlay_opacity_2 }}"></span>
+                {% if block.settings.image_2 != blank %}
+                  {%- capture sizes -%}
+										(min-width: 1700px) 1700px, (min-width: 1420px) 1420px, (min-width: 1100px) 1100px, (min-width: 710px) 710px, calc(100vw - 30px)
+									{%- endcapture -%}
+                  {{
+                    block.settings.image_2
+                    | image_url: width: block.settings.image_2.width
+                    | image_tag:
+                      loading: 'lazy',
+                      sizes: sizes,
+                      widths: '360, 550, 710, 1100, 1420, 1700, 1920',
+                      width: block.settings.image_2.width,
+                      class: 'mega-menu__item-image'
+                  }}
+                {%- endif -%}
+                {% if block.settings.heading_2 != blank %}
+                  <div class="mega-menu__item-heading h3">
+                    {{ block.settings.heading_2 }}
+                  </div>
+                {%- endif -%}
+                {% if block.settings.description_2 != blank %}
+                  <div class="mega-menu__item-description">
+                    {{ block.settings.description_2 }}
+                  </div>
+                {%- endif -%}
+                {%- if block.settings.show_button_2 and block.settings.button_label_2 != blank -%}
+                  <div class="mega-menu__item-button-wrapper">
+                    <a
+                      {% if block.settings.button_link_2.url != blank %}
+                        href="{{ block.settings.button_link_2 }}"
+                      {% endif %}
+                      class="mega-menu__item-button button button--arrow button--{{ block.settings.button_style_2 }}"
+                      {% if block.settings.button_link_2.url == blank %}
+                        aria-disabled="true"
+                      {% endif %}
+                    >
+                      <span>
+                        {{ block.settings.button_label_2 | escape }}
+                      </span>
+                      <span>
+                        {% render 'icon-button-arrow' %}
+                      </span>
+                    </a>
+                    {% if block.settings.text_2 or block.settings.text_accent_2 != blank %}
+                      <div class="mega-menu__item-text-wrapper">
+                        {% if block.settings.text_2 != blank %}
+                          <div class="mega-menu__item-text">
+                            {{ block.settings.text_2 }}
+                          </div>
+                        {% endif %}
+                        {% if block.settings.text_accent_2 != blank %}
+                          <div class="mega-menu__item-text mega-menu__item-text--accent">
+                            {{ block.settings.text_accent_2 }}
+                          </div>
+                        {% endif %}
+                      </div>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+                <a
+                  {% if block.settings.button_link_2.url != blank %}
+                    href="{{ block.settings.button_link_2 }}"
+                  {% endif %}
+                  class="header__shop-link-overlay"
+                  {% if block.settings.button_link_2.url == blank %}
+                    aria-disabled="true"
+                  {% endif %}
+                  aria-label="Promo banner"
+                ></a>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      {%- endif -%}
+    </div>
+  </details>
+</details-disclosure>

@@ -1,0 +1,75 @@
+{% style %}
+	.breadcrumb--padding {
+		padding-top: {{ settings.breadcrumbs_top_padding }}px;
+	}
+{% endstyle %}
+{% comment %} Breadcrumb {% endcomment %}
+{% assign template_base = template | split: '.' | first %}
+{% unless
+  template_base == 'index' or
+  template_base == 'collection' or
+  template_base == 'product' or 
+  page.title == 'New Landing'
+%}
+  <div class="container">
+    <nav class="breadcrumb breadcrumb--padding" role="navigation" aria-label="breadcrumbs">
+      <a href="{{ routes.root_url }}" title="{{ 'general.breadcrumbs.home' | t }}">{{ 'general.breadcrumbs.home' | t}}</a>
+      {% if template contains 'page' %}
+        <div class="breadcrumb__delimiter"></div>
+        <span>{{ page.title }}
+        </span>
+      {% elsif template contains 'product' %}
+        <div class="breadcrumb__delimiter"></div>
+        {% if product.collections[0] %}
+          <a href="{{ product.collections[0].url }}">{{ product.collections[0].title }}
+          </a>
+          <div class="breadcrumb__delimiter"></div>
+        {% endif %}
+        <span>{{ product.title }}
+        </span>
+      {% elsif template contains 'collection' and collection.handle %}
+        <div class="breadcrumb__delimiter"></div>
+        {% if current_tags %}
+          {% capture url %}/collections/{{ collection.handle }}
+          {% endcapture %}
+          {{ collection.title | link_to: url }}
+          <div class="breadcrumb__delimiter"></div>
+          <span>{{ current_tags | join: " + " }}
+          </span>
+        {% else %}
+          <span>{{ collection.title }}
+          </span>
+        {% endif %}
+      {% elsif template == 'blog' %}
+        <div class="breadcrumb__delimiter"></div>
+        {% if current_tags %}
+          {{ blog.title | link_to: blog.url }}
+          <div class="breadcrumb__delimiter"></div>
+          <span>{{ current_tags | join: " + " }}
+          </span>
+        {% else %}
+          <span>{{ blog.title }}
+          </span>
+        {% endif %}
+      {% elsif template == 'customers/order' %}
+        <div class="breadcrumb__delimiter"></div>
+        <a href='{{ routes.account_url }}'>{{ 'customer.account.title' | t }}
+        </a>
+        <div class="breadcrumb__delimiter"></div>
+        <span>{{ order.name }}
+        </span>
+      {% elsif template == 'customers/addresses' %}
+        <div class="breadcrumb__delimiter"></div>
+        <a href='{{ routes.account_url }}'>{{ 'customer.account.title' | t }}
+        </a>
+        <div class="breadcrumb__delimiter"></div>
+        <span>{{ 'customer.addresses.title' | t }}
+        </span>
+      {% else %}
+        <div class="breadcrumb__delimiter"></div>
+        <span>{{ page_title }}
+        </span>
+      {% endif %}
+    </nav> 
+  </div>
+{% endunless %}

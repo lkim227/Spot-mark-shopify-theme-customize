@@ -1,0 +1,344 @@
+{{ 'section-popular-products.css' | asset_url | stylesheet_tag }}
+{{ 'component-badge.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'popular-products.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  {% render 'section-padding' %}
+{%- endstyle -%}
+
+{% liquid
+  if section.settings.filter_type == 'collections'
+    assign filters = ''
+    for collection in section.settings.collection_list
+      if collection.all_products_count != 0
+        assign filters = filters | append: collection.title | append: ','
+      endif
+    endfor
+    assign filters = filters | split: ',' | uniq
+    comment
+      assign filters = section.settings.collection_list | map: 'title'
+    endcomment
+  endif
+
+  if section.settings.filter_type == 'product_type'
+    assign filters = ''
+    for collection in section.settings.collection_list
+      for product in collection.products
+        assign product_type = product.type
+        if product_type != blank
+          assign filters = filters | append: product_type | append: ','
+        endif
+      endfor
+    endfor
+
+    assign filters = filters | split: ',' | uniq
+  endif
+
+  if section.settings.filter_type == 'tags'
+    assign filters = ''
+    for collection in section.settings.collection_list
+      for product in collection.products
+        for tag in product.tags
+          assign filters = filters | append: tag | append: ','
+        endfor
+      endfor
+    endfor
+    assign filters = filters | split: ',' | uniq
+  endif
+%}
+
+<div class="popular-products section-{{ section.id }}-padding">
+  <div class="container">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="h3 popular-products__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    {% if section.settings.filter %}
+      {%- if filters.size > 1 -%}
+        <ul class="popular-products__filters filters no-js-hidden">
+          <li>
+            <button class="link filters__item filters__item_active" data-filter-target="all">
+              {{ 'products.facets.all' | t }}
+            </button>
+          </li>
+          {% for filter in filters %}
+            <li>
+              <button class="link filters__item" data-filter-target="{{ filter }}">{{ filter }}</button>
+            </li>
+          {% endfor %}
+        </ul>
+      {%- endif -%}
+    {% endif %}
+
+    {%- liquid
+      assign products_id = ''
+      for collection in section.settings.collection_list
+        for product in collection.products
+          assign productId = product.id
+          assign products_id = products_id | append: productId | append: ','
+        endfor
+      endfor
+
+      assign products_id = products_id | split: ',' | uniq
+    -%}
+
+    <ul
+      class="popular-products__wrapper popular-products__wrapper--{{ section.settings.products_to_show }} list-unstyled"
+      data-limit="{{ section.settings.products_limit }}"
+    >
+      {% assign count = 0 %}
+      {%- for collection in section.settings.collection_list -%}
+        {%- for product in collection.products -%}
+          {% assign productId = product.id | append: '' %}
+
+          {% if products_id contains productId %}
+            {% liquid
+              assign count = count | plus: 1
+
+              assign product_filters = ''
+              if section.settings.filter_type == 'collections'
+                for item in product.collections
+                  assign product_filters = product_filters | append: '&#34;' | append: item.title | append: '&#34;,'
+                endfor
+              endif
+
+              if section.settings.filter_type == 'product_type'
+                assign product_filters = product_filters | append: '&#34;' | append: product.type | append: '&#34;,'
+              endif
+
+              if section.settings.filter_type == 'tags'
+                for item in product.tags
+                  assign product_filters = product_filters | append: '&#34;' | append: item | append: '&#34;,'
+                endfor
+              endif
+            %}
+
+            <li
+              data-filter="[{{ product_filters | remove_last: ',' }}]"
+              class="
+                popular-products__item collection-popular-card
+                quickview{%- if settings.quickview_hover -%}--hover{% endif %}
+                {% if count <= section.settings.products_limit %} show {% endif %}
+              "
+            >
+              {% render 'product-card-horizontal',
+                product_card_product: product,
+                media_size: section.settings.image_ratio,
+                media_fit: section.settings.image_fit,
+                show_vendor: section.settings.show_vendor,
+                show_sku: section.settings.show_sku
+              %}
+            </li>
+
+            {% assign products_id = products_id | join: ',' %}
+            {% assign products_id = products_id | remove: productId %}
+            {% assign products_id = products_id | split: ',' | uniq %}
+          {% endif %}
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..section.settings.products_limit) -%}
+          <li class="popular-products__item_placeholder collection-popular-card collection-popular-card--placeholder">
+            {% render 'product-card-placeholder', media_size: 'square' %}
+          </li>
+        {%- endfor -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.popular-products.name",
+  "tag": "section",
+  "class": "popular-products-section spaced-section",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "heading",
+      "default": "Some heading",
+      "label": "t:sections.popular-products.settings.heading.label"
+    },
+    {
+      "type": "collection_list",
+      "id": "collection_list",
+      "label": "t:sections.popular-products.settings.collection_list.label"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "min": 4,
+      "max": 24,
+      "step": 1,
+      "default": 12,
+      "label": "t:sections.popular-products.settings.products_limit.label"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 4,
+      "label": "t:sections.popular-products.settings.products_to_show.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "filter",
+      "default": true,
+      "label": "t:sections.popular-products.settings.filter.label",
+      "info": "t:sections.popular-products.settings.filter.info"
+    },
+    {
+      "type": "select",
+      "id": "filter_type",
+      "options": [
+        {
+          "value": "collections",
+          "label": "t:sections.popular-products.settings.filter_type.options__1.label"
+        },
+        {
+          "value": "product_type",
+          "label": "t:sections.popular-products.settings.filter_type.options__2.label"
+        },
+        {
+          "value": "tags",
+          "label": "t:sections.popular-products.settings.filter_type.options__3.label"
+        }
+      ],
+      "default": "collections",
+      "label": "t:sections.popular-products.settings.filter_type.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.product-recommendations.settings.header__2.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": true,
+      "label": "t:sections.product-recommendations.settings.show_vendor.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sku",
+      "default": false,
+      "label": "t:sections.all.card.show_sku.label"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "landscape",
+          "label": "t:sections.all.card.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.all.card.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.all.card.image_ratio.options__3.label"
+        }
+      ],
+      "default": "square",
+      "label": "t:sections.all.card.image_ratio.label"
+    },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "t:sections.all.card.image_fit.label",
+      "options": [
+        {
+          "value": "contain",
+          "label": "t:sections.all.card.image_fit.options__1.label"
+        },
+        {
+          "value": "cover",
+          "label": "t:sections.all.card.image_fit.options__2.label"
+        }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.section-padding.header.content"
+    },
+    {
+      "type": "select",
+      "id": "padding_top",
+      "options": [
+        {
+          "value": "no-indent",
+          "label": "t:sections.all.section-padding.options__1.label"
+        },
+        {
+          "value": "xs",
+          "label": "t:sections.all.section-padding.options__2.label"
+        },
+        {
+          "value": "s",
+          "label": "t:sections.all.section-padding.options__3.label"
+        },
+        {
+          "value": "m",
+          "label": "t:sections.all.section-padding.options__4.label"
+        },
+        {
+          "value": "l",
+          "label": "t:sections.all.section-padding.options__5.label"
+        },
+        {
+          "value": "xl",
+          "label": "t:sections.all.section-padding.options__6.label"
+        }
+      ],
+      "default": "m",
+      "label": "t:sections.all.section-padding.padding_top.label"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom",
+      "options": [
+        {
+          "value": "no-indent",
+          "label": "t:sections.all.section-padding.options__1.label"
+        },
+        {
+          "value": "xs",
+          "label": "t:sections.all.section-padding.options__2.label"
+        },
+        {
+          "value": "s",
+          "label": "t:sections.all.section-padding.options__3.label"
+        },
+        {
+          "value": "m",
+          "label": "t:sections.all.section-padding.options__4.label"
+        },
+        {
+          "value": "l",
+          "label": "t:sections.all.section-padding.options__5.label"
+        },
+        {
+          "value": "xl",
+          "label": "t:sections.all.section-padding.options__6.label"
+        }
+      ],
+      "default": "m",
+      "label": "t:sections.all.section-padding.padding_bottom.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.popular-products.presets.name"
+    }
+  ]
+}
+{% endschema %}

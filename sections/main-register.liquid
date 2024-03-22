@@ -1,0 +1,314 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  {% render 'section-margin' %}
+  {% render 'section-padding' %}
+{%- endstyle -%}
+
+<script src="{{ 'input.js' | asset_url }}" defer="defer"></script>
+
+<div class="section-{{ section.id }}-padding">
+  <div class="customer login register">
+    <div class="container">
+      <div class="login__wrapper">
+        <div class="login__col">
+          {% if section.settings.image != blank %}
+            {%- capture style -%}
+							object-position: {{ section.settings.image.presentation.focal_point }};
+						{%- endcapture -%}
+            {{
+              section.settings.image.preview_image
+              | image_url: width: 1946
+              | image_tag:
+                loading: 'lazy',
+                widths: '246, 493, 600, 713, 823, 990, 1100, 1206, 1346, 1426, 1646, 1946',
+                style: style
+            }}
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'login__placeholder' }}
+          {% endif %}
+        </div>
+        <div class="login__col">
+          <div class="login__form">
+            <div class="page-header">
+              <div class="page-header__inner">
+                <h1 class="title--page h2">
+                  {{ 'customer.register.title' | t }}
+                </h1>
+
+                {%- if section.settings.subtitle != blank -%}
+                  <div class="login__subtitle">
+                    {{ section.settings.subtitle }}
+                  </div>
+                {%- endif -%}
+              </div>
+            </div>
+            {%- form 'create_customer' -%}
+              <div class="field__wrapper">
+                <div class="field">
+                  <input
+                    type="text"
+                    name="customer[first_name]"
+                    id="RegisterForm-FirstName"
+                    {% if form.first_name %}
+                      value="{{ form.first_name }}"
+                    {% endif %}
+                    autocomplete="given-name"
+                    placeholder="{{ 'customer.register.first_name' | t }}"
+                    required
+                  >
+                  <label for="RegisterForm-FirstName">{{ 'customer.register.first_name' | t }}</label>
+                </div>
+                <div class="field">
+                  <input
+                    type="text"
+                    name="customer[last_name]"
+                    id="RegisterForm-LastName"
+                    {% if form.last_name %}
+                      value="{{ form.last_name }}"
+                    {% endif %}
+                    autocomplete="family-name"
+                    aria-required="true"
+                    placeholder="{{ 'customer.register.last_name' | t }}"
+                    required
+                  >
+                  <label for="RegisterForm-LastName">{{ 'customer.register.last_name' | t }}</label>
+                </div>
+              </div>
+              <div class="field">
+                <input
+                  type="email"
+                  name="customer[email]"
+                  id="RegisterForm-email"
+                  {% if form.email %}
+                    value="{{ form.email }}"
+                  {% endif %}
+                  spellcheck="false"
+                  autocapitalize="off"
+                  autocomplete="email"
+                  aria-required="true"
+                  {% if form.errors contains 'email' %}
+                    aria-invalid="true"
+                    aria-describedby="RegisterForm-email-error"
+                  {% endif %}
+                  placeholder="{{ 'customer.register.email' | t }}"
+                  required
+                >
+                <label for="RegisterForm-email">{{ 'customer.register.email' | t }}</label>
+              </div>
+              {%- if form.errors contains 'email' -%}
+                <span id="RegisterForm-email-error" class="form__message">
+                  {{ form.errors.translated_fields.email | capitalize }}
+                  {{ form.errors.messages.email }}.
+                </span>
+              {%- endif -%}
+              <div class="field">
+                <input
+                  type="password"
+                  name="customer[password]"
+                  id="RegisterForm-password"
+                  aria-required="true"
+                  {% if form.errors contains 'password' %}
+                    aria-invalid="true"
+                    aria-describedby="RegisterForm-password-error"
+                  {% endif %}
+                  placeholder="{{ 'customer.register.password' | t }}"
+                  required
+                >
+                <label for="RegisterForm-password">{{ 'customer.register.password' | t }}</label>
+              </div>
+              {%- if form.errors contains 'password' -%}
+                <span id="RegisterForm-password-error" class="form__message">
+                  {{ form.errors.translated_fields.password | capitalize }}
+                  {{ form.errors.messages.password }}.
+                </span>
+              {%- endif -%}
+
+              {%- if form.errors contains 'form' -%}
+                <span id="RegisterForm-email-error" class="form__message">
+                  {{ 'customer.login_page.customer_exist' | t }}
+                </span>
+              {%- endif -%}
+
+              <p>
+                This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply
+              </p>
+
+              <div class="customer__buttons">
+                <button class="button button--arrow button--primary button--primary-size">
+                  <span>{{ 'customer.register.submit' | t }}</span>
+                  <span>{%- render 'icon-button-arrow' -%}</span>
+                </button>
+
+                <a
+                  class="button button--arrow button--secondary button--primary-size login__create-acc"
+                  href="{{ routes.account_login_url }}"
+                >
+                  <span>{{ 'customer.login_page.title' | t }}</span>
+                  <span>{%- render 'icon-button-arrow' -%}</span>
+                </a>
+              </div>
+            {%- endform -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-register.name",
+  "tag": "section",
+  "class": "spaced-section login-section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "default": "Some text for section",
+      "label": "t:sections.all.text.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.all.image.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.section-margin.header.content"
+    },
+    {
+      "type": "select",
+      "id": "margin_top",
+      "options": [
+        {
+          "value": "no-indent",
+          "label": "t:sections.all.section-margin.options__1.label"
+        },
+        {
+          "value": "xs",
+          "label": "t:sections.all.section-margin.options__2.label"
+        },
+        {
+          "value": "s",
+          "label": "t:sections.all.section-margin.options__3.label"
+        },
+        {
+          "value": "m",
+          "label": "t:sections.all.section-margin.options__4.label"
+        },
+        {
+          "value": "l",
+          "label": "t:sections.all.section-margin.options__5.label"
+        },
+        {
+          "value": "xl",
+          "label": "t:sections.all.section-margin.options__6.label"
+        }
+      ],
+      "default": "no-indent",
+      "label": "t:sections.all.section-margin.margin_top.label"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom",
+      "options": [
+        {
+          "value": "no-indent",
+          "label": "t:sections.all.section-margin.options__1.label"
+        },
+        {
+          "value": "xs",
+          "label": "t:sections.all.section-margin.options__2.label"
+        },
+        {
+          "value": "s",
+          "label": "t:sections.all.section-margin.options__3.label"
+        },
+        {
+          "value": "m",
+          "label": "t:sections.all.section-margin.options__4.label"
+        },
+        {
+          "value": "l",
+          "label": "t:sections.all.section-margin.options__5.label"
+        },
+        {
+          "value": "xl",
+          "label": "t:sections.all.section-margin.options__6.label"
+        }
+      ],
+      "default": "no-indent",
+      "label": "t:sections.all.section-margin.margin_bottom.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.section-padding.header.content"
+    },
+    {
+      "type": "select",
+      "id": "padding_top",
+      "options": [
+        {
+          "value": "no-indent",
+          "label": "t:sections.all.section-padding.options__1.label"
+        },
+        {
+          "value": "xs",
+          "label": "t:sections.all.section-padding.options__2.label"
+        },
+        {
+          "value": "s",
+          "label": "t:sections.all.section-padding.options__3.label"
+        },
+        {
+          "value": "m",
+          "label": "t:sections.all.section-padding.options__4.label"
+        },
+        {
+          "value": "l",
+          "label": "t:sections.all.section-padding.options__5.label"
+        },
+        {
+          "value": "xl",
+          "label": "t:sections.all.section-padding.options__6.label"
+        }
+      ],
+      "default": "no-indent",
+      "label": "t:sections.all.section-padding.padding_top.label"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom",
+      "options": [
+        {
+          "value": "no-indent",
+          "label": "t:sections.all.section-padding.options__1.label"
+        },
+        {
+          "value": "xs",
+          "label": "t:sections.all.section-padding.options__2.label"
+        },
+        {
+          "value": "s",
+          "label": "t:sections.all.section-padding.options__3.label"
+        },
+        {
+          "value": "m",
+          "label": "t:sections.all.section-padding.options__4.label"
+        },
+        {
+          "value": "l",
+          "label": "t:sections.all.section-padding.options__5.label"
+        },
+        {
+          "value": "xl",
+          "label": "t:sections.all.section-padding.options__6.label"
+        }
+      ],
+      "default": "xl",
+      "label": "t:sections.all.section-padding.padding_bottom.label"
+    }
+  ]
+}
+{% endschema %}

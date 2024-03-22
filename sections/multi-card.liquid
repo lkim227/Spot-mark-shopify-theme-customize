@@ -1,0 +1,435 @@
+{% assign value = section.settings %}
+
+{{ 'section-multi-card.css' | asset_url | stylesheet_tag: preload: true }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    margin-top: {{ section.settings.margin_top-m }}px;
+    margin-bottom: {{ section.settings.margin_bottom-m }}px;
+    padding-top: {{ section.settings.padding_top_m  }}px;
+    padding-bottom: {{ section.settings.padding_bottom_m }}px;
+
+    background-image: url('{{ value.bg_img | image_url }}');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.color }};
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .multi-card-bg-img{
+    display: none;
+  }
+  .multi-card-wrapper{
+    position: static;
+  }
+  @media screen and (min-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{% assign slidesmobile = value.slidesmobile %}
+{% assign mobilespace = value.mobilespace %}
+{% assign horizontal = value.horizontal %}
+{% assign effect = value.effect %}
+{% assign freemode = value.freemode %}
+{% assign grabcursor = value.grabcursor %}
+{% assign loop = value.loop %}
+{% assign speed = value.speed %}
+{% assign autoplay = value.autoplay %}
+{% assign delay = value.delay %}
+{% assign disableoninteraction = value.disableoninteraction %}
+{% assign reversedirection = value.reversedirection %}
+{% assign slidestab = value.slidestab %}
+{% assign tabspace = value.tabspace %}
+{% assign slideslaptop = value.slideslaptop %}
+{% assign laptopspace = value.laptopspace %}
+{% assign slidesdesktop = value.slidesdesktop %}
+{% assign desktopspace = value.desktopspace %}
+
+{% assign nextnavclass = '.nav-next' %}
+{% assign prevnavclass = '.nav-prev' %}
+{% assign nextnav = '.section-' | append: section.id | append: '-padding ' | append: nextnavclass %}
+{% assign prevnav = '.section-' | append: section.id | append: '-padding ' | append: prevnavclass %}
+
+
+<div class="section-{{ section.id }}-padding" id="section-{{ section.id }}">
+  <div class="multi-card-bg-img">
+    {{ value.bg_img | image_url: width: auto | image_tag: loading: 'lazy' }}
+  </div>
+  <div class="multi-card-wrapper container">
+    <h3 class="section-heading" style="color: {{ value.color }};">{{ value.title }}</h3>
+    <div class="text" style="color: {{ value.color }};">{{ value.text }}</div>
+    <div class="multi-card-container">
+      <slider-component>
+        <div
+            class="common__slideshow multi_card_swiper swiper"
+            data-initialslide="1"
+            data-slidesmobile="{{ slidesmobile }}"
+            data-mobilespace="{{ mobilespace }}"
+            data-horizontal="{{ horizontal }}"
+            data-effect="{{ effect }}"
+            data-freemode="{{ freemode }}"
+            data-grabcursor="{{ grabcursor }}"
+            data-loop="{{ loop }}"
+            data-speed="{{ speed }}"
+            data-autoplay="{{ autoplay }}"
+            data-delay="{{ delay }}"
+            data-disableoninteraction="{{ disableoninteraction }}"
+            data-reversedirection="{{ reversedirection }}"
+            data-direction="{{ delay }}"
+            data-freemomentum="false"
+            data-slidestab="{{ slidestab }}"
+            data-tabspace="{{tabspace }}"
+            data-slideslaptop="{{ slideslaptop }}"
+            data-laptopspace="{{ laptopspace }}"
+            data-slidesdesktop="{{ slidesdesktop }}"
+            data-desktopspace="{{ desktopspace }}"
+          >
+          <div class="multi_card_wrapper swiper-wrapper">
+            {% for block in section.blocks %}
+              {% if block.type == 'card' %}
+                {% assign val = block.settings %}
+                <div class="swiper-slide">
+                  <div class="multi-card-item" {{ block.shopify_attributes }}>
+                    <h4 style="color: {{ val.title_color }};">{{ val.title }}</h4>
+                    <div class="multi-card-item-in" style="background-color: {{ val.bg_color }};">
+                      <div class="multi-card-item-img">
+                        {{ val.img | image_url: width: auto | image_tag: loading: 'lazy' }}
+                      </div>
+                      <div class="text" style="color: {{ val.text_color }};">{{ val.text }}</div>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          </div>
+          <div class="landing-paint-navigation">
+            <div class="landing-earn-prev swiper-button-prev">
+              {% render 'all-icons', name: 'paint-left-nav' %}
+            </div>
+            <div class="landing-earn-next swiper-button-next">
+              {% render 'all-icons', name: 'paint-right-nav' %}
+            </div>
+          </div>
+      </slider-component>
+      
+    </div>
+  </div>
+  <div class="multi-card-overlay"></div>
+</div>
+
+{% schema %}
+{
+  "name": "Multi Card",
+  "class": "multi-card-section",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_img",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "header",
+      "content": "Slider Controls"
+    },
+    {
+      "type": "range",
+      "id": "slidesmobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Slide number (Mobile)",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "mobilespace",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Space between slides (Mobile)",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "slidestab",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Slide number (Tab)",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "tabspace",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Space between slides (Tab)",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "slideslaptop",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "Slide number (Laptop)",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "laptopspace",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Space between slides (Laptop)",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "slidesdesktop",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "label": "Slide number (Desktop)",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "desktopspace",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "label": "Space between slides (Desktop)",
+      "default": 100
+    },
+    {
+      "type": "checkbox",
+      "id": "horizontal",
+      "label": "horizontal",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "freemode",
+      "label": "Free Mode",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "grabcursor",
+      "label": "Grab Cursor",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "disableoninteraction",
+      "label": "Disable on Interaction",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "reversedirection",
+      "label": "Reverse Direction",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "speed",
+      "label": "Speed (ms)",
+      "default": "1000"
+    },
+    {
+      "type": "text",
+      "id": "delay",
+      "label": "Delay (ms)",
+      "default": "3000"
+    },
+    {
+      "type": "header",
+      "content": "Section Color"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "linear-gradient(180deg, #0232D9 0%, #0029BB 21.46%, #05207A 83.33%)"
+    },
+    {
+      "type": "header",
+      "content": "Spacing (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Spacing (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top-m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom-m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 68
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Card item",
+      "type": "card",
+      "settings": [
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#000000"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Multi Card"
+    }
+  ]
+}
+{% endschema %}

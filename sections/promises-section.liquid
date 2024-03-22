@@ -1,0 +1,111 @@
+{%liquid
+
+assign s = section.settings
+
+
+%}
+
+<style>
+  .promisies-list li{
+    background: {{ s.background_color }} !important;
+    
+  }
+  .promist-text{
+    background-color: inherit;
+  }
+  .promist-text h3{
+    color: {{ s.text_color }} !important;
+  }
+</style>
+
+<div class="container-fluid"> 
+
+<div class="promises-wrapper">
+
+{% if s.heading != blank %}
+    <h2 class="promises-titile">{{ s.heading }}</h2>
+{% endif %}
+{% if s.text != blank %}
+    <p class="promises-sub-titile">{{ s.text }}</p>
+{% endif %}
+   {% liquid 
+   
+   assign items = section.blocks | where: 'type', 'items'
+
+   %}
+   {% if items != blank %}
+    
+
+    <ul class="promisies-list">
+
+    {% for block in items %}
+        {%liquid
+          assign b = block.settings 
+          %}
+
+        <li class="promisies-item" {% if b.background_color != blank %} style="background-color: {{ b.background_color }};" {% endif %}>
+            <div class="promist-text">
+                <h3 {%if b.color  %} style="color:{{ b.color }}" {%endif %}>{{ b.heaing}}</h3>
+            </div>
+        </li>
+
+    {% endfor %}
+
+    </ul>
+
+{% endif %}
+</div>
+
+</div>
+{% schema %}
+    {
+      "name": "Promisies",
+      "enabled_on": {
+        "templates": ["product"]
+      },
+      "settings": [
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#57bd79"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#000"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "heading"
+        },
+        {
+              "type": "inline_richtext",
+              "id": "text",
+              "label": "Text",
+              "default": "Check Our Promisies & assurance"
+            }
+      ],
+      "blocks": [
+        { 
+          "type": "items",
+          "name": "Items",
+          "settings": [
+            {
+              "type": "text",
+              "id": "heaing",
+              "label": "heading",
+              "default": "See Our Trust & gaurentee"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Promisies"
+        }
+      ]
+    }
+    {% endschema %}

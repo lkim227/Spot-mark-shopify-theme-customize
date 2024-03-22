@@ -1,0 +1,19 @@
+{%- assign dark_mode_toggle = settings.dark_mode_toggle -%}
+{%- if dark_mode_toggle -%}
+  <button class="header__toggle-scheme toggle-scheme-button no-js-hidden">
+    <div class="header__toggle-scheme-item header__toggle-scheme-item--light">
+      <span class="header__toggle-scheme-heading">{{- 'general.dark_mode.dark' | t -}}</span>
+      <span class="header__toggle-scheme-switch">
+        <span class="header__toggle-scheme-circle"></span>
+        {{- 'general.dark_mode.on' | t -}}
+      </span>
+    </div>
+    <div class="header__toggle-scheme-item header__toggle-scheme-item--dark">
+      <span class="header__toggle-scheme-heading">{{- 'general.dark_mode.dark' | t -}}</span>
+      <span class="header__toggle-scheme-switch">
+        <span class="header__toggle-scheme-circle"></span>
+        {{- 'general.dark_mode.off' | t -}}
+      </span>
+    </div>
+  </button>
+{%- endif -%}

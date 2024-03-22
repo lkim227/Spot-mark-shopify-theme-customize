@@ -1,0 +1,97 @@
+<div class="card-horizontal-wrapper {{ classMod }}">
+	<span class="visually-hidden">{{ product_card_product.title | escape }}</span>
+
+	<div class="card-horizontal__image" tabindex="-1">
+		{%- liquid
+			assign featured_media_aspect_ratio = product_card_product.featured_media.aspect_ratio
+
+			if product_card_product.featured_media.aspect_ratio == nil
+				assign featured_media_aspect_ratio = 1
+			endif -%}
+
+		<div class="media media--transparent media--hover-effect"
+			{%- if media_size == 'landscape' -%}
+				style="padding-bottom: 70%;"
+			{%- endif -%}
+			{%- if media_size == 'portrait' -%}
+				style="padding-bottom: 130%;"
+			{%- endif -%}
+			{%- if media_size == 'square' -%}
+				style="padding-bottom: 100%;"
+			{%- endif -%}>
+
+			{% capture style %}
+				{%- if media_fit == 'contain' -%}
+					object-fit: contain;
+				{%- endif -%}
+				{%- if media_fit == 'cover' -%}
+					object-fit: cover;
+				{%- endif -%}
+			{% endcapture %}
+
+			{%- if product_card_product.featured_media -%}
+				{% liquid
+					assign aspect_ratio = product_card_product.featured_media.preview_image.aspect_ratio
+
+					case media_size
+						when 'portrait'
+							assign image_ratio = 1.3
+							assign image_width = 90
+						when 'square'
+							assign image_ratio = 1
+							assign image_width = 70
+						else
+							assign image_ratio = 0.7
+							assign image_width = 70
+					endcase
+
+					if aspect_ratio > image_ratio and product_card_product.featured_media.preview_image.width > product_card_product.featured_media.preview_image.height
+						assign width = aspect_ratio | times: image_width 
+					elsif aspect_ratio > image_ratio and product_card_product.featured_media.preview_image.width < product_card_product.featured_media.preview_image.height
+						assign width = image_width | divided_by: aspect_ratio
+					else
+						assign width = 70
+					endif
+				%}
+
+				{{ product_card_product.featured_media | image_url: width: width | image_tag:
+					loading: 'lazy',
+					class: "motion-reduce",
+					style: style
+				}}
+			{%- else -%}
+				{{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+			{%- endif -%}
+
+		</div>
+	</div>
+
+	<div class="card-horizontal__information">
+		<div class="card-horizontal__information-group">
+			{%- if show_sku and product_card_product.selected_or_first_available_variant.sku.size > 0 -%}
+				<p
+					class="card-horizontal__sku no-js-hidden"
+					id="Sku-{{ section.id }}"
+					role="status"
+					{{ block.shopify_attributes }}
+				>
+					<span class="visually-hidden">{{ 'products.product.sku' | t }}:</span> {{- product_card_product.selected_or_first_available_variant.sku -}}
+				</p>
+			{%- endif -%}
+
+			{%- if show_vendor -%}
+				<span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
+				<div class="card-horizontal__subtitle subtitle">{{ product_card_product.vendor }}</div>
+			{%- endif -%}
+
+			<h3 class="card-horizontal__title">
+				<a class="full-unstyled-link" href="{{ product_card_product.url | default: '#' }}" title="{{ product_card_product.title | escape }}">
+					{{ product_card_product.title | escape }}
+				</a>
+			</h3>
+		</div>
+
+		{% render 'price', product: product_card_product, price_class: '' %} 
+	</div>
+	<a href="{{ product_card_product.url | default: '#' }}" class="link link--overlay card-wrapper__link--overlay" aria-label="{{ "accessibility.product_link" | t }}"></a>
+</div>

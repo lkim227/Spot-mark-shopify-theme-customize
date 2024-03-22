@@ -1,0 +1,55 @@
+.paint-slider-wrapper{
+    position: relative;
+    padding: 70px 0 0;
+}
+
+
+.section-header-paint{
+    color: #000;
+text-align: center;
+font-family: 'Gilroy';
+font-size: 20px;
+font-style: normal;
+line-height: 140%; /* 28px */
+margin-bottom: 40px;
+}
+
+.paint-heading{
+    color: #000;
+text-align: center;
+font-family: 'Gilroy';
+font-size: 48px;
+font-style: normal;
+font-weight: 800;
+line-height: 87%; /* 83.52px */
+margin: 0 0 24px;
+}
+
+.paint-dec{
+    margin: 0 auto;
+}
+
+
+@media only screen and (max-width: 991px){
+    .paint-dec {
+        max-width: 100%;
+    }
+    .section-header-paint {
+        font-size: 16px;
+
+    }
+
+    
+
+}
+
+
+@media only screen and (max-width: 767px){
+    .paint-heading {
+        font-size: 32px;
+        line-height: normal;
+    }
+    .section-header-paint{
+        margin-bottom: 0;
+    }
+}

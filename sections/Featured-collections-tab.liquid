@@ -1,0 +1,353 @@
+
+
+{{ 'section-featured-collections-tab.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'component-badge.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+{%- if settings.quickview_show == false and settings.show_color_swatch and section.settings.show_color_swatch-%}
+    {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
+  {% endif %}
+
+
+    <link
+      rel="preload"
+      href="{{ 'section-main-product.css' | asset_url }}"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    >
+    <link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="all">
+    <link
+      rel="preload"
+      href="{{ 'quick-add.css' | asset_url }}"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    >
+  
+    <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+ 
+
+
+
+<div class="feature-products-section">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center m-auto">
+            {% if  section.settings.heading != blank  %}
+                <h2 class="section-heading">{{ section.settings.heading}}</h2>
+            {% endif %}
+            {% if  section.settings.description != blank  %}
+              <div class="section-dsc">
+                <p>{{section.settings.description }}</p>
+             </div>
+            {% endif %}
+        </div>
+     </div>
+     
+
+     <div class="row tab-row">
+        <div class="col-md-12 m-auto">
+          <div class="scroll"> 
+            <ul class="tabs">
+              {% assign count = 1 %}
+              {% for block in section.blocks %}
+                {%- case block.type -%}
+                    {%- when 'collection' -%}
+                      {%liquid
+                        assign collection = block.settings.collection 
+                       %}
+
+             
+                <li class="tab {%if count == 1 %} current {%endif %}" data-tab="tab-{{section.id}}-{{ block.id }}">{{ collection.title }}</li>
+            {%- endcase -%}
+              {% assign count = count | plus: 1 %}
+           {% endfor %}
+            </ul>
+          </div>
+          {% for block in section.blocks %}
+            {%- case block.type -%}
+                {%- when 'collection' -%}
+
+                  {%liquid
+                  assign collection = block.settings.collection 
+                 %}
+
+            <div id="tab-{{section.id}}-{{ block.id }}" class="tab-content {%if forloop.index == 1 %} current {%endif %} ">
+                <slider-component >
+                <div class="common__slideshow swiper featured-products__slider featured-products__grid list-unstyled"
+                    data-slidesdesktop="4"
+                    data-slidesLaptop="4"
+                    data-slidesTab="2"
+                    data-slidesMobile="1"
+                    data-direction="false"
+                    data-autoPlay="false"
+                    data-delay="0"
+                    data-loop="true"
+                    data-freemode="false"
+                    data-freemomentum="false"
+                    data-speed="500"
+                    data-desktopspace="10"
+                    data-laptopspace="10"
+                    data-tabspace="10"
+                    data-mobilespace="10"
+                 >
+                    <div class="swiper-wrapper">
+                    {%- for product in collection.products limit: section.settings.products_limit -%}
+                    <div
+                      class=" swiper-slide
+                        collection-product-card
+                        quickview{%- if settings.quickview_hover -%}--hover{% endif %}
+                      "
+                    >
+
+                      <div class="collection-product__inner">
+                      {% render 'product-card-2',
+                        product_card_product: product,
+                        media_size: section.settings.image_ratio,
+                        media_fit: section.settings.image_fit,
+                        show_secondary_image: section.settings.show_secondary_image,
+                        show_vendor: section.settings.show_vendor,
+                        show_button: section.settings.show_button,
+                        show_desc: section.settings.show_desc,
+                        show_sku: section.settings.show_sku,
+                        section_id: section.id,
+                        show_color_swatch: section.settings.show_color_swatch,
+                        loop: block.id
+                        collection: collection.id
+                      %}
+                    </div>
+                  </div>
+                  {%- else -%}
+                    {%- for i in (1..section.settings.products_limit ) -%}
+                      <div class="collection-product-card swiper-slide">
+                        {% render 'product-card-placeholder', media_size: 'square' %}
+                      </div>
+                    {%- endfor -%}
+                  {%- endfor -%}
+                </div>
+
+                </div> 
+
+                <div class="featured-products-navigation">
+                    <div class="swiper-button-prev">
+                       <svg width="76" height="76" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <g filter="url(#filter0_d_1447_211)">
+                           <circle cx="30" cy="30" r="30" transform="matrix(-1 0 0 1 68 4)" fill="white"/>
+                           <rect width="3" height="12.2217" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 45 35.9062)" fill="black"/>
+                           <rect width="3" height="7.87027" transform="matrix(0.707107 -0.707107 -0.707107 -0.707107 36.0156 39.9062)" fill="black"/>
+                           <rect width="3" height="7.87027" transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 38.1367 30.8994)" fill="black"/>
+                           </g>
+                           <defs>
+                           <filter id="filter0_d_1447_211" x="0" y="0" width="76" height="76" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                           <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                           <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                           <feOffset dy="4"/>
+                           <feGaussianBlur stdDeviation="4"/>
+                           <feComposite in2="hardAlpha" operator="out"/>
+                           <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.07 0"/>
+                           <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1447_211"/>
+                           <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1447_211" result="shape"/>
+                           </filter>
+                           </defs>
+                           </svg>
+                           
+                   </div>
+                   <div class="swiper-button-next">
+                       <svg width="76" height="76" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <g filter="url(#filter0_d_1447_205)">
+                           <circle cx="38" cy="34" r="30" fill="white"/>
+                           <rect x="31" y="35.9062" width="3" height="12.2217" transform="rotate(-90 31 35.9062)" fill="black"/>
+                           <rect x="39.9844" y="39.9062" width="3" height="7.87027" transform="rotate(-135 39.9844 39.9062)" fill="black"/>
+                           <rect x="37.8633" y="30.8994" width="3" height="7.87027" transform="rotate(-45 37.8633 30.8994)" fill="black"/>
+                           </g>
+                           <defs>
+                           <filter id="filter0_d_1447_205" x="0" y="0" width="76" height="76" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                           <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                           <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                           <feOffset dy="4"/>
+                           <feGaussianBlur stdDeviation="4"/>
+                           <feComposite in2="hardAlpha" operator="out"/>
+                           <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.07 0"/>
+                           <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1447_205"/>
+                           <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1447_205" result="shape"/>
+                           </filter>
+                           </defs>
+                           </svg>
+                           
+                   </div>
+               </div>
+             </slider-component>
+
+           </div>
+          {%- endcase -%}
+       {% endfor %}
+
+
+        </div>
+     </div>
+
+
+</div>
+
+
+{% if section.settings.shape_image != blank %}
+    
+
+<div class="fb-shape">
+
+    <div class="shape-position-1">
+       <img src="{{section.settings.shape_image | img_url:"master" }} }}" alt="{{section.settings.shape_image.alt }}">
+    </div>
+    <div class="shape-position-2">
+        <img src="{{section.settings.shape_image | img_url:"master" }} }}" alt="{{section.settings.shape_image.alt }}">
+     </div>
+     <div class="shape-position-3">
+        <img src="{{section.settings.shape_image | img_url:"master" }} }}" alt="{{section.settings.shape_image.alt }}">
+     </div>
+     <div class="shape-position-4">
+        <img src="{{section.settings.shape_image | img_url:"master" }} }}" alt="{{section.settings.shape_image.alt }}">
+     </div>
+     <div class="shape-position-5">
+        <img src="{{section.settings.shape_image | img_url:"master" }} }}" alt="{{section.settings.shape_image.alt }}">
+     </div>
+</div>
+{% endif %}
+
+</div>
+
+
+
+{% schema %}
+{
+  "name": "Featured Product Tab",
+  "tag": "section",
+  "class": "spaced-section",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "heading",
+      "default": "Top Selling Products",
+      "label": "t:sections.popular-products.settings.heading.label"
+    },
+    {
+        "type": "inline_richtext",
+        "id": "description",
+        "default": "We're reimaging the paint industry with the highest quality decorating products that are longer lasting and more environment friendly at the lowest price",
+        "label": "Description"
+      },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "min": 4,
+      "max": 24,
+      "step": 1,
+      "default": 12,
+      "label": "t:sections.popular-products.settings.products_limit.label"
+    },
+    {
+        "type": "header",
+        "content": "t:sections.all.card.header_card.content"
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "options": [
+          {
+            "value": "landscape",
+            "label": "t:sections.all.card.image_ratio.options__1.label"
+          },
+          {
+            "value": "portrait",
+            "label": "t:sections.all.card.image_ratio.options__2.label"
+          },
+          {
+            "value": "square",
+            "label": "t:sections.all.card.image_ratio.options__3.label"
+          }
+        ],
+        "default": "square",
+        "label": "t:sections.all.card.image_ratio.label"
+      },
+      {
+        "type": "select",
+        "id": "image_fit",
+        "label": "t:sections.all.card.image_fit.label",
+        "options": [
+          {
+            "value": "contain",
+            "label": "t:sections.all.card.image_fit.options__1.label"
+          },
+          {
+            "value": "cover",
+            "label": "t:sections.all.card.image_fit.options__2.label"
+          }
+        ],
+        "default": "cover"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_secondary_image",
+        "default": false,
+        "label": "t:sections.all.card.show_secondary_image.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "default": true,
+        "label": "t:sections.all.card.show_vendor.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_button",
+        "default": false,
+        "label": "Show Button"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_desc",
+        "default": false,
+        "label": "t:sections.all.card.show_desc.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_sku",
+        "default": false,
+        "label": "t:sections.all.card.show_sku.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_color_swatch",
+        "default": false,
+        "label": "Color Swatch"
+      },
+      {
+        "type": "image_picker",
+        "id": "shape_image",
+        "label": "Background Shape Image",
+        "info": "It will repeat 5times Background"
+      }
+  ],
+  "blocks": [
+    {
+    "name": "Collection",
+    "type": "collection",
+    "settings": [
+                {
+                  "type": "collection",
+                  "id": "collection",
+                  "label": "Choose Collection"
+                }
+            ]
+    }
+],
+  "presets": [
+    {
+      "name": "Featured Product Tab"
+    }
+  ]
+}
+{% endschema %}

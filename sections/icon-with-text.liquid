@@ -1,0 +1,84 @@
+{{ 'section-icon-with-text.css' | asset_url | stylesheet_tag: preload: true }}
+
+<section class="icon-with-text-wrap">
+<div class="container">
+      <ul class="icon-list-wrap row">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+          {%- when 'icon' -%}
+              {%liquid 
+            
+                  assign icon = block.settings.icon 
+                  assign heading = block.settings.heading 
+                  assign text = block.settings.text 
+       
+                %}
+          <li class="icon-item col">
+              <div class="icon">
+                  {% if icon != blank %}
+                      <img src="{{icon | img_url: "master"}}"  alt="{{image_icon.alt}}" class="icon__image">
+                      {% else %}
+                      <div class="icon-box">
+                          {{ 'image' | placeholder_svg_tag: 'placeholder-svg icon-plaecholder' }}
+                      </div>
+                {% endif %} 
+
+                <div class="text-wtap">
+                  {% if heading != blank %}
+                    <h3 class="icon__heading">{{heading}}</h3>
+                   {% endif %} 
+
+                  {% if text != blank %}
+                    {{text }}
+                  {% endif %}
+
+                </div>
+          
+              </div>
+          </li>
+      {%- endcase -%}
+  {%- endfor -%}
+     
+      </ul>
+ </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Icon With Text",
+    "settings": [
+    ],
+    "blocks": [
+      {
+        "name": "Icon Block",
+        "type": "icon",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Icon"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default":"Free delivery over £50 to members"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default":"<p>Sign up for free shipping, Discount and product aamples</p>"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Icon With Text"
+      }
+    ]
+
+  }
+{% endschema %}

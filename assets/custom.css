@@ -1,0 +1,103 @@
+/* WR: Default Css
+--------------------------- */
+img {
+    max-width: 100%;
+}
+.no-margin h1,
+.no-margin h2,
+.no-margin h3,
+.no-margin h4,
+.no-margin h5,
+.no-margin h6,
+.no-margin p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.section-heading {
+    color: #000;
+    font-family: 'Gilroy';
+    font-size: 48px;
+    font-weight: 800;
+    line-height: normal;
+}
+.section-text{
+    color: #000;
+    font-family: 'Gilroy';
+    font-weight: 400;
+}
+.no-margin .section-text,
+.section-text {
+    font-size: 20px;
+    line-height: 140%;
+    margin-top: 24px;
+}
+.text-white {
+    color: #fff;
+}
+.rounded {
+    border-radius: 30px;
+}
+.width_1876,
+.width_1181,
+.width_1499 {
+    max-width: 1470px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.width_1181 {
+    max-width: 1181px;
+}
+.width_1876 {
+    max-width: 1916px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+
+@media (max-width: 991px) {
+    .no-margin .section-text,
+    .section-text {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 767px) {
+    .section-heading {
+        font-size: 32px;
+    }
+}
+
+.button-color{
+    transition: all 0.3s linear;
+}
+.button-color:hover{
+    color: #fff !important;
+    background-color: #FF003D !important;
+    border-color: #FF003D !important;
+    box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.20) inset;
+}
+
+.textimage-card .textimage-card-media img {
+    transition: .3s ease;
+    position: absolute;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.textimage-card-image svg.placeholder-svg {
+    height: 100%;
+    width: 100%;
+}
+.template-page-about-us .breadcrumb {
+    display: none;
+}
+@media screen and (min-width: 990px){
+    .page-header {
+        margin-top: 3rem;
+    }
+}

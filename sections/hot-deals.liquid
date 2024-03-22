@@ -1,0 +1,500 @@
+
+{{ 'section-hot-deals.css' | asset_url | stylesheet_tag: preload: true }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_m }}px;
+    padding-bottom: {{ section.settings.padding_bottom_m }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="hot-deals-section section-{{ section.id }}-padding">
+    <div class="container">
+        <div class="row ">
+              <div class="col-lg-12 m-auto">
+                <div class="hot-dealt-header">
+                  {% if section.settings.heading != blank %}
+                    <h2>{{ section.settings.heading }}</h2>
+                  {% endif %}
+                  {% if section.settings.text != blank %}
+                        {{ section.settings.text }}
+                      {% endif %}
+                    </div>
+              </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-lg-12 col-xl-4">
+              <promocard-component> 
+              <div class="promo-card-block"> 
+                  <div class="promo-card-slider swiper">
+                  <div class="swiper-wrapper"> 
+                {% for block in section.blocks %}
+                  {%- case block.type -%}
+                    {%- when 'promo_card' -%}
+
+                      {% liquid
+                        assign heading = block.settings.heading
+                        assign text = block.settings.text 
+                        assign promo_code_label = block.settings.promo_code_label 
+                        assign promo_code = block.settings.promo_code 
+                        assign vald_date = block.settings.vald_date 
+                        assign get_text_label = block.settings.get_text_label 
+                        assign offer_price = block.settings.offer_price 
+                    %}
+
+                    <div class="swiper-slide">
+                    <div class="promo-card-wrap">
+                      <div class="promo-card"> 
+                      <div class="promo-box-wrap">
+
+                        {% if heading != blank %}
+                          <h2>{{heading}}</h2>
+                        {% endif %}
+                    
+                        {% if text != blank %}
+                          <div class="promo-text">
+                            {{text}}
+                          </div> 
+                        {% endif %}
+                  
+                        {% if promo_code_label != blank %}
+                          <span class="pro-code-label">{{promo_code_label}}</span>
+                        {% endif %}
+
+                        {% if promo_code != blank %}
+
+                          {% assign latters =  promo_code | split: "" | strip_html | replace: "[" | replace: "]"  %}
+
+                            {% assign array  = latters | split: "," %}
+                            {%- capture items -%}
+                                  {% for arr in array %}
+                                    <li> {{ arr | replace: '"' | replace: '"'}}</li>
+                                  {% endfor %}
+                                {%- endcapture -%}
+                      
+                      
+                        <ul class="pro-code">
+                              {{items}}
+                        </ul>  
+                        {% endif %}
+                    
+                  
+                        {% if vald_date != blank %}
+                          <h4>{{vald_date}}</h4>
+                        {% endif %}
+                
+                      
+                      </div>
+
+                      <div class="promo-box-off">
+
+                        {% if get_text_label != blank %}
+                          <h4 class="off-title">{{get_text_label}}</h4>
+                        {% endif %}
+                
+
+                        {% if offer_price != blank %}
+                          <div class="off-text">
+                            {{offer_price }}
+                          </div>
+                        {% endif %}
+                      
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                  {%- endcase -%}
+                {% endfor %}
+                </div>
+                
+
+                </div>
+                <div class="hot-deals-navigation">
+                  <div class="swiper-button-prev">
+                    <svg width="76" height="76" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g filter="url(#filter0_d_1364_483)">
+                      <circle cx="30" cy="30" r="30" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 68 64)" fill="white"/>
+                      <rect width="3" height="12.2217" transform="matrix(1 0 0 -1 36.0938 41)" fill="black"/>
+                      <rect width="3" height="7.87027" transform="matrix(0.707107 0.707107 0.707107 -0.707107 32.0938 32.0156)" fill="black"/>
+                      <rect width="3" height="7.87027" transform="matrix(0.707107 -0.707107 -0.707107 -0.707107 41.1006 34.1367)" fill="black"/>
+                      </g>
+                      <defs>
+                      <filter id="filter0_d_1364_483" x="0" y="0" width="76" height="76" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                      <feOffset dy="4"/>
+                      <feGaussianBlur stdDeviation="4"/>
+                      <feComposite in2="hardAlpha" operator="out"/>
+                      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.07 0"/>
+                      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1364_483"/>
+                      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1364_483" result="shape"/>
+                      </filter>
+                      </defs>
+                      </svg>
+                      
+                 </div>
+                 <div class="swiper-button-next">
+                  <svg width="76" height="76" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g filter="url(#filter0_d_1364_477)">
+                    <circle cx="38" cy="34" r="30" transform="rotate(90 38 34)" fill="white"/>
+                    <rect x="36.0938" y="27" width="3" height="12.2217" fill="black"/>
+                    <rect x="32.0938" y="35.9844" width="3" height="7.87027" transform="rotate(-45 32.0938 35.9844)" fill="black"/>
+                    <rect x="41.1006" y="33.8633" width="3" height="7.87027" transform="rotate(45 41.1006 33.8633)" fill="black"/>
+                    </g>
+                    <defs>
+                    <filter id="filter0_d_1364_477" x="0" y="0" width="76" height="76" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                    <feOffset dy="4"/>
+                    <feGaussianBlur stdDeviation="4"/>
+                    <feComposite in2="hardAlpha" operator="out"/>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.07 0"/>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1364_477"/>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1364_477" result="shape"/>
+                    </filter>
+                    </defs>
+                    </svg>
+                    
+                         
+             
+             
+                        </div>
+                </div>
+              </div>
+
+              </promocard-component>
+        </div>
+        <div class="col-lg-12 col-xl-8">
+          <mobile-slider> 
+          <div class="mobile__slideshow"  data-slides="1" data-loop="false" data-direction="horizontal" data-space="0">
+            <div class="hot-product-blocks swiper-wrapper">
+          {% for block in section.blocks %}
+            {%- case block.type -%}
+              {%- when 'product' -%}
+
+                {% liquid
+                  assign active_color = block.settings.active
+                  assign image = block.settings.image
+                  assign choose_product = block.settings.choose_product 
+                  assign tag_icon = block.settings.tag_icon 
+                  assign choose_product = block.settings.choose_product 
+
+                    assign compare_at_price = choose_product.compare_at_price
+                    assign price = choose_product.price | default: 1999
+                    assign money_price = price | money
+
+  
+
+              %}
+
+                <div class="product-blocks__item swiper-slide">
+                  <div class="produc-box-wrapper">
+                    <div class="product-img-wrap">
+                      {% if image != blank %}
+                          <img src="{{image | img_url:"master" }}" alt="{{image.alt }}">
+                        {% else %}
+                        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg gray-plaecholder' }}
+                      {% endif %}
+                    </div>
+                    <div class="product-img-content">
+                      <div class="top-title-part">
+                        {% if tag_icon != blank %}
+                          <img src="{{tag_icon | img_url:"master" }}" alt="{{tag_icon.alt }}">
+                        {% endif %}
+                       
+                        <a href="{{choose_product.url }}">{{choose_product.title}}</a>
+                      </div>
+      
+                      <div class="bottom-price-part">
+                         
+                        <div class="content">
+                        
+                          <div class="price-part">
+                            {%- if compare_at_price > price %} 
+                            {%- assign savings = compare_at_price | minus: price | times: 100.0 | divided_by: compare_at_price | round | append: '%' -%}
+
+                            <span class="save-badge" style="color:{{active_color}}">
+                             Save {{savings}}
+                            </span>
+                          {% endif -%}
+                   
+
+                          {%- if compare_at_price > price %} 
+                             <span class="on-slae-price">{{ compare_at_price | money }}</span>
+                             <span class="regular-price">{{ money_price }}</span>
+                           {% else %}
+                           <span class="sale-price">{{ money_price }}</span>
+                            {% endif -%}
+                            
+                             
+                          
+                          </div>
+  
+                           <a href="{{choose_product.url }}" class="product-link"> shop now <span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="11.9062" cy="11.9062" r="11.9062" fill="white"/>
+                            <rect x="5" y="13.9062" width="3" height="12.2217" rx="1.5" transform="rotate(-90 5 13.9062)" fill="black"/>
+                            <rect x="13.9844" y="17.9062" width="3" height="7.87027" rx="1.5" transform="rotate(-135 13.9844 17.9062)" fill="black"/>
+                            <rect x="11.8633" y="8.89941" width="3" height="7.87027" rx="1.5" transform="rotate(-45 11.8633 8.89941)" fill="black"/>
+                            </svg>
+                            </span></a>
+        
+                        
+                        </div>
+                      
+                      </div>
+                    </div>
+                  
+                  </div>
+                </div>
+              {%- endcase -%}
+          {% endfor %}
+          
+           </div>
+           <div class="hot-product-navigation">
+            <div class="swiper-button-prev-mobile">
+               <svg width="76" height="76" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <g filter="url(#filter0_d_1447_211)">
+                   <circle cx="30" cy="30" r="30" transform="matrix(-1 0 0 1 68 4)" fill="white"/>
+                   <rect width="3" height="12.2217" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 45 35.9062)" fill="black"/>
+                   <rect width="3" height="7.87027" transform="matrix(0.707107 -0.707107 -0.707107 -0.707107 36.0156 39.9062)" fill="black"/>
+                   <rect width="3" height="7.87027" transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 38.1367 30.8994)" fill="black"/>
+                   </g>
+                   <defs>
+                   <filter id="filter0_d_1447_211" x="0" y="0" width="76" height="76" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                   <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                   <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                   <feOffset dy="4"/>
+                   <feGaussianBlur stdDeviation="4"/>
+                   <feComposite in2="hardAlpha" operator="out"/>
+                   <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.07 0"/>
+                   <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1447_211"/>
+                   <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1447_211" result="shape"/>
+                   </filter>
+                   </defs>
+                   </svg>
+                   
+           </div>
+           <div class="swiper-button-next-mobile">
+               <svg width="76" height="76" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <g filter="url(#filter0_d_1447_205)">
+                   <circle cx="38" cy="34" r="30" fill="white"/>
+                   <rect x="31" y="35.9062" width="3" height="12.2217" transform="rotate(-90 31 35.9062)" fill="black"/>
+                   <rect x="39.9844" y="39.9062" width="3" height="7.87027" transform="rotate(-135 39.9844 39.9062)" fill="black"/>
+                   <rect x="37.8633" y="30.8994" width="3" height="7.87027" transform="rotate(-45 37.8633 30.8994)" fill="black"/>
+                   </g>
+                   <defs>
+                   <filter id="filter0_d_1447_205" x="0" y="0" width="76" height="76" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                   <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                   <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                   <feOffset dy="4"/>
+                   <feGaussianBlur stdDeviation="4"/>
+                   <feComposite in2="hardAlpha" operator="out"/>
+                   <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.07 0"/>
+                   <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1447_205"/>
+                   <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1447_205" result="shape"/>
+                   </filter>
+                   </defs>
+                   </svg>
+                   
+           </div>
+       </div>
+
+          </div>
+        </mobile-slider>
+
+
+        </div>
+        </div>
+
+        {% if section.settings.view_btn_label %}
+          
+       <div class="row">
+        <div class="col-12  view-btn-align">
+          <a href="{{section.settings.view_url }}" class="view-all-btn">{{section.settings.view_btn_label}} <span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="11.9062" cy="11.9062" r="11.9062" fill="white"/>
+            <rect x="5" y="13.9062" width="3" height="12.2217" rx="1.5" transform="rotate(-90 5 13.9062)" fill="#FF003D"/>
+            <rect x="13.9844" y="17.9062" width="3" height="7.87027" rx="1.5" transform="rotate(-135 13.9844 17.9062)" fill="#FF003D"/>
+            <rect x="11.8633" y="8.89941" width="3" height="7.87027" rx="1.5" transform="rotate(-45 11.8633 8.89941)" fill="#FF003D"/>
+            </svg>
+            </span></a>
+        </div>
+       </div>
+
+      {% endif %}
+    
+    </div>
+
+</section>
+
+
+{% schema %}
+{
+  "name": "Hot Deals",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "heading",
+      "default": "Hot Deals of the Month",
+      "label": "Text"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "default": "<p>We understand how important it is finding the right product, so whether you're a business or a first time painter, We've made the best possible product finder to find the right product.</p>",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "view_btn_label",
+      "default": "Veiw All",
+      "label": "View Label"
+    },
+    {
+      "type": "url",
+      "id": "view_url",
+      "label": "View Url"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 110
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_top_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 70
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Promo Card",
+      "type": "promo_card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default":"New Collection"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default":"<p>We understand how important it is finding the right product</p>"
+        },
+        {
+          "type": "header",
+          "content": "Promo Code"
+        },
+        {
+          "type": "text",
+          "id": "promo_code_label",
+          "label": "Promo Code label"
+        },
+        {
+          "type": "text",
+          "id": "promo_code",
+          "label": "Promo Code"
+        },
+        {
+          "type": "textarea",
+          "id": "vald_date",
+          "label": "Valid Date Text",
+          "default":"Valid through 31st Dec, 2023"
+        },
+        {
+          "type": "header",
+          "content": "Discount Text"
+        },
+        {
+          "type": "text",
+          "id": "get_text_label",
+          "label": "Get Label",
+          "default":"Get now"
+        },
+        {
+          "type": "richtext",
+          "id": "offer_price",
+          "label": "Offer Price Label",
+          "default":"<p>£35 OFF</p>"
+        }
+      ]
+    },
+    {
+      "name": "Product",
+      "type": "product",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "color",
+          "id": "active",
+          "label": "Accent Color"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "tag_icon",
+          "label": "Tag Icon"
+        },
+        {
+          "type": "product",
+          "id": "choose_product",
+          "label": "Choose Product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hot Deals"
+    }
+  ]
+}
+{% endschema %}

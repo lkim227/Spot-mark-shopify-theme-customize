@@ -1,0 +1,566 @@
+<div class="header__top color-{{ section.settings.color_scheme }}">
+  <div class=" container container--header">
+    <div class="header__top-inner">
+      <div class="header-toogles">
+
+        {% comment %} {%- if section.settings.menu != blank -%}
+          {% render 'header-drawer' %}
+        {%- endif -%} {% endcomment %}
+
+
+        <button class="open_mobile_nav">
+          <svg height="20" viewBox="0 0 8 8" width="20" xmlns="http://www.w3.org/2000/svg">
+            <path d="m0 0v1h8v-1zm0 2.97v1h8v-1zm0 3v1h8v-1z" transform="translate(0 1)"/>
+          </svg>
+        </button> 
+
+        <a role="link" href="javascript:void(0)"  class="search-toggle-btn"
+          ><span class="icon">
+            <svg class="icon icon-search" viewBox="0 0 20 21" height="20" width="22" fill="none">
+              <path d="M15.0252 14.3475L18.5943 17.9158L17.4152 19.095L13.8469 15.5258C12.5191 16.5902 10.8677 17.1691 9.16602 17.1667C5.02602 17.1667 1.66602 13.8067 1.66602 9.66666C1.66602 5.52666 5.02602 2.16666 9.16602 2.16666C13.306 2.16666 16.666 5.52666 16.666 9.66666C16.6684 11.3683 16.0895 13.0198 15.0252 14.3475ZM13.3535 13.7292C14.4111 12.6416 15.0017 11.1837 14.9993 9.66666C14.9993 6.44332 12.3885 3.83332 9.16602 3.83332C5.94268 3.83332 3.33268 6.44332 3.33268 9.66666C3.33268 12.8892 5.94268 15.5 9.16602 15.5C10.683 15.5024 12.1409 14.9118 13.2285 13.8542L13.3535 13.7292Z" fill="currentColor"></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+
+      {%- if request.page_type == 'index' -%}
+        <h1 class="header__heading">
+      {%- endif -%}
+      <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+        {%- if section.settings.logo != blank -%}
+          {%- assign image_size = section.settings.logo_width | append: 'x' -%}
+          {%- assign image_size_2x = section.settings.logo_width | times: 2 | at_most: 5760 -%}
+          <img
+            srcset="{{ section.settings.logo | image_url: width: image_size }} 1x, {{ section.settings.logo | image_url: width: image_size_2x }} 2x"
+            src="{{ section.settings.logo | image_url: width: image_size }}"
+            class="header__heading-logo"
+            width="{{ section.settings.logo_width }}"
+            height="auto"
+            alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
+            loading="lazy"
+          >
+          {%- if section.settings.logo_2 != blank -%}
+            <img
+              srcset="{{ section.settings.logo_2 | image_url: width: image_size }} 1x, {{ section.settings.logo_2 | image_url: width: image_size_2x }} 2x"
+              src="{{ section.settings.logo_2 | image_url: width: image_size }}"
+              class="header__heading-logo header__heading-logo--overlay"
+              width="{{ section.settings.logo_width }}"
+              height="auto"
+              alt="{{ section.settings.logo_2.alt | default: shop.name | escape }}"
+              loading="lazy"
+            >
+          {%- endif -%}
+        {%- elsif section.settings.logo_2 != blank -%}
+          {%- assign image_size = section.settings.logo_width | append: 'x' -%}
+          {%- assign image_size_2x = section.settings.logo_width | times: 2 | at_most: 5760 -%}
+          <img
+            srcset="{{ section.settings.logo_2 | image_url: width: image_size }} 1x, {{ section.settings.logo_2 | image_url: width: image_size_2x }} 2x"
+            src="{{ section.settings.logo_2 | image_url: width: image_size }}"
+            class="header__heading-logo header__heading-logo--overlay"
+            width="{{ section.settings.logo_width }}"
+            height="auto"
+            alt="{{ section.settings.logo_2.alt | default: shop.name | escape }}"
+            loading="lazy"
+          >
+        {%- else -%}
+          <span class="h5">{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
+      {%- if request.page_type == 'index' -%}
+        </h1>
+      {%- endif -%}
+
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'dropdown' %}
+            {% render 'shop-button', block: block %}
+        {% endcase %}
+      {% endfor %}
+
+      {%- if section.settings.enable_search -%}
+        <div
+          class="header__search search"
+          role="dialog"
+          aria-modal="true"
+          aria-label="{{ 'general.search.search' | t }}"
+        >
+          <div class="header__overlay"></div>
+          <div class="search__content color-background-2">
+            {%- if settings.predictive_search_enabled -%}
+              <predictive-search class="search-modal__form" data-loading-text="{{ 'accessibility.loading' | t }}">
+            {%- endif -%}
+            <form action="{{ routes.search_url }}" method="get" role="search" class="search search__form">
+              <div class="field">
+                 <div class="drop-down">
+                      <div class="selected">
+                        <a href="javascript:void(0)"><span class="slect-text">All Categories</span>
+                         <span class="arrow">
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.3333 16C12.1628 16 11.9922 15.9348 11.862 15.8047L5.19537 9.13804C4.93488 8.87754 4.93488 8.45571 5.19537 8.19537C5.45587 7.93504 5.8777 7.93488 6.13804 8.19537L12.3333 14.3907L18.5286 8.19537C18.7891 7.93488 19.211 7.93488 19.4713 8.19537C19.7316 8.45587 19.7318 8.8777 19.4713 9.13804L12.8047 15.8047C12.6745 15.9348 12.5038 16 12.3333 16Z" fill="black"/>
+</svg>
+
+                        </span> </a>
+                      </div>
+                      <div class="options">
+                        {%liquid
+                          assign category_search_menu = linklists[section.settings.category_search_menu]
+                          
+                          %}
+
+        
+      
+                        <ul>
+                        {%- for link in category_search_menu.links -%}
+                        <li><a href="{{ link.url }}" {% if link.current %} select="selected"{% endif %} data-link="{{ link.title | escape }}">{{ link.title | escape }}</a></li>
+                        {%- endfor -%}
+                        </ul>
+                      </div>
+								  </div>
+
+              
+                <input
+                  class="search__input field__input"
+                  id="Search-In-Modal-1"
+                  type="search"
+                  name="q"
+                  value="{{ search.terms | escape }}"
+                  placeholder="{{ 'general.search.placeholder' | t }}"
+                  {%- if settings.predictive_search_enabled -%}
+                    role="combobox"
+                    aria-expanded="false"
+                    aria-owns="predictive-search-results-list"
+                    aria-controls="predictive-search-results-list"
+                    aria-haspopup="listbox"
+                    aria-autocomplete="list"
+                    autocorrect="off"
+                    autocomplete="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                  {%- endif -%}
+                >
+                <label class="field__label" for="Search-In-Modal-1">{{ 'general.search.placeholder' | t }}</label>
+                <input type="hidden" name="options[prefix]" value="last">
+
+                <button class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
+                  {% render 'icon-search' %}
+                </button>
+              </div>
+
+              {% if section.settings.enable_search_modal %}
+                {% render 'search-modal' %}
+              {%- endif -%}
+
+              {%- if settings.predictive_search_enabled -%}
+                <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
+                  <div class="predictive-search__loading-state">
+                    {% render 'icon-spinner' %}
+                  </div>
+                </div>
+
+                <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+              {%- endif -%}
+            </form>
+            {%- if settings.predictive_search_enabled -%}
+              </predictive-search>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+
+      <div class="header__column">
+
+          
+        {% if section.settings.small_menu != blank %}
+          <ul class="header__small-menu small-menu list-unstyled" role="list">
+            {% assign menu_limit = 7 %}
+
+            {% if section.settings.call_text != blank %}
+
+            {% assign menu_limit = 5 %}
+
+              <li class="call-action">
+                <p>{{ section.settings.call_text}}</p>
+              </li>
+              
+            {% endif %}
+
+             
+
+            {%- for link in section.settings.small_menu.links limit: menu_limit -%}
+              <li class="small-menu__item">
+
+                {%- if link != blank -%}
+                  <a
+                    href="{{ link.url }}"
+                    class="small-menu__link link link--text focus-inset caption-large{% if link.current %}{% endif %}"
+                    {% if link.current %}
+                      aria-current="page"
+                    {% endif %}
+                  >
+                    <span>
+                      {{ link.title | escape }}
+                    </span>
+                  </a>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        <div class="header__icons hide-desktop">
+          {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+            <div class="header__localization">
+              <noscript>
+                {%- form 'localization', id: 'HeaderCountryFormNoScript', class: 'localization-form' -%}
+                  <div class="localization-form__select">
+                    <select
+                      class="localization-selector link"
+                      name="country_code"
+                      aria-labelledby="HeaderCountryLabelNoScript"
+                    >
+                      {%- for country in localization.available_countries -%}
+                        <option
+                          value="{{ country.iso_code }}"
+                          {%- if country.iso_code == localization.country.iso_code %}
+                            selected
+                          {% endif %}
+                        >
+                          {{ country.name }} ({{ country.currency.iso_code }}
+                          {{ country.currency.symbol }})
+                        </option>
+                      {%- endfor -%}
+                    </select>
+                    {% render 'icon-caret' %}
+                  </div>
+                  <button class="button button--small">{{ 'localization.update_country' | t }}</button>
+                {%- endform -%}
+              </noscript>
+              <localization-form>
+                {%- form 'localization', id: 'HeaderCountryForm', class: 'localization-form' -%}
+                  <div class="no-js-hidden">
+                    <div class="disclosure">
+                      <button
+                        type="button"
+                        class="header__localization-button disclosure__button localization-form__select localization-selector link link--text caption-large"
+                        aria-expanded="false"
+                        aria-controls="HeaderCountryList"
+                        aria-describedby="HeaderCountryLabel"
+                        aria-label="Localization"
+                      >
+                        <div
+                          style="display: inline"
+                          class="currency-flag"
+                          data-value="{{ localization.country.iso_code }}"
+                          aria-hidden="true"
+                        ></div>
+                        <span class="currency-country">{{ localization.country.iso_code }}</span>
+                      </button>
+                      <ul
+                        id="HeaderCountryList"
+                        role="list"
+                        class="disclosure__list list-unstyled color-background-2"
+                        hidden
+                      >
+                        {%- for country in localization.available_countries -%}
+                          <li class="disclosure__item" tabindex="-1">
+                            <a
+                              class="link link--text disclosure__link disclosure__link--flag caption-large{% if country.iso_code == localization.country.iso_code %} disclosure__link--active{% endif %} focus-inset"
+                              href="#"
+                              {% if country.iso_code == localization.country.iso_code %}
+                                aria-current="true"
+                              {% endif %}
+                              data-value="{{ country.iso_code }}"
+                              data-flag="{{ country.currency.iso_code }}"
+                            >
+                              <span>
+                                {{ country.name }}
+                                <span class="localization-form__currency"
+                                  >({{ country.currency.iso_code }}
+                                  {{ country.currency.symbol }})</span
+                                >
+                              </span>
+                            </a>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    </div>
+                    <input type="hidden" name="country_code" value="{{ localization.country.iso_code }}">
+                  </div>
+                {%- endform -%}
+              </localization-form>
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
+            <div class="header__localization header__localization--language">
+              <noscript>
+                {%- form 'localization', id: 'HeaderLanguageFormNoScript', class: 'localization-form' -%}
+                  <div class="localization-form__select">
+                    <h2
+                      class="visually-hidden"
+                      id="HeaderLanguageLabelNoScript"
+                    >
+                      {{ 'localization.language_label' | t }}
+                    </h2>
+                    <select
+                      class="localization-selector link"
+                      name="locale_code"
+                      aria-labelledby="HeaderLanguageLabelNoScript"
+                    >
+                      {%- for language in localization.available_languages -%}
+                        <option
+                          value="{{ language.iso_code }}"
+                          lang="{{ language.iso_code }}"
+                          {%- if language.iso_code == localization.language.iso_code %}
+                            selected
+                          {% endif %}
+                        >
+                          {{ language.endonym_name | capitalize }}
+                        </option>
+                      {%- endfor -%}
+                    </select>
+                    {% render 'icon-caret' %}
+                  </div>
+                  <button class="button button--primary">
+                    {{ 'localization.update_language' | t }}
+                  </button>
+                {%- endform -%}
+              </noscript>
+              <localization-form>
+                {%- form 'localization', id: 'HeaderLanguageForm', class: 'localization-form' -%}
+                  <div class="no-js-hidden">
+                    <div class="disclosure">
+                      <button
+                        type="button"
+                        class="disclosure__button localization-form__select localization-selector link link--text"
+                        aria-expanded="false"
+                        aria-controls="HeaderLanguageList"
+                        aria-describedby="HeaderLanguageLabel"
+                      >
+                        <span class="value">
+                          {{- localization.language.iso_code | upcase }}
+                        </span>
+                        {% render 'icon-caret' -%}
+                      </button>
+                      <ul
+                        id="HeaderLanguageList"
+                        role="list"
+                        class="disclosure__list list-unstyled color-background-2"
+                        hidden
+                      >
+                        {%- for language in localization.available_languages -%}
+                          <li class="disclosure__item" tabindex="-1">
+                            <a
+                              class="link link--text disclosure__link caption-large{% if language.iso_code == localization.language.iso_code %} disclosure__link--active{% endif %} focus-inset"
+                              href="#"
+                              hreflang="{{ language.iso_code }}"
+                              lang="{{ language.iso_code }}"
+                              {% if language.iso_code == localization.language.iso_code %}
+                                aria-current="true"
+                              {% endif %}
+                              data-value="{{ language.iso_code }}"
+                            >
+                              <span>
+                                {{ language.endonym_name | capitalize }}
+                              </span>
+                            </a>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    </div>
+                    <input
+                      type="hidden"
+                      name="locale_code"
+                      value="{{ localization.language.iso_code }}"
+                    >
+                  </div>
+                {%- endform -%}
+              </localization-form>
+            </div>
+          {%- endif -%}
+
+
+
+		  <a role="link" href="javascript:void(0)" class="account-toggle-btn account-toggle-btn-custom"><span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-account" viewBox="0 0 1024 1024" width="20" height="20" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <title>user</title>
+              <path class="path1" d="M486.4 563.2c-155.275 0-281.6-126.325-281.6-281.6s126.325-281.6 281.6-281.6 281.6 126.325 281.6 281.6-126.325 281.6-281.6 281.6zM486.4 51.2c-127.043 0-230.4 103.357-230.4 230.4s103.357 230.4 230.4 230.4c127.042 0 230.4-103.357 230.4-230.4s-103.358-230.4-230.4-230.4z"></path><path class="path2" d="M896 1024h-819.2c-42.347 0-76.8-34.451-76.8-76.8 0-3.485 0.712-86.285 62.72-168.96 36.094-48.126 85.514-86.36 146.883-113.634 74.957-33.314 168.085-50.206 276.797-50.206 108.71 0 201.838 16.893 276.797 50.206 61.37 27.275 110.789 65.507 146.883 113.634 62.008 82.675 62.72 165.475 62.72 168.96 0 42.349-34.451 76.8-76.8 76.8zM486.4 665.6c-178.52 0-310.267 48.789-381 141.093-53.011 69.174-54.195 139.904-54.2 140.61 0 14.013 11.485 25.498 25.6 25.498h819.2c14.115 0 25.6-11.485 25.6-25.6-0.006-0.603-1.189-71.333-54.198-140.507-70.734-92.304-202.483-141.093-381.002-141.093z"></path>
+            </svg>
+          </span>
+   
+          </a>
+
+          {% comment %}
+            {%- if shop.customer_accounts_enabled -%}
+
+            	<details-disclosure class="header__account">
+            		<details>
+            			<summary class="header__icon header__icon--account link--text  header__icon--summary focus-inset modal__toggle" aria-haspopup="dialog" role="button">
+            				{% render 'icon-account' %}
+            			</summary>
+            			<div class="header__account-modal modal__toggle color-background-2" role="dialog" aria-modal="true">
+            				{%- if customer -%}
+            					<div class="header__account__account">
+            						<div class="header__account__name">{{ customer.name }}</div>
+            						<ul class="header__account__body">
+            							<li class="header__account__link">
+            								<a href="{{ routes.account_url }}">
+            									{{ 'customer.account_fallback' | t }}
+            								</a>
+            							</li>
+            							<li class="header__account__address">
+            								<a href="{{ routes.account_addresses_url }}">{{ 'customer.addresses.book' | t }}</a>
+            							</li>
+            						</ul>
+            						<a class="header__account__logout button button--primary" href="{{ routes.account_logout_url }}">
+            							{{ 'customer.log_out' | t }}
+            						</a>
+            					</div>
+
+            				{%- else -%}
+            					<a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="button button--primary header__account__login link  focus-inset">
+            						{% render 'icon-account' %}
+            						{%- liquid
+            							if customer
+            								echo 'customer.account_fallback' | t
+            							else
+            								echo 'customer.log_in' | t
+            								endif -%}
+            					</a>
+
+            					<a class="header__account__register link " href="{{ routes.account_register_url }}"><span>{{ 'customer.login_page.create_account' | t }}</span></a>
+            				{%- endif -%}
+            			</div>
+            		</details>
+
+            	</details-disclosure>
+
+            {%- endif -%}
+          {% endcomment %}
+
+          <a
+            href="{{ routes.cart_url }}"
+            class=" {% if request.page_type != 'cart' %}header__cart{% endif %} header__icon header__icon--cart link link--text focus-inset"
+            id="cart-icon-bubble"
+            aria-label="{{ 'accessibility.cart_link' | t }}"
+          >
+          <svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M11.1521 17.2789C9.53798 17.2789 8.21733 18.5727 8.21733 20.1539C8.21733 21.7352 9.53798 23.0289 11.1521 23.0289C12.7662 23.0289 14.0869 21.7352 14.0869 20.1539C14.0869 18.5727 12.7662 17.2789 11.1521 17.2789ZM19.9565 17.2789C18.3423 17.2789 17.0217 18.5727 17.0217 20.1539C17.0217 21.7352 18.3423 23.0289 19.9565 23.0289C21.5706 23.0289 22.8912 21.7352 22.8912 20.1539C22.8912 18.5727 21.5706 17.2789 19.9565 17.2789ZM11.1521 19.0039C11.7978 19.0039 12.326 19.5214 12.326 20.1539C12.326 20.7864 11.7978 21.3039 11.1521 21.3039C10.5065 21.3039 9.9782 20.7864 9.9782 20.1539C9.9782 19.5214 10.5065 19.0039 11.1521 19.0039ZM19.9565 19.0039C20.6021 19.0039 21.1304 19.5214 21.1304 20.1539C21.1304 20.7864 20.6021 21.3039 19.9565 21.3039C19.3108 21.3039 18.7825 20.7864 18.7825 20.1539C18.7825 19.5214 19.3108 19.0039 19.9565 19.0039Z" fill="currentColor"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M0.00146484 1.75376L4.40211 1.75391C5.8695 5.29016 7.30754 8.8264 8.74559 12.3627L7.42493 15.4964C7.30754 15.7552 7.33689 16.0714 7.51298 16.3014C7.65972 16.5314 7.9532 16.6752 8.24667 16.6752H24.9206V15.8438V14.9502H9.53798L10.301 13.1677L24.4467 12.0752C24.8282 12.0464 25.151 11.7589 25.2391 11.4139L26.9999 3.9389C27.1173 3.4214 26.6771 2.87515 26.1488 2.87515H6.74993L5.78146 0.546409C5.66407 0.230159 5.31189 0.000151809 4.95972 0.000151809L0.00146484 0V0.0287605V1.75376ZM12.913 4.62891H7.45428L8.51081 7.21641H12.913V4.62891ZM18.1956 4.62891H14.6738V7.21641H18.1956V4.62891ZM25.0043 4.62891H19.9565V7.21641H24.388L25.0043 4.62891ZM12.913 8.94141H9.21515L10.2717 11.4714L12.913 11.2702V8.94141ZM18.1956 8.94141H14.6738V11.1551L18.1956 10.8677V8.94141ZM24.0065 8.94141H19.9565V10.7239L23.6543 10.4364L24.0065 8.94141Z" fill="currentColor"/>
+          </svg>
+          
+            <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+            {%- if cart != empty -%}
+              <div class="cart-count-bubble">
+                {%- if cart.item_count < 100 -%}
+                  <span aria-hidden="true">{{ cart.item_count }}</span>
+                {%- endif -%}
+                <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+              </div>
+            {%- endif -%}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="header__bottom {% if section.settings.color_scheme == 'background-2' %}color-background-2{% endif %}">
+  <div class="header__bottom-inner container container--header">
+    <nav class="header__inline-menu">
+      {%- if section.settings.menu != blank -%}
+        <ul class="list-menu list-menu--inline" role="list">
+          {% assign index = 1 %}
+          {%- for link in section.settings.menu.links -%}
+            {% assign svg_icon = index | prepend: 'icon_' %}
+            {% assign icon = section.settings[svg_icon] %}
+
+            {% assign mega_menu = false %}
+            {%- if link.links != blank -%}
+              {% if section.blocks.size > 0 %}
+                {% for block in section.blocks %}
+                  {% assign mega_menu_trigger = block.settings.mega_menu_trigger | handle | strip %}
+                  {% if link.handle == mega_menu_trigger %}
+                    {% assign mega_menu = true %}
+                    {% assign shopify_attributes = block.shopify_attributes %}
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+              <li class="{% if mega_menu %}list-menu--megamenu{% endif %}" {{ shopify_attributes }}>
+                <span
+                  class="header__menu-item list-menu__item link focus-inset"
+                  {% if link.current %}
+                    aria-current="page"
+                  {% endif %}
+                  aria-label="{{ link.title | escape }}"
+                >
+                  {% if icon != blank %}
+                    <span class="icon">
+                      <img src="{{icon | img_url:"master" }}"  alt="{{icon.alt }}">
+                    </span>
+                  {% endif %}
+
+                  <span
+                    {%- if link.active %}
+                      class="header__active-menu-item"
+                    {% endif %}
+                    title="{{ link.title | escape }}"
+                  >
+                    {{ link.title | escape }}
+                  </span>
+                  {% comment %} {% render 'icon-caret' %} {% endcomment %}
+                </span>
+                {% if mega_menu %}
+                  <div class="header__mega-menu mega-menu container color-background-2">
+                    {% render 'mega-menu', link: link, blocks: section.blocks %}
+                  </div>
+                {% else %}
+                  {% render 'submenu', link: link %}
+                {% endif %}
+              </li>
+            {%- else -%}
+              <li>
+                <a
+                  href="{{ link.url }}"
+                  class="header__menu-item list-menu__item link focus-inset"
+                  {% if link.current %}
+                    aria-current="page"
+                  {% endif %}
+                  aria-label="{{ link.title | escape }}"
+                >
+                  {% if icon != blank %}
+                    <span>
+                      <img src="{{icon | img_url:"master" }}" style="max-width:{{ icon.width }}" alt="{{icon.alt }}">
+                    </span>
+                  {% endif %}
+                  <span
+                    {%- if link.active %}
+                      class="header__active-menu-item"
+                    {% endif %}
+                    title="{{ link.title | escape }}"
+                  >
+                    {{ link.title | escape }}
+                  </span>
+                </a>
+              </li>
+            {%- endif -%}
+            {% assign index = index | plus: 1 %}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </nav>
+    {% if section.settings.enable_contact_block
+      and section.settings.contact_text != blank
+      or section.settings.contact_text_accent != blank
+    %}
+      <div class="header__contact contact">
+        {% if section.settings.contact_text != blank %}
+          <span class="contact__text">{{ section.settings.contact_text }}</span>
+        {% endif %}
+
+        {% if section.settings.contact_text_accent != blank %}
+          <span class="contact__text contact__text--accent">{{ section.settings.contact_text_accent }}</span>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>

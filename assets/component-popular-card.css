@@ -1,0 +1,35 @@
+.popular-card__badge {
+  position: absolute;
+  top: 2.7rem;
+  left: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.popular-card__badge span {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.075em;
+  color: rgb(var(--color-base-text));
+  text-transform: uppercase;
+}
+.popular-card__badge span svg {
+  margin-left: 0.4rem;
+}
+.popular-card__title {
+  font-size: var(--font-heading-h4-size);
+  letter-spacing: -0.02em;
+  margin-bottom: 0;
+}
+.popular-card .card-information__wrapper > *:not(.visually-hidden:first-child) + * {
+  margin-top: 1rem;
+  line-height: 145%;
+}
+.popular-card .card-information__wrapper .card-information__bottom {
+  margin-top: 2.4rem !important;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+  color: rgb(var(--color-base-text));
+}

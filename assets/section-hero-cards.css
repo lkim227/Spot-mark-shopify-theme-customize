@@ -1,0 +1,86 @@
+.hero-cards-section {
+  padding-bottom: 6rem;
+  overflow: hidden;
+}
+
+.hero-section__cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10.5rem;
+}
+.hero-section__cards .card {
+  flex: none;
+  width: 37.3rem;
+  height: 46.8rem;
+  background-color: #fefefe;
+  border-radius: 0.3rem;
+}
+.hero-section__cards .card__image,
+.hero-section__cards .card__placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-section__cards .card__placeholder {
+  transform: scale(1.2);
+}
+.hero-section__cards .card:first-child {
+  margin-top: 7.6rem;
+  margin-right: -6.7rem;
+  background-color: #f9f9f9;
+  transform: rotate(-5deg);
+  z-index: 1;
+}
+.hero-section__cards .card:last-child {
+  margin-top: 7.6rem;
+  margin-left: -6.7rem;
+  background-color: #f9f9f9;
+  transform: rotate(5deg);
+  z-index: 1;
+}
+.hero-section__cards .card:nth-child(2) {
+  z-index: 2;
+}
+
+@media screen and (max-width: 1200px) {
+  .hero-section__cards .card {
+    width: 25rem;
+    height: 31.4rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .hero-section__cards .card {
+    width: 20rem;
+    height: 25rem;
+  }
+  .hero-section__cards .card:first-child {
+    margin-top: 5rem;
+    margin-right: -4rem;
+  }
+  .hero-section__cards .card:last-child {
+    margin-top: 5rem;
+    margin-left: -4rem;
+  }
+}
+@media screen and (max-width: 576px) {
+  .hero-section__cards .card {
+    width: 15rem;
+    height: 18.8rem;
+  }
+}
+@media screen and (max-width: 450px) {
+  .hero-section__cards {
+    margin-top: 6.4rem;
+  }
+  .hero-section__cards .card {
+    width: 10rem;
+    height: 12.5rem;
+  }
+  .hero-section__cards .card:first-child {
+    margin-right: -2.5rem;
+  }
+  .hero-section__cards .card:last-child {
+    margin-left: -2.5rem;
+  }
+}

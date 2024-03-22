@@ -1,0 +1,378 @@
+{{ 'component-account-panel.css' | asset_url | stylesheet_tag: preload: true }}
+
+
+<div class="account-sidebar-panel">
+    <a href="#" class="account-panel-close" alt="Close">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M 38.982422 6.9707031 A 2.0002 2.0002 0 0 0 37.585938 7.5859375 L 24 21.171875 L 10.414062 7.5859375 A 2.0002 2.0002 0 0 0 8.9785156 6.9804688 A 2.0002 2.0002 0 0 0 7.5859375 10.414062 L 21.171875 24 L 7.5859375 37.585938 A 2.0002 2.0002 0 1 0 10.414062 40.414062 L 24 26.828125 L 37.585938 40.414062 A 2.0002 2.0002 0 1 0 40.414062 37.585938 L 26.828125 24 L 40.414062 10.414062 A 2.0002 2.0002 0 0 0 38.982422 6.9707031 z"></path></svg>
+    </a>
+    {% if section.settings.heading != blank %}
+        <div class="sidebar-header text-left"><span class="title">{{section.settings.heading}}</span></div>
+    {% endif %}
+ 
+    <div class="sidebar-wrapper account-login-wrapper   {% if customer %} account-login-wrapper-after {%- endif -%}">
+
+
+
+        <div class="account-login-form">
+
+            {% if customer %}
+
+                <div class="customer-details__info">
+                    <div class="customer-details-header">
+
+                        <div class="customer-details-name">
+                            <h3>{{customer.name }}</h3>
+                        </div>
+
+                        <div class="customer-details-avater">
+
+                            <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m6.03531778 18.739764c1.58798201 1.406412 3.67662147 2.260236 5.96468222 2.260236 2.2880608 0 4.3767002-.853824 5.9646822-2.260236-.2926828-1.052415-2.3952999-1.739764-5.9646822-1.739764-3.56938226 0-5.67199935.687349-5.96468222 1.739764zm-1.4348142-1.6151165c1.12544773-1.4865835 3.77009831-2.1246475 7.39949642-2.1246475 3.6293981 0 6.2740487.638064 7.3994964 2.1246475 1.0091215-1.4543292 1.6005036-3.220426 1.6005036-5.1246475 0-4.97056275-4.0294373-9-9-9-4.97056275 0-9 4.02943725-9 9 0 1.9042215.59138213 3.6703183 1.60050358 5.1246475zm7.39949642 5.8753525c-6.07513225 0-11-4.9248678-11-11 0-6.07513225 4.92486775-11 11-11 6.0751322 0 11 4.92486775 11 11 0 6.0751322-4.9248678 11-11 11zm-4-13c0-2.24424064 1.57909957-4 4-4 2.4141948 0 4 1.92157821 4 4.2 0 3.279614-1.7819139 4.8-4 4.8-2.23913618 0-4-1.5726257-4-5zm2 0c0 2.2692568.8182108 3 2 3 1.1777063 0 2-.7016073 2-2.8 0-1.24958264-.7843432-2.2-2-2.2-1.2662613 0-2 .81582479-2 2z" fill-rule="evenodd"/></svg>
+                    
+                        </div>
+                    </div>
+                
+                
+
+                    <ul class="customer-details__links">
+                      <li><a href="/pages/wishlist">
+                        <span>
+                           
+                    
+<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="0 0 36 36"><path fill="#78B159" d="M35.885 11.833c0-5.45-4.418-9.868-9.867-9.868-3.308 0-6.227 1.633-8.018 4.129-1.791-2.496-4.71-4.129-8.017-4.129-5.45 0-9.868 4.417-9.868 9.868 0 .772.098 1.52.266 2.241C1.751 22.587 11.216 31.568 18 34.034c6.783-2.466 16.249-11.447 17.617-19.959.17-.721.268-1.469.268-2.242z"/></svg>
+                    
+                        </span>
+                        <span>Favourits</span>
+                        
+                        </a></li>
+
+
+                        
+                        <li><a href="/pages/contact">
+                        <span>
+                           
+
+                          <svg enable-background="new 0 0 48 48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="m38 44h-26v-40h26c2.2 0 4 1.8 4 4v32c0 2.2-1.8 4-4 4z" fill="#ff7043"/><path d="m10 4h2v40h-2c-2.2 0-4-1.8-4-4v-32c0-2.2 1.8-4 4-4z" fill="#bf360c"/><g fill="#ab300b"><circle cx="26" cy="20" r="4"/><path d="m33 30s-1.9-4-7-4-7 4-7 4v2h14z"/></g></svg>         </span>
+                        <span>Contact</span>
+                        
+                        </a></li>
+
+                        <li><a href="/account">
+                          <span>
+                              <svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg"><path d="m6.92 18.51h76.15v69.53h-76.15z" fill="#94d5d2"/><path d="m10.23 18.51v-16.55h69.54v16.55" fill="#ffeb97"/><path d="m10.09 15.37v-13.41h1.9l8.03 5.96z" fill="#94d5d2"/><path d="m20.02 7.92v10.59h-9.93v-3.14z" fill="#7cb3b0"/><path d="m79.91 15.37v-13.41h-1.9l-8.03 5.96z" fill="#94d5d2"/><path d="m69.98 7.92v10.59h9.93v-3.14z" fill="#7cb3b0"/><circle cx="31.76" cy="28.45" fill="#ffeb97" r="3.31"/><circle cx="58.24" cy="28.45" fill="#ffeb97" r="3.31"/><g fill="#576065"><path d="m83.08 90h-76.16a2 2 0 0 1 -2-2v-69.49a2 2 0 0 1 2-2h76.16a2 2 0 0 1 2 2v69.49a2 2 0 0 1 -2 2zm-74.2-3.91h72.24v-65.62h-72.24z"/><path d="m79.77 20.47a2 2 0 0 1 -2-2v-14.56h-65.58v14.6a2 2 0 0 1 -3.91 0v-16.51a2 2 0 0 1 2-2h69.49a2 2 0 0 1 2 2v16.51a2 2 0 0 1 -2 1.96z"/><path d="m6.92 20.47a2 2 0 0 1 -1.18-3.52l11-8.27-7.59-5.09a2 2 0 1 1 2.17-3.26l9.93 6.67a2 2 0 0 1 .09 3.19l-13.24 9.89a1.94 1.94 0 0 1 -1.18.39z"/><path d="m83.08 20.47a1.94 1.94 0 0 1 -1.17-.39l-13.25-9.93a2 2 0 0 1 .09-3.15l9.93-6.67a2 2 0 1 1 2.17 3.26l-7.63 5.08 11 8.27a2 2 0 0 1 -1.18 3.52z"/><path d="m45 60.2a15.22 15.22 0 0 1 -15.2-15.2v-13.24a2 2 0 0 1 3.91 0v13.24a11.29 11.29 0 0 0 22.58 0v-13.24a2 2 0 0 1 3.91 0v13.24a15.22 15.22 0 0 1 -15.2 15.2z"/><path d="m31.76 33.71a5.27 5.27 0 1 1 5.24-5.26 5.27 5.27 0 0 1 -5.24 5.26zm0-6.62a1.35 1.35 0 1 0 1.35 1.35 1.36 1.36 0 0 0 -1.35-1.35z"/><path d="m58.24 33.71a5.27 5.27 0 1 1 5.27-5.27 5.27 5.27 0 0 1 -5.27 5.27zm0-6.62a1.35 1.35 0 1 0 1.35 1.35 1.36 1.36 0 0 0 -1.35-1.35z"/><path d="m20.17 20.47a2 2 0 0 1 -2-2v-9.89a2 2 0 0 1 3.91 0v9.93a2 2 0 0 1 -1.91 1.96z"/><path d="m69.83 20.47a2 2 0 0 1 -2-2v-9.89a2 2 0 0 1 3.91 0v9.93a2 2 0 0 1 -1.91 1.96z"/></g></svg></span>
+                          <span>orders</span>
+                          
+                          </a></li>
+
+                    </ul>
+
+                    <ul class="user-links">
+                      <li><a href="/account"><span>
+                        <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m9 9.5v-2c0-1.65685 1.3431-3 3-3s3 1.34315 3 3v2c0 1.1104-.6033 2.0799-1.5 2.5987v1.2243c0 .4089.249.7766.6286.9284l2.0502.8201c1.4019.5608 2.3212 1.9186 2.3212 3.4285h-13c0-1.5099.91927-2.8677 2.32119-3.4285l2.0502-.8201c.37961-.1518.62861-.5195.62861-.9284v-1.2243c-.8967-.5188-1.5-1.4883-1.5-2.5987z" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/></svg></span>My Account Detauls</a></li>
+                      <li><a href="/account">
+                        <span>
+                          <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 9c.55 0 1-.45 1-1V6h2c.55 0 1-.45 1-1s-.45-1-1-1h-2V2c0-.55-.45-1-1-1s-1 .45-1 1v2H9c-.55 0-1 .45-1 1s.45 1 1 1h2v2c0 .55.45 1 1 1zm-5 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.9-5h7.45c.75 0 1.41-.41 1.75-1.03l3.38-6.13c.27-.48.09-1.09-.39-1.36-.48-.26-1.09-.09-1.35.39L15.55 11H8.53L4.54 2.57c-.16-.35-.52-.57-.9-.57H2c-.55 0-1 .45-1 1s.45 1 1 1h1l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h11c.55 0 1-.45 1-1s-.45-1-1-1H7l1.1-2z"/></svg></span>
+                        My Orders</a>
+                      </li>
+                      <li><a href="/account"><span>
+                        <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m504 256c0 136.997-111.043 248-248 248s-248-111.003-248-248c0-136.917 111.043-248 248-248s248 111.083 248 248zm-241.345-166c-54.497 0-89.255 22.957-116.549 63.758-3.536 5.286-2.353 12.415 2.715 16.258l34.699 26.31c5.205 3.947 12.621 3.008 16.665-2.122 17.864-22.658 30.113-35.797 57.303-35.797 20.429 0 45.698 13.148 45.698 32.958 0 14.976-12.363 22.667-32.534 33.976-23.524 13.187-54.652 29.6-54.652 70.659v4c0 6.627 5.373 12 12 12h56c6.627 0 12-5.373 12-12v-1.333c0-28.462 83.186-29.647 83.186-106.667 0-58.002-60.165-102-116.531-102zm-6.655 248c-25.365 0-46 20.635-46 46 0 25.364 20.635 46 46 46s46-20.636 46-46c0-25.365-20.635-46-46-46z"/></svg></span>Help</a></li>
+                      <li><a  href="{{ routes.account_logout_url }}">
+                        <span>
+                            <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><g stroke="#FF003D" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m6 6.5c-1.84125 1.64796-3 3.8344-3 6.4999 0 4.9706 4.02944 9 9 9 4.9706 0 9-4.0294 9-9 0-2.6655-1.1588-4.85194-3-6.4999"/><path d="m12 2v9m0-9c-.7002 0-2.00847 1.9943-2.5 2.5m2.5-2.5c.7002 0 2.0085 1.9943 2.5 2.5"/></g></svg></span>
+                        {{ 'customer.log_out' | t }}
+                      </a></li>
+                    </ul>
+                
+                </div>
+
+
+
+                {% else %}
+                    
+            
+
+              <div class="login__reset login__reset-panel" id="recover-panel">
+                <div class="page-header">
+                  <div class="page-header__inner">
+                    <h2 class="main-page-title page-title title--page" tabindex="-1">
+                      {{ 'customer.recover_password.title' | t }}
+                    </h2>
+                  </div>
+                </div>
+                <div>
+                  <p>
+                    {{ 'customer.recover_password.subtext' | t }}
+                  </p>
+    
+                  {%- form 'recover_customer_password' -%}
+                    {% assign recover_success = form.posted_successfully? %}
+                    <div class="field">
+                      <input
+                        type="email"
+                        value=""
+                        name="email"
+                        id="RecoverEmail"
+                        autocorrect="off"
+                        autocapitalize="off"
+                        autocomplete="email"
+                        {% if form.errors %}
+                          aria-invalid="true"
+                          aria-describedby="RecoverEmail-email-error"
+                          autofocus
+                        {% endif %}
+                        placeholder="{{ 'customer.login_page.email' | t }}"
+                      >
+                      <label for="RecoverEmail">{{ 'customer.login_page.email' | t }}</label>
+                    </div>
+    
+                    <div class="customer__buttons">
+                      <button class="button button--arrow button--primary button--primary-size login__sign-in">
+                        <span>{{ 'customer.login_page.submit' | t }}</span>
+                        <span>{%- render 'icon-button-arrow' -%}</span>
+                      </button>
+    
+                      <a
+                        class="button button--arrow button--secondary button--primary-size login__create-cancel anchor"
+                        href="#login"
+                      >
+                        <span>{{ 'customer.login_page.cancel' | t }}</span>
+                        <span>{%- render 'icon-button-arrow' -%}</span>
+                      </a>
+                    </div>
+                  {%- endform -%}
+                </div>
+              </div>
+    
+              <div class="login__form login__form-panel" >
+                <div class="page-header">
+                  <div class="page-header__inner">
+                    <h1 class="title--page h2" id="login" tabindex="-1">
+                      {{ 'customer.login_page.title' | t }}
+                    </h1>
+
+                  </div>
+                </div>
+                {%- if recover_success == true -%}
+                  <h3 class="form__message" tabindex="-1" autofocus>
+                    {{ 'customer.recover_password.success' | t }}
+                  </h3>
+                {%- endif -%}
+                {%- form 'customer_login', novalidate: 'novalidate' -%}
+                  <div class="field login__field">
+                    <input
+                      type="email"
+                      name="customer[email]"
+                      class="field__input"
+                      id="CustomerEmail"
+                      autocomplete="email"
+                      autocorrect="off"
+                      autocapitalize="off"
+                      required
+                      {% if form.errors contains 'form' %}
+                        aria-invalid="true"
+                        aria-describedby="LoginForm-email-error"
+                      {% endif %}
+                      placeholder="{{ 'customer.login_page.email' | t }}"
+                    >
+                    <label for="CustomerEmail">{{ 'customer.login_page.email' | t }}</label>
+                  </div>
+                  {% unless template.name == 'register' %}
+                    {{ form.errors | default_errors }}
+                  {% endunless %}
+    
+                  {%- if form.password_needed -%}
+                    <div class="field login__field">
+                      <input
+                        type="password"
+                        value=""
+                        name="customer[password]"
+                        class="field__input"
+                        id="CustomerPassword"
+                        autocomplete="current-password"
+                        {% if form.errors contains 'form' %}
+                          aria-invalid="true"
+                        {% endif %}
+                        required
+                        placeholder="{{ 'customer.login_page.password' | t }}"
+                      >
+                      <label for="CustomerPassword">{{ 'customer.login_page.password' | t }}</label>
+                    </div>
+                    {% unless template.name == 'register' %}
+                      {{ form.errors | default_errors }}
+                    {% endunless %}
+    
+                    <div class="login__forgot-password">
+                      <a href="javascript:void(0)" class="anchor login__forgot-btn">{{ 'customer.login_page.forgot_password' | t }}</a>
+                    </div>
+                  {%- endif -%}
+    
+                  <div class="customer__buttons">
+                    <button class="button button--arrow button--primary button--primary-size login__sign-in">
+                      <span>{{ 'customer.login_page.sign_in' | t }}</span>
+                      <span>{%- render 'icon-button-arrow' -%}</span>
+                    </button>
+    
+                    <a
+                      class="button button--arrow button--secondary button--primary-size login__create-btn"
+                      href="javascript:void(0)" 
+                    >
+                      <span>{{ 'customer.login_page.create_account' | t }}</span>
+                      <span>{%- render 'icon-button-arrow' -%}</span>
+                    </a>
+                  </div>
+                {%- endform -%}
+              </div>
+    
+              {%- if shop.checkout.guest_login -%}
+                <div>
+                  <hr>
+                  <h2>{{ 'customer.login_page.guest_title' | t }}</h2>
+    
+                  {%- form 'guest_login' -%}
+                    <button>
+                      {{ 'customer.login_page.guest_continue' | t }}
+                    </button>
+                  {%- endform -%}
+                </div>
+              {%- endif -%}
+
+
+              <div class="register__form">
+                <div class="page-header">
+                  <div class="page-header__inner">
+                    <h1 class="title--page h2">
+                      {{ 'customer.register.title' | t }}
+                    </h1>
+
+                  </div>
+                </div>
+                {%- form 'create_customer' -%}
+                  <div class="field__wrapper">
+                    <div class="field">
+                      <input
+                        type="text"
+                        name="customer[first_name]"
+                        id="RegisterForm-FirstName"
+                        {% if form.first_name %}
+                          value="{{ form.first_name }}"
+                        {% endif %}
+                        autocomplete="given-name"
+                        placeholder="{{ 'customer.register.first_name' | t }}"
+                        required
+                      >
+                      <label for="RegisterForm-FirstName">{{ 'customer.register.first_name' | t }}</label>
+                    </div>
+                    <div class="field">
+                      <input
+                        type="text"
+                        name="customer[last_name]"
+                        id="RegisterForm-LastName"
+                        {% if form.last_name %}
+                          value="{{ form.last_name }}"
+                        {% endif %}
+                        autocomplete="family-name"
+                        aria-required="true"
+                        placeholder="{{ 'customer.register.last_name' | t }}"
+                        required
+                      >
+                      <label for="RegisterForm-LastName">{{ 'customer.register.last_name' | t }}</label>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <input
+                      type="email"
+                      name="customer[email]"
+                      id="RegisterForm-email"
+                      {% if form.email %}
+                        value="{{ form.email }}"
+                      {% endif %}
+                      spellcheck="false"
+                      autocapitalize="off"
+                      autocomplete="email"
+                      aria-required="true"
+                      {% if form.errors contains 'email' %}
+                        aria-invalid="true"
+                        aria-describedby="RegisterForm-email-error"
+                      {% endif %}
+                      placeholder="{{ 'customer.register.email' | t }}"
+                      required
+                    >
+                    <label for="RegisterForm-email">{{ 'customer.register.email' | t }}</label>
+                  </div>
+                  {%- if form.errors contains 'email' -%}
+                    <span id="RegisterForm-email-error" class="form__message">
+                      {{ form.errors.translated_fields.email | capitalize }}
+                      {{ form.errors.messages.email }}.
+                    </span>
+                  {%- endif -%}
+                  <div class="field">
+                    <input
+                      type="password"
+                      name="customer[password]"
+                      id="RegisterForm-password"
+                      aria-required="true"
+                      {% if form.errors contains 'password' %}
+                        aria-invalid="true"
+                        aria-describedby="RegisterForm-password-error"
+                      {% endif %}
+                      placeholder="{{ 'customer.register.password' | t }}"
+                      required
+                    >
+                    <label for="RegisterForm-password">{{ 'customer.register.password' | t }}</label>
+                  </div>
+                  {%- if form.errors contains 'password' -%}
+                    <span id="RegisterForm-password-error" class="form__message">
+                      {{ form.errors.translated_fields.password | capitalize }}
+                      {{ form.errors.messages.password }}.
+                    </span>
+                  {%- endif -%}
+    
+                  {%- if form.errors contains 'form' -%}
+                    <span id="RegisterForm-email-error" class="form__message">
+                      {{ 'customer.login_page.customer_exist' | t }}
+                    </span>
+                  {%- endif -%}
+    
+                  <div class="customer__buttons">
+                    <button class="button button--arrow button--primary button--primary-size">
+                      <span>{{ 'customer.register.submit' | t }}</span>
+                      <span>{%- render 'icon-button-arrow' -%}</span>
+                    </button>
+    
+                    <a
+                      class="button button--arrow button--secondary button--primary-size login__create-panel-btn"
+                      href="javascript:void(0)"
+                    >
+                      <span>{{ 'customer.login_page.title' | t }}</span>
+                      <span>{%- render 'icon-button-arrow' -%}</span>
+                    </a>
+                  </div>
+                {%- endform -%}
+              </div>
+            {% endif %}
+
+
+
+        
+        </div>
+
+
+
+
+
+    </div>
+   
+</div>
+
+{% schema %}
+{
+  "name": "Account Panel Mobile",
+  "settings": [
+	{
+		"type": "text",
+		"id": "heading",
+		"default": "Account Information",
+		"label": "Account Heading"
+	}
+  ]
+}
+{% endschema %}

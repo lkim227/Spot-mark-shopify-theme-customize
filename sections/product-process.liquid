@@ -1,0 +1,379 @@
+{% assign value = section.settings %}
+
+{{ 'section-product-process.css' | asset_url | stylesheet_tag: preload: true }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    margin-top: {{ section.settings.margin_top-m }}px;
+    margin-bottom: {{ section.settings.margin_bottom-m }}px;
+    padding-top: {{ section.settings.padding_top_m  }}px;
+    padding-bottom: {{ section.settings.padding_bottom_m }}px;
+
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.color }};
+    position: relative;
+  }
+  .product-process-wrapper{
+    overflow: hidden;
+  }
+
+  .section-{{ section.id }}-padding .process-wrapper{
+    display: flex;
+    list-style:none;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  
+  .section-{{ section.id }}-padding .product-slide{
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #7889bd;
+    transition: background-color 0.3s linear;
+    margin-right: 20px;
+  }
+  .section-{{ section.id }}-padding .product-slide.swiper-slide-active,
+  .section-{{ section.id }}-padding .product-slide:hover{
+    background-color: #CCEEF2;
+  }
+  @media screen and (min-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+    .section-{{ section.id }}-padding .product-slide{
+      max-width: 25%;
+      max-height: 367px;
+    }
+  }
+{%- endstyle -%}
+
+{% assign heading = section.settings.heading %}
+{% assign slidesDesktop = section.settings.desktop_item %}
+{% assign slidesLaptop = section.settings.laptop_item %}
+{% assign slidesTab = section.settings.tab_item %}
+{% assign slidesMobile = section.settings.mobile_item %}
+{% assign direction = section.settings.reverse %}
+{% assign autoPlay = section.settings.autoplay_enabled %}
+{% assign loop = section.settings.loop_enabled %}
+{% assign delay = section.settings.autoplay_timeout | times: 1000 %}
+
+<div class="section-{{ section.id }}-padding" id="section-{{ section.id }}">
+  <div class="bg_line"></div>
+  <div class="product-process-wrapper container-fluid">
+    {% if heading != blank %}
+      <h3>{{ heading }}</h3>
+    {% endif %}
+
+    <div class="product-process-box">
+      <slider-component>
+        <div
+          class="common__slideshow swiper"
+          data-slidesDesktop="{{ slidesDesktop }}"
+          data-slidesdesktop="{{ slidesDesktop }}"
+          data-slidesLaptop="{{ slidesLaptop }}"
+          data-slidesTab="{{ slidesTab }}"
+          data-slidesMobile="{{ slidesMobile }}"
+          data-direction="{{ direction }}"
+          data-autoPlay="{{ autoPlay }}"
+          data-delay="{{ delay }}"
+          data-loop="{{ loop }}"
+          data-freemode="false"
+          data-freemomentum="false"
+          data-speed="1000"
+          data-desktopspace="20"
+          data-laptopspace="20"
+          data-tabspace="20"
+          data-mobilespace="20"
+        >
+          <div class="process-wrapper swiper-wrapper">
+            {% for block in section.blocks %}
+              {% liquid
+                assign img = block.settings.img
+                assign pretext = block.settings.pretext
+                assign heading = block.settings.heading
+                assign text = block.settings.text
+                assign img = block.settings.img
+              %}
+
+              <div class="product-slide swiper-slide" {{ block.shopify_attributes }}>
+                <div class="product-process-item">
+                  <div class="product-process-item-top">
+                    <div class="product-process-item-top-left">
+                      {% if pretext != blank %}
+                        <h6>{{ pretext }}</h6>
+                      {% endif %}
+                      {% if heading != blank %}
+                        <h4>{{ heading }}</h4>
+                      {% endif %}
+                    </div>
+                    <div class="product-process-item-top-right">
+                      {% if img != blank %}
+                        <div class="product-process-image">
+                          <img src="{{ img | image_url }}" alt="Side image">
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                  {% if text != blank %}
+                    <div class="product-process-item-bottom">
+                      <div class="text">
+                        {{ text }}
+                      </div>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </slider-component>
+    </div>
+    {% if section.settings.button_label != blank %}
+      <div class="product-process-btn">
+        <a class="button-color" href="{{section.settings.button_link}}">{{ section.settings.button_label }}</a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Process",
+  "class": "product-process-section",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "HOW DOES IT WORK?"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "SEE GUIDE HOW TO DECORATE"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "range",
+      "id": "desktop_item",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "default": 4,
+      "label": "Desktop (1440+)"
+    },
+    {
+      "type": "range",
+      "id": "laptop_item",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "default": 4,
+      "label": "Laptop (991+)"
+    },
+    {
+      "type": "range",
+      "id": "tab_item",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "default": 1,
+      "label": "Tab (480+)"
+    },
+    {
+      "type": "range",
+      "id": "mobile_item",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "default": 1,
+      "label": "Mobile (360+)"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay_enabled",
+      "label": "Enable Autoplay",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "loop_enabled",
+      "label": "Enable Loop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse",
+      "label": "Enable Reverse",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_timeout",
+      "label": "Change Slides Every",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 7,
+      "unit": "s"
+    },
+    {
+      "type": "header",
+      "content": "Section Color"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#252489"
+    },
+    {
+      "type": "header",
+      "content": "Spacing (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Spacing (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top-m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom-m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 68
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Side Image",
+      "type": "side-image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "pretext",
+          "label": "Pre Text",
+          "default": "Step"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "PREP"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Prep your area and walls by sanding, cleaning, and ensuring the surface is smooth & dry - use primer (or mist coat) on bare surfaces or fresh plaster board</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Process"
+    }
+  ]
+}
+{% endschema %}

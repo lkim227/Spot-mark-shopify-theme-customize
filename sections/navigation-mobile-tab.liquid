@@ -1,0 +1,46 @@
+<ul class="menu-tab list-unstyled" role="menu">
+        {% if section.settings.tab_label_1  != blank %}
+            <li class="item is-active" role="menuitem">
+                <a class="link" href="javascript:void(0)" class="mobile-menu-tab" data-mobile-menu-tab data-target="MenuMobileListSection-menu">{{ section.settings.tab_label_1 }}</a>
+            </li>
+         {% endif %}
+
+
+         {% if section.settings.tab_label_2  != blank %}
+                <li class="item" role="menuitem">
+                <a
+                    class="link"
+                    href="javascript:void(0)"
+                    class="mobile-menu-tab"
+                    data-mobile-menu-tab
+                    data-target="MenuMobileListSection-collection"
+                    >{{ section.settings.tab_label_2 }}</a
+                >
+                </li>
+            {% endif %}
+  </ul>
+
+
+  {% schema %}
+    {
+      "name": "Mobile Drawer Menu",
+      "settings": [
+           {
+              "type": "header",
+              "content": "Menu Tab Label"
+          },
+          {
+              "type": "text",
+              "id": "tab_label_1",
+              "label": "Tab Label",
+              "default": "Menu"
+          },
+          {
+              "type": "text",
+              "id": "tab_label_2",
+              "label": "Tab Label",
+              "default": "Collection"
+          }
+      ]
+    }
+  {% endschema %}

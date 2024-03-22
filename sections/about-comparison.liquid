@@ -1,0 +1,231 @@
+{{ 'section-comparision.css' | asset_url | stylesheet_tag: preload: true }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_m }}px;
+    padding-bottom: {{ section.settings.padding_bottom_m }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="comparision-section section-{{ section.id }}-padding">
+  <div class="container">
+    <div class="row ">
+      <div class="col-lg-8 col-xl-8 col-xxl-6">
+        <div class="comparision-header">
+          {% if section.settings.heading != blank %}
+            {{ section.settings.heading }}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        {% if section.settings.text != blank %}
+          <div class="description">
+            {{ section.settings.text }}
+          </div>
+        {% endif %}
+      </div>
+      <div class="col-lg-8">
+        <div class="comarision-wrapper">
+          <div class="comarision-card our-store-card">
+            <div class="cn_card-header">
+              {% if section.settings.outlet_image %}
+                <div class="card-header-img">
+                  {{ section.settings.outlet_image | image_url: width: auto | image_tag: loading: 'lazy' }}
+                </div>
+              {% endif %}
+            </div>
+            {% if section.blocks.size > 0 %}
+              <ul class="our-store-check-list">
+                {% for block in section.blocks %}
+                  <li>
+                    {% if block.settings.our_store_image != blank %}
+                      <span>
+                        {{ block.settings.our_store_image | image_url: width: auto | image_tag: loading: 'lazy' }}
+                      </span>
+                    {% endif %}
+                    {% if block.settings.our_heading %}
+                      {{ block.settings.our_heading }}
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+
+          <div class="comarision-card other-store-card">
+            <div class="cn_card-header">
+              {% if section.settings.other_store_heading %}
+                <h3>{{ section.settings.other_store_heading }}</h3>
+              {% endif %}
+            </div>
+            {% if section.blocks.size > 0 %}
+              <ul class="other-store-check-list">
+                {% for block in section.blocks %}
+                  <li>
+                    {% if block.settings.other_store_image != blank %}
+                      <span>
+                        {{ block.settings.other_store_image | image_url: width: auto | image_tag: loading: 'lazy' }}
+                      </span>
+                    {% endif %}
+                    {% if block.settings.other_heading %}
+                      {{ block.settings.other_heading }}
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if section.settings.image %}
+    <div class="bottom-img-wrap">
+      {{ section.settings.image | image_url: width: auto | image_tag: loading: 'lazy' }}
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Comparision",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "heading",
+      "default": "<p><strong>Why settle</strong> for mediocre or expensive paints when you can have <em>Paint</em> Outlet?</p>",
+      "label": "Text"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "default": "<p>Take a look at the comparison table to see how our platform outshines buying paint elsewhere </p>",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Bottom Image"
+    },
+    {
+      "type": "header",
+      "content": "Our Store Header"
+    },
+    {
+      "type": "image_picker",
+      "id": "outlet_image",
+      "label": "Outlet Logo Image"
+    },
+    {
+      "type": "header",
+      "content": "Other Store Header"
+    },
+    {
+      "type": "textarea",
+      "id": "other_store_heading",
+      "default": "Other Retail Outlets",
+      "label": "Description"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 110
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_top_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 70
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Comparision Block",
+      "type": "comparision_block",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Our Store"
+        },
+        {
+          "type": "image_picker",
+          "id": "our_store_image",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "our_heading",
+          "label": "Heading",
+          "default": "Deal directly with the supplier"
+        },
+        {
+          "type": "header",
+          "content": "Other Store"
+        },
+        {
+          "type": "image_picker",
+          "id": "other_store_image",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "other_heading",
+          "label": "Heading",
+          "default": "Middlemen"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comparision"
+    }
+  ]
+}
+{% endschema %}

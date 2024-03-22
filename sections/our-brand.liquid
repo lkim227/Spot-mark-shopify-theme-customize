@@ -1,0 +1,264 @@
+{{ 'section-our-brand.css' | asset_url | stylesheet_tag: preload: true }}
+{%- style -%}
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_m  }}px;
+      padding-bottom: {{ section.settings.padding_bottom_m }}px;
+    }
+  
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+{%- endstyle -%}
+{% assign slidesDesktop = section.settings.desktop_item %}
+{% assign slidesLaptop = section.settings.laptop_item %}
+{% assign slidesTab = section.settings.tab_item %}
+{% assign slidesMobile = section.settings.mobile_item %}
+{% assign direction = section.settings.reverse %}
+{% assign autoPlay = section.settings.autoplay_enabled %}
+{% assign loop = section.settings.loop_enabled %}
+{% assign delay = section.settings.autoplay_timeout | times: 1000 %}
+<div 
+class="our-brand-wrapper section-{{ section.id }}-padding" 
+id="section-{{ section.id }}">
+    <div class="section-bg">
+      {%- if section.settings.background != blank -%}
+        {{
+          section.settings.background
+        | image_url: width: auto
+        | image_tag: loading: 'lazy'
+        }}
+        {%- endif -%}
+    </div>
+    <div class="brand-content-area">
+        <div class="section-title">
+            <h2>{{ section.settings.title }}</h2>
+        </div>
+        <div class="section-info">
+            {{ section.settings.info }}
+        </div>
+        <div class="brand-button-area">
+            <a href="{{ section.settings.link }}" class="button">{{ section.settings.button }}</a>
+        </div>
+        <div class="brand-sub-text">
+            <p>{{ section.settings.sub }}</p>
+        </div>
+    </div>
+    <slider-component >
+      <div class="common__slideshow swiper swiper-our-brand"
+      data-slidesDesktop="{{ slidesDesktop }}"
+      data-slidesLaptop="{{ slidesLaptop }}"
+      data-slidesTab="{{ slidesTab }}"
+      data-slidesMobile="{{ slidesMobile }}"
+      data-direction="{{ direction }}"
+      data-autoPlay="{{ autoPlay }}"
+      data-delay="{{ delay }}"
+      data-loop="{{ loop }}"
+      data-freemode="false"
+      data-freemomentum="false"
+      data-speed="5000"
+      data-desktopspace="88"
+      data-laptopspace="60"
+      data-tabspace="30"
+      data-mobilespace="15"
+      >
+          <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+                {%- if block.type == 'brand' -%}
+                {%- liquid
+                assign image = block.settings.image
+                assign link = block.settings.link
+                -%}
+                    <div class="our-brand-card swiper-slide" {{ block.shopify_attributes }}>
+                      <div class="our-brand-image">
+                        <a href="{{ link }}" target="_blank">
+                          {%- if image != blank -%}
+                            {{
+                            image
+                            | image_url: width: "118px"
+                            | image_tag: loading: 'lazy'
+                            }}
+                            {%- endif -%}
+                        </a>
+                      </div>
+                    </div>
+              {%- endif -%}
+          {% endfor %}
+          </div>
+      </div>
+    </slider-component>
+</div>
+{% schema %}
+{
+  "name": "Our Brand",
+  "class": "our-brand-section",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+"settings": [
+    {
+        "type" : "textarea",
+        "id" : "title",
+        "label": "Title",
+        "default": "Our Brand"
+    },
+    {
+        "type" : "html",
+        "id" : "info",
+        "label": "Info"
+    },
+    {
+        "type" : "text",
+        "id" : "button",
+        "label": "Button"
+    },
+    {
+        "type" : "url",
+        "id" : "link",
+        "label": "Link"
+    },
+    {
+        "type" : "richtext",
+        "id" : "sub",
+        "label": "Sub Text"
+    },
+    {
+      "type": "range",
+      "id": "desktop_item",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "default": 4,
+      "label": "Desktop (1440+)"
+    },
+    {
+      "type": "range",
+      "id": "laptop_item",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "default": 4,
+      "label": "Laptop (991+)"
+    },
+    {
+      "type": "range",
+      "id": "tab_item",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "default": 4,
+      "label": "Tab (480+)"
+    },
+    {
+      "type": "range",
+      "id": "mobile_item",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "default": 4,
+      "label": "Mobile (360+)"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay_enabled",
+      "label": "Enable Autoplay",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "loop_enabled",
+      "label": "Enable Loop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse",
+      "label": "Enable Reverse",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_timeout",
+      "label": "Change Slides Every",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 7,
+      "unit": "s"
+    },
+    {
+        "type" : "image_picker",
+        "id" : "background",
+        "label": "Bakground"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_top_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 68
+    }
+],
+"blocks": [
+    {
+    "name": "Brand",
+    "type": "brand",
+    "settings": [
+                {
+                    "type" : "image_picker",
+                    "id" : "image",
+                    "label": "Image"
+                },
+                {
+                    "type" : "url",
+                    "id" : "link",
+                    "label": "Link"
+                }
+            ]
+        }
+],
+"presets": [{
+"name": "Our Brand"
+}]
+}
+{% endschema %}

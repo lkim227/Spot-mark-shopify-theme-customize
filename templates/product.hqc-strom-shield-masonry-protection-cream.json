@@ -1,0 +1,1119 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "bf977822-fc54-46a6-adcc-9d42d216879a": {
+          "type": "share",
+          "settings": {
+            "show_share_facebook": true,
+            "show_share_twitter": true,
+            "show_share_pinterest": true,
+            "show_share_copy": true
+          }
+        },
+        "00d96f12-2d89-403f-830d-23e3b1e7b05f": {
+          "type": "shopify:\/\/apps\/loox-reviews\/blocks\/loox-rating\/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "contentSize": 13,
+            "pattern": "[count] reviews",
+            "hideText": false,
+            "alignment": "",
+            "layout": "",
+            "textColor": "",
+            "starColor": "",
+            "showAllReviews": false,
+            "looxOpenFloatingWidget": true,
+            "emptyRatingWidget": true
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h2"
+          }
+        },
+        "0ac1c304-e336-4462-94f8-414e0006eb83": {
+          "type": "manufacture",
+          "settings": {
+            "manufacture_text": "Manufacturer's warranty is 10 years"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_quantity": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "pickup_availability": {
+          "type": "pickup_availability",
+          "settings": {
+          }
+        },
+        "64599f7b-1d41-4d7c-9536-f0281c7f23f9": {
+          "type": "payment",
+          "settings": {
+            "heading": "Payment & Security",
+            "text": "<p>Your payment information is processed securely. We do not store credit card details nor have access to your credit card information.<\/p>"
+          }
+        },
+        "about_brand_fntdNN": {
+          "type": "about_brand",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/HQC_BACKGRONG_LESS_300x_1.png",
+            "heading": "About this Brand",
+            "text": "High Quality Coatings is the smartest way to decorate Experience. Cost Saving. Simple packaging. A Paint Outlet favourite."
+          }
+        },
+        "certificate_Fmqqep": {
+          "type": "certificate",
+          "settings": {
+            "heading": "Our Certificate",
+            "pdf_label_1": "PDF 12Mb",
+            "pdf_url_1": "https:\/\/www.paintoutlet.co.uk\/cdn\/shop\/files\/dummy.pdf?v=4457909464436904884",
+            "text_1": "Product instructions, detailed descriptions.",
+            "pdf_label_2": "PDF 12Mb",
+            "pdf_url_2": "https:\/\/www.paintoutlet.co.uk\/cdn\/shop\/files\/dummy.pdf?v=4457909464436904884",
+            "text_2": "Product instructions, detailed descriptions.",
+            "pdf_label_3": "PDF 12Mb",
+            "pdf_url_3": "https:\/\/www.paintoutlet.co.uk\/cdn\/shop\/files\/dummy.pdf?v=4457909464436904884",
+            "text_3": "Product instructions, detailed descriptions.",
+            "pdf_label_4": "PDF 12Mb",
+            "pdf_url_4": "https:\/\/www.paintoutlet.co.uk\/cdn\/shop\/files\/dummy.pdf?v=4457909464436904884",
+            "text_4": "Product instructions, detailed descriptions.",
+            "pdf_label_5": "PDF 12Mb",
+            "pdf_url_5": "https:\/\/www.paintoutlet.co.uk\/cdn\/shop\/files\/dummy.pdf?v=4457909464436904884",
+            "text_5": "Product instructions, detailed descriptions."
+          }
+        },
+        "step_rQPtCT": {
+          "type": "step",
+          "settings": {
+            "heading": "DON’T KNOW WHAT TO BUY?",
+            "text_1": "Try a Colour tester pouch",
+            "text_2": "Accessories & Brushes",
+            "text_3": "Primer",
+            "text_4": "Paint",
+            "text_5": "Sealer if required",
+            "button_label": "SHOP LIKE A PRO",
+            "button_link": "https:\/\/www.paintoutlet.co.uk\/products\/hqc-strom-shield-masonry-protection-cream"
+          }
+        },
+        "benefits_fcDx7W": {
+          "type": "benefits",
+          "settings": {
+            "heading": "TOP BENEFITS: 🌟",
+            "text": "<ul><li>Ultimate masonry protection against the elements.<\/li><li>Enhanced energy efficiency for exterior walls.<\/li><li>Advanced silicone formula penetrates up to 12mm into brick.<\/li><li>Easy application with roller, brush, or airless spray.<\/li><li>Preserves the natural appearance of walls.<\/li><li>Cost-saving with potential 8-10% reduction in heating costs.<\/li><li>Single-coat application saves time and effort.<\/li><li>Provides 25 years of unparalleled protection for masonry.<\/li><\/ul>"
+          }
+        },
+        "feature_text_zHQaQ9": {
+          "type": "feature_text",
+          "settings": {
+            "color": "",
+            "image": "shopify:\/\/shop_images\/Group_7ae06567-bb88-42dc-9c8d-15d904ad2138.svg",
+            "heading": "Brush, Roller OR Spray",
+            "sub_title": "APPLICATION METHOD:"
+          }
+        },
+        "feature_text_3gWWQp": {
+          "type": "feature_text",
+          "settings": {
+            "color": "#addfe4",
+            "image": "shopify:\/\/shop_images\/Frame.svg",
+            "heading": "100%",
+            "sub_title": "Clear"
+          }
+        },
+        "feature_text_GxQr8k": {
+          "type": "feature_text",
+          "settings": {
+            "color": "#bdebb6",
+            "image": "shopify:\/\/shop_images\/Group_1_61449d3b-6fb4-409e-b2a4-7e47b6538a3d.svg",
+            "heading": "Clear",
+            "sub_title": "Finish:"
+          }
+        },
+        "feature_text_ACDr8e": {
+          "type": "feature_text",
+          "settings": {
+            "color": "#ffaea6",
+            "image": "shopify:\/\/shop_images\/Group_2_c42909aa-37e2-4048-ae13-1608a72d4edc.svg",
+            "heading": "Coverage:",
+            "sub_title": "12-16 per 1 coat"
+          }
+        }
+      },
+      "block_order": [
+        "bf977822-fc54-46a6-adcc-9d42d216879a",
+        "00d96f12-2d89-403f-830d-23e3b1e7b05f",
+        "title",
+        "0ac1c304-e336-4462-94f8-414e0006eb83",
+        "variant_picker",
+        "price",
+        "buy_buttons",
+        "pickup_availability",
+        "64599f7b-1d41-4d7c-9536-f0281c7f23f9",
+        "about_brand_fntdNN",
+        "certificate_Fmqqep",
+        "step_rQPtCT",
+        "benefits_fcDx7W",
+        "feature_text_zHQaQ9",
+        "feature_text_3gWWQp",
+        "feature_text_GxQr8k",
+        "feature_text_ACDr8e"
+      ],
+      "custom_css": [
+
+      ],
+      "settings": {
+        "desktop_alignment": "left",
+        "image_fit": "cover",
+        "enable_autoheight": false,
+        "heading_description": "",
+        "heading_size_description": "h2",
+        "padding_top": "no-indent",
+        "padding_bottom": "xs"
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "background-1",
+        "heading": "Check Out These Related Products",
+        "link": "Explore",
+        "products_limit": 6,
+        "columns_mobile": "1",
+        "image_ratio": "square",
+        "image_fit": "cover",
+        "show_secondary_image": true,
+        "show_vendor": true,
+        "show_desc": false,
+        "show_sku": false,
+        "padding_top": "m",
+        "padding_bottom": "m"
+      }
+    },
+    "featured-blog": {
+      "type": "featured-blog",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "background-2",
+        "color_scheme_card": "background-2",
+        "subheading": "",
+        "heading": "Latest Articles",
+        "heading_size": "h2",
+        "post_layout": "column-icon",
+        "image_width": "medium",
+        "image_fit": "contain",
+        "icon_background": "background-2",
+        "blog": "",
+        "post_limit": 6,
+        "post_limit_mobile": 3,
+        "show_image": true,
+        "show_tags": false,
+        "show_date": false,
+        "show_author": false,
+        "show_excerpt": false,
+        "show_view_all": true,
+        "show_view_all_mobile": true,
+        "button_label": "Button label",
+        "button_style": "secondary",
+        "padding_top": "m",
+        "padding_bottom": "m"
+      }
+    },
+    "426ec76b-be41-4327-b667-c3bcdddbdfd5": {
+      "type": "product-quality",
+      "blocks": {
+        "overlay_text_jTVDAq": {
+          "type": "overlay_text",
+          "settings": {
+            "text": "Mould killng barrier"
+          }
+        },
+        "overlay_text_cDxfz6": {
+          "type": "overlay_text",
+          "settings": {
+            "text": "Easy clean"
+          }
+        },
+        "overlay_text_mFnweQ": {
+          "type": "overlay_text",
+          "settings": {
+            "text": "Hard wearing"
+          }
+        },
+        "quality_items_MThwfd": {
+          "type": "quality_items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Vector_3_3b20ade0-c41b-4cae-930d-3633881aa89e.svg",
+            "text": "Deep penetration (12mm)"
+          }
+        },
+        "quality_items_xLYTJf": {
+          "type": "quality_items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1002_febb7380-ea4c-4874-b69f-9f1122904424.svg",
+            "text": "Single-coat application"
+          }
+        },
+        "quality_items_wptkjz": {
+          "type": "quality_items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_3_d8e1e7f7-5ce5-4932-bb63-e3f1cd8cc266.svg",
+            "text": "Aesthetically natural finish"
+          }
+        },
+        "quality_items_DB9hXw": {
+          "type": "quality_items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1132_f1e17a30-954a-45b1-872d-d903e4442df4.svg",
+            "text": "Energy cost savings"
+          }
+        },
+        "quality_items_P7TPmw": {
+          "type": "quality_items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_4_a3ee4002-42b0-448f-aa48-a92f95a9bde9.svg",
+            "text": "25-year durability"
+          }
+        }
+      },
+      "block_order": [
+        "overlay_text_jTVDAq",
+        "overlay_text_cDxfz6",
+        "overlay_text_mFnweQ",
+        "quality_items_MThwfd",
+        "quality_items_xLYTJf",
+        "quality_items_wptkjz",
+        "quality_items_DB9hXw",
+        "quality_items_P7TPmw"
+      ],
+      "settings": {
+        "background_color": "#252489",
+        "background_image": "shopify:\/\/shop_images\/Rectangle_610.webp",
+        "image": "shopify:\/\/shop_images\/Group_1261_1_39c04bcd-393c-40f3-b663-58b8da729432.webp",
+        "logo_image": "shopify:\/\/shop_images\/HQC_BACKGRONG_LESS_300x_2.png",
+        "shape": "shopify:\/\/shop_images\/shape-flower_968e3000-9601-4127-9eab-c27c752f73e9.svg",
+        "heading": "HQC Masonry Protection Cream",
+        "description": "Advanced Masonry Waterproofing",
+        "button_label": "BUY NOW",
+        "button_url": "https:\/\/www.paintoutlet.co.uk\/products\/hqc-strom-shield-masonry-protection-cream",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "margin_top-m": 0,
+        "margin_bottom-m": 0,
+        "padding_top_m": 24,
+        "padding_bottom_m": 24
+      }
+    },
+    "2d4a927b-76f8-44fd-b623-f57b354309ac": {
+      "type": "product-benefits",
+      "blocks": {
+        "items_76kabg": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_3_e7e6f22e-913f-450f-bd6d-e3ae9536922f.svg",
+            "heaing": "Outstanding Protection Capacity",
+            "title": "Outstanding Protection Capacity",
+            "text": "Experience outstanding protection capacity with HQC Masonry Protection Cream, as its advanced silicone formula infiltrates up to 12mm into Fletton brick, forming a solid barrier against moisture penetration.",
+            "button_label_1": "view collection",
+            "button_url_1": "https:\/\/www.paintoutlet.co.uk\/products\/hqc-strom-shield-masonry-protection-cream",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_myWfrz": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1001_af0dcc4a-db03-477a-8ea2-ad1767bea226.svg",
+            "heaing": "Improved Energy Efficiency",
+            "title": "Improved Energy Efficiency",
+            "text": "Enjoy improved energy efficiency with HQC Masonry Protection Cream, as its transparent waterproofing sealant shields exterior walls and helps eliminate difficulties such as heat loss and damp, resulting in significant cost savings on heating.",
+            "button_label_1": "view collection",
+            "button_url_1": "https:\/\/www.paintoutlet.co.uk\/products\/hqc-strom-shield-masonry-protection-cream",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_E9zz8W": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1002_0e1043d7-32eb-4f35-a205-c1cd2550ade8.svg",
+            "heaing": "Classic Natural Appearance",
+            "title": "Classic Natural Appearance",
+            "text": "Achieve a classic natural appearance with HQC Masonry Protection Cream, as it cures to a finish that enhances your wall's aesthetics without altering its natural appearance.",
+            "button_label_1": "view collection",
+            "button_url_1": "https:\/\/www.paintoutlet.co.uk\/products\/hqc-strom-shield-masonry-protection-cream",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_MmDPdb": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/vector5_b1df4cd2-56e9-423e-b907-09979fc1c0eb.svg",
+            "heaing": "Significant Cost Savings on Heating",
+            "title": "Significant Cost Savings on Heating",
+            "text": "Benefit from significant cost savings on heating costs compared to unprotected homes, as tests show that HQC Protection Cream can save 8-10% on central heating costs.",
+            "button_label_1": "view collection",
+            "button_url_1": "https:\/\/www.paintoutlet.co.uk\/products\/hqc-strom-shield-masonry-protection-cream",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_WMGUcL": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Vector_3_15d3cfdb-d1ab-4ae3-a2bb-1a6e221d3c47.svg",
+            "heaing": "Retains Masonry's Strength",
+            "title": "Retains Masonry's Strength",
+            "text": "Retain your masonry's strength with HQC Masonry Protection Cream, as its high-strength technology safeguards brick, stone, mortar, sandstone, and granite, preserving the integrity of your walls.",
+            "button_label_1": "view collection",
+            "button_url_1": "https:\/\/www.paintoutlet.co.uk\/products\/hqc-strom-shield-masonry-protection-cream",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_MkriXP": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_4_d88f1f1b-54d5-4dbf-bdb4-e369ee5f5ed8.svg",
+            "heaing": "Ultimate Protection Against the Elements",
+            "title": "Ultimate Protection Against the Elements",
+            "text": "Experience ultimate protection against the elements with HQC Premium High-Strength Wall Water Seal, fortified with cutting-edge cream-based formulation designed to elevate your masonry's longevity and aesthetics.",
+            "button_label_1": "view collection",
+            "button_url_1": "https:\/\/www.paintoutlet.co.uk\/products\/hqc-strom-shield-masonry-protection-cream",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_CYMkdz": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1003_7576886f-a910-4993-af2c-25f067ed90a2.svg",
+            "heaing": "Deep-Penetrating Defence in One Coat",
+            "title": "Deep-Penetrating Defence in One Coat",
+            "text": "Say goodbye to multiple coats with HQC Masonry Protection Cream, as its innovative cream effortlessly permeates deep into your masonry in a single, hassle-free application, providing deep-penetrating defence.",
+            "button_label_1": "view collection",
+            "button_url_1": "https:\/\/www.paintoutlet.co.uk\/products\/hqc-strom-shield-masonry-protection-cream",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_K9i9nY": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1004_ade3bb3a-b42c-417b-b675-2e1afa310d9d.svg",
+            "heaing": "Preserves Wall Integrity",
+            "title": "Preserves Wall Integrity",
+            "text": "Preserve the integrity of your walls with HQC Masonry Protection Cream, as its breathable formula ensures natural respiration, preventing moisture buildup while maintaining the thermal properties of your cavity wall insulation.",
+            "button_label_1": "view collection",
+            "button_url_1": "https:\/\/www.paintoutlet.co.uk\/products\/hqc-strom-shield-masonry-protection-cream",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_AhW8cb": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_5_7a1cf096-5fba-4f87-9807-6afeb4ef78b5.svg",
+            "heaing": "Long-Lasting Protection for 25 Years",
+            "title": "Long-Lasting Protection for 25 Years",
+            "text": "Enjoy long-lasting protection for 25 years with HQC Masonry Protection Cream, ensuring your walls maintain their pristine, natural appearance even after relentless exposure to the elements.",
+            "button_label_1": "view collection",
+            "button_url_1": "https:\/\/www.paintoutlet.co.uk\/products\/hqc-strom-shield-masonry-protection-cream",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "items_76kabg",
+        "items_myWfrz",
+        "items_E9zz8W",
+        "items_MmDPdb",
+        "items_WMGUcL",
+        "items_MkriXP",
+        "items_CYMkdz",
+        "items_K9i9nY",
+        "items_AhW8cb"
+      ],
+      "settings": {
+        "background_color": "#252489",
+        "image": "shopify:\/\/shop_images\/Group_1267.webp",
+        "sticker_image": "shopify:\/\/shop_images\/sticker_09781686-2ab2-4c91-945c-98973a6adbef.svg",
+        "heading": "Reasons to choose HQC",
+        "shape_1": "shopify:\/\/shop_images\/Group_1268.svg",
+        "shape_2": "shopify:\/\/shop_images\/Group_711.svg",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 88,
+        "padding_bottom": 78,
+        "margin_top-m": 0,
+        "margin_bottom-m": 0,
+        "padding_top_m": 24,
+        "padding_bottom_m": 24
+      }
+    },
+    "552aca1d-2e3f-4b20-b8f5-6b6872718102": {
+      "type": "product-ingredient",
+      "blocks": {
+        "items_P4atbQ": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1261_3_35bc526d-0a09-4738-9fe2-8c8c6c00bdf5.webp",
+            "heading": "Penetrating Agent:",
+            "text": "Our masonry cream features a deeply penetrating agent that ensures the protective formula seeps into every pore and capillary of the masonry surface. This allows for thorough coverage, safeguarding the substrate from the inside out against moisture and environmental elements."
+          }
+        },
+        "items_7Uc4kz": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1262_3ebac73a-9a37-4c1a-9525-47b085b80602.webp",
+            "heading": "Water-Repellent Matrix:",
+            "text": "At the core of our masonry cream is a water-repellent matrix designed to repel water effectively, ensuring that rain and moisture bead up and roll off the surface. This matrix forms an invisible barrier that protects the masonry from water absorption, which can lead to frost damage and structural issues."
+          }
+        },
+        "items_KLtkji": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1263_a06628a6-cc3a-4ead-a26c-cec26b9fc05a.webp",
+            "heading": "Protective Binders:",
+            "text": "The cream is fortified with durable binders that adhere to the masonry surface, creating a resilient protective layer. These binders maintain the integrity of the cream's water-repellent properties, ensuring long-term protection from weathering, pollutants, and biological growths like moss and algae."
+          }
+        }
+      },
+      "block_order": [
+        "items_P4atbQ",
+        "items_7Uc4kz",
+        "items_KLtkji"
+      ],
+      "settings": {
+        "background_color": "#252489",
+        "shape_1": "shopify:\/\/shop_images\/flower_ingridents.svg",
+        "shape_2": "shopify:\/\/shop_images\/cloud-ingrident.svg",
+        "shape_3": "shopify:\/\/shop_images\/stciker-ingriedent.svg",
+        "heading": "INGREDIENTS",
+        "text": "Introducing the ultimate shield against the elements: HQC Storm Shield. This innovative formula is engineered to provide unparalleled protection for your masonry surfaces. Our product stands as a testament to our commitment to superior quality and environmental responsibility, offering robust weatherproofing while being gentle on the planet.",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 120,
+        "padding_bottom": 50,
+        "margin_top-m": 0,
+        "margin_bottom-m": 0,
+        "padding_top_m": 130,
+        "padding_bottom_m": 48
+      }
+    },
+    "9f5744af-addc-432f-a926-07ee8c167af9": {
+      "type": "product-comparison",
+      "blocks": {
+        "items_xUGypE": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_3_1d096ef1-679c-408b-a501-80347a1f82e1.svg",
+            "title": "Price",
+            "our_store_text": "Cost-effective for the long-lasting protection it provides",
+            "store_status": "tick",
+            "other_store_text": "May be more expensive with less coverage or shorter protection span",
+            "other_store_status": "cross"
+          }
+        },
+        "items_JAhTqF": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1001.svg",
+            "title": "Function",
+            "our_store_text": "Creates a waterproof barrier for masonry, repelling water without changing the appearance",
+            "store_status": "tick",
+            "other_store_text": "Other products may alter the appearance of masonry or provide less effective waterproofing",
+            "other_store_status": "cross"
+          }
+        },
+        "items_bKBaiM": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1002_1861b3c8-e447-4345-9d8a-67873f7e2907.svg",
+            "title": "Quality",
+            "our_store_text": "High-quality cream that penetrates deeply for optimal protection",
+            "store_status": "tick",
+            "other_store_text": "Variable penetration & protection quality, may not last as long",
+            "other_store_status": "cross"
+          }
+        },
+        "items_TgGt8b": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/vector5.svg",
+            "title": "Social Proof",
+            "our_store_text": "Trusted by homeowners and professionals worldwide for masonry preservation",
+            "store_status": "tick",
+            "other_store_text": "Competitors may not have the same level of trust or proven results",
+            "other_store_status": "cross"
+          }
+        },
+        "items_bGC37d": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Vector_3_235a270c-5945-4d99-aa6f-88bbe8c52f96.svg",
+            "title": "Guarantees",
+            "our_store_text": "Long-term protection against severe weather conditions",
+            "store_status": "tick",
+            "other_store_text": "Guarantees for weather protection may be limited or less comprehensive",
+            "other_store_status": "cross"
+          }
+        },
+        "items_rYMAAj": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_4_c544c077-94dc-450a-a855-dcaba1439485.svg",
+            "title": "Technology",
+            "our_store_text": "Advanced formula that actively repels water and prevents ingress",
+            "store_status": "tick",
+            "other_store_text": "May use older technology, less effective against water penetration",
+            "other_store_status": "cross"
+          }
+        },
+        "items_Ub6p93": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1003.svg",
+            "title": "Batch Quality",
+            "our_store_text": "Consistent high-quality batches ensure reliable application",
+            "store_status": "tick",
+            "other_store_text": "Inconsistent batch quality can lead to variable protection levels",
+            "other_store_status": "cross"
+          }
+        },
+        "items_3BkBtr": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1004.svg",
+            "title": "Coverage",
+            "our_store_text": "Exceptional coverage rate, a little goes a long way",
+            "store_status": "tick",
+            "other_store_text": "Higher product consumption may be needed for adequate coverage",
+            "other_store_status": "cross"
+          }
+        },
+        "items_cpMUaD": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_5_7a1cf096-5fba-4f87-9807-6afeb4ef78b5.svg",
+            "title": "Eco-friendly",
+            "our_store_text": "Environmentally friendly formula",
+            "store_status": "tick",
+            "other_store_text": "Competing products may contain harmful or unknown  chemicals",
+            "other_store_status": "cross"
+          }
+        },
+        "items_kf9zTr": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_5_7a1cf096-5fba-4f87-9807-6afeb4ef78b5.svg",
+            "title": "Maintenance",
+            "our_store_text": "Reduces the frequency of reapplication and maintenance due to its durability",
+            "store_status": "tick",
+            "other_store_text": "May require more frequent reapplication, increasing maintenance work",
+            "other_store_status": "cross"
+          }
+        }
+      },
+      "block_order": [
+        "items_xUGypE",
+        "items_JAhTqF",
+        "items_bKBaiM",
+        "items_TgGt8b",
+        "items_bGC37d",
+        "items_rYMAAj",
+        "items_Ub6p93",
+        "items_3BkBtr",
+        "items_cpMUaD",
+        "items_kf9zTr"
+      ],
+      "settings": {
+        "background_color": "",
+        "heading": "US Vs. THEM",
+        "our_store_image": "shopify:\/\/shop_images\/Black_and_Beige_Modern_Minimal_Design_Studio_Logo_1.png",
+        "our_store_label": "HQC STROM SHIELD - MASONRY PROTECTION CREAM",
+        "other_store_image": "shopify:\/\/shop_images\/water-bucket_9538647_2_1.svg",
+        "other_store_label": "Other products on the market",
+        "autoplay_enabled": false,
+        "loop_enabled": false,
+        "reverse": false,
+        "autoplay_timeout": 7,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 18,
+        "padding_bottom": 60,
+        "margin_top-m": 0,
+        "margin_bottom-m": 0,
+        "padding_top_m": 24,
+        "padding_bottom_m": 24
+      }
+    },
+    "bc4da305-f621-4869-acc6-1c1f90f022ff": {
+      "type": "product-work",
+      "blocks": {
+        "items_nBhata": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_1.webp",
+            "title": "Enhanced Masonry Protection",
+            "text": "Offers superior protection for brickwork, mortars, and concrete, shielding them from the elements and prolonging their lifespan."
+          }
+        },
+        "items_hrQAVe": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_2.png",
+            "title": "Energy Efficiency Improvement",
+            "text": "Improves the energy efficiency of exterior walls by reducing heat loss and damp, contributing to a more comfortable indoor environment."
+          }
+        },
+        "items_fp4w6m": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_3.png",
+            "title": "Deep Penetration",
+            "text": "Advanced silicone formula penetrates up to 12mm into surfaces like Fletton brick, creating a solid, moisture-resistant barrier."
+          }
+        },
+        "items_8Mbb4y": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_4.png",
+            "title": "Natural Aesthetic Preservation",
+            "text": "Cures to a classic, natural finish, ensuring that the wall's aesthetics are not compromised while providing protection."
+          }
+        },
+        "items_84TxfV": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_5.png",
+            "title": "Heating Cost Savings",
+            "text": "Demonstrated to save 8-10% on central heating costs, making it an economical option compared to an unprotected home."
+          }
+        },
+        "items_9yCWBx": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_6.png",
+            "title": "One Coat Application",
+            "text": "Designed for a single, hassle-free application, this cream permeates deeply into masonry, eliminating the need for multiple coats."
+          }
+        },
+        "items_7KfRhr": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_7.png",
+            "title": "Breathable Formula",
+            "text": "The breathable formula allows masonry to respire naturally, preventing moisture buildup and maintaining the thermal properties of insulation."
+          }
+        },
+        "items_9nGjDR": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_8.png",
+            "title": "Long-Term Durability",
+            "text": "Offers unparalleled protection for up to 25 years, ensuring that walls maintain their integrity and appearance over time."
+          }
+        }
+      },
+      "block_order": [
+        "items_nBhata",
+        "items_hrQAVe",
+        "items_fp4w6m",
+        "items_8Mbb4y",
+        "items_84TxfV",
+        "items_9yCWBx",
+        "items_7KfRhr",
+        "items_9nGjDR"
+      ],
+      "settings": {
+        "background_color": "#252489",
+        "heading": "HOW STROM SHIELD MASONRY PROTECTION CREAM WORK",
+        "image": "shopify:\/\/shop_images\/Group_1040.png",
+        "loop": false,
+        "autoplay": true,
+        "disableoninteraction": false,
+        "reversedirection": false,
+        "speed": "1000",
+        "delay": "3000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 10,
+        "padding_bottom": 60,
+        "margin_top-m": 0,
+        "margin_bottom-m": 0,
+        "padding_top_m": 0,
+        "padding_bottom_m": 24
+      }
+    },
+    "427acd04-a074-4abe-9d87-af9c52160db9": {
+      "type": "product-process",
+      "blocks": {
+        "c213274a-0fae-4091-a5be-ac21dd4e24e9": {
+          "type": "side-image",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Spatula_1_9e8e8610-8c2d-40ae-91f1-392000a8ba1d.png",
+            "pretext": "Step 1",
+            "heading": "PREP",
+            "text": "<p>Prep your area and walls by sanding, cleaning, and ensuring the surface is smooth & dry - use primer (or mist coat) on bare surfaces or fresh plaster board<\/p>"
+          }
+        },
+        "52ea6670-1b63-43eb-ab2a-45eb3a761fd4": {
+          "type": "side-image",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Spatula_2_982a9cb2-567a-4610-b98e-c6e9066e3272.png",
+            "pretext": "Step 2",
+            "heading": "PAINT",
+            "text": "<p>Paint with either a roller, brush or spray Paint with either a roller, brush or spray Paint with either a roller, brush or spray Paint with either a roller, brush or spray<\/p>"
+          }
+        },
+        "ecabd154-d50a-4a36-ba02-35e13c325431": {
+          "type": "side-image",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Spatula_3_e94629f0-d72b-45a1-a4b6-f8a31304a9ab.png",
+            "pretext": "Step 3",
+            "heading": "CLEAN",
+            "text": "<p>Clean up any excess paint with cloths and any type you’ve used Clean up any excess paint with cloths and any type you’ve used Clean up any excess <\/p>"
+          }
+        },
+        "3de3636d-9001-45dc-a026-5ebfc2ea74ce": {
+          "type": "side-image",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Spatula_4_212c43a9-1933-4ebc-a9f5-5ec8d9c265e5.png",
+            "pretext": "Step 4",
+            "heading": "ENJOY",
+            "text": "<p>Enjoy your newly decorated spaces and decor Enjoy your newly decorated spaces and decor Enjoy your newly decorated spaces and decor<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "c213274a-0fae-4091-a5be-ac21dd4e24e9",
+        "52ea6670-1b63-43eb-ab2a-45eb3a761fd4",
+        "ecabd154-d50a-4a36-ba02-35e13c325431",
+        "3de3636d-9001-45dc-a026-5ebfc2ea74ce"
+      ],
+      "settings": {
+        "heading": "HOW DOES IT WORK?",
+        "button_label": "SEE GUIDE HOW TO DECORATE",
+        "button_link": "",
+        "desktop_item": 4,
+        "laptop_item": 4,
+        "tab_item": 1,
+        "mobile_item": 1,
+        "autoplay_enabled": false,
+        "loop_enabled": false,
+        "reverse": false,
+        "autoplay_timeout": 7,
+        "color": "#ffffff",
+        "background_color": "#252489",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 16,
+        "padding_bottom": 24,
+        "margin_top-m": 0,
+        "margin_bottom-m": 0,
+        "padding_top_m": 0,
+        "padding_bottom_m": 24
+      }
+    },
+    "7c81fc37-0852-4ff1-8e48-7c88e2bedc11": {
+      "type": "product-expanding-card",
+      "blocks": {
+        "c7687da9-16a7-4c57-bceb-273316aa71bc": {
+          "type": "card_item",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Rectangle_572.png",
+            "text": "Utilizes only high grade ingredients"
+          }
+        },
+        "6c29607a-4179-43dd-9a87-914d23478281": {
+          "type": "faq",
+          "settings": {
+            "handle": "Utilizes only high grade ingredients",
+            "heading": "<p>Environmental Impact<\/p>",
+            "text": "<p>HQC Paint takes a stand for the planet with formulations that encourage less frequent application, reducing environmental strain and promoting sustainable living.<\/p>"
+          }
+        },
+        "faq_pGnhpV": {
+          "type": "faq",
+          "settings": {
+            "handle": "Utilizes only high grade ingredients",
+            "heading": "<p>Cutting-Edge Technology<\/p>",
+            "text": "<p>Paint integrates only high-grade ingredients and advanced resin technology to offer a finish that is not only long-lasting but also vibrant and full of life.<\/p>"
+          }
+        },
+        "faq_R9ya8N": {
+          "type": "faq",
+          "settings": {
+            "handle": "Utilizes only high grade ingredients",
+            "heading": "<p>Cost Efficiency<\/p>",
+            "text": "<p>Designed to reduce the need for multiple coats, HQC Paint is a cost-effective option that doesn't compromise on quality, providing substantial savings over time.<\/p>"
+          }
+        },
+        "9cc15fd9-4d45-4c81-82cb-f752dfee8e82": {
+          "type": "card_item",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Rectangle_572.png",
+            "text": "The HQC Paint Difference"
+          }
+        },
+        "e7355bb1-0675-49a3-bfe4-10c41be759de": {
+          "type": "faq",
+          "settings": {
+            "handle": "The HQC Paint Difference",
+            "heading": "<p>No more multiple products<\/p>",
+            "text": "<p>HQC Paint revolutionises painting with its simplicity. One paint does it all, reducing the need for multiple products and streamlining the decorating process.<\/p>"
+          }
+        },
+        "faq_gVKUwT": {
+          "type": "faq",
+          "settings": {
+            "handle": "The HQC Paint Difference",
+            "heading": "<p>Diamond durability<\/p>",
+            "text": "<p>With diamond durability and superior coverage, The versatility of HQC Paint allows it to be used on a variety of surfaces, from interior & exterior walls to garden fences, without compromising on performance.<\/p>"
+          }
+        },
+        "faq_8RqbPt": {
+          "type": "faq",
+          "settings": {
+            "handle": "The HQC Paint Difference",
+            "heading": "<p>Low Price & High Quality<\/p>",
+            "text": "<p>HQC Paint delivers in-house quality without the retail markup, making professional-grade results accessible and affordable for everyone.<\/p>"
+          }
+        },
+        "4934a52c-6d5c-4e05-b8a5-ebbe07f1091f": {
+          "type": "card_item",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Rectangle_572.svg",
+            "text": "HQC Paint's Commitment to Quality"
+          }
+        },
+        "2ce21371-5c6d-493b-86b6-00b877112696": {
+          "type": "faq",
+          "settings": {
+            "handle": "HQC Paint's Commitment to Quality",
+            "heading": "<p>Industry-Leading Ingredients<\/p>",
+            "text": "<p>HQC paints are formulated with water-based solutions, making them environmentally friendly and safe for use in any setting. Say goodbye to harmful chemicals and toxins, and embrace a greener, more sustainable approach to decorating.<\/p>"
+          }
+        },
+        "faq_PU9C4m": {
+          "type": "faq",
+          "settings": {
+            "handle": "HQC Paint's Commitment to Quality",
+            "heading": "<p>Scrub and Clean with Ease<\/p>",
+            "text": "<p>Experience minimal odour levels with HQC paints, ensuring a pleasant painting experience without the discomfort of strong fumes. Perfect for indoor applications where air quality is a concern.<\/p>"
+          }
+        },
+        "faq_4nGnkw": {
+          "type": "faq",
+          "settings": {
+            "handle": "HQC Paint's Commitment to Quality",
+            "heading": "<p>Trusted by Professionals<\/p>",
+            "text": "<p>With water-based formulations, cleanup is a breeze. Simply use soap and water to clean your tools and surfaces, reducing waste and environmental impact.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "c7687da9-16a7-4c57-bceb-273316aa71bc",
+        "6c29607a-4179-43dd-9a87-914d23478281",
+        "faq_pGnhpV",
+        "faq_R9ya8N",
+        "9cc15fd9-4d45-4c81-82cb-f752dfee8e82",
+        "e7355bb1-0675-49a3-bfe4-10c41be759de",
+        "faq_gVKUwT",
+        "faq_8RqbPt",
+        "4934a52c-6d5c-4e05-b8a5-ebbe07f1091f",
+        "2ce21371-5c6d-493b-86b6-00b877112696",
+        "faq_PU9C4m",
+        "faq_4nGnkw"
+      ],
+      "settings": {
+        "background_color": "",
+        "heading": "<p><strong>High Quality<\/strong> Coatings:<em> Your All-in-one<\/em> <span style=\"text-decoration:underline\">Modern Decorating Solution<\/span><\/p>",
+        "text": "<p>HQC Paint transforms the decorating industry with its all-encompassing solution that epitomises convenience, quality, and environmental responsibility. HQC Paint delivers in-house quality without the retail markup, making professional-grade results accessible and affordable for everyone. This innovative paint brand makes buying paint simple with its multi-surface adaptability and enduring finish, delivering premium results without the premium price tag. Its smart packaging reflects the brand's commitment to long term environmental sustainability & customer-centric values. HQC offers a long-term solution making it the smartest choice for your decorating needs.<\/p>",
+        "btn_link": "https:\/\/www.paintoutlet.co.uk\/products\/hqc-strom-shield-masonry-protection-cream",
+        "btn_text": "BUY NOW",
+        "padding_top": 0,
+        "padding_bottom": 30,
+        "padding_top_m": 0,
+        "padding_bottom_m": 32
+      }
+    },
+    "14962891-2601-4116-8c6f-2759ae0c8268": {
+      "type": "product-collection",
+      "blocks": {
+        "product_7zLJ8t": {
+          "type": "product",
+          "settings": {
+            "choose_product": "hqc-masonry-paint",
+            "text": "<p>High quality product with leading weatherproof technology.  Formulated with acrylic resin that provides ultimate protection to your property. The paint will offer years of protection against extreme weather conditions, ensuring unrivalled durability and long lasting protection. <br\/><br\/>HQC Masonry paint wont not only colour your walls but also protects your home against extreme weather and adverse environmental conditions.<br\/><br\/>isn't it something that you have been looking for?<br\/><br\/>All these features of HQC masonry paint for walls enhance the overall value with the assurance of reduced spending on regular maintenance.<br\/><br\/>The outlook that this product facilitates is cleaner, better looking, and protected.<\/p>"
+          }
+        },
+        "product_EUPDHB": {
+          "type": "product",
+          "settings": {
+            "choose_product": "hqc-anti-condensation-insulating-paint",
+            "text": "<p>The time it was on the market, speaks for the product itself. It eliminates mould of damp areas and prevents in future, it won't happen again. It is a long term solution, which offers premium quality, very low odour levels, and maximum performance, you can be assured HQC Anti Condensation Insulating Paint will prevent future condensation problems including mould, blistering paint, discolouration, staining and peeling wallpaper – with just 2 coats. It also reduces heat loss.<br\/><br\/>HQC Anti Condensation coating is the perfect answer for applications requiring long-lasting protection from continuous and severe condensation. Use in kitchens and bathrooms in homes, hotels, schools, universities, restaurants, service stations, gyms, swimming pools and spas. Paint can easily be applied by brush, roller or spray. Use the product in just the same areas as conventional emulsions.<\/p>"
+          }
+        },
+        "product_DFeqRY": {
+          "type": "product",
+          "settings": {
+            "choose_product": "hqc-durable-kitchen-matt-paint",
+            "text": ""
+          }
+        },
+        "product_Qbm8d6": {
+          "type": "product",
+          "settings": {
+            "choose_product": "hqc-furniture-paint",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_7zLJ8t",
+        "product_EUPDHB",
+        "product_DFeqRY",
+        "product_Qbm8d6"
+      ],
+      "settings": {
+        "title": "HQC COLLECTION",
+        "color": "#ffffff",
+        "background_color": "#252489",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "margin_top-m": 0,
+        "margin_bottom-m": 0,
+        "padding_top_m": 0,
+        "padding_bottom_m": 68
+      }
+    },
+    "7fc994d7-8584-4a77-bcad-c0d3c29fbb62": {
+      "type": "about-hero",
+      "blocks": {
+        "8cc173c7-14d9-4c6d-9a73-710cd64f49a6": {
+          "type": "title",
+          "settings": {
+            "title": "PAINT OUTLET"
+          }
+        },
+        "65a1b8c1-0a26-410e-a865-f85f8d798d87": {
+          "type": "sub_title",
+          "settings": {
+            "sub_title": "DEAL DIRECTLY WITH THE SUPPLIER AND REAP THE BENEFITS"
+          }
+        },
+        "bbce03af-1e2a-4baf-bca9-43498f09e1d1": {
+          "type": "info",
+          "settings": {
+            "info": "<p>We’re revolutionizing the decorating industry with higher quality products at a lower cost, while striving to eliminate paint waste.<\/p>"
+          }
+        },
+        "6ec42857-5f7c-4050-aba8-f19598a9b346": {
+          "type": "video",
+          "settings": {
+            "logo_svg": "",
+            "logo_img": "shopify:\/\/shop_images\/Group_5.png",
+            "background": "shopify:\/\/shop_images\/Rectangle_656.png",
+            "hosted_video": "shopify:\/\/files\/videos\/00_fdf2f0f3-a1f8-4a70-9064-47b9ce56a1f5.mp4",
+            "video_url": "",
+            "enable_video_looping": false
+          }
+        }
+      },
+      "block_order": [
+        "8cc173c7-14d9-4c6d-9a73-710cd64f49a6",
+        "65a1b8c1-0a26-410e-a865-f85f8d798d87",
+        "bbce03af-1e2a-4baf-bca9-43498f09e1d1",
+        "6ec42857-5f7c-4050-aba8-f19598a9b346"
+      ],
+      "settings": {
+        "color": "#ffffff",
+        "border_color": "#ffffff",
+        "background_color": "#0e1513",
+        "padding_top": 40,
+        "padding_bottom": 60,
+        "padding_top_m": 50,
+        "padding_bottom_m": 50
+      }
+    },
+    "promises_section_8UhgXf": {
+      "type": "promises-section",
+      "blocks": {
+        "items_rdhgXa": {
+          "type": "items",
+          "settings": {
+            "heaing": "See Our Trust & gaurentee"
+          }
+        },
+        "items_R7gCXp": {
+          "type": "items",
+          "settings": {
+            "heaing": "See Our Trust & gaurentee"
+          }
+        },
+        "items_Xq7hbW": {
+          "type": "items",
+          "settings": {
+            "heaing": "See Our Trust & gaurentee"
+          }
+        },
+        "items_RH8LqT": {
+          "type": "items",
+          "settings": {
+            "heaing": "See Our Trust & gaurentee"
+          }
+        }
+      },
+      "block_order": [
+        "items_rdhgXa",
+        "items_R7gCXp",
+        "items_Xq7hbW",
+        "items_RH8LqT"
+      ],
+      "settings": {
+        "heading": "Still Unsure about your purchase?",
+        "text": "Check Our Promisies & assurance"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product-recommendations",
+    "featured-blog",
+    "426ec76b-be41-4327-b667-c3bcdddbdfd5",
+    "2d4a927b-76f8-44fd-b623-f57b354309ac",
+    "552aca1d-2e3f-4b20-b8f5-6b6872718102",
+    "9f5744af-addc-432f-a926-07ee8c167af9",
+    "bc4da305-f621-4869-acc6-1c1f90f022ff",
+    "427acd04-a074-4abe-9d87-af9c52160db9",
+    "7c81fc37-0852-4ff1-8e48-7c88e2bedc11",
+    "14962891-2601-4116-8c6f-2759ae0c8268",
+    "7fc994d7-8584-4a77-bcad-c0d3c29fbb62",
+    "promises_section_8UhgXf"
+  ]
+}

@@ -1,0 +1,232 @@
+.home-hero-wrapper {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.home-hero-wrapper .swiper-wrapper {
+  -webkit-transition-timing-function: linear !important;
+  -o-transition-timing-function: linear !important;
+  transition-timing-function: linear !important;
+}
+
+.home-hero-wrapper .swiper-button-next,
+.home-hero-wrapper .swiper-button-prev {
+  position: absolute;
+  background: transparent;
+  width: 75px;
+  transition: all .3s ease-in-out;
+  visibility: hidden;
+}
+.home-hero-wrapper:hover .swiper-button-next, 
+.home-hero-wrapper:hover .swiper-button-prev{
+  visibility: visible;
+}
+
+.home-hero-wrapper .section-bg {
+  min-height: 720px;
+}
+
+.hero-content-absolute {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+}
+
+.home-hero-wrapper .section-bg img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -o-object-fit: cover;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.home-hero-wrapper .section-bg::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 54.69%, rgba(0, 0, 0, 0.7) 84.37%);
+  left: 0;
+  top: 0;
+}
+
+.home-hero-wrapper .container {
+  max-width: 1720px;
+  padding: 0;
+  height: 100%;
+}
+
+.hero-content__wrap {
+  display: flex;
+  align-items: end;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+@media only screen and (max-width: 991px) {
+  .home-hero-wrapper .container {
+    padding: 0 15px;
+  }
+  .home-hero-wrapper:hover .swiper-button-next, 
+  .home-hero-wrapper:hover .swiper-button-prev{
+    display: none;
+  }
+}
+
+.hero-content-area {
+  position: relative;
+  max-width: 830px;
+  margin: 0 auto;
+}
+
+.home-hero-title h1 {
+  margin: 0 0 20px;
+  font-size: 68px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 100%;
+  /* 128px */
+}
+
+@media only screen and (max-width: 1440px) {
+  .home-hero-title {
+    margin: 0 auto;
+  }
+
+
+}
+
+
+
+.home-hero-info {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.home-hero-info p {
+  margin: 0 0 20px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  /* 28px */
+}
+
+@media only screen and (max-width: 767px) {
+  .home-hero-info p {
+    font-size: 16px;
+  }
+}
+
+.home-hero-button .hero-btn {
+  display: inline-block;
+  line-height: 50px;
+  width: 180px;
+  height: 50px;
+  border-radius: 84px;
+  background: #FF003D;
+  box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.2) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.2) inset;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+  font-family: Gilroy;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 800;
+  transition: all 0.3s ease-in-out;
+}
+
+.home-hero-button .hero-btn:hover {
+  background: #000000;
+}
+
+.hero-bottom-area {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 15px;
+}
+
+.hero-bottom-area .row {
+  --bs-gutter-x: 115px;
+}
+
+.hero-icon-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+@media only screen and (max-width: 1300px) {
+  .home-hero-title h1 {
+    font-size: 56px;
+  }
+
+  .home-hero-wrapper .section-bg {
+    min-height: 560px;
+  }
+
+}
+
+@media only screen and (max-width: 991px) {
+
+  .hero-content-area {
+    padding-top: 60px;
+  }
+
+  .hero-icon-wrap {
+    justify-content: center;
+  }
+
+  .home-hero-title h1 {
+    font-size: 32px;
+  }
+
+  .home-hero-wrapper .section-bg {
+    min-height: 540px;
+  }
+
+  .home-hero-info p {
+    font-size: 16px;
+  }
+
+  .hero-content-area {
+    max-width: 520px;
+  }
+
+  .hero-icon-wrap .icon-title {
+    text-align: center;
+  }
+
+}
+
+@media only screen and (max-width: 767px) {
+  .hero-icon-wrap {
+    flex-direction: column;
+  }
+
+  .hero-bottom-area {
+    padding-top: 40px;
+  }
+
+  .home-hero-title h1 {
+    font-size: 32px;
+  }
+}
+
+.hero-icon-wrap .icon-title {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 116.5%;
+  /* 16.31px */
+}
+
+/*# sourceMappingURL=section-home-hero.css.map */

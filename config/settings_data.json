@@ -1,0 +1,1040 @@
+{
+  "current": {
+    "color_scheme": "light",
+    "background_scheme_toggle": "#f1f4f8",
+    "colors_solid_button_labels": "#FFFFFF",
+    "colors_solid_button_background": "#ff003d",
+    "colors_solid_button_background_hover": "#cb0633",
+    "colors_secondary_button_labels": "#000000",
+    "colors_secondary_button_labels_hover": "#ff003d",
+    "colors_outline_button_labels": "#000000",
+    "colors_outline_button_labels_hover": "#ff003d",
+    "colors_tertiary_button_labels": "#000000",
+    "colors_tertiary_button_background": "#000000",
+    "colors_tertiary_button_background_hover": "#cb0633",
+    "colors_input_background": "#FFFFFF",
+    "colors_input_border": "#e7e7e7",
+    "colors_input_hover_border": "#2e3f75",
+    "colors_text": "#040404",
+    "colors_text_title": "#000000",
+    "colors_background_1": "#f7f7f7",
+    "colors_background_2": "#ffffff",
+    "colors_background_5": "#f5f5f1",
+    "colors_background_3": "#2e3f75",
+    "colors_background_4": "#000000",
+    "colors_background_announcement_bar_1": "#2e3f75",
+    "colors_background_announcement_bar_2": "#d5dedb",
+    "colors_accent": "#ff003d",
+    "color_border": "#000000",
+    "custom_font": true,
+    "type_header_font": "catamaran_n6",
+    "heading_h1_scale": 100,
+    "heading_h2_scale": 100,
+    "heading_h3_scale": 100,
+    "heading_h4_scale": 100,
+    "type_header_letter_spacing": -0.2,
+    "type_header_line_height": 1.1,
+    "type_header_font_card": "catamaran_n6",
+    "type_text_font_card": "dm_sans_n4",
+    "type_body_font": "dm_sans_n4",
+    "body_scale": 160,
+    "type_subtitle_font": "catamaran_n6",
+    "subtitle_text_transform": "uppercase",
+    "type_button_font": "catamaran_n6",
+    "type_header_menu_font": "catamaran_n6",
+    "type_footer_menu_font": "catamaran_n6",
+    "type_popups_heading_font": "catamaran_n6",
+    "type_popups_text_font": "dm_sans_n4",
+    "breadcrumbs_top_padding": 20,
+    "badge_sale_background_color": "#ff003d",
+    "badge_soldout_background_color": "#e7e7e7",
+    "badge_soldout_text_color": "#000000",
+    "show_color_swatch": true,
+    "show_img_swatch": true,
+    "custom_colors": "Black: #000\nBrown: #463428\nLeaf Brown: #682b18\nClassic Grey: #4e5253\nDove Grey: #c9c9c9\nRacing Green: #2a4824\nRed Brick\/ Rich Red\/ Rustic Red: #6f180d\nPine Forrest\/ The Garden\/ Waterfall:#d3f5dc\nDuck Egg: #dfe7ea\nPale Blue: #59adc9\nMarina Blue: #08708d\nIvory: #ffe6d0\nBaby Pink: #f5e6e3\nSage Green: #c5ceb2\nTerracota: #c16939\nSandstone: #b8a78b\nLight Beige: #f5ddb9\nBagels: #f5ddb9\nMagnolia: #ffe6d0",
+    "swatch_border_radius": 0,
+    "social_facebook_link": "#",
+    "social_instagram_link": "#",
+    "social_youtube_link": "#",
+    "quickview_show": true,
+    "add_to_cart_enabled": true,
+    "show_on_mobile": true,
+    "colors_subtitle_dot": "#2d8653",
+    "sale_badge_color_scheme": "background-1",
+    "text_underline_offset": 7,
+    "sections": {
+      "main-password-header": {
+        "type": "main-password-header",
+        "settings": {
+          "logo_max_width": 160,
+          "color_scheme": "background-1"
+        }
+      },
+      "main-password-footer": {
+        "type": "main-password-footer",
+        "settings": {
+          "color_scheme": "background-1"
+        }
+      },
+      "gift-card-header": {
+        "type": "gift-card-header",
+        "settings": {
+          "logo_width": 160
+        }
+      },
+      "mobile-category-menu": {
+        "type": "mobile-category-menu",
+        "blocks": {
+          "d658400e-5122-49c7-897d-f64697f47129": {
+            "type": "category_menu",
+            "settings": {
+              "title": "Home",
+              "link": "\/",
+              "icon_svg": "shopify:\/\/shop_images\/home_9e35d22b-c6b1-4739-b67f-bfaa82551e85.svg",
+              "menu": ""
+            }
+          },
+          "4c9978d0-335c-4ede-b2d4-028cd9ad8acd": {
+            "type": "category_menu",
+            "settings": {
+              "title": "About us",
+              "link": "",
+              "icon_svg": "shopify:\/\/shop_images\/home_9e35d22b-c6b1-4739-b67f-bfaa82551e85.svg",
+              "menu": "main-about-us"
+            }
+          },
+          "2b249bfe-8d26-4a08-8540-dd7eff3af74c": {
+            "type": "category_menu",
+            "settings": {
+              "title": "Product Finder",
+              "link": "",
+              "icon_svg": "shopify:\/\/shop_images\/home_9e35d22b-c6b1-4739-b67f-bfaa82551e85.svg",
+              "menu": ""
+            }
+          },
+          "13eddfb2-a6e2-48f4-8736-f86b8e7d6dd8": {
+            "type": "category_menu",
+            "settings": {
+              "title": "Our reviews",
+              "link": "shopify:\/\/pages\/our-happy-customers",
+              "icon_svg": "shopify:\/\/shop_images\/home_9e35d22b-c6b1-4739-b67f-bfaa82551e85.svg",
+              "menu": ""
+            }
+          },
+          "232e385f-beb7-47eb-8e25-28d041eba89e": {
+            "type": "category_menu",
+            "settings": {
+              "title": "HELP Centre",
+              "link": "",
+              "icon_svg": "shopify:\/\/shop_images\/home_9e35d22b-c6b1-4739-b67f-bfaa82551e85.svg",
+              "menu": "main-help"
+            }
+          }
+        },
+        "block_order": [
+          "d658400e-5122-49c7-897d-f64697f47129",
+          "4c9978d0-335c-4ede-b2d4-028cd9ad8acd",
+          "2b249bfe-8d26-4a08-8540-dd7eff3af74c",
+          "13eddfb2-a6e2-48f4-8736-f86b8e7d6dd8",
+          "232e385f-beb7-47eb-8e25-28d041eba89e"
+        ],
+        "settings": {
+          "font_size": 14,
+          "main_menu_color": "",
+          "sub_menu_color": "",
+          "sub_menu_bg": ""
+        }
+      },
+      "stikcy-mobile-toolbar": {
+        "type": "stikcy-mobile-toolbar",
+        "settings": {
+        }
+      },
+      "sidebar-search-panel": {
+        "type": "sidebar-search-panel",
+        "blocks": {
+          "8061eef4-db56-4d7a-9334-7c097b22455b": {
+            "type": "top_collection",
+            "settings": {
+              "heading": "Top Collection",
+              "collection_list": [
+                "baby-pink",
+                "bagels",
+                "beige",
+                "blue",
+                "black",
+                "brilliant-white",
+                "browns"
+              ]
+            }
+          },
+          "6552560b-214c-4117-b8b4-a3200f1b58a9": {
+            "type": "product_list",
+            "settings": {
+              "heading": "Top Product Sales",
+              "product_list": [
+                "hqc-anti-mould-insulating-paint",
+                "hqc-anti-condensation-insulating-paint",
+                "hqc-anti-damp-paint",
+                "hqc-exterior-wall-and-ceiling-insulating-paint",
+                "hqc-durable-kitchen-matt-paint",
+                "hqc-blackboard-and-chalkboard-paint-1-litre",
+                "hqc-furniture-paint"
+              ],
+              "show_vendor": true,
+              "show_price": true,
+              "show_add_to_cart": false
+            }
+          },
+          "1ab2ec78-1f39-4341-b45e-50a442923ba6": {
+            "type": "top_categories",
+            "settings": {
+              "heading": "Top Categories",
+              "collection_list": [
+                "gloss-coatings",
+                "gloves-clothing",
+                "brushes-rollers",
+                "chalkboard-paint"
+              ]
+            }
+          },
+          "52ce7726-4653-47c4-bcca-95ee00f8c1b9": {
+            "type": "top_categories",
+            "settings": {
+              "heading": "Interior products",
+              "collection_list": [
+                "dampness-moisture-related",
+                "cold-house-hard-to-heat-loses-heat-quickly",
+                "gloves-clothing",
+                "masonry-sealer"
+              ]
+            }
+          }
+        },
+        "block_order": [
+          "8061eef4-db56-4d7a-9334-7c097b22455b",
+          "6552560b-214c-4117-b8b4-a3200f1b58a9",
+          "1ab2ec78-1f39-4341-b45e-50a442923ba6",
+          "52ce7726-4653-47c4-bcca-95ee00f8c1b9"
+        ],
+        "settings": {
+          "enable_search": true,
+          "enable_search_modal": true,
+          "show_collection_card": true,
+          "collection_list": [
+            "anti-condensation-paint",
+            "anti-mould-paints",
+            "anti-damp",
+            "brushes-rollers",
+            "dampness-moisture-related",
+            "decking",
+            "doors-skirting-boards",
+            "exterior-coatings",
+            "fence-gate",
+            "garden-paint",
+            "gloss-coatings",
+            "kitchen-paint"
+          ],
+          "show_items": true,
+          "product_list": [
+            "hqc-anti-damp-paint",
+            "hqc-anti-condensation-insulating-paint",
+            "hqc-anti-mould-insulating-paint",
+            "hqc-blackboard-and-chalkboard-paint-1-litre",
+            "hqc-durable-kitchen-matt-paint",
+            "hqc-exterior-wall-and-ceiling-insulating-paint",
+            "hqc-furniture-paint",
+            "hqc-kitchen-bathroom-paint",
+            "hqc-garden-paint",
+            "hqc-masonry-paint",
+            "hqc-matt-emulsion-paint",
+            "copy-of-hqc-wood-paint",
+            "hqc-smooth-masonry-paint",
+            "hqc-wood-paint"
+          ],
+          "show_vendor": false,
+          "show_price": true
+        }
+      },
+      "collection-panel-mobile": {
+        "type": "collection-panel-mobile",
+        "blocks": {
+          "1280cf70-f3df-45b8-bf4e-c32376595388": {
+            "type": "offer",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Rectangle_572.png",
+              "heading": "Lorem ipsum, dolor sit amet",
+              "text": "<p>Perferendis ullam velit?<\/p>",
+              "btn_label": "Tap to Order",
+              "btn_link": ""
+            }
+          },
+          "8403a299-d768-4a54-87cf-d18f4144c05a": {
+            "type": "offer",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Rectangle_572.png",
+              "heading": "Lorem ipsum, dolor sit amet",
+              "text": "<p>Perferendis ullam velit?<\/p>",
+              "btn_label": "Tap to Order",
+              "btn_link": ""
+            }
+          },
+          "521df83b-617a-460e-879f-f2c7accb265e": {
+            "type": "offer",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Rectangle_572.png",
+              "heading": "Lorem ipsum, dolor sit amet",
+              "text": "<p>Perferendis ullam velit?<\/p>",
+              "btn_label": "Tap to Order",
+              "btn_link": ""
+            }
+          },
+          "78941694-36c7-4978-bcf4-88264fb9810c": {
+            "type": "promo",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Spatula_1_9e8e8610-8c2d-40ae-91f1-392000a8ba1d.png",
+              "heading": "Lorem ipsum, dolor sit amet",
+              "text": "<p>Some of the instructions below are provided by the merchant.<\/p>",
+              "btn_label": "Add Promo",
+              "btn_link": ""
+            }
+          },
+          "d70c9ffc-0798-4e61-98b3-3baed1545790": {
+            "type": "promo",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Spatula_2.png",
+              "heading": "Lorem ipsum, dolor sit amet",
+              "text": "<p>Some of the instructions below are provided by the merchant.<\/p>",
+              "btn_label": "Add Promo",
+              "btn_link": ""
+            }
+          },
+          "8e42a9fa-fe2f-44bc-a056-51870a647e2c": {
+            "type": "promo",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Spatula_1.png",
+              "heading": "Lorem ipsum, dolor sit amet",
+              "text": "<p>Some of the instructions below are provided by the merchant.<\/p>",
+              "btn_label": "Add Promo",
+              "btn_link": ""
+            }
+          },
+          "8bc81d22-a831-4685-b73c-85dccc2101d6": {
+            "type": "banner",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Spatula_3.png",
+              "heading": "",
+              "text": "<p> Debitis rerum asperiores sed blanditiis mollitia sint ad praesentium autem impedit quod <\/p>",
+              "btn_label": "start inviting",
+              "btn_link": ""
+            }
+          },
+          "df7e5330-23f7-4298-8267-7b94f8897ef2": {
+            "type": "product_list",
+            "settings": {
+              "heading": "Top Product Sales",
+              "product_list": [
+                "hqc-exterior-wall-and-ceiling-insulating-paint",
+                "hqc-durable-kitchen-matt-paint",
+                "hqc-blackboard-and-chalkboard-paint-1-litre",
+                "hqc-anti-mould-insulating-paint",
+                "hqc-anti-condensation-insulating-paint",
+                "hqc-anti-damp-paint",
+                "hqc-garden-paint",
+                "hqc-furniture-paint",
+                "hqc-kitchen-bathroom-paint",
+                "hqc-masonry-paint",
+                "hqc-matt-emulsion-paint",
+                "copy-of-hqc-wood-paint"
+              ],
+              "show_vendor": true,
+              "show_price": true
+            }
+          },
+          "04220d70-5dc8-44e8-bfe5-757b130af2fd": {
+            "type": "brand",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/image_98.png",
+              "heading": "Lorem ipsum",
+              "text": "<p> Debitis rerum <\/p>"
+            }
+          },
+          "2bf40089-469d-4184-b211-305a977769ed": {
+            "type": "brand",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Rectangle_468_3.png",
+              "heading": "Lorem ipsum,",
+              "text": "<p> Debitis rerum <\/p>"
+            }
+          },
+          "d95e70d4-b9c1-48e7-8b9a-e64348dc5dd4": {
+            "type": "brand",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Rectangle_468_2.png",
+              "heading": "Lorem ipsum,",
+              "text": "<p> Debitis rerum <\/p>"
+            }
+          },
+          "6bdaa0e9-f63c-4b97-9b4a-2ad2d60f4a35": {
+            "type": "brand",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Rectangle_468_1.png",
+              "heading": "Lorem ipsum",
+              "text": "<p> Debitis rerum <\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1280cf70-f3df-45b8-bf4e-c32376595388",
+          "8403a299-d768-4a54-87cf-d18f4144c05a",
+          "521df83b-617a-460e-879f-f2c7accb265e",
+          "78941694-36c7-4978-bcf4-88264fb9810c",
+          "d70c9ffc-0798-4e61-98b3-3baed1545790",
+          "8e42a9fa-fe2f-44bc-a056-51870a647e2c",
+          "8bc81d22-a831-4685-b73c-85dccc2101d6",
+          "df7e5330-23f7-4298-8267-7b94f8897ef2",
+          "04220d70-5dc8-44e8-bfe5-757b130af2fd",
+          "2bf40089-469d-4184-b211-305a977769ed",
+          "d95e70d4-b9c1-48e7-8b9a-e64348dc5dd4",
+          "6bdaa0e9-f63c-4b97-9b4a-2ad2d60f4a35"
+        ],
+        "settings": {
+          "show_top_offers": true,
+          "heading": "Top Offers",
+          "btn_label": "View All Offers",
+          "btn_link": "",
+          "heading_promo": "Add New Promos",
+          "show_top_promos": true,
+          "btn_label_promo": "View All Promotions",
+          "btn_link_promos": "",
+          "show_brand": true,
+          "heading_brand": "Brands",
+          "enable_search": true,
+          "enable_search_modal": true,
+          "show_collection_card": true,
+          "collection_list": [
+            "anti-mould-paints",
+            "anti-damp",
+            "brushes-rollers",
+            "decking",
+            "chalkboard-paint",
+            "eggshell-paint",
+            "emulsion-paint",
+            "exterior-coatings",
+            "fence-gate",
+            "fungicidal-wash",
+            "flooring",
+            "garden-paint",
+            "gloss-coatings",
+            "interior-coatings",
+            "insulation-paint",
+            "kitchen-paint",
+            "driveway-coatings",
+            "roof-coatings",
+            "super-matt-paint",
+            "tarmac-paint"
+          ],
+          "show_items": true,
+          "product_list": [
+            "evelyn-grant-cupboard-paint",
+            "hqc-anti-condensation-insulating-paint",
+            "hqc-anti-mould-insulating-paint",
+            "hqc-blackboard-and-chalkboard-paint-1-litre",
+            "hqc-furniture-paint",
+            "hqc-exterior-wall-and-ceiling-insulating-paint",
+            "hqc-durable-kitchen-matt-paint",
+            "hqc-anti-damp-paint",
+            "copy-of-hqc-wood-paint",
+            "hqc-matt-emulsion-paint"
+          ],
+          "show_vendor": false,
+          "show_price": false
+        }
+      },
+      "account-panel": {
+        "type": "account-panel",
+        "settings": {
+          "heading": "Account Information"
+        }
+      },
+      "cart-drawer": {
+        "type": "cart-drawer",
+        "blocks": {
+          "upsell_product_zXqhBn": {
+            "type": "upsell_product",
+            "settings": {
+              "choose_product": "hqc-anti-damp-paint",
+              "image": "shopify:\/\/shop_images\/fire.svg",
+              "heading": "HQC Anti-Mould Insulating Paint",
+              "text": "Buy 2 Get 1 Free"
+            }
+          },
+          "upsell_product_fNjgmV": {
+            "type": "upsell_product",
+            "settings": {
+              "choose_product": "hqc-garden-paint",
+              "image": "shopify:\/\/shop_images\/fire.svg",
+              "heading": "HQC Anti-Mould Insulating Paint",
+              "text": "Buy 3 Get 2 Free"
+            }
+          }
+        },
+        "block_order": [
+          "upsell_product_zXqhBn",
+          "upsell_product_fNjgmV"
+        ],
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/LOGO_c81e5112-a339-4f13-aa7b-fc62ef2705ec.png",
+          "free_shipping_rate": 90
+        }
+      },
+      "navigation-mobile-tab": {
+        "type": "navigation-mobile-tab",
+        "settings": {
+          "tab_label_1": "",
+          "tab_label_2": ""
+        }
+      },
+      "navigaiton-mobile": {
+        "type": "navigaiton-mobile",
+        "blocks": {
+          "menu_1_zNjcEc": {
+            "type": "menu-1",
+            "settings": {
+              "show_banner": true,
+              "banner_lv_2": "shopify:\/\/shop_images\/Rectangle_375_1_2b52d9e0-cddb-4a46-be96-cba9407e2b72.png",
+              "banner_lv_3": "shopify:\/\/shop_images\/Rectangle_375_2_bdc5aac0-0404-4f52-8533-82f80353b7eb.png",
+              "heading": "Interior Paints",
+              "url": "",
+              "menu": "collection-menu",
+              "label": "",
+              "icon": ""
+            }
+          },
+          "menu_1_TNtb9U": {
+            "type": "menu-1",
+            "settings": {
+              "show_banner": true,
+              "heading": "Exterior",
+              "url": "",
+              "menu": "anew-2-exterior-2020",
+              "label": "",
+              "icon": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" width=\"100\" height=\"100\" viewbox=\"0 0 64 64\">\n<path d=\"M 32 8 C 31.08875 8 30.178047 8.3091875 29.435547 8.9296875 L 8.8007812 26.171875 C 8.0357812 26.810875 7.7634844 27.925203 8.2714844 28.783203 C 8.9184844 29.875203 10.35025 30.088547 11.28125 29.310547 L 31.677734 12.269531 C 31.864734 12.113531 32.135266 12.113531 32.322266 12.269531 L 52.71875 29.3125 C 53.09275 29.6255 53.546047 29.777344 53.998047 29.777344 C 54.693047 29.777344 55.382672 29.416656 55.763672 28.722656 C 56.228672 27.874656 55.954891 26.803594 55.212891 26.183594 L 52 23.498047 L 52 15 C 52 13.895 51.105 13 50 13 L 48 13 C 46.895 13 46 13.895 46 15 L 46 18.484375 L 34.564453 8.9296875 C 33.821953 8.3091875 32.91125 8 32 8 z M 32 16 L 12 32.705078 L 12 47 C 12 49.761 14.239 52 17 52 L 47 52 C 49.761 52 52 49.761 52 47 L 52 32.705078 L 32 16 z M 28 32 L 36 32 C 37.105 32 38 32.895 38 34 L 38 48 L 26 48 L 26 34 C 26 32.895 26.895 32 28 32 z\"><\/path>\n<\/svg>"
+            }
+          },
+          "menu_1_NRgY7r": {
+            "type": "menu-1",
+            "settings": {
+              "show_banner": false,
+              "heading": "Wood, Furniture & garden",
+              "url": "",
+              "menu": "wood",
+              "label": "",
+              "icon": ""
+            }
+          },
+          "menu_1_7bEp8a": {
+            "type": "menu-1",
+            "settings": {
+              "show_banner": false,
+              "heading": "Roof Paint & Sealers",
+              "url": "",
+              "menu": "",
+              "label": "",
+              "icon": ""
+            }
+          },
+          "menu_1_DJV9Tc": {
+            "type": "menu-1",
+            "settings": {
+              "show_banner": false,
+              "heading": "Metal Paints",
+              "url": "",
+              "menu": "",
+              "label": "",
+              "icon": ""
+            }
+          },
+          "menu_1_dH8DD3": {
+            "type": "menu-1",
+            "settings": {
+              "show_banner": false,
+              "heading": "Tarmac & Driveway Paints",
+              "url": "",
+              "menu": "",
+              "label": "",
+              "icon": ""
+            }
+          }
+        },
+        "block_order": [
+          "menu_1_zNjcEc",
+          "menu_1_TNtb9U",
+          "menu_1_NRgY7r",
+          "menu_1_7bEp8a",
+          "menu_1_DJV9Tc",
+          "menu_1_dH8DD3"
+        ],
+        "settings": {
+          "image_type": "png",
+          "image_style": "rectangle",
+          "show_icon": true,
+          "icon_type": "image",
+          "icon_width": 24,
+          "icon_height": 24,
+          "show_image": false,
+          "image_width": 60,
+          "image_height": 200,
+          "image_style_lower": "circle"
+        }
+      },
+      "navigation-mobile-2": {
+        "type": "navigation-mobile-2",
+        "blocks": {
+          "menu_1_ezn7z4": {
+            "type": "menu-1",
+            "disabled": true,
+            "settings": {
+              "show_banner": true,
+              "banner_lv_2": "shopify:\/\/shop_images\/image_51_f091637e-e11f-4e6b-84e1-c3bd905f37a1.png",
+              "banner_lv_3": "shopify:\/\/shop_images\/Rectangle_376.png",
+              "heading": "Demo",
+              "url": "",
+              "menu": "collection-menu",
+              "label": "",
+              "icon": ""
+            }
+          },
+          "menu_2_9erGby": {
+            "type": "menu-2",
+            "disabled": true,
+            "settings": {
+              "heading": "Demo",
+              "url": "",
+              "label": "",
+              "icon": "",
+              "show_item_1": false,
+              "heading_1": "",
+              "link_1": "",
+              "show_item_2": false,
+              "heading_2": "",
+              "link_2": "",
+              "show_item_3": false,
+              "heading_3": "",
+              "link_3": "",
+              "show_item_4": false,
+              "heading_4": "",
+              "link_4": "",
+              "show_item_5": false,
+              "heading_5": "",
+              "link_5": "",
+              "show_item_6": false,
+              "heading_6": "",
+              "link_6": "",
+              "show_item_7": false,
+              "heading_7": "",
+              "link_7": "",
+              "show_item_8": false,
+              "heading_8": "",
+              "link_8": "",
+              "show_item_9": false,
+              "heading_9": "",
+              "link_9": "",
+              "show_item_10": false,
+              "heading_10": "",
+              "link_10": ""
+            }
+          },
+          "menu_3_U7QAnE": {
+            "type": "menu-3",
+            "disabled": true,
+            "settings": {
+              "menu": "interior-paints"
+            }
+          }
+        },
+        "block_order": [
+          "menu_1_ezn7z4",
+          "menu_2_9erGby",
+          "menu_3_U7QAnE"
+        ],
+        "settings": {
+          "image_type": "jpg",
+          "image_style": "circle",
+          "show_icon": true,
+          "icon_type": "icon",
+          "icon_width": 24,
+          "icon_height": 24,
+          "show_image": false,
+          "image_width": 60,
+          "image_height": 60,
+          "image_style_lower": "rectangle"
+        }
+      }
+    },
+    "content_for_index": [
+
+    ],
+    "blocks": {
+      "11532412952436166569": {
+        "type": "shopify:\/\/apps\/loox-product-reviews-photos\/blocks\/loox-inject\/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    }
+  },
+  "presets": {
+    "Modern": {
+      "colors_solid_button_labels": "#FFFFFF",
+      "colors_solid_button_background": "#3565e0",
+      "colors_solid_button_background_hover": "#1E48B5",
+      "colors_secondary_button_labels": "#3565e0",
+      "colors_secondary_button_labels_hover": "#3565e0",
+      "colors_outline_button_labels": "#E0E3EE",
+      "colors_outline_button_labels_hover": "#3565e0",
+      "colors_tertiary_button_labels": "#3565e0",
+      "colors_tertiary_button_background": "#3565e0",
+      "colors_tertiary_button_background_hover": "#3565e0",
+      "colors_input_background": "#FFFFFF",
+      "colors_input_border": "#d5dce7",
+      "colors_input_hover_border": "#3565E0",
+      "colors_text": "#040404",
+      "colors_text_title": "#040404",
+      "colors_background_1": "#f7f7f7",
+      "colors_background_2": "#FFFFFF",
+      "colors_background_3": "#252525",
+      "colors_background_announcement_bar_1": "#040404",
+      "colors_background_announcement_bar_2": "#EEEEEE",
+      "color_border": "#e0e3ee",
+      "type_header_font": "dm_sans_n7",
+      "heading_h1_scale": 100,
+      "heading_h2_scale": 100,
+      "heading_h3_scale": 100,
+      "heading_h4_scale": 100,
+      "type_header_letter_spacing": -0.2,
+      "type_header_line_height": 1.1,
+      "type_header_font_card": "dm_sans_n7",
+      "type_text_font_card": "dm_sans_n4",
+      "type_body_font": "dm_sans_n4",
+      "body_scale": 160,
+      "type_subtitle_font": "dm_sans_n7",
+      "type_button_font": "dm_sans_n7",
+      "type_header_menu_font": "dm_sans_n7",
+      "type_footer_menu_font": "dm_sans_n7",
+      "type_popups_heading_font": "dm_sans_n7",
+      "type_popups_text_font": "dm_sans_n4",
+      "badge_sale_background_color": "#2d8653",
+      "colors_subtitle_dot": "#2d8653",
+      "sale_badge_color_scheme": "background-1",
+      "sections": {
+        "main-password-header": {
+          "type": "main-password-header",
+          "settings": {
+            "logo_max_width": 130,
+            "color_scheme": "background-1"
+          }
+        },
+        "main-password-footer": {
+          "type": "main-password-footer",
+          "settings": {
+            "color_scheme": "background-1"
+          }
+        },
+        "gift-card-header": {
+          "type": "gift-card-header",
+          "settings": {
+            "logo_width": 135
+          }
+        }
+      },
+      "content_for_index": [
+
+      ]
+    },
+    "Classic": {
+      "dark_mode_toggle": true,
+      "background_scheme_toggle": "#f1f4f8",
+      "colors_solid_button_labels": "#FFFFFF",
+      "colors_solid_button_background": "#d10049",
+      "colors_solid_button_background_hover": "#a30139",
+      "colors_secondary_button_labels": "#d10049",
+      "colors_secondary_button_labels_hover": "#d10049",
+      "colors_outline_button_labels": "#d5dce7",
+      "colors_outline_button_labels_hover": "#d10049",
+      "colors_tertiary_button_labels": "#d10049",
+      "colors_tertiary_button_background": "#d10049",
+      "colors_tertiary_button_background_hover": "#d10049",
+      "colors_input_background": "#FFFFFF",
+      "colors_input_border": "#d5dce7",
+      "colors_input_hover_border": "#d10049",
+      "colors_text": "#132773",
+      "colors_text_title": "#132773",
+      "colors_background_1": "#f1f4f8",
+      "colors_background_2": "#FFFFFF",
+      "colors_background_3": "#252525",
+      "colors_background_announcement_bar_1": "#132773",
+      "colors_background_announcement_bar_2": "#EEEEEE",
+      "colors_accent": "#d10049",
+      "color_border": "#d5dce7",
+      "type_header_font": "dm_sans_n5",
+      "heading_h1_scale": 100,
+      "heading_h2_scale": 100,
+      "heading_h3_scale": 100,
+      "heading_h4_scale": 100,
+      "type_header_letter_spacing": -0.2,
+      "type_header_line_height": 1.1,
+      "type_header_font_card": "dm_sans_n5",
+      "type_text_font_card": "dm_sans_n4",
+      "type_body_font": "dm_sans_n4",
+      "body_scale": 160,
+      "type_subtitle_font": "dm_sans_n5",
+      "type_button_font": "dm_sans_n5",
+      "type_header_menu_font": "dm_sans_n5",
+      "type_footer_menu_font": "dm_sans_n5",
+      "type_popups_heading_font": "dm_sans_n5",
+      "type_popups_text_font": "dm_sans_n4",
+      "breadcrumbs_top_padding": 20,
+      "badge_sale_background_color": "#2d8653",
+      "colors_subtitle_dot": "#2d8653",
+      "sale_badge_color_scheme": "background-1",
+      "sections": {
+        "main-password-header": {
+          "type": "main-password-header",
+          "settings": {
+            "logo_max_width": 170,
+            "color_scheme": "background-1"
+          }
+        },
+        "main-password-footer": {
+          "type": "main-password-footer",
+          "settings": {
+            "color_scheme": "background-1"
+          }
+        },
+        "gift-card-header": {
+          "type": "gift-card-header",
+          "settings": {
+            "logo_width": 175
+          }
+        }
+      },
+      "content_for_index": [
+
+      ]
+    },
+    "Minimal": {
+      "background_scheme_toggle": "#141920",
+      "colors_solid_button_labels": "#FFFFFF",
+      "colors_solid_button_background": "#141920",
+      "colors_solid_button_background_hover": "#252f3d",
+      "colors_secondary_button_labels": "#141920",
+      "colors_secondary_button_labels_hover": "#141920",
+      "colors_outline_button_labels": "#e3e1e1",
+      "colors_outline_button_labels_hover": "#141920",
+      "colors_tertiary_button_labels": "#141920",
+      "colors_tertiary_button_background": "#141920",
+      "colors_tertiary_button_background_hover": "#141920",
+      "colors_input_background": "#FFFFFF",
+      "colors_input_border": "#e3e1e1",
+      "colors_input_hover_border": "#141920",
+      "colors_text": "#040404",
+      "colors_text_title": "#040404",
+      "colors_background_1": "#f4f3f3",
+      "colors_background_2": "#FFFFFF",
+      "colors_background_3": "#252f3d",
+      "colors_background_announcement_bar_1": "#141920",
+      "colors_background_announcement_bar_2": "#EEEEEE",
+      "colors_accent": "#283d59",
+      "color_border": "#e3e1e1",
+      "type_header_font": "harmonia_sans_n7",
+      "heading_h1_scale": 100,
+      "heading_h2_scale": 100,
+      "heading_h3_scale": 100,
+      "heading_h4_scale": 100,
+      "type_header_letter_spacing": -0.2,
+      "type_header_line_height": 1.1,
+      "type_header_font_card": "harmonia_sans_n7",
+      "type_text_font_card": "dm_sans_n4",
+      "type_body_font": "dm_sans_n4",
+      "body_scale": 160,
+      "type_subtitle_font": "harmonia_sans_n7",
+      "type_button_font": "harmonia_sans_n7",
+      "type_header_menu_font": "harmonia_sans_n7",
+      "type_footer_menu_font": "harmonia_sans_n7",
+      "type_popups_heading_font": "harmonia_sans_n7",
+      "type_popups_text_font": "dm_sans_n4",
+      "badge_sale_background_color": "#2d8653",
+      "colors_subtitle_dot": "#2d8653",
+      "sale_badge_color_scheme": "background-1",
+      "sections": {
+        "main-password-header": {
+          "type": "main-password-header",
+          "settings": {
+            "logo_max_width": 140,
+            "color_scheme": "background-1"
+          }
+        },
+        "main-password-footer": {
+          "type": "main-password-footer",
+          "settings": {
+            "color_scheme": "background-1"
+          }
+        },
+        "gift-card-header": {
+          "type": "gift-card-header",
+          "settings": {
+            "logo_width": 140
+          }
+        }
+      },
+      "content_for_index": [
+
+      ]
+    },
+    "Trendy": {
+      "background_scheme_toggle": "#f1f4f8",
+      "colors_solid_button_labels": "#FFFFFF",
+      "colors_solid_button_background": "#386c92",
+      "colors_solid_button_background_hover": "#2e5979",
+      "colors_secondary_button_labels": "#386c92",
+      "colors_secondary_button_labels_hover": "#386c92",
+      "colors_outline_button_labels": "#e7e7e7",
+      "colors_outline_button_labels_hover": "#386c92",
+      "colors_tertiary_button_labels": "#386c92",
+      "colors_tertiary_button_background": "#386c92",
+      "colors_tertiary_button_background_hover": "#386c92",
+      "colors_input_background": "#FFFFFF",
+      "colors_input_border": "#c7c2b1",
+      "colors_input_hover_border": "#386c92",
+      "colors_text": "#040404",
+      "colors_text_title": "#040404",
+      "colors_background_1": "#f7f7f7",
+      "colors_background_2": "#ffffff",
+      "colors_background_5": "#fffbec",
+      "colors_background_3": "#252525",
+      "colors_background_announcement_bar_1": "#386c92",
+      "colors_background_announcement_bar_2": "#EEEEEE",
+      "colors_accent": "#386c92",
+      "color_border": "#e7e7e7",
+      "type_header_font": "quicksand_n7",
+      "heading_h1_scale": 100,
+      "heading_h2_scale": 100,
+      "heading_h3_scale": 100,
+      "heading_h4_scale": 100,
+      "type_header_letter_spacing": -0.4,
+      "type_header_line_height": 1,
+      "type_header_font_card": "quicksand_n7",
+      "type_text_font_card": "dm_sans_n4",
+      "type_body_font": "dm_sans_n4",
+      "type_subtitle_font": "quicksand_n7",
+      "type_button_font": "quicksand_n7",
+      "type_header_menu_font": "quicksand_n7",
+      "type_footer_menu_font": "quicksand_n7",
+      "type_popups_heading_font": "quicksand_n7",
+      "type_popups_text_font": "dm_sans_n4",
+      "breadcrumbs_top_padding": 20,
+      "badge_sale_background_color": "#2d8653",
+      "body_scale": 160,
+      "colors_subtitle_dot": "#2d8653",
+      "sale_badge_color_scheme": "background-1",
+      "sections": {
+        "main-password-header": {
+          "type": "main-password-header",
+          "settings": {
+            "logo_max_width": 160,
+            "color_scheme": "background-1"
+          }
+        },
+        "main-password-footer": {
+          "type": "main-password-footer",
+          "settings": {
+            "color_scheme": "background-1"
+          }
+        },
+        "gift-card-header": {
+          "type": "gift-card-header",
+          "settings": {
+            "logo_width": 160
+          }
+        }
+      },
+      "content_for_index": [
+
+      ]
+    },
+    "Vibrant": {
+      "background_scheme_toggle": "#f1f4f8",
+      "colors_solid_button_labels": "#FFFFFF",
+      "colors_solid_button_background": "#2e3f75",
+      "colors_solid_button_background_hover": "#233059",
+      "colors_secondary_button_labels": "#2e3f75",
+      "colors_secondary_button_labels_hover": "#2e3f75",
+      "colors_outline_button_labels": "#e7e7e7",
+      "colors_outline_button_labels_hover": "#2e3f75",
+      "colors_tertiary_button_labels": "#2e3f75",
+      "colors_tertiary_button_background": "#2e3f75",
+      "colors_tertiary_button_background_hover": "#2e3f75",
+      "colors_input_background": "#FFFFFF",
+      "colors_input_border": "#e7e7e7",
+      "colors_input_hover_border": "#2e3f75",
+      "colors_text": "#040404",
+      "colors_text_title": "#040404",
+      "colors_background_1": "#faf9f3",
+      "colors_background_2": "#ffffff",
+      "colors_background_5": "#f6f6f6",
+      "colors_background_3": "#2e3f75",
+      "colors_background_announcement_bar_1": "#2e3f75",
+      "colors_background_announcement_bar_2": "#EEEEEE",
+      "colors_accent": "#2e3f75",
+      "color_border": "#e7e7e7",
+      "type_header_font": "catamaran_n6",
+      "heading_h1_scale": 100,
+      "heading_h2_scale": 100,
+      "heading_h3_scale": 100,
+      "heading_h4_scale": 100,
+      "type_header_letter_spacing": -0.2,
+      "type_header_line_height": 1.1,
+      "type_header_font_card": "catamaran_n6",
+      "type_text_font_card": "dm_sans_n4",
+      "type_body_font": "dm_sans_n4",
+      "body_scale": 160,
+      "type_subtitle_font": "catamaran_n6",
+      "subtitle_text_transform": "uppercase",
+      "type_button_font": "catamaran_n6",
+      "type_header_menu_font": "catamaran_n6",
+      "type_footer_menu_font": "catamaran_n6",
+      "type_popups_heading_font": "catamaran_n6",
+      "type_popups_text_font": "dm_sans_n4",
+      "breadcrumbs_top_padding": 20,
+      "badge_sale_background_color": "#2d8653",
+      "text_underline_offset": 7,
+      "colors_subtitle_dot": "#2d8653",
+      "sale_badge_color_scheme": "background-1",
+      "sections": {
+        "main-password-header": {
+          "type": "main-password-header",
+          "settings": {
+            "logo_max_width": 160,
+            "color_scheme": "background-1"
+          }
+        },
+        "main-password-footer": {
+          "type": "main-password-footer",
+          "settings": {
+            "color_scheme": "background-1"
+          }
+        },
+        "gift-card-header": {
+          "type": "gift-card-header",
+          "settings": {
+            "logo_width": 160
+          }
+        }
+      },
+      "content_for_index": [
+
+      ]
+    }
+  }
+}

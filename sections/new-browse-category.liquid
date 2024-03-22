@@ -1,0 +1,321 @@
+{{ 'new-text-image-card.css' | asset_url | stylesheet_tag }}
+{{ 'new-section-browse-category.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+    .browsecategory-{{ section.id }} {
+        background-color: {{ section.settings.bg }};
+    }
+
+    .browsecategory-{{ section.id }} .section-heading{
+        color: {{ section.settings.text_color }};
+    }
+
+    .browsecategory-{{ section.id }} .section-text{
+        color: {{ section.settings.text_color }};
+    }
+
+    .browsecategory-{{ section.id }} .textimage-card-media {
+        min-height: {{ section.settings.image_height }}px;
+    }
+
+    .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_bottom_m }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+        margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+        margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+    }
+
+    @media screen and (min-width: 992px) {
+        .section-{{ section.id }}-padding {
+            padding-top: {{ section.settings.padding_top }}px;
+            padding-bottom: {{ section.settings.padding_bottom }}px;
+            margin-top: {{ section.settings.margin_top }}px;
+            margin-bottom: {{ section.settings.margin_bottom }}px;
+        }
+    }
+{% endstyle %}
+
+<div class="browsecategory browsecategory-{{ section.id }} section-{{ section.id }}-padding">
+    {% if section.settings.text != blank %}
+        <div class="container">
+            <div class="section-header text-center no-margin">
+                {% if section.settings.heading != blank %}
+                    <h2 class="section-heading text-white">{{ section.settings.heading | newline_to_br }}</h2>
+                {% endif %}
+
+                {% if section.settings.text != blank %}
+                    <div class="section-text text-white width_1499">{{ section.settings.text | newline_to_br }}</div>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="browsecategory__wrapper container">
+        <div class="browsecategory-list {% if section.settings.swipe_on_mobile and section.blocks.size > 1 %}swiper swiper--browsecategory{% endif %}">
+        <ul class="list-unstyled browsecategory-list__wrapper row {% if section.settings.swipe_on_mobile and section.blocks.size > 1 %}swiper-wrapper{% endif %}">
+            {%- for block in section.blocks -%}
+            <li
+                class="col-6 col-sm-6 col-md-4 col-xxl-4 browsecategory-list__item {% if section.settings.swipe_on_mobile %}swiper-slide{% endif %}"
+                {{ block.shopify_attributes }}
+            >
+                {% render 'new-text-image-card',
+                    image_link: section.settings.enable_image_link,
+                    rounded_image: section.settings.rounded_image,
+                    image: block.settings.image,
+                    heading: block.settings.heading,
+                    text: block.settings.text,
+                    btn_label: block.settings.btn_label,
+                    btn_link: block.settings.btn_link,
+                    show_icon: section.settings.show_icon,
+                    flex: 'align-items-center'
+                %}
+            </li>
+            {%- endfor -%}
+        </ul>
+
+        {%- if section.settings.swipe_on_mobile -%}
+            <div class="multicolumn__nav swiper-buttons no-js-hidden">
+            <button
+                type="button"
+                class="multicolumn__button-prev swiper-button-prev"
+                name="previous"
+                aria-label="{{ 'accessibility.previous_slide' | t }}"
+            >
+                {% render 'icon-caret-left' %}
+            </button>
+            <div class="multicolumn__pagination swiper-pagination"></div>
+            <button
+                type="button"
+                class="multicolumn__button-next swiper-button-next"
+                name="next"
+                aria-label="{{ 'accessibility.next_slide' | t }}"
+            >
+                {% render 'icon-caret-right' %}
+            </button>
+            </div>
+        {%- endif -%}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Browse Category",
+    "class": "spaced-section browse-category-section",
+    "tag": "section",
+    "enabled_on": {
+        "templates": ["*"]
+    },
+    "settings": [
+        {
+            "type": "color",
+            "id": "bg",
+            "default": "#001820",
+            "label": "Background"
+        },
+        {
+            "type": "color",
+            "id": "text_color",
+            "default": "#fff",
+            "label": "Text color"
+        },
+        {
+            "type": "textarea",
+            "id": "heading",
+            "default": "Browse our products by category",
+            "label": "Heading"
+        },
+        {
+            "type": "richtext",
+            "id": "text",
+            "default": "<p>We're reimaging the paint industry with the highest quality decorating products that are longer lasting and more environment friendly at the lowest price. High quality domestic, commercial and industrially used grade decorating products, not just for professionals but everyone!</p>",
+            "label": "Text"
+        },
+        {
+            "type": "header",
+            "content": "Block Content"
+        },                
+        {
+            "type": "checkbox",
+            "id": "enable_image_link",
+            "label": "Enable image link",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "rounded_image",
+            "label": "Enable rounded image",
+            "default": true
+        },
+        {
+            "type": "number",
+            "id": "image_height",
+            "label": "Image height",
+            "default": 229,
+            "info": "Put only number. Unit is pixel(px)"
+        },
+        {
+            "type": "checkbox",
+            "id": "show_icon",
+            "label": "Show icon with button",
+            "default": true
+        },
+        {
+            "type": "header",
+            "content": "t:sections.all.section-margin.header.content"
+        },
+        {
+            "type": "number",
+            "id": "margin_top",
+            "default": 0,
+            "label": "t:sections.all.section-margin.margin_top.label"
+        },
+        {
+            "type": "number",
+            "id": "margin_bottom",
+            "default": 0,
+            "label": "t:sections.all.section-margin.margin_bottom.label"
+        },
+        {
+            "type": "header",
+            "content": "t:sections.all.section-padding.header.content"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "default": 125,
+            "label": "t:sections.all.section-padding.padding_top.label"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "default": 121,
+            "label": "t:sections.all.section-padding.padding_bottom.label"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_m",
+            "default": 48,
+            "label": "t:sections.all.section-padding.padding_top.label"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_m",
+            "default": 48,
+            "label": "t:sections.all.section-padding.padding_bottom.label"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "column",
+            "name": "t:sections.multicolumn.blocks.column.name",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "t:sections.multicolumn.blocks.column.settings.image.label",
+                    "info": "t:sections.multicolumn.blocks.column.settings.image.info"
+                },
+                {
+                    "type": "textarea",
+                    "id": "heading",
+                    "label": "Heading",
+                    "default": "Heading",
+                    "info": "Don't want? Keep blank."
+                },
+                {
+                    "type": "inline_richtext",
+                    "id": "text",
+                    "label": "Text",
+                    "default": "Text goes here...",
+                    "info": "Don't want? Keep blank."
+                },
+                {
+                    "type": "text",
+                    "id": "btn_label",
+                    "label": "Button label",
+                    "default": "decorate within a click",
+                    "info": "Don't want? Keep blank."
+                },
+                {
+                    "type": "text",
+                    "id": "btn_link",
+                    "label": "Button link",
+                    "default": "\/collections\/all"
+                },
+                {
+                    "type": "color",
+                    "id": "bg",
+                    "default": "#000",
+                    "label": "Card Color"
+                },
+                {
+                    "type": "color",
+                    "id": "text_color",
+                    "default": "#fff",
+                    "label": "Text color"
+                },
+                {
+                    "type": "range",
+                    "id": "card_radius",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "px",
+                    "label": "Card Radius",
+                    "default": 30
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Browse Category",
+            "blocks": [
+                {
+                    "type": "column",
+                    "settings": {
+                        "heading": "Interior",
+                        "text": "Embrace your inner interior designer and make your home feel exactly how you need it to feel"
+                    }
+                },
+                {
+                    "type": "column",
+                    "settings": {
+                        "heading": "Exterior",
+                        "text": "Paints for gardens, masonry, roofs and more - check out our high quality range"
+                    }
+                },
+                {
+                    "type": "column",
+                    "settings": {
+                        "heading": "Roof surface",
+                        "text": "Specialised primers and paints to cover metal surfaces"
+                    }
+                },
+                {
+                    "type": "column",
+                    "settings": {
+                        "heading": "Wood surface",
+                        "text": "Prevent heat loss and gain to make your home that little bit more comfortable"
+                    }
+                },
+                {
+                    "type": "column",
+                    "settings": {
+                        "heading": "Tarmac surface",
+                        "text": "Our selection of premium headphones to enjoy your favorite playlist with an incredible sound."
+                    }
+                },
+                {
+                    "type": "column",
+                    "settings": {
+                        "heading": "Metal service",
+                        "text": "There’s no point having gorgeous new paint without the right tools to apply it! Get browsing."
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

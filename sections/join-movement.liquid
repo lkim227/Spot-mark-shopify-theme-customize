@@ -1,0 +1,209 @@
+{{ 'section-join-movement.css' | asset_url | stylesheet_tag: preload: true }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_m }}px;
+    padding-bottom: {{ section.settings.padding_bottom_m }}px;
+    color: {{ section.settings.color }};
+  }
+  .section-{{ section.id }}-padding .join-movement-title h1, 
+  .section-{{ section.id }}-padding .join-movement-info p,
+  .section-{{ section.id }}-padding .join-movement-button .hero-btn {
+    color: {{ section.settings.color }};
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="join-movement-wrapper section-{{ section.id }}-padding" id="section-{{ section.id }}">
+  <div class="container">
+    <div class="inner-container"> 
+    <div class="section-bg">
+        {%- if section.settings.background != blank -%}
+        {{
+            section.settings.background | image_url: width: auto | image_tag: loading: 'lazy'
+        }}
+        {%- endif -%}
+    </div>
+    <div class="join-content-area" style="text-align: {{ section.settings.text_align }};">
+      {% for block in section.blocks %}
+        {%- case block.type -%}
+          {%- when 'title' -%}
+            {%- liquid
+                assign title = block.settings.title
+            -%}
+            <div class="join-movement-title" {{ block.shopify_attributes }}>
+              {%- if title != blank -%}
+                  <h1>{{ title }}</h1>
+              {%- endif -%}
+            </div>
+          {% when 'info' %}
+            {% liquid
+                assign info = block.settings.info
+            %}
+            <div class="join-movement-info" {{ block.shopify_attributes }}>
+              {%- if info != blank -%}
+                <p>{{ info }}</p>
+              {%- endif -%}
+            </div>
+          {% when 'button' %}
+            {% liquid
+                assign btn = block.settings.btn
+                assign link = block.settings.link
+            %}
+            <div class="join-movement-button" {{ block.shopify_attributes }}>
+              {%- if link != blank -%}
+                <a href="{{ link }}" class="button button-{{block.settings.btn_style}}">
+                {{ btn }}
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="11.9062" cy="11.9062" r="11.9062" fill="white"/>
+                <rect x="5" y="13.9062" width="3" height="12.2217" transform="rotate(-90 5 13.9062)" fill="#00C172"/>
+                <rect x="13.9844" y="17.9062" width="3" height="7.87027" transform="rotate(-135 13.9844 17.9062)" fill="#00C172"/>
+                <rect x="11.8633" y="8.89941" width="3" height="7.87027" transform="rotate(-45 11.8633 8.89941)" fill="#00C172"/>
+                </svg>
+                </a>
+              {%- endif -%}
+            </div>
+        {%- endcase -%}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+</div>
+{% schema %}
+  {
+    "name": "Join Movement",
+    "class": "join-movement-section",
+    "tag": "section",
+    "enabled_on": {
+      "templates": ["*"]
+    },
+    "settings": [
+        {
+      "type": "select",
+      "id": "text_align",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Text Align"
+    },
+      {
+        "type": "color",
+        "id": "color",
+        "label": "Text Color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "image_picker",
+        "id": "background",
+        "label": "Section Bakground"
+      },
+      {
+        "type": "header",
+        "content": "Section Padding"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 100
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 100
+      }, {
+        "type": "range",
+        "id": "padding_top_m",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Top (Mobile)",
+        "default": 64
+      }, {
+        "type": "range",
+        "id": "padding_bottom_m",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Bottom (Mobile)",
+        "default": 68
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Title",
+        "type": "title",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "title",
+            "label": "Text"
+          }
+        ]
+      },
+      {
+        "name": "Button",
+        "type": "button",
+        "limit": 2,
+        "settings": [
+          {
+            "type": "text",
+            "id": "btn",
+            "label": "Text"
+          }, {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          },
+          {
+            "type": "select",
+            "id": "btn_style",
+            "label": "Button Style",
+            "options": [
+              {
+                "value": "primary",
+                "label": "Primary"
+              },
+              {
+                "value": "secondary",
+                "label": "Secondary"
+              }
+            ],
+            "default": "primary"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Join Movement"
+      }
+    ]
+  }
+{% endschema %}

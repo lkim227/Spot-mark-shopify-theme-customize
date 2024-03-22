@@ -1,0 +1,1176 @@
+{
+  "sections": {
+    "21fae0da-2e6b-4c06-8007-1e3b5611671a": {
+      "type": "home-hero",
+      "blocks": {
+        "fc357393-a994-48b8-8146-911eb75db510": {
+          "type": "icon",
+          "settings": {
+            "icon_text": "HIGHER THAN TRADE QUALITY",
+            "icon_svg": "<svg width=\"31\" height=\"31\" viewbox=\"0 0 31 31\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M26.7767 12.0779C26.7767 13.2812 25.7159 14.2945 25.3676 15.3712C25.0192 16.4479 25.2567 17.9204 24.5759 18.8545C23.8951 19.7887 22.4384 19.9945 21.5834 20.6912C20.7284 21.3879 20.0001 22.6862 18.8917 23.0504C17.7834 23.4145 16.5326 22.7179 15.3292 22.7179C14.1259 22.7179 12.8434 23.3987 11.7667 23.0504C10.6901 22.702 10.0092 21.3562 9.07506 20.6912C8.14089 20.0262 6.68422 19.7887 6.00339 18.8545C5.32256 17.9204 5.57589 16.4795 5.21172 15.3712C4.84756 14.2629 3.72339 13.2812 3.72339 12.0779C3.72339 10.8745 4.78422 9.8612 5.13256 8.78454C5.48089 7.70787 5.24339 6.23537 5.92422 5.3012C6.60506 4.36704 8.06172 4.1612 8.99589 3.46454C9.93006 2.76787 10.5001 1.46954 11.6876 1.10537C12.8751 0.741203 14.0467 1.43787 15.2501 1.43787C16.4534 1.43787 17.7359 0.757036 18.8126 1.10537C19.8892 1.4537 20.5701 2.79954 21.5834 3.46454C22.5967 4.12954 23.9742 4.36704 24.6551 5.3012C25.3359 6.23537 25.0826 7.6762 25.4467 8.78454C25.8109 9.89287 26.7767 10.8745 26.7767 12.0779ZM15.2501 7.32787C14.3106 7.32787 13.3922 7.60645 12.6111 8.12839C11.83 8.65033 11.2211 9.39217 10.8616 10.2601C10.5021 11.1281 10.408 12.0831 10.5913 13.0045C10.7746 13.926 11.227 14.7723 11.8913 15.4366C12.5556 16.1009 13.402 16.5533 14.3234 16.7366C15.2448 16.9199 16.1999 16.8258 17.0678 16.4663C17.9358 16.1068 18.6776 15.498 19.1995 14.7168C19.7215 13.9357 20.0001 13.0173 20.0001 12.0779C20.0001 10.8181 19.4996 9.60991 18.6088 8.71911C17.718 7.82831 16.5098 7.32787 15.2501 7.32787Z\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path>\n<path d=\"M18.4958 23.3196L21.5833 29.4946L24.7183 26.2804L29.5 26.3279L25.0509 17.4929V17.4771\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path>\n<path d=\"M12.0042 23.3196L8.91667 29.4946L5.78167 26.2804L1 26.3279L5.44917 17.4929V17.4771\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path>\n<\/svg>"
+          }
+        },
+        "68674ccd-e89b-409b-be14-5ec0eed42343": {
+          "type": "icon",
+          "settings": {
+            "icon_text": "SHIPPED DIRECT FROM THE FACTORY",
+            "icon_svg": "<svg width=\"34\" height=\"27\" viewbox=\"0 0 34 27\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M23.75 18.5V2.75C23.75 2.28587 23.5656 1.84075 23.2374 1.51256C22.9092 1.18437 22.4641 1 22 1H2.75C2.28587 1 1.84075 1.18437 1.51256 1.51256C1.18437 1.84075 1 2.28587 1 2.75V20.25C1 20.7141 1.18437 21.1592 1.51256 21.4874C1.84075 21.8156 2.28587 22 2.75 22H6.25\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path>\n<path d=\"M20.25 22H13.25\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path>\n<path d=\"M13.25 22C13.25 22.6922 13.0447 23.3689 12.6601 23.9445C12.2756 24.5201 11.7289 24.9687 11.0894 25.2336C10.4499 25.4985 9.74612 25.5678 9.06719 25.4327C8.38825 25.2977 7.76461 24.9644 7.27513 24.4749C6.78564 23.9854 6.4523 23.3617 6.31725 22.6828C6.1822 22.0039 6.25152 21.3001 6.51642 20.6606C6.78133 20.0211 7.22993 19.4744 7.80551 19.0899C8.38108 18.7053 9.05777 18.5 9.75 18.5C10.6783 18.5 11.5685 18.8687 12.2249 19.5251C12.8813 20.1815 13.25 21.0717 13.25 22ZM23.75 18.5C23.0578 18.5 22.3811 18.7053 21.8055 19.0899C21.2299 19.4744 20.7813 20.0211 20.5164 20.6606C20.2515 21.3001 20.1822 22.0039 20.3173 22.6828C20.4523 23.3617 20.7856 23.9854 21.2751 24.4749C21.7646 24.9644 22.3883 25.2977 23.0672 25.4327C23.7461 25.5678 24.4499 25.4985 25.0894 25.2336C25.7289 24.9687 26.2756 24.5201 26.6601 23.9445C27.0447 23.3689 27.25 22.6922 27.25 22C27.25 21.0717 26.8813 20.1815 26.2249 19.5251C25.5685 18.8687 24.6783 18.5 23.75 18.5Z\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path>\n<path d=\"M27.25 22H30.75C31.2141 22 31.6592 21.8157 31.9874 21.4875C32.3156 21.1593 32.5 20.7142 32.5 20.25V13.25L29.49 7.21254C29.3432 6.92128 29.118 6.67683 28.8397 6.50676C28.5614 6.33669 28.2411 6.24777 27.915 6.25004H23.75\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path>\n<\/svg>"
+          }
+        },
+        "be951f15-4a81-4927-8225-1006c7801214": {
+          "type": "icon",
+          "settings": {
+            "icon_text": "50% LOWER PRICES THAN MAJOR RETAILERS",
+            "icon_svg": "<svg width=\"34\" height=\"32\" viewbox=\"0 0 34 32\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M11.6 20.9741L21.6 10.9741M30.3 11.5241C29.8 10.0074 30.1333 8.05741 29.2167 6.80741C28.3 5.55741 26.3333 5.24074 25.0667 4.30741C23.8 3.37407 22.9333 1.62407 21.4167 1.14074C19.9 0.657406 18.2667 1.57407 16.6 1.57407C14.9333 1.57407 13.2667 0.657406 11.7833 1.14074C10.3 1.62407 9.4 3.40741 8.13333 4.30741C6.86667 5.20741 4.93333 5.52407 3.98333 6.80741C3.03333 8.09074 3.4 10.0074 2.9 11.5241C2.4 13.0407 1 14.3074 1 15.9741C1 17.6407 2.43333 18.9574 2.9 20.4241C3.36667 21.8907 3.06667 23.8907 3.98333 25.1407C4.9 26.3907 6.86667 26.7074 8.13333 27.6241C9.4 28.5407 10.2667 30.3241 11.7833 30.8074C13.3 31.2907 14.9333 30.3741 16.6 30.3741C18.2667 30.3741 19.9333 31.2907 21.4167 30.8074C22.9 30.3241 23.8 28.5407 25.0667 27.6241C26.3333 26.7074 28.3 26.4241 29.2167 25.1407C30.1333 23.8574 29.8 21.9407 30.3 20.4241C30.8 18.9074 32.2 17.6407 32.2 15.9741C32.2 14.3074 30.7667 12.9907 30.3 11.5241Z\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path>\n<path d=\"M12.35 11.8074H12.5166\" stroke=\"white\" stroke-width=\"2.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path>\n<path d=\"M20.6833 20.1407H20.85\" stroke=\"white\" stroke-width=\"2.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path>\n<\/svg>"
+          }
+        },
+        "d25d5c03-ff86-4f70-ae7a-718a5591cec9": {
+          "type": "icon",
+          "settings": {
+            "icon_text": "HELP SAVE PAINT WASTE & UNESSARY c02",
+            "icon_svg": "<svg width=\"26\" height=\"38\" viewbox=\"0 0 26 38\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M12.9977 36.8899V16.8899M8.99767 36.8899H16.9977M22.4777 19.2299C22.8151 20.0765 22.9914 20.9786 22.9977 21.8899C22.9977 23.7464 22.2602 25.5269 20.9474 26.8396C19.6347 28.1524 17.8542 28.8899 15.9977 28.8899C14.9577 28.8856 13.9321 28.6463 12.9977 28.1899C12.0632 28.6463 11.0376 28.8856 9.99767 28.8899C8.14116 28.8899 6.36068 28.1524 5.04793 26.8396C3.73517 25.5269 2.99767 23.7464 2.99767 21.8899C3.00391 20.9786 3.18027 20.0765 3.51767 19.2299C2.60557 18.4737 1.90163 17.4971 1.47251 16.3927C1.0434 15.2883 0.903323 14.0927 1.06555 12.919C1.22778 11.7453 1.68695 10.6325 2.39956 9.68592C3.11217 8.73934 4.05463 7.99036 5.13767 7.5099C5.48472 5.67931 6.45983 4.02726 7.89477 2.8388C9.32971 1.65034 11.1345 1 12.9977 1C14.8609 1 16.6656 1.65034 18.1006 2.8388C19.5355 4.02726 20.5106 5.67931 20.8577 7.5099C21.9407 7.99036 22.8832 8.73934 23.5958 9.68592C24.3084 10.6325 24.7676 11.7453 24.9298 12.919C25.092 14.0927 24.9519 15.2883 24.5228 16.3927C24.0937 17.4971 23.3898 18.4737 22.4777 19.2299Z\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path>\n<\/svg>"
+          }
+        },
+        "d6ebfc03-9d08-4a53-813b-d8d0a78ee014": {
+          "type": "slider",
+          "settings": {
+            "title": "The Hypermarket of paint\nand varnish products",
+            "info": "High quality domestic, commercial and industrially used grade decorating products,\nnot just for professionals but for everyone!",
+            "btn": "SHOP NOW",
+            "link": "shopify:\/\/collections",
+            "btn_2": "",
+            "link_2": "",
+            "background": "shopify:\/\/shop_images\/Rectangle_364.png"
+          }
+        },
+        "346645bd-fecf-451f-bc27-9089f84415d5": {
+          "type": "slider",
+          "settings": {
+            "title": "The Highest Grade Product At The Lowest Costs",
+            "info": "High quality domestic, commercial and industrially used grade decorating products,\nnot just for professionals but for everyone!",
+            "btn": "SHOP NOW",
+            "link": "shopify:\/\/collections",
+            "btn_2": "",
+            "link_2": "",
+            "background": "shopify:\/\/shop_images\/Rectangle_364.png"
+          }
+        }
+      },
+      "block_order": [
+        "fc357393-a994-48b8-8146-911eb75db510",
+        "68674ccd-e89b-409b-be14-5ec0eed42343",
+        "be951f15-4a81-4927-8225-1006c7801214",
+        "d25d5c03-ff86-4f70-ae7a-718a5591cec9",
+        "d6ebfc03-9d08-4a53-813b-d8d0a78ee014",
+        "346645bd-fecf-451f-bc27-9089f84415d5"
+      ],
+      "settings": {
+        "text_align": "center",
+        "color": "#ffffff",
+        "button_color": "#ff003d"
+      }
+    },
+    "498c70d6-9173-421d-97ba-7f8ecf923b95": {
+      "type": "Featured-collections-tab",
+      "blocks": {
+        "collection_fdgaEy": {
+          "type": "collection",
+          "settings": {
+            "collection": "interior-coatings"
+          }
+        },
+        "collection_74DH96": {
+          "type": "collection",
+          "settings": {
+            "collection": "exterior-coatings"
+          }
+        },
+        "collection_ggV8Cb": {
+          "type": "collection",
+          "settings": {
+            "collection": "garden-paint"
+          }
+        },
+        "collection_bbtMAx": {
+          "type": "collection",
+          "settings": {
+            "collection": "browns"
+          }
+        },
+        "collection_3qWFVA": {
+          "type": "collection",
+          "settings": {
+            "collection": "duck-egg"
+          }
+        },
+        "collection_yh4Mww": {
+          "type": "collection",
+          "settings": {
+            "collection": "classic-grey"
+          }
+        }
+      },
+      "block_order": [
+        "collection_fdgaEy",
+        "collection_74DH96",
+        "collection_ggV8Cb",
+        "collection_bbtMAx",
+        "collection_3qWFVA",
+        "collection_yh4Mww"
+      ],
+      "settings": {
+        "heading": "Top Selling Products",
+        "description": "This months top sellers by category",
+        "products_limit": 12,
+        "image_ratio": "square",
+        "image_fit": "contain",
+        "cart_btn_text_color": "#000",
+        "cart_btn_background_color": "#FFF",
+        "option_btn_text_color": "#FFF",
+        "option_btn_background_color": "#0000FF",
+        "stock_badge_background_color": "#00cF72",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_button": true,
+        "show_desc": false,
+        "show_sku": false,
+        "show_color_swatch": true,
+        "shape_image": "shopify:\/\/shop_images\/image_92.png"
+      }
+    },
+    "0c640871-bf47-4977-a050-f00e0a62406a": {
+      "type": "new-browse-category",
+      "blocks": {
+        "template--17002260365548__0c640871-bf47-4977-a050-f00e0a62406a-column-1": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/1_b725e7f1-16bc-4d6b-9033-2c6d3511b27d.png",
+            "heading": "Interior Paints",
+            "text": "The highest quality product for your interior",
+            "btn_label": "Shop Now",
+            "btn_link": "\/collections\/all",
+            "bg": "#000000",
+            "text_color": "#ffffff",
+            "card_radius": 30
+          }
+        },
+        "template--17002260365548__0c640871-bf47-4977-a050-f00e0a62406a-column-2": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2_76bbe507-947f-42d3-9eea-8a9f258110fc.png",
+            "heading": "Exterior",
+            "text": "Paints for gardens, masonry, roofs and more - check out our high quality range",
+            "btn_label": "Shop Now",
+            "btn_link": "\/collections\/all",
+            "bg": "#000000",
+            "text_color": "#ffffff",
+            "card_radius": 30
+          }
+        },
+        "template--17002260365548__0c640871-bf47-4977-a050-f00e0a62406a-column-3": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/3_81056da6-faf6-4fb6-9479-d4f26198f4d4.png",
+            "heading": "Roof surface",
+            "text": "Specialised primers and paints to cover metal surfaces",
+            "btn_label": "Shop Now",
+            "btn_link": "\/collections\/all",
+            "bg": "#000000",
+            "text_color": "#ffffff",
+            "card_radius": 30
+          }
+        },
+        "template--17002260365548__0c640871-bf47-4977-a050-f00e0a62406a-column-4": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/4_61be68fb-ee52-4fa7-8726-d0c3cb320ec3.png",
+            "heading": "Wood surface",
+            "text": "Prevent heat loss and gain to make your home that little bit more comfortable",
+            "btn_label": "Shop Now",
+            "btn_link": "\/collections\/all",
+            "bg": "#000000",
+            "text_color": "#ffffff",
+            "card_radius": 30
+          }
+        },
+        "template--17002260365548__0c640871-bf47-4977-a050-f00e0a62406a-column-5": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/5_8cfaa532-2978-4a06-b3e7-b53afeb1f854.png",
+            "heading": "Tarmac surface",
+            "text": "Our selection of premium headphones to enjoy your favorite playlist with an incredible sound.",
+            "btn_label": "Shop Now",
+            "btn_link": "\/collections\/all",
+            "bg": "#000000",
+            "text_color": "#ffffff",
+            "card_radius": 30
+          }
+        },
+        "template--17002260365548__0c640871-bf47-4977-a050-f00e0a62406a-column-6": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/6_d4db4982-4baa-47db-98fd-b3b93890667c.png",
+            "heading": "Metal service",
+            "text": "There’s no point having gorgeous new paint without the right tools to apply it! Get browsing.",
+            "btn_label": "Shop Now",
+            "btn_link": "\/collections\/all",
+            "bg": "#000000",
+            "text_color": "#ffffff",
+            "card_radius": 30
+          }
+        }
+      },
+      "block_order": [
+        "template--17002260365548__0c640871-bf47-4977-a050-f00e0a62406a-column-1",
+        "template--17002260365548__0c640871-bf47-4977-a050-f00e0a62406a-column-2",
+        "template--17002260365548__0c640871-bf47-4977-a050-f00e0a62406a-column-3",
+        "template--17002260365548__0c640871-bf47-4977-a050-f00e0a62406a-column-4",
+        "template--17002260365548__0c640871-bf47-4977-a050-f00e0a62406a-column-5",
+        "template--17002260365548__0c640871-bf47-4977-a050-f00e0a62406a-column-6"
+      ],
+      "settings": {
+        "bg": "#ffffff",
+        "text_color": "#000000",
+        "heading": "Browse our products by category",
+        "text": "<p>Decorate within a click - A simple decorating experience <\/p>",
+        "enable_image_link": false,
+        "rounded_image": true,
+        "image_height": 229,
+        "show_icon": true,
+        "remove_button": false,
+        "box_radius": 30,
+        "button_radius": 30,
+        "btn_horizontal_padding": 0,
+        "btn_vertical_padding": 24,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 25,
+        "padding_bottom": 70,
+        "padding_top_m": 47,
+        "padding_bottom_m": 48
+      }
+    },
+    "99b2be3e-c000-4311-8065-f607f71f8ea6": {
+      "type": "need-extra",
+      "blocks": {
+        "99151f2f-de4b-4b01-9fa6-04a0a5665edd": {
+          "type": "title",
+          "settings": {
+            "title": "Need Any Extras?"
+          }
+        },
+        "d8d56d58-9ff7-47cc-8cbd-509b1a357158": {
+          "type": "info",
+          "settings": {
+            "info": ""
+          }
+        },
+        "cbde1b94-8f32-4539-b38d-2544fdb7ac90": {
+          "type": "box",
+          "settings": {
+            "icon_text": "Accessories",
+            "image": "shopify:\/\/shop_images\/Rectangle_375_1.png",
+            "link": "shopify:\/\/collections"
+          }
+        },
+        "7cd82b96-6dda-4ede-8420-d695bbf085c0": {
+          "type": "box",
+          "settings": {
+            "icon_text": "Primers",
+            "image": "shopify:\/\/shop_images\/Rectangle_376.png",
+            "link": "shopify:\/\/collections"
+          }
+        },
+        "41e4fb74-735d-4ea3-8e8a-2c568270436d": {
+          "type": "box",
+          "settings": {
+            "icon_text": "Sealers",
+            "image": "shopify:\/\/shop_images\/Rectangle_375_1.png",
+            "link": "shopify:\/\/collections"
+          }
+        },
+        "d34c41da-9152-4e38-af2a-a9e370b74219": {
+          "type": "box",
+          "settings": {
+            "icon_text": "Additives",
+            "image": "shopify:\/\/shop_images\/Rectangle_376.png",
+            "link": "shopify:\/\/collections"
+          }
+        }
+      },
+      "block_order": [
+        "99151f2f-de4b-4b01-9fa6-04a0a5665edd",
+        "d8d56d58-9ff7-47cc-8cbd-509b1a357158",
+        "cbde1b94-8f32-4539-b38d-2544fdb7ac90",
+        "7cd82b96-6dda-4ede-8420-d695bbf085c0",
+        "41e4fb74-735d-4ea3-8e8a-2c568270436d",
+        "d34c41da-9152-4e38-af2a-a9e370b74219"
+      ],
+      "settings": {
+        "shape1": "shopify:\/\/shop_images\/Group_1268.svg",
+        "shape2": "shopify:\/\/shop_images\/Group_711.svg",
+        "text_align": "center",
+        "color": "#000000",
+        "background": "",
+        "padding_top": 104,
+        "padding_bottom": 22,
+        "padding_top_m": 64,
+        "padding_bottom_m": 68
+      }
+    },
+    "ec61dfc9-0d76-434f-b221-c670672400a3": {
+      "type": "need-help",
+      "blocks": {
+        "18bd4870-c12b-4c1b-befe-a0dd7fa19c1c": {
+          "type": "title",
+          "settings": {
+            "title": "Need help finding a product?"
+          }
+        },
+        "545db3cc-f8b4-4a1e-9f95-c33a23bac89a": {
+          "type": "info",
+          "settings": {
+            "info": "<p>We understand how important it is finding the right product, so whether you're a business or a first time painter, We've made the best possible product finder to find the right product.<\/p>"
+          }
+        },
+        "4db2340e-a073-4338-a131-3778a5a60b23": {
+          "type": "box",
+          "settings": {
+            "box_title": "Bathroom paint",
+            "image": "shopify:\/\/shop_images\/Rectangle_375_97a699c1-04ac-4942-85fa-872cdb8c39f1.png",
+            "link": "shopify:\/\/collections\/bathroom-paint"
+          }
+        },
+        "4d588133-513a-40e1-8c2d-0e91dd409f70": {
+          "type": "box",
+          "settings": {
+            "box_title": "Cupboard paint",
+            "image": "shopify:\/\/shop_images\/Rectangle_375_1_b694e2f0-b140-452d-becb-8c5ec6ddf78e.png",
+            "link": "shopify:\/\/collections\/classic-grey"
+          }
+        },
+        "1e78ad00-7e1c-4b91-a845-335e3afa26ab": {
+          "type": "box",
+          "settings": {
+            "box_title": "Chalkboard paint",
+            "image": "shopify:\/\/shop_images\/Rectangle_375_2.png",
+            "link": "shopify:\/\/collections\/chalkboard-paint"
+          }
+        },
+        "378acc80-d471-4dd2-9c97-560e91d611bd": {
+          "type": "box",
+          "settings": {
+            "box_title": "Garden paint",
+            "image": "shopify:\/\/shop_images\/Rectangle_375_3.png",
+            "link": "shopify:\/\/collections\/garden-paint"
+          }
+        },
+        "1d6c1de2-bca9-4ef3-95fb-f5abe789fb22": {
+          "type": "box",
+          "settings": {
+            "box_title": "Masonry paint",
+            "image": "shopify:\/\/shop_images\/Rectangle_375_4.png",
+            "link": "shopify:\/\/collections\/masonry"
+          }
+        },
+        "310a36c8-4376-4c49-b417-8e2d86c7b292": {
+          "type": "box",
+          "settings": {
+            "box_title": "Bathroom paint",
+            "image": "shopify:\/\/shop_images\/Rectangle_375_2.png",
+            "link": "shopify:\/\/collections\/bathroom-paint"
+          }
+        },
+        "aab2f3b7-112a-499e-be76-0bc7304db60d": {
+          "type": "box",
+          "settings": {
+            "box_title": "Cupboard paint",
+            "image": "shopify:\/\/shop_images\/Rectangle_375_4.png",
+            "link": "shopify:\/\/collections\/classic-grey"
+          }
+        },
+        "ccf40163-7995-4d33-ae68-e6ab6ad995ce": {
+          "type": "box",
+          "settings": {
+            "box_title": "Chalkboard paint",
+            "image": "shopify:\/\/shop_images\/Rectangle_375_97a699c1-04ac-4942-85fa-872cdb8c39f1.png",
+            "link": "shopify:\/\/collections\/chalkboard-paint"
+          }
+        },
+        "7ffacf23-2d86-4a2f-af18-3b7c433fc39b": {
+          "type": "box",
+          "settings": {
+            "box_title": "Garden paint",
+            "image": "shopify:\/\/shop_images\/Rectangle_375_5.png",
+            "link": "shopify:\/\/collections\/garden-paint"
+          }
+        },
+        "afbb6a6f-1019-4214-b5bf-2a934d8116ad": {
+          "type": "box",
+          "settings": {
+            "box_title": "Masonry paint",
+            "image": "shopify:\/\/shop_images\/Rectangle_375_3.png",
+            "link": "shopify:\/\/collections\/masonry"
+          }
+        }
+      },
+      "block_order": [
+        "18bd4870-c12b-4c1b-befe-a0dd7fa19c1c",
+        "545db3cc-f8b4-4a1e-9f95-c33a23bac89a",
+        "4db2340e-a073-4338-a131-3778a5a60b23",
+        "4d588133-513a-40e1-8c2d-0e91dd409f70",
+        "1e78ad00-7e1c-4b91-a845-335e3afa26ab",
+        "378acc80-d471-4dd2-9c97-560e91d611bd",
+        "1d6c1de2-bca9-4ef3-95fb-f5abe789fb22",
+        "310a36c8-4376-4c49-b417-8e2d86c7b292",
+        "aab2f3b7-112a-499e-be76-0bc7304db60d",
+        "ccf40163-7995-4d33-ae68-e6ab6ad995ce",
+        "7ffacf23-2d86-4a2f-af18-3b7c433fc39b",
+        "afbb6a6f-1019-4214-b5bf-2a934d8116ad"
+      ],
+      "settings": {
+        "text_align": "center",
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "padding_top_m": 48,
+        "padding_bottom_m": 48,
+        "box_border_radius": 30
+      }
+    },
+    "f9adb98c-2c4e-4f41-b1f0-e516677dd540": {
+      "type": "paint-slider",
+      "blocks": {
+        "template--16774668058860__f9adb98c-2c4e-4f41-b1f0-e516677dd540-featured-image-1": {
+          "type": "featured-image",
+          "settings": {
+            "title": "Image with text overlay",
+            "content": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.<\/p>",
+            "text_alignment": "center",
+            "color": "#ffffff",
+            "button_text": "",
+            "button_link": "",
+            "btn_text_color": "#000000",
+            "btn_bg_color": "#ffffff",
+            "show_image_overlay": false
+          }
+        },
+        "template--16774668058860__f9adb98c-2c4e-4f41-b1f0-e516677dd540-room-image-1": {
+          "type": "room-image",
+          "settings": {
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16774668058860__f9adb98c-2c4e-4f41-b1f0-e516677dd540-featured-image-1",
+        "template--16774668058860__f9adb98c-2c4e-4f41-b1f0-e516677dd540-room-image-1"
+      ],
+      "settings": {
+        "heading": "Pick your perfect palette",
+        "description": "We understand how important it is finding the right product, so whether you're a business or a first time painter, We've made the best possible product finder to find the right product.",
+        "stacked": true,
+        "autoplay": true,
+        "colors": "{ \"category\": \"Neutrals\", \"name\": \"White\", \"color\": \"#FFFFFF\" },\n  { \"category\": \"Neutrals\", \"name\": \"Ultra White\", \"color\": \"#F7FBFF\" },\n  { \"category\": \"Neutrals\", \"name\": \"Shining White\", \"color\": \"#FCFCFC\" },\n  { \"category\": \"Neutrals\", \"name\": \"Signal White\", \"color\": \"#E5E5E5\" },\n  { \"category\": \"Neutrals\", \"name\": \"Light Grey\", \"color\": \"#EEEEEE\" },\n  { \"category\": \"Neutrals\", \"name\": \"Dove Grey\", \"color\": \"#C9C9C9\" },\n  { \"category\": \"Neutrals\", \"name\": \"Pigeon Grey\", \"color\": \"#CBCBCB\" },\n  { \"category\": \"Neutrals\", \"name\": \"Slate Grey\", \"color\": \"#BDC6CA\" },\n  { \"category\": \"Neutrals\", \"name\": \"Classic Grey\", \"color\": \"#4E5253\" },\n  { \"category\": \"Neutrals\", \"name\": \"Equinox\", \"color\": \"#53575A\" },\n  { \"category\": \"Neutrals\", \"name\": \"Jet Black\", \"color\": \"#0D0D0D\" },\n  { \"category\": \"Neutrals\", \"name\": \"Black\", \"color\": \"#221E1F\" },\n\n\n \n\n\n  { \"category\": \"Browns\", \"name\": \"Soft Almond\", \"color\": \"#C99663\" },\n  { \"category\": \"Browns\", \"name\": \"Sandstone\", \"color\": \"#B8A78B\" },\n  { \"category\": \"Browns\", \"name\": \"Moroccan Sand\", \"color\": \"#BCA78C\" },\n   \n  { \"category\": \"Browns\", \"name\": \"Terracota\", \"color\": \"#E2725B\" },\n  { \"category\": \"Browns\", \"name\": \"Winter Racing Green\", \"color\": \"#082E2B\" },\n  { \"category\": \"Browns\", \"name\": \"Dark Mud Brown\", \"color\": \"#463428\" },\n  { \"category\": \"Browns\", \"name\": \"Red Mud Brown\", \"color\": \"#672B17\" },\n  { \"category\": \"Browns\", \"name\": \"Brown\", \"color\": \"#463428\" },\n  { \"category\": \"Browns\", \"name\": \"Leaf Brown\", \"color\": \"#5D3521\" },\n  { \"category\": \"Browns\", \"name\": \"Light Brown\", \"color\": \"#D5964E\" },\n  { \"category\": \"Browns\", \"name\": \"Truffle\", \"color\": \"#A0644B\" },\n  { \"category\": \"Browns\", \"name\": \"Rustic Rich Red\", \"color\": \"#791B08\" },\n  { \"category\": \"Browns\", \"name\": \"Canyon\", \"color\": \"#9C4432\" },\n  { \"category\": \"Browns\", \"name\": \"Dark Brown\", \"color\": \"#463428\" },\n  \n\n\n  { \"category\": \"Reds\", \"name\": \"Red\", \"color\": \"#7E321D\" },\n  { \"category\": \"Reds\", \"name\": \"Rustic Red\", \"color\": \"#922312\" },\n  { \"category\": \"Reds\", \"name\": \"Red Brick\", \"color\": \"#9C4331\" },\n  { \"category\": \"Reds\", \"name\": \"Rich Red\", \"color\": \"#7E321D\" },\n  { \"category\": \"Reds\", \"name\": \"Bright Autumn\", \"color\": \"#C25F45\" },\n  { \"category\": \"Reds\", \"name\": \"Red Tile\", \"color\": \"#A73E24\" },\n\n\n  { \"category\": \"Oranges\", \"name\": \"Gentle Rose\", \"color\": \"#F9E7E6\" },\n   { \"category\": \"Oranges\", \"name\": \"Terracota\", \"color\": \"#E2725B\" },\n  { \"category\": \"Oranges\", \"name\": \"Terracotta\", \"color\": \"#C15E43\" },\n\n  { \"category\": \"Oranges\", \"name\": \"Spanish Sands\", \"color\": \"#E8B275\" },\n  { \"category\": \"Oranges\", \"name\": \"Lemon Spirit\", \"color\": \"#FFF5C2\" },\n  { \"category\": \"Oranges\", \"name\": \"Lemon Pie\", \"color\": \"#FCEBA1\" },\n  { \"category\": \"Oranges\", \"name\": \"Bright Lemon\", \"color\": \"#FFE78F\" },\n\n\n  { \"category\": \"Yellows\", \"name\": \"Morning Light\", \"color\": \"#FEF3E4\" },\n  { \"category\": \"Yellows\", \"name\": \"London's Magnolia\", \"color\": \"#FFEED2\" },\n  { \"category\": \"Yellows\", \"name\": \"Traffic Yellow\", \"color\": \"#FFFF00\" },\n  { \"category\": \"Yellows\", \"name\": \"Light Yellow\", \"color\": \"#FFF3B6\" },\n  { \"category\": \"Yellows\", \"name\": \"Ivory\", \"color\": \"#FBF7EC\" },\n  { \"category\": \"Yellows\", \"name\": \"Trench Coat\", \"color\": \"#F5DEB8\" },\n  { \"category\": \"Yellows\", \"name\": \"Magnolia\", \"color\": \"#FEE6D1\" },\n  \n\n\n  { \"category\": \"Greens\", \"name\": \"Racing Green\", \"color\": \"#2A4823\" },\n  { \"category\": \"Greens\", \"name\": \"Winter Green\", \"color\": \"#455E2D\" },\n  { \"category\": \"Greens\", \"name\": \"Sage Green\", \"color\": \"#C5CEB0\" },\n  { \"category\": \"Greens\", \"name\": \"Green Drop\", \"color\": \"#F4FDF1\" },\n  { \"category\": \"Greens\", \"name\": \"Olive Green\", \"color\": \"#809745\" },\n  { \"category\": \"Greens\", \"name\": \"The Garden\", \"color\": \"#D3F5DC\" },\n  { \"category\": \"Greens\", \"name\": \"Mint Green\", \"color\": \"#D3F5DD\" },\n  { \"category\": \"Greens\", \"name\": \"Green\", \"color\": \"#2A4823\" },\n  { \"category\": \"Greens\", \"name\": \"Light Green\", \"color\": \"#CDEBC7\" },\n\n\n  { \"category\": \"Blues\", \"name\": \"Classic Anthracite Grey\", \"color\": \"#474B4F\" },\n  { \"category\": \"Blues\", \"name\": \"Greek Blue\", \"color\": \"#1C6D8D\" },\n  { \"category\": \"Blues\", \"name\": \"Clouded Sky\", \"color\": \"#DFE7EB\" },\n  { \"category\": \"Blues\", \"name\": \"Milky Blue\", \"color\": \"#CFEEF3\" },\n  { \"category\": \"Blues\", \"name\": \"Ocean Blue\", \"color\": \"#58AEC8\" },\n  { \"category\": \"Blues\", \"name\": \"Sky Blue\", \"color\": \"#0A708D\" },\n  { \"category\": \"Blues\", \"name\": \"Light Blue\", \"color\": \"#CDEDF2\" },\n  { \"category\": \"Blues\", \"name\": \"Marina Blue\", \"color\": \"#086F8C\" },\n\n\n  { \"category\": \"Pinks\", \"name\": \"Baby Pink\", \"color\": \"#F6E6E3\" }",
+        "paint_gap": 15,
+        "calculator_title": "How much paint do you need?",
+        "calculator_title_color": "#000000",
+        "calculator_text": "<h3>FAQs <\/h3><h4>Do I need primer?<\/h4><p>For painting on fresh plaster or other bare surfaces, use a primer or create a mist coat with the paint by adding 50% water.<\/p><h4>How many coats of paint do I need?<\/h4><p>Generally at least two coats of interior paint are needed, but you might need more if you're painting over a dark wall. Our paint calculator assumes that a gallon covers 350 sq ft. using two coats of paint.<\/p>",
+        "calculator_text_color": "#000000",
+        "calculator_bg_color": "#ffffff"
+      }
+    },
+    "2ef174a9-f25b-483c-ab5d-f899597b26f6": {
+      "type": "home-promo-icons",
+      "blocks": {
+        "5ec69143-37d8-402d-aa4a-bb8ae901253f": {
+          "type": "icon",
+          "settings": {
+            "icon_text": "PAINT CALCULATER",
+            "icon_sub": "FREE COLOUR VISULISER TOOL",
+            "icon_svg": "<svg width=\"44\" height=\"43\" viewbox=\"0 0 44 43\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M36.1194 0H7.8806C3.54627 0 0 3.5005 0 7.77889V35.2211C0 39.4995 3.54627 43 7.8806 43H36.1194C40.4537 43 44 39.4995 44 35.2211V7.77889C44 3.5005 40.4537 0 36.1194 0ZM41.3294 22.8181V35.2211C41.3294 38.0734 39.009 40.3638 36.1194 40.3638H23.3353V22.8181H41.3294ZM41.3294 7.77889V20.1819H23.3353V2.63618H36.1194C39.009 2.63618 41.3294 4.92663 41.3294 7.77889ZM20.6647 22.8181V40.3638H7.8806C4.99104 40.3638 2.67065 38.0734 2.67065 35.2211V22.8181H20.6647ZM20.6647 2.63618V20.1819H2.67065V7.77889C2.67065 4.92663 4.99104 2.63618 7.8806 2.63618H20.6647Z\" fill=\"#00C172\"><\/path>\n<path d=\"M6.87354 13.5266H10.7701V17.3728H13.4407V13.5266H17.3372V10.8904H13.4407V7.0874H10.7701V10.8904H6.87354V13.5266Z\" fill=\"#00C172\"><\/path>\n<path d=\"M34.9373 7.64941L32.2228 10.372L29.4646 7.64941L27.582 9.50771L30.3402 12.2303L27.582 14.9529L29.4646 16.8112L32.2228 14.0886L34.9373 16.8112L36.8198 14.9529L34.1054 12.2303L36.8198 9.50771L34.9373 7.64941Z\" fill=\"#00C172\"><\/path>\n<path d=\"M16.812 30.2944H7.44287V32.9306H16.812V30.2944Z\" fill=\"#00C172\"><\/path>\n<path d=\"M36.9075 28.5225H27.5383V31.1586H36.9075V28.5225Z\" fill=\"#00C172\"><\/path>\n<path d=\"M36.9075 32.1094H27.5383V34.7456H36.9075V32.1094Z\" fill=\"#00C172\"><\/path>\n<\/svg>"
+          }
+        },
+        "ce980c01-3eee-4c29-981a-56957652cfac": {
+          "type": "icon",
+          "settings": {
+            "icon_text": "DO I NEED A PRIMER?",
+            "icon_sub": "FREE COLOUR VISULISER TOOL",
+            "icon_svg": "<svg width=\"47\" height=\"50\" viewbox=\"0 0 47 50\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M46.2963 5.08475C46.2963 2.20339 44.0917 0 41.2088 0C39.8521 0 38.4955 0.508475 37.6475 1.52542L25.6071 13.5593L23.2329 11.1864C20.6892 8.47458 16.28 8.47458 13.7363 11.0169L10.175 14.7458C9.49668 15.4237 9.49668 16.4407 10.175 17.1186L0.50875 26.7797C-0.169583 27.4576 -0.169583 28.4746 0.50875 29.1525L12.5492 41.1864C13.0579 41.6949 13.9058 41.8644 14.5842 41.5254C14.245 42.2034 14.4146 42.8814 14.9233 43.3898L17.2975 45.7627C17.9759 46.4407 18.9934 46.4407 19.6717 45.7627L29.3379 36.1017C30.0163 36.7797 31.0338 36.7797 31.7121 36.1017L35.2734 32.5424C37.9867 29.8305 37.9867 25.5932 35.2734 22.8814L32.8992 20.5085L44.9396 8.47458C45.7875 7.79661 46.2963 6.44068 46.2963 5.08475ZM18.4846 42.2034L18.1454 41.8644L20.0109 38.1356C20.35 37.2881 20.0109 36.2712 19.1629 35.9322C18.6542 35.7627 18.1454 35.7627 17.6367 35.9322L13.9058 37.7966L7.63126 31.5254L8.81834 30.339C9.32709 29.4915 8.98793 28.4746 8.30959 27.9661C7.80084 27.6271 7.12251 27.6271 6.44417 27.9661L5.25709 29.1525L4.07 27.9661L12.3796 19.4915L22.0459 29.1525L20.8588 30.339C20.1804 31.0169 20.0109 32.0339 20.6892 32.7119C21.3675 33.3898 22.385 33.5593 23.0634 32.8814L23.2329 32.7119L24.42 31.5254L26.7942 33.8983L18.4846 42.2034ZM33.9167 27.7966C33.9167 28.6441 33.5775 29.4915 32.8992 30.1695L30.525 32.7119L13.7363 15.9322L16.1104 13.5593C17.4671 12.2034 19.5021 12.2034 20.8588 13.5593L32.8992 25.5932C33.5775 26.1017 33.9167 26.9492 33.9167 27.7966ZM42.3959 6.27119L30.525 18.3051L28.1509 15.9322L40.1913 3.89831C40.8696 3.22034 41.8871 3.22034 42.5655 3.89831C43.0742 4.57627 43.0742 5.59322 42.3959 6.27119Z\" fill=\"#00C172\"><\/path>\n<path d=\"M28.6597 50.0002H21.8764C20.8589 50.0002 20.1805 49.3222 20.1805 48.3053C20.1805 47.2883 20.8589 46.6104 21.8764 46.6104H28.6597C29.6772 46.6104 30.3556 47.2883 30.3556 48.3053C30.3556 49.3222 29.5076 50.0002 28.6597 50.0002Z\" fill=\"#00C172\"><\/path>\n<path d=\"M33.7471 50.0002C34.6837 50.0002 35.4429 49.2413 35.4429 48.3053C35.4429 47.3692 34.6837 46.6104 33.7471 46.6104C32.8105 46.6104 32.0513 47.3692 32.0513 48.3053C32.0513 49.2413 32.8105 50.0002 33.7471 50.0002Z\" fill=\"#00C172\"><\/path>\n<\/svg>"
+          }
+        },
+        "556880aa-8468-49cb-bbda-739621fec02b": {
+          "type": "icon",
+          "settings": {
+            "icon_text": "FAQ",
+            "icon_sub": "FREE COLOUR VISULISER TOOL",
+            "icon_svg": "<svg width=\"46\" height=\"42\" viewbox=\"0 0 46 42\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M43.1481 0H1.85185C1.2963 0 0.925926 0.188341 0.555556 0.565022C0.185185 0.941704 0 1.31839 0 1.69507V32.2063C0 32.7713 0.185185 33.148 0.555556 33.5247C0.925926 33.9013 1.2963 34.0897 1.85185 34.0897H14.0741L21.2963 41.435C21.6667 41.8117 22.037 42 22.5926 42C22.963 42 23.3333 41.8117 23.7037 41.6233L23.8889 41.435L31.1111 34.0897H43.3333C43.8889 34.0897 44.2593 33.9013 44.6296 33.5247C45 33.148 45.1852 32.7713 45.1852 32.2063V1.69507C45 0.753363 44.2593 0 43.1481 0ZM41.4815 3.57848V30.5112H30.3704C29.8148 30.5112 29.4444 30.6996 29.0741 31.0762L22.4074 37.6682L15.9259 31.0762C15.5556 30.6996 15.1852 30.5112 14.6296 30.5112H3.51852V3.57848H41.4815Z\" fill=\"#00C172\"><\/path>\n<\/svg>"
+          }
+        }
+      },
+      "block_order": [
+        "5ec69143-37d8-402d-aa4a-bb8ae901253f",
+        "ce980c01-3eee-4c29-981a-56957652cfac",
+        "556880aa-8468-49cb-bbda-739621fec02b"
+      ],
+      "settings": {
+        "color": "#ffffff",
+        "icon_color": "#00c172",
+        "background": "#000000",
+        "padding_top": 34,
+        "padding_bottom": 14,
+        "padding_top_m": 20,
+        "padding_bottom_m": 10
+      }
+    },
+    "040d35d9-8c8c-4999-93b1-e51ee811783e": {
+      "type": "brand-with-products",
+      "blocks": {
+        "8cc40938-dba8-4c02-a438-04650a70fc4e": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1262.png",
+            "collection": "anti-damp"
+          }
+        },
+        "0bc4b3a3-8979-4dbb-a6f9-a2c40df9a060": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1261_b6ecfcc3-f539-41b1-9475-02bf2137f58e.png",
+            "collection": "anti-damp"
+          }
+        },
+        "3f199fb0-8e99-4207-acef-088d423e862f": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1263.png",
+            "collection": "beige"
+          }
+        },
+        "e8deba89-f387-46c9-9352-cfac74a09dcd": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1264.png",
+            "collection": "brilliant-white"
+          }
+        },
+        "f0fc9c19-a735-4ed2-910b-c2d419f8fe78": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1265.png",
+            "collection": "brilliant-white"
+          }
+        },
+        "f94c4c3c-d8fd-4c4f-8753-b66d892c2b33": {
+          "type": "collection",
+          "settings": {
+            "collection": "chalkboard-paint"
+          }
+        },
+        "cf09ba8d-00c4-4574-9cf5-56df02adfebc": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1263.png",
+            "collection": "fungicidal-wash"
+          }
+        },
+        "0b341a60-54b4-4221-b456-31e1b5cc08d6": {
+          "type": "image_icon",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1.svg",
+            "text": "HIGH-GRADE   UK IN HOUSE quality"
+          }
+        },
+        "54d54bc3-9786-4e0a-8587-b6785dcf7541": {
+          "type": "image_icon",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group.svg",
+            "text": "HIGH-GRADE   UK IN HOUSE quality"
+          }
+        },
+        "262d5d82-ebdd-4cde-9254-6599a40e60b9": {
+          "type": "image_icon",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_2.svg",
+            "text": "HIGH-GRADE   UK IN HOUSE quality"
+          }
+        },
+        "809bbb82-847b-4303-9afd-5772e8e321d7": {
+          "type": "image_icon",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_3.svg",
+            "text": "HIGH-GRADE   UK IN HOUSE quality"
+          }
+        },
+        "310d6bb6-1921-4ec6-9d5c-e7daad859aa5": {
+          "type": "image_icon",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_4.svg",
+            "text": "HIGH-GRADEUK IN HOUSE quality"
+          }
+        }
+      },
+      "block_order": [
+        "8cc40938-dba8-4c02-a438-04650a70fc4e",
+        "0bc4b3a3-8979-4dbb-a6f9-a2c40df9a060",
+        "3f199fb0-8e99-4207-acef-088d423e862f",
+        "e8deba89-f387-46c9-9352-cfac74a09dcd",
+        "f0fc9c19-a735-4ed2-910b-c2d419f8fe78",
+        "f94c4c3c-d8fd-4c4f-8753-b66d892c2b33",
+        "cf09ba8d-00c4-4574-9cf5-56df02adfebc",
+        "0b341a60-54b4-4221-b456-31e1b5cc08d6",
+        "54d54bc3-9786-4e0a-8587-b6785dcf7541",
+        "262d5d82-ebdd-4cde-9254-6599a40e60b9",
+        "809bbb82-847b-4303-9afd-5772e8e321d7",
+        "310d6bb6-1921-4ec6-9d5c-e7daad859aa5"
+      ],
+      "settings": {
+        "heading": "Shop only Scientifically Proven Brands",
+        "description": "We understand how important it is finding the right product, so whether you're a business or a first time painter, We've made the best possible product finder to find the right product.",
+        "products_limit": 12,
+        "image_ratio": "square",
+        "image_fit": "contain",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_button": true,
+        "show_desc": false,
+        "show_sku": false,
+        "show_color_swatch": false
+      }
+    },
+    "4af98787-571f-433a-aa6c-be168b416e71": {
+      "type": "home-newsletter",
+      "blocks": {
+        "5ef7d2f4-494d-4aa2-acd2-d8fd153b030a": {
+          "type": "heading",
+          "settings": {
+            "heading": "Let’s keep in touch!"
+          }
+        },
+        "b8ee6e26-8475-4626-95a7-0894b1fb3ff6": {
+          "type": "info",
+          "settings": {
+            "info": "Subscribe to our weekly newsletter and receive exclusive offers on products you love!"
+          }
+        },
+        "2b889c2e-6a2e-46af-b54f-177ee8f9266a": {
+          "type": "newsletter",
+          "settings": {
+            "button": "SUBSCRIBE",
+            "placeholder": "YOUR EMAIL"
+          }
+        }
+      },
+      "block_order": [
+        "5ef7d2f4-494d-4aa2-acd2-d8fd153b030a",
+        "b8ee6e26-8475-4626-95a7-0894b1fb3ff6",
+        "2b889c2e-6a2e-46af-b54f-177ee8f9266a"
+      ],
+      "settings": {
+        "color": "#ffffff",
+        "background": "#ff003d",
+        "padding_top": 34,
+        "padding_bottom": 12,
+        "padding_top_m": 20,
+        "padding_bottom_m": 20
+      }
+    },
+    "47c93edf-8633-4c43-922f-05ab98ef17ba": {
+      "type": "hot-deals",
+      "blocks": {
+        "1bc20cf1-7d4b-411f-80bf-1c410dc97ccb": {
+          "type": "promo_card",
+          "settings": {
+            "heading": "New Collection",
+            "text": "",
+            "promo_code_label": "PROMO CODE",
+            "promo_code": "PAINT23",
+            "vald_date": "Valid through 31st Dec, 2023",
+            "get_text_label": "Get now",
+            "offer_price": "<h2>£35<\/h2><p>OFF<\/p>"
+          }
+        },
+        "203c35f0-4e6f-42f5-b979-04208b164792": {
+          "type": "promo_card",
+          "settings": {
+            "heading": "New Collection",
+            "text": "<p>We understand how important it is finding the right product<\/p>",
+            "promo_code_label": "",
+            "promo_code": "",
+            "vald_date": "Valid through 31st Dec, 2023",
+            "get_text_label": "Get now",
+            "offer_price": "<h2>£35<\/h2><p>OFF<\/p>"
+          }
+        },
+        "845fc54f-43c9-432c-8495-3f93700a4db9": {
+          "type": "promo_card",
+          "settings": {
+            "heading": "New Collection",
+            "text": "<p>We understand how important it is finding the right product<\/p>",
+            "promo_code_label": "",
+            "promo_code": "",
+            "vald_date": "Valid through 31st Dec, 2023",
+            "get_text_label": "Get now",
+            "offer_price": "<h2>£35<\/h2><p>OFF<\/p>"
+          }
+        },
+        "a2eec33e-da1b-408a-947e-23e5ff680f5f": {
+          "type": "promo_card",
+          "settings": {
+            "heading": "New Collection",
+            "text": "<p>We understand how important it is finding the right product<\/p>",
+            "promo_code_label": "",
+            "promo_code": "",
+            "vald_date": "Valid through 31st Dec, 2023",
+            "get_text_label": "Get now",
+            "offer_price": "<h2>£35<\/h2><p>OFF<\/p>"
+          }
+        },
+        "943a0006-512f-4757-ae69-8038ddd1f858": {
+          "type": "product",
+          "settings": {
+            "active": "#ff003d",
+            "image": "shopify:\/\/shop_images\/734294472.png",
+            "tag_icon": "shopify:\/\/shop_images\/Group_10.svg",
+            "choose_product": "hqc-anti-damp-paint"
+          }
+        },
+        "eaec2cab-2dfb-470f-8112-a96cd3bf5c86": {
+          "type": "product",
+          "settings": {
+            "active": "#ffffff",
+            "image": "shopify:\/\/shop_images\/223.png",
+            "tag_icon": "shopify:\/\/shop_images\/Group_11.svg",
+            "choose_product": "hqc-anti-mould-insulating-paint"
+          }
+        }
+      },
+      "block_order": [
+        "1bc20cf1-7d4b-411f-80bf-1c410dc97ccb",
+        "203c35f0-4e6f-42f5-b979-04208b164792",
+        "845fc54f-43c9-432c-8495-3f93700a4db9",
+        "a2eec33e-da1b-408a-947e-23e5ff680f5f",
+        "943a0006-512f-4757-ae69-8038ddd1f858",
+        "eaec2cab-2dfb-470f-8112-a96cd3bf5c86"
+      ],
+      "settings": {
+        "heading": "Hot Deals of the Month",
+        "text": "<p>We understand how important it is finding the right product, so whether you're a business or a first time painter, We've made the best possible product finder to find the right product. <\/p>",
+        "view_btn_label": "Veiw All",
+        "view_url": "shopify:\/\/collections\/all",
+        "padding_top": 70,
+        "padding_bottom": 70,
+        "padding_top_m": 48,
+        "padding_bottom_m": 48
+      }
+    },
+    "c3732cf9-d46a-475d-ab74-8157b98ec0cb": {
+      "type": "outlet-tutorial",
+      "blocks": {
+        "b41ab516-6f21-4d74-a1fd-0d6217afd93a": {
+          "type": "blog",
+          "settings": {
+            "heading": "How To Paint",
+            "choose_blog": "how-to-paint",
+            "blogs_limit": 12
+          }
+        },
+        "1649a7f2-4813-4026-8cf8-94df6a54c474": {
+          "type": "blog",
+          "settings": {
+            "heading": "Emulsion Paints",
+            "choose_blog": "emulsion-paints",
+            "blogs_limit": 12
+          }
+        },
+        "d01b5b0d-460d-4ed6-ad21-c93b4290d953": {
+          "type": "blog",
+          "settings": {
+            "heading": "Masonry Paints",
+            "choose_blog": "masonry-paints",
+            "blogs_limit": 12
+          }
+        },
+        "57ccaec8-74c5-4d30-a4dc-d8d20f0071e3": {
+          "type": "blog",
+          "settings": {
+            "heading": "Matt Paints",
+            "choose_blog": "matt-paints",
+            "blogs_limit": 12
+          }
+        },
+        "e6109082-0523-4736-b144-8a41deebbba5": {
+          "type": "blog",
+          "settings": {
+            "heading": "Masonry Paints",
+            "choose_blog": "masonry-paints",
+            "blogs_limit": 12
+          }
+        }
+      },
+      "block_order": [
+        "b41ab516-6f21-4d74-a1fd-0d6217afd93a",
+        "1649a7f2-4813-4026-8cf8-94df6a54c474",
+        "d01b5b0d-460d-4ed6-ad21-c93b4290d953",
+        "57ccaec8-74c5-4d30-a4dc-d8d20f0071e3",
+        "e6109082-0523-4736-b144-8a41deebbba5"
+      ],
+      "settings": {
+        "heading": "Paint Outlet Tutorials",
+        "text": "<p>We understand how important it is finding the right product, so whether you're a business or a first time painter, We've made the best possible product finder to find the right product.<\/p>",
+        "padding_top": 70,
+        "padding_bottom": 70,
+        "padding_top_m": 48,
+        "padding_bottom_m": 48,
+        "btn_label": "View More",
+        "btn_url": ""
+      }
+    },
+    "70086c54-9cf7-497c-b5c1-30fcc6368102": {
+      "type": "landing-banner",
+      "blocks": {
+        "b78be22d-8ce6-4348-acf9-7bdf80d644f9": {
+          "type": "text",
+          "settings": {
+            "title": "We cut out the middlemen, saving up to 50% on the usual costs.",
+            "color": "#ffffff",
+            "bg_color": "#04217e",
+            "pos_x": 16,
+            "pos_y": 16
+          }
+        },
+        "30a0cbc8-03a2-469a-ba0b-bc1c6267ad1a": {
+          "type": "text",
+          "settings": {
+            "title": "Made to the highest quality for maximum performance",
+            "color": "#ffffff",
+            "bg_color": "#00c172",
+            "pos_x": 37,
+            "pos_y": 25
+          }
+        },
+        "d1b4c532-e8a9-48ab-b023-04305bf95366": {
+          "type": "text",
+          "settings": {
+            "title": "Made Fresh On Order, Direct From Supplier -Directly to your door",
+            "color": "#ffffff",
+            "bg_color": "#04217e",
+            "pos_x": 56,
+            "pos_y": 46
+          }
+        },
+        "a7445b4c-50f3-4c33-8449-dc18fbcbf3ed": {
+          "type": "text",
+          "settings": {
+            "title": "Saves the world - Cuts Huge C02 Emissions & Paint waste",
+            "color": "#ffffff",
+            "bg_color": "#ff003d",
+            "pos_x": 18,
+            "pos_y": 86
+          }
+        },
+        "e5f3955d-bbc1-42d9-9809-5ecabb337055": {
+          "type": "text",
+          "settings": {
+            "title": "Happy Customer, Happy Earth 🌏",
+            "color": "#ffffff",
+            "bg_color": "#00c172",
+            "pos_x": 51,
+            "pos_y": 82
+          }
+        }
+      },
+      "block_order": [
+        "b78be22d-8ce6-4348-acf9-7bdf80d644f9",
+        "30a0cbc8-03a2-469a-ba0b-bc1c6267ad1a",
+        "d1b4c532-e8a9-48ab-b023-04305bf95366",
+        "a7445b4c-50f3-4c33-8449-dc18fbcbf3ed",
+        "e5f3955d-bbc1-42d9-9809-5ecabb337055"
+      ],
+      "settings": {
+        "top_text": "",
+        "title": "Welcome to Paint Outlet",
+        "sub_title": "WE’RE REVOLUTIONIZING THE PAINT &DECORATING INDUSTRY",
+        "btn": "SHOP NOW",
+        "btn_link": "#",
+        "btn_color": "#ffffff",
+        "btn_bg_color": "#00c172",
+        "btn_bg_hover_color": "#ff003d",
+        "img": "shopify:\/\/shop_images\/Group_1261_0d1866f0-da21-485a-b298-6502556785f0.png",
+        "color": "#ffffff",
+        "background_color": "linear-gradient(180deg, rgba(2, 50, 217, 1), rgba(0, 41, 187, 1) 21.46%, rgba(5, 32, 122, 1) 83.33%)",
+        "padding_top": 70,
+        "padding_bottom": 70,
+        "padding_top_m": 48,
+        "padding_bottom_m": 48
+      }
+    },
+    "custom_marquee_text_6kxwcE": {
+      "type": "custom-marquee-text",
+      "blocks": {
+        "text_wUKtcn": {
+          "type": "text",
+          "settings": {
+            "title": "We’re Revolutionising the Paint Industry"
+          }
+        },
+        "text_6z8M4E": {
+          "type": "text",
+          "settings": {
+            "title": "We’re Revolutionising the Paint Industry"
+          }
+        }
+      },
+      "block_order": [
+        "text_wUKtcn",
+        "text_6z8M4E"
+      ],
+      "settings": {
+        "enable_slide": true,
+        "color": "#ffffff",
+        "background_color": "#00C172",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 14,
+        "padding_bottom": 14,
+        "margin_top-m": 0,
+        "margin_bottom-m": 0,
+        "padding_top_m": 8,
+        "padding_bottom_m": 8
+      }
+    },
+    "6d80e733-1017-4928-8d7c-589a3e00aeca": {
+      "type": "page-showcase",
+      "blocks": {
+        "1a28aac6-aad0-4eeb-bef8-45bdf497fab0": {
+          "type": "title",
+          "settings": {
+            "title": "See how you can be a part of the change"
+          }
+        },
+        "65d18bf9-2e7c-4a44-832c-e72954859f43": {
+          "type": "box",
+          "settings": {
+            "box_title": "About Us",
+            "box_subtitle": "Who we are",
+            "image": "shopify:\/\/shop_images\/Rectangle_375.png",
+            "link": "shopify:\/\/collections"
+          }
+        },
+        "a506bce3-49cc-4dca-8db9-a346fdb0282b": {
+          "type": "box",
+          "settings": {
+            "box_title": "Why shop at Paint Outlet",
+            "box_subtitle": "25 years of experience",
+            "image": "shopify:\/\/shop_images\/Rectangle_375_1_2b52d9e0-cddb-4a46-be96-cba9407e2b72.png",
+            "link": "shopify:\/\/collections"
+          }
+        },
+        "42b9f711-81e1-44de-9f39-ddfab86a8401": {
+          "type": "box",
+          "settings": {
+            "box_title": "How your product is crafted",
+            "box_subtitle": "Your product is in good hands",
+            "image": "shopify:\/\/shop_images\/Rectangle_375_2_bdc5aac0-0404-4f52-8533-82f80353b7eb.png",
+            "link": "shopify:\/\/collections"
+          }
+        },
+        "df2799cd-8089-4746-ab6f-aef23575f1ec": {
+          "type": "box",
+          "settings": {
+            "box_title": "Our vision",
+            "box_subtitle": "The problem of unreliable products",
+            "image": "shopify:\/\/shop_images\/Rectangle_375_4_8831e386-5623-4a04-b358-b6512a6b5167.png",
+            "link": "shopify:\/\/collections"
+          }
+        },
+        "57456b22-697d-4488-a8a4-af81d9ba14b5": {
+          "type": "box",
+          "settings": {
+            "box_title": "Earn",
+            "box_subtitle": "Influencer, Affiliate and Referral",
+            "image": "shopify:\/\/shop_images\/Rectangle_375_5_97352cc5-4046-454f-b98c-367b8bca6da4.png",
+            "link": "shopify:\/\/collections"
+          }
+        },
+        "6045f284-de9e-4ffd-9bee-efd8b65d0600": {
+          "type": "box",
+          "settings": {
+            "box_title": "Learn the biggest secrets in the paint industry",
+            "box_subtitle": "False paint economy",
+            "image": "shopify:\/\/shop_images\/Rectangle_375.png",
+            "link": "shopify:\/\/collections"
+          }
+        }
+      },
+      "block_order": [
+        "1a28aac6-aad0-4eeb-bef8-45bdf497fab0",
+        "65d18bf9-2e7c-4a44-832c-e72954859f43",
+        "a506bce3-49cc-4dca-8db9-a346fdb0282b",
+        "42b9f711-81e1-44de-9f39-ddfab86a8401",
+        "df2799cd-8089-4746-ab6f-aef23575f1ec",
+        "57456b22-697d-4488-a8a4-af81d9ba14b5",
+        "6045f284-de9e-4ffd-9bee-efd8b65d0600"
+      ],
+      "settings": {
+        "text_align": "center",
+        "color": "#000000",
+        "background": "",
+        "padding_top": 24,
+        "padding_bottom": 70,
+        "padding_top_m": 24,
+        "padding_bottom_m": 24
+      }
+    },
+    "851c34fc-d5f7-447a-b4e8-a83880481a6b": {
+      "type": "newsroom",
+      "blocks": {
+        "6fee0dc5-a62a-4e23-87b7-00df2f8bf4b1": {
+          "type": "blog",
+          "disabled": true,
+          "settings": {
+            "heading": "How To Paint",
+            "choose_blog": "how-to-paint",
+            "blogs_limit": 12
+          }
+        },
+        "a28da10b-a77b-4af5-80b7-2ed51b8a7c48": {
+          "type": "blog",
+          "disabled": true,
+          "settings": {
+            "heading": "energy crisis",
+            "choose_blog": "colour-ideas",
+            "blogs_limit": 12
+          }
+        },
+        "5268c7ea-b71f-47d4-9d25-167bfbd04894": {
+          "type": "blog",
+          "disabled": true,
+          "settings": {
+            "heading": "innovations",
+            "choose_blog": "masonry-paints",
+            "blogs_limit": 12
+          }
+        },
+        "488d1f0b-483e-48b4-a5af-8801cd6a73b5": {
+          "type": "blog",
+          "disabled": true,
+          "settings": {
+            "heading": "technologies",
+            "choose_blog": "insulation-paints",
+            "blogs_limit": 12
+          }
+        },
+        "911ec893-cd67-47c3-b48c-2ef762eba110": {
+          "type": "blog",
+          "disabled": true,
+          "settings": {
+            "heading": "solutions",
+            "choose_blog": "insulation-paints",
+            "blogs_limit": 12
+          }
+        },
+        "98711c68-fe63-467f-a45b-92c358dc843f": {
+          "type": "review",
+          "disabled": true,
+          "settings": {
+            "position": 2,
+            "image": "shopify:\/\/shop_images\/Rectangle_480.png",
+            "heading": "Antonio Gonzales",
+            "btn_label": "Expert review",
+            "btn_url": ""
+          }
+        },
+        "213013ff-5658-4f6a-87eb-4f83fb41fc04": {
+          "type": "author",
+          "disabled": true,
+          "settings": {
+            "position": 3,
+            "image": "shopify:\/\/shop_images\/Group_17e85b9b-4015-4e79-8a01-d6b3cd04de08.png",
+            "heading": "Become an author",
+            "text": "<p>We love to hear from those who use our paint in an industry context. Let’s hear what you’ve got to say<\/p>",
+            "btn_label": "Become an Author",
+            "btn_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "6fee0dc5-a62a-4e23-87b7-00df2f8bf4b1",
+        "a28da10b-a77b-4af5-80b7-2ed51b8a7c48",
+        "5268c7ea-b71f-47d4-9d25-167bfbd04894",
+        "488d1f0b-483e-48b4-a5af-8801cd6a73b5",
+        "911ec893-cd67-47c3-b48c-2ef762eba110",
+        "98711c68-fe63-467f-a45b-92c358dc843f",
+        "213013ff-5658-4f6a-87eb-4f83fb41fc04"
+      ],
+      "settings": {
+        "heading": "Paint Outlet \nNewsroom",
+        "text": "<p>Our team of experts don’t keep their breakthroughs to themselves. We share them with their customers!Check out our news and get in the know.<\/p>",
+        "padding_top": 48,
+        "padding_bottom": 0,
+        "padding_top_m": 52,
+        "padding_bottom_m": 0,
+        "btn_label": "SEE HOW WE IMPACT THE THE WORLD",
+        "btn_url": "shopify:\/\/pages\/press-room"
+      }
+    },
+    "6ee115c3-1c26-486c-9af9-b85fd0f2f393": {
+      "type": "join-movement",
+      "blocks": {
+        "d3505fcd-7659-47c4-a8a2-f1d7252fcfeb": {
+          "type": "title",
+          "settings": {
+            "title": "Join Our Movement"
+          }
+        },
+        "ef49d68f-6a06-4f45-b298-66c2caa9c757": {
+          "type": "button",
+          "settings": {
+            "btn": "learn more",
+            "link": "shopify:\/\/collections\/all",
+            "btn_style": "primary"
+          }
+        },
+        "0dab3ed1-b73a-469d-bfd6-52abe50ecf76": {
+          "type": "button",
+          "settings": {
+            "btn": "work with us",
+            "link": "shopify:\/\/collections",
+            "btn_style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "d3505fcd-7659-47c4-a8a2-f1d7252fcfeb",
+        "ef49d68f-6a06-4f45-b298-66c2caa9c757",
+        "0dab3ed1-b73a-469d-bfd6-52abe50ecf76"
+      ],
+      "settings": {
+        "text_align": "center",
+        "color": "#ffffff",
+        "background": "shopify:\/\/shop_images\/Rectangle_453.png",
+        "padding_top": 0,
+        "padding_bottom": 60,
+        "padding_top_m": 40,
+        "padding_bottom_m": 40
+      }
+    }
+  },
+  "order": [
+    "21fae0da-2e6b-4c06-8007-1e3b5611671a",
+    "498c70d6-9173-421d-97ba-7f8ecf923b95",
+    "0c640871-bf47-4977-a050-f00e0a62406a",
+    "99b2be3e-c000-4311-8065-f607f71f8ea6",
+    "ec61dfc9-0d76-434f-b221-c670672400a3",
+    "f9adb98c-2c4e-4f41-b1f0-e516677dd540",
+    "2ef174a9-f25b-483c-ab5d-f899597b26f6",
+    "040d35d9-8c8c-4999-93b1-e51ee811783e",
+    "4af98787-571f-433a-aa6c-be168b416e71",
+    "47c93edf-8633-4c43-922f-05ab98ef17ba",
+    "c3732cf9-d46a-475d-ab74-8157b98ec0cb",
+    "70086c54-9cf7-497c-b5c1-30fcc6368102",
+    "custom_marquee_text_6kxwcE",
+    "6d80e733-1017-4928-8d7c-589a3e00aeca",
+    "851c34fc-d5f7-447a-b4e8-a83880481a6b",
+    "6ee115c3-1c26-486c-9af9-b85fd0f2f393"
+  ]
+}

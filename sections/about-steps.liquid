@@ -1,0 +1,322 @@
+{{ 'section-about-steps.css' | asset_url | stylesheet_tag: preload: true }}
+{%- style -%}
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_m  }}px;
+      padding-bottom: {{ section.settings.padding_bottom_m }}px;
+      background: {{ section.settings.background_color }};
+    }
+    .section-{{ section.id }}-padding .about-steps-title h1,
+    .section-{{ section.id }}-padding .about-steps-sub_title p{
+        color: {{ section.settings.color }};
+    }
+    .section-{{ section.id }}-padding .about-steps-card {
+        background: {{ section.settings.card_bg }};
+    }
+    .section-{{ section.id }}-padding .about-steps-card .step-title h3,
+    .section-{{ section.id }}-padding .about-steps-card .step-info p{
+        color: {{ section.settings.card_text }};
+    }
+    .section-{{ section.id }}-padding .bottom-icon-card .icons-title h5{
+        color: {{ section.settings.icon_text }};
+    }
+    .section-{{ section.id }}-padding .about-steps-card .about-step-card-top .step-count span{
+        color: {{ section.settings.card_border }};
+    }
+    .section-{{ section.id }}-padding .about-steps-card .step-info{
+        border-color: {{ section.settings.card_border }};
+    }
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+{%- endstyle -%}
+<div 
+class="about-steps-wrapper section-{{ section.id }}-padding" 
+id="section-{{ section.id }}">
+<div class="section-gradient"></div>
+<div class="container">
+        <div class="about-step-section-title">
+            {%- liquid
+            assign title = section.settings.title
+            assign sub_title = section.settings.sub_title
+            -%}
+                <div class="about-steps-title">
+                    {%- if title != blank -%}
+                        <h1>{{ title }}</h1>
+                    {%- endif -%}
+                </div>
+                <div class="about-steps-sub_title">
+                    {%- if sub_title != blank -%}
+                        {{ sub_title }}
+                    {%- endif -%}
+                </div>
+        </div>
+            <slider-component >
+                <div class="common__slideshow swiper about-steps-wrapper"
+                    data-slidesDesktop="4"
+                    data-slidesLaptop="3"
+                    data-slidesTab="2"
+                    data-slidesMobile="1"
+                    data-direction="false"
+                    data-autoPlay="false"
+                    data-delay="1000"
+                    data-loop="false"
+                    data-freemode="false"
+                    data-freemomentum="false"
+                    data-speed="3000"
+                    data-desktopspace="40"
+                    data-laptopspace="30"
+                    data-tabspace="25"
+                    data-mobilespace="15"
+                >
+                <div class="swiper-wrapper">
+                {% for block in section.blocks %}
+                    {%- case block.type -%}
+                        {%- when 'step' -%}
+                            <div class="swiper-slide" {{ block.shopify_attributes }}>
+                                <div class="about-steps-card">
+                                    <div class="about-step-card-top">
+                                        <div class="step-count">
+                                            <span>{{ block.settings.step_count }}</span>
+                                        </div>
+                                        <div class="step-icons">
+                                            {%- if block.settings.step_icon != blank -%}
+                                                {{
+                                                block.settings.step_icon
+                                                | image_url: width: auto
+                                                | image_tag: loading: 'lazy'
+                                                }}
+                                            {%- endif -%}
+                                        </div>
+                                    </div>
+                                    <div class="step-title">
+                                        <h3>{{ block.settings.step_title }}</h3>
+                                    </div>
+                                    <div class="step-info">
+                                        <p>{{ block.settings.step_info }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                    {%- endcase -%}
+                {% endfor %}
+            </div>
+        </div>
+        </slider-component>
+        <slider-component >
+        <div class="common__slideshow swiper step-bottom-icons"
+            data-slidesDesktop="4"
+            data-slidesLaptop="3"
+            data-slidesTab="2"
+            data-slidesMobile="2"
+            data-direction="false"
+            data-autoPlay="false"
+            data-delay="1000"
+            data-loop="false"
+            data-freemode="false"
+            data-freemomentum="false"
+            data-speed="3000"
+            data-desktopspace="40"
+            data-laptopspace="30"
+            data-tabspace="25"
+            data-mobilespace="15"
+        >
+            <div class="swiper-wrapper">
+                {% for block in section.blocks %}
+                    {%- case block.type -%}
+                        {%- when 'icon' -%}
+                            <div class="swiper-slide" {{ block.shopify_attributes }}>
+                                <div class="bottom-icon-card">
+                                    <div class="icons-image">
+                                        {%- if block.settings.img_icon != blank -%}
+                                            {{
+                                            block.settings.img_icon
+                                            | image_url: width: auto
+                                            | image_tag: loading: 'lazy'
+                                            }}
+                                        {%- endif -%}
+                                        {%- if block.settings.svg_icon != blank -%}
+                                            {{ block.settings.svg_icon }}
+                                        {%- endif -%}
+                                    </div>
+                                    <div class="icons-title">
+                                        <h5>
+                                            {{ block.settings.text }}
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                {%- endcase -%}
+            {% endfor %}
+            </div>
+        </div>
+        </slider-component>
+    </div>
+</div>
+{% schema %}
+{
+  "name": "About Steps",
+  "class": "about-setps-section",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+"settings": [
+    {
+        "type" : "text",
+        "id" : "title",
+        "label": "Title"
+    },
+    {
+        "type" : "richtext",
+        "id" : "sub_title",
+        "label": "SUb Title"
+    },
+    {
+      "type": "header",
+      "content": "Section Color"
+    },
+    {
+        "type" : "color",
+        "id" : "color",
+        "label": "Text",
+        "default": "#00C172"
+    },
+    {
+        "type" : "color",
+        "id" : "background_color",
+        "label": "Bakground",
+        "default": "#0E1513"
+    },
+    {
+      "type": "header",
+      "content": "Step Card Color"
+    },
+    {
+        "type" : "color",
+        "id" : "card_text",
+        "label": "Text",
+        "default": "#000000"
+    },
+    {
+        "type" : "color",
+        "id" : "card_border",
+        "label": "Border",
+        "default": "#00C172"
+    },
+    {
+        "type" : "color",
+        "id" : "card_bg",
+        "label": "Bakground",
+        "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Icon Text Color"
+    },
+    {
+        "type" : "color",
+        "id" : "icon_text",
+        "label": "Icon Text",
+        "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_top_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 68
+    }
+],
+"blocks": [
+    {
+    "name": "Step",
+    "type": "step",
+    "settings": [
+                {
+                    "type" : "textarea",
+                    "id" : "step_title",
+                    "label": "Title"
+                },
+                {
+                    "type" : "text",
+                    "id" : "step_count",
+                    "label": "Count"
+                },
+                {
+                    "type" : "image_picker",
+                    "id" : "step_icon",
+                    "label": "Icon"
+                },
+                {
+                    "type" : "textarea",
+                    "id" : "step_info",
+                    "label": "Info"
+                }
+            ]
+    },
+    {
+    "name": "Icon",
+    "type": "icon",
+    "settings": [
+                {
+                    "type" : "text",
+                    "id" : "text",
+                    "label": "Text"
+                },
+                {
+                    "type" : "html",
+                    "id" : "svg_icon",
+                    "label": "Icon (SVG)"
+                },
+                {
+                    "type" : "image_picker",
+                    "id" : "img_icon",
+                    "label": "Icon (Image)"
+                }
+            ]
+    }
+],
+"presets": [{
+"name": "About Steps"
+}]
+}
+{% endschema %}

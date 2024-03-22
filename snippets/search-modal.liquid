@@ -1,0 +1,169 @@
+<div class="search__modal search__modal--hidden">
+  {%- if section.settings.show_items
+    and section.settings.product_list != blank
+    or section.settings.show_collection_card
+    and section.settings.collection_list != blank
+  -%}
+    <div class="search__items">
+      {% if section.settings.show_collection_card and section.settings.collection_list != blank %}
+        <div class="search__categories">
+          <div class="search__categories-wrapper">
+
+            <h3 class="search__categories-heading">Trending Now</h3>
+            <ul class="search__categories-list list-unstyled" role="list">
+              {%- for collection in section.settings.collection_list -%}
+                <li class="search__categories-item">
+                  <a
+                    class="search__categories-link h4"
+                    {% if collection.all_products_count > 0 %}
+                      href="{{ collection.url }}"
+                    {% endif %}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="icon-search-1"><path d="M 19 3 C 13.488281 3 9 7.488281 9 13 C 9 15.394531 9.839844 17.589844 11.25 19.3125 L 3.28125 27.28125 L 4.71875 28.71875 L 12.6875 20.75 C 14.410156 22.160156 16.605469 23 19 23 C 24.511719 23 29 18.511719 29 13 C 29 7.488281 24.511719 3 19 3 Z M 19 5 C 23.429688 5 27 8.570313 27 13 C 27 17.429688 23.429688 21 19 21 C 14.570313 21 11 17.429688 11 13 C 11 8.570313 14.570313 5 19 5 Z"></path></svg>
+                    {{ collection.title }}
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        </div>
+      {% endif %}
+      {% if section.settings.show_items and section.settings.product_list != blank %}
+
+        <h3 class="search-block-title text-left"><span class="text">Popular Products</span></h3>
+        
+        <ul class="search__items-list featured-products__products-list--horizontal list-unstyled">
+          {%- for product in section.settings.product_list -%}
+            <li class="search__items-item featured-products__products-item--horizontal">
+              <a
+                href="{{ product.url }}"
+                class="search__items-link link link--text"
+                tabindex="-1"
+              >
+                {%- if product.featured_media != blank -%}
+                  <div class="search-items__img-wrap">
+                  <img
+                    class="search__items-image"
+                    src="{{ product.featured_media | image_url: width: 150 }}"
+                    alt="{{ product.featured_media.alt }}"
+                    width="50"
+                    height="50"
+                    loading="lazy"
+                  >
+                  </div>
+                {%- endif -%}
+                <div class="search__items-content">
+                  {%- if section.settings.show_vendor -%}
+                    <span class="visually-hidden subtitle">
+                      {{- 'accessibility.vendor' | t -}}
+                    </span>
+                    <div class="search__items-vendor caption-with-letter-spacing subtitle">
+                      {{ product.vendor }}
+                    </div>
+                  {%- endif -%}
+                  <p class="search__items-heading h5">
+                    {{ product.title }}
+                  </p>
+                  {%- if section.settings.show_price -%}
+                    {% render 'price', product: product, use_variant: true %}
+                  {%- endif -%}
+                </div>
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {% endif %}
+      {%- if section.settings.items_link.url != blank -%}
+        <a
+          href="{{ section.settings.items_link }}"
+          class="search__article-button button button--simple"
+          aria-label="{{ 'sections.header.shop_all' | t }}"
+        >
+          <span>{{ 'sections.header.shop_all' | t }}</span>
+        </a>
+      {%- endif -%}
+    </div>
+  {% endif %}
+  {%- if section.settings.show_articles and section.settings.blog.articles != blank -%}
+    <div class="search__articles">
+      <div class="search__subtitle subtitle">
+        {{ 'sections.header.popular_articles' | t }}
+      </div>
+      <div class="search__articles-list">
+        {%- for article in section.settings.blog.articles limit: 3 -%}
+          <div class="header__article">
+            {% render 'article-card-small',
+              blog: section.settings.blog,
+              article: article,
+              show_image: section.settings.show_image,
+              show_date: section.settings.show_date,
+              show_author: false
+            %}
+          </div>
+        {%- endfor -%}
+      </div>
+      {%- if section.settings.blog_link.url != blank -%}
+        <a
+          href="{{ section.settings.blog_link }}"
+          class="search__article-button button button--simple"
+          aria-label="{{ 'sections.header.read_all' | t }}"
+        >
+          <span>{{ 'sections.header.read_all' | t }}</span>
+        </a>
+      {%- endif -%}
+    </div>
+  {% endif %}
+  {% if section.settings.show_search_block %}
+    <div class="search__block color-background-1 search__block--{{ section.settings.search_color_scheme }}">
+      {% if section.settings.search_image != blank %}
+        {%- capture sizes -%}
+					(min-width: 1700px) 1700px, (min-width: 1420px) 1420px, (min-width: 1100px) 1100px, (min-width: 710px) 710px, calc(100vw - 30px)
+				{%- endcapture -%}
+        {{
+          section.settings.search_image
+          | image_url: width: section.settings.search_image.width
+          | image_tag:
+            loading: 'lazy',
+            sizes: sizes,
+            widths: '360, 550, 710, 1100, 1420, 1700, 1920',
+            width: section.settings.search_image.width,
+            class: 'search__block-image'
+        }}
+      {%- endif -%}
+      {% if section.settings.search_heading != blank %}
+        <div class="search__heading h4">
+          {{ section.settings.search_heading }}
+        </div>
+      {%- endif -%}
+      {% if section.settings.search_text != blank or section.settings.search_text_accent != blank %}
+        <div class="search__text-wrapper">
+          {% if section.settings.search_text != blank %}
+            <span class="search__text">
+              {{ section.settings.search_text }}
+            </span>
+          {%- endif -%}
+          {% if section.settings.search_text_accent != blank %}
+            <span class="search__text search__text--accent">
+              {{ section.settings.search_text_accent }}
+            </span>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.button_label != blank -%}
+          <a
+            {% if section.settings.button_link.url != blank %}
+              href="{{ section.settings.button_link }}"
+            {% endif %}
+            class="button button--{{ section.settings.button_style }}"
+            {% if section.settings.button_link.url == blank %}
+              aria-disabled="true"
+            {% endif %}
+          >
+            <span>
+              {{ section.settings.button_label | escape }}
+            </span>
+          </a>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+  {% endif %}
+</div>

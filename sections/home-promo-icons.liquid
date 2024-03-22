@@ -1,0 +1,152 @@
+{{ 'section-home-promo.css' | asset_url | stylesheet_tag: preload: true }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_m }}px;
+    padding-bottom: {{ section.settings.padding_bottom_m }}px;
+    background-color: {{ section.settings.background }};
+  }
+  .section-{{ section.id }}-padding .promo-icon-wrap .icon-sub{
+    color: {{ section.settings.icon_color }};
+  }
+  .section-{{ section.id }}-padding .promo-icon-wrap .icon-title{
+    color: {{ section.settings.color }};
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="home-promo-icons-wrapper section-{{ section.id }}-padding" id="section-{{ section.id }}">
+  <div class="container">
+    <div class="promo-icons-area">
+        <div class="row">
+            {% for block in section.blocks %}
+                {% liquid
+                    assign icon_svg = block.settings.icon_svg
+                    assign icon_text = block.settings.icon_text 
+                    assign icon_sub = block.settings.icon_sub 
+                %}
+                {%- case block.type -%}
+                  {%- when 'icon' -%}
+                    <div class="col-lg-4 col-md-6 col-sm-6" {{ block.shopify_attributes }}>
+                        <div class="promo-icon-wrap">
+                            <div class="icon-box">
+                                {{ icon_svg }}
+                            </div>
+                            <div class="icon-content">
+                              <div class="icon-title">
+                                {{ icon_text }}
+                              </div>
+                              <div class="icon-sub">
+                                  {{ icon_sub }}
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+            {%- endcase -%}
+        {% endfor %}
+        </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Home Promo Icons",
+    "class": "home-promo-icons-section",
+    "tag": "section",
+    "enabled_on": {
+      "templates": ["*"]
+    },
+    "settings": [
+      {
+        "type": "color",
+        "id": "color",
+        "label": "Text Color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "icon_color",
+        "label": "Icon Color",
+        "default": "#00C172"
+      },
+      {
+        "type": "color",
+        "id": "background",
+        "label": "Section Bakground",
+        "default": "#000000"
+      },
+      {
+        "type": "header",
+        "content": "Section Padding"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 100
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 100
+      }, {
+        "type": "range",
+        "id": "padding_top_m",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Top (Mobile)",
+        "default": 64
+      }, {
+        "type": "range",
+        "id": "padding_bottom_m",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Bottom (Mobile)",
+        "default": 68
+      }
+    ],
+    "blocks": [
+    {
+        "name": "Icon",
+        "type": "icon",
+        "settings": [
+          {
+            "type": "text",
+            "id": "icon_text",
+            "label": "Text"
+          },
+          {
+            "type": "text",
+            "id": "icon_sub",
+            "label": "Sub"
+          },
+          {
+            "type": "html",
+            "id": "icon_svg",
+            "label": "Icon"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Home Promo Icons"
+      }
+    ]
+  }
+{% endschema %}

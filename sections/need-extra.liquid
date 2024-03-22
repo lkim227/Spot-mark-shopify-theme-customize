@@ -1,0 +1,250 @@
+{{ 'section-need-extra.css' | asset_url | stylesheet_tag: preload: true }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_m }}px;
+    padding-bottom: {{ section.settings.padding_bottom_m }}px;
+    color: {{ section.settings.color }};
+  }
+  .section-{{ section.id }}-padding .need-extra-title h1, 
+  .section-{{ section.id }}-padding .need-extra-info p{
+    color: {{ section.settings.color }};
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="need-extra-wrapper section-{{ section.id }}-padding" id="section-{{ section.id }}">
+  <div class="container">
+    {%- if section.settings.shape1 != blank -%}
+      <div class="shape1">
+      {{
+        section.settings.shape1 | image_url: width: auto | image_tag: loading: 'lazy'
+       }}
+    </div>
+    {%- endif -%}
+    {%- if section.settings.shape2 != blank -%}
+      <div class="shape2">
+      {{
+        section.settings.shape2 | image_url: width: auto | image_tag: loading: 'lazy'
+       }}
+    </div>
+    {%- endif -%}
+    <div class="need-extra-content-area" style="text-align: {{ section.settings.text_align }};">
+      {% for block in section.blocks %}
+        {%- case block.type -%}
+          {%- when 'title' -%}
+            {%- liquid
+                assign title = block.settings.title
+            -%}
+              {%- if title != blank -%}
+                  <h1 class="need-extra-title">{{ title }}</h1>
+              {%- endif -%}
+
+          {% when 'info' %}
+            {% liquid
+                assign info = block.settings.info
+            %}
+            <div class="need-extra-info" {{ block.shopify_attributes }}>
+              {%- if info != blank -%}
+               {{ info }}
+              {%- endif -%}
+            </div>
+          {% when 'button' %}
+            {% liquid
+                assign btn = block.settings.btn
+                assign link = block.settings.link
+            %}
+            <div class="need-extra-button" {{ block.shopify_attributes }}>
+              {%- if link != blank -%}
+                <a href="{{ link }}" class="button need-extra-btn">{{ btn }}</a>
+              {%- endif -%}
+            </div>
+        {%- endcase -%}
+      {% endfor %}
+    </div>
+    <div class="need-extra-bottom-area">
+        <div class="row">
+            {% for block in section.blocks %}
+                {% liquid
+                    assign image = block.settings.image
+                    assign icon_text = block.settings.icon_text 
+                    assign link = block.settings.link 
+                %}
+                {%- case block.type -%}
+                  {%- when 'box' -%}
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-6" {{ block.shopify_attributes }}>
+                        <div class="need-extra-icon-wrap">
+                            <div class="icon-title">
+                                <a href="{{ link }}">{{ icon_text }}</a>
+                            </div>
+
+                            <a href="{{ link }}">
+                            <div class="icon-box">
+                          
+                                    {%- if image != blank -%}
+                                        {{
+                                            image | image_url: width: auto | image_tag: loading: 'lazy'
+                                        }}
+                                        {% else %}
+                                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg gray-plaecholder' }}
+                                      {%- endif -%}
+                          
+                            </div>
+                          </a>
+                        </div>
+                    </div>
+            {%- endcase -%}
+        {% endfor %}
+        </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Need Extra",
+    "class": "need-extra-section",
+    "tag": "section",
+    "enabled_on": {
+      "templates": ["*"]
+    },
+    "settings": [
+      {
+        "type": "image_picker",
+          "id": "shape1",
+          "label": "Shape 1"
+        },
+      {
+        "type": "image_picker",
+          "id": "shape2",
+          "label": "Shape 2"
+        },
+        {
+      "type": "select",
+      "id": "text_align",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Text Align"
+    },
+      {
+        "type": "color",
+        "id": "color",
+        "label": "Text Color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "background",
+        "label": "Section Bakground"
+      },
+      {
+        "type": "header",
+        "content": "Section Padding"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 100
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 100
+      }, {
+        "type": "range",
+        "id": "padding_top_m",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Top (Mobile)",
+        "default": 64
+      }, {
+        "type": "range",
+        "id": "padding_bottom_m",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Bottom (Mobile)",
+        "default": 68
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Title",
+        "type": "title",
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "title",
+            "label": "Text",
+            "default": "Need Any Extras?"
+          }
+        ]
+      },
+    {
+        "name": "Info",
+        "type": "info",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "info",
+            "label": "Description",
+            "default": "<p>We're reimaging the paint industry with the highest quality decorating products that are longer lasting and more environment friendly at the lowest price.</p>"     }
+        ]
+      }, 
+    {
+        "name": "Box",
+        "type": "box",
+        "settings": [
+          {
+            "type": "text",
+            "id": "icon_text",
+             "default": "Accessories",
+            "label": "Text"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Need Extra"
+      }
+    ]
+  }
+{% endschema %}

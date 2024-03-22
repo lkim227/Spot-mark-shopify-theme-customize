@@ -1,0 +1,87 @@
+.join-movement-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.inner-container{
+  position: relative;
+  overflow: hidden;
+}
+
+.join-movement-wrapper .section-bg img {
+  border-radius: 30px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: -1;
+}
+.join-movement-wrapper .join-content-area {
+  padding: 50px 0;
+}
+@media only screen and (max-width: 991px) {
+  .join-movement-wrapper {
+    padding: 0 15px;
+  }
+}
+
+.join-movement-title h1 {
+  margin: 0 0 30px;
+  color: #fff;
+  text-align: center;
+  font-size: 70px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 87%;
+}
+@media only screen and (max-width: 1440px) {
+  .join-movement-title h1 {
+    font-size: 48px;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .join-movement-title h1 {
+    font-size: 32px;
+  }
+}
+
+.join-movement-button {
+  display: inline-block;
+}
+.join-movement-button .button {
+  margin-right: 22px;
+  display: inline-flex;
+  width: 188px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 47px;
+  box-shadow: 0 -1px rgba(0, 0, 0, 0.2) inset, 0 1px rgba(255, 255, 255, 0.2) inset;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+}
+.join-movement-button .button svg {
+  margin-left: 16px;
+}
+
+.join-movement-button .button-primary{
+  background: #ff003d;
+  color: #ffffff;
+}
+.join-movement-button .button-primary:hover{
+  background: #000;
+  color: #ffffff;
+  transition: 0.3s ease;
+}
+.join-movement-button .button-secondary{
+  background: #00c172;
+  color: #ffffff;
+}
+
+.join-movement-button .button-secondary:hover{
+  background: #ff003d;
+  color: #ffffff;
+  transition: 0.3s ease;
+}

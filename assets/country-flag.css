@@ -1,0 +1,1583 @@
+.currency-flag[data-value=AD]:after,
+.disclosure__link--flag[data-value=AD]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 0 no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 0 no-repeat;
+}
+
+.currency-flag[data-value=AE]:after,
+.disclosure__link--flag[data-value=AE]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 6.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 6.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=AF]:after,
+.disclosure__link--flag[data-value=AF]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 6.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 6.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=AG]:after,
+.disclosure__link--flag[data-value=AG]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 0 no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 0 no-repeat;
+}
+
+.currency-flag[data-value=AI]:after,
+.disclosure__link--flag[data-value=AI]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 6.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 6.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=AL]:after,
+.disclosure__link--flag[data-value=AL]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 13.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 13.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=AM]:after,
+.disclosure__link--flag[data-value=AM]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 13.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 13.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=AO]:after,
+.disclosure__link--flag[data-value=AO]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 13.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 13.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=AQ]:after,
+.disclosure__link--flag[data-value=AQ]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 0 no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 0 no-repeat;
+}
+
+.currency-flag[data-value=AR]:after,
+.disclosure__link--flag[data-value=AR]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 6.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 6.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=AS]:after,
+.disclosure__link--flag[data-value=AS]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 13.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 13.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=AT]:after,
+.disclosure__link--flag[data-value=AT]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 20% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 20% no-repeat;
+}
+
+.currency-flag[data-value=AU]:after,
+.disclosure__link--flag[data-value=AU]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 20% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 20% no-repeat;
+}
+
+.currency-flag[data-value=AW]:after,
+.disclosure__link--flag[data-value=AW]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 20% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 20% no-repeat;
+}
+
+.currency-flag[data-value=AX]:after,
+.disclosure__link--flag[data-value=AX]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 20% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 20% no-repeat;
+}
+
+.currency-flag[data-value=AZ]:after,
+.disclosure__link--flag[data-value=AZ]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 0 no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 0 no-repeat;
+}
+
+.currency-flag[data-value=BA]:after,
+.disclosure__link--flag[data-value=BA]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 6.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 6.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=BB]:after,
+.disclosure__link--flag[data-value=BB]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 13.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 13.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=BD]:after,
+.disclosure__link--flag[data-value=BD]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 20% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 20% no-repeat;
+}
+
+.currency-flag[data-value=BE]:after,
+.disclosure__link--flag[data-value=BE]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 26.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 26.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=BF]:after,
+.disclosure__link--flag[data-value=BF]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 26.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 26.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=BG]:after,
+.disclosure__link--flag[data-value=BG]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 26.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 26.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=BH]:after,
+.disclosure__link--flag[data-value=BH]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 26.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 26.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=BI]:after,
+.disclosure__link--flag[data-value=BI]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 26.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 26.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=BJ]:after,
+.disclosure__link--flag[data-value=BJ]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 0 no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 0 no-repeat;
+}
+
+.currency-flag[data-value=BL]:after,
+.disclosure__link--flag[data-value=BL]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 6.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 6.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=BM]:after,
+.disclosure__link--flag[data-value=BM]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 13.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 13.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=BN]:after,
+.disclosure__link--flag[data-value=BN]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 20% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 20% no-repeat;
+}
+
+.currency-flag[data-value=BO]:after,
+.disclosure__link--flag[data-value=BO]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 26.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 26.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=BQ]:after,
+.disclosure__link--flag[data-value=BQ]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 33.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 33.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=BR]:after,
+.disclosure__link--flag[data-value=BR]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 33.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 33.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=BS]:after,
+.disclosure__link--flag[data-value=BS]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 33.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 33.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=BT]:after,
+.disclosure__link--flag[data-value=BT]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 33.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 33.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=BV]:after,
+.disclosure__link--flag[data-value=BV]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 33.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 33.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=BW]:after,
+.disclosure__link--flag[data-value=BW]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 33.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 33.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=BY]:after,
+.disclosure__link--flag[data-value=BY]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 0 no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 0 no-repeat;
+}
+
+.currency-flag[data-value=BZ]:after,
+.disclosure__link--flag[data-value=BZ]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 6.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 6.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=CA]:after,
+.disclosure__link--flag[data-value=CA]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 13.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 13.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=CC]:after,
+.disclosure__link--flag[data-value=CC]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 20% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 20% no-repeat;
+}
+
+.currency-flag[data-value=CD]:after,
+.disclosure__link--flag[data-value=CD]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 26.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 26.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=CF]:after,
+.disclosure__link--flag[data-value=CF]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 33.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 33.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=CG]:after,
+.disclosure__link--flag[data-value=CG]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 40% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 40% no-repeat;
+}
+
+.currency-flag[data-value=CH]:after,
+.disclosure__link--flag[data-value=CH]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 40% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 40% no-repeat;
+}
+
+.currency-flag[data-value=CI]:after,
+.disclosure__link--flag[data-value=CI]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 40% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 40% no-repeat;
+}
+
+.currency-flag[data-value=CK]:after,
+.disclosure__link--flag[data-value=CK]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 40% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 40% no-repeat;
+}
+
+.currency-flag[data-value=CL]:after,
+.disclosure__link--flag[data-value=CL]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 40% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 40% no-repeat;
+}
+
+.currency-flag[data-value=CM]:after,
+.disclosure__link--flag[data-value=CM]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 40% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 40% no-repeat;
+}
+
+.currency-flag[data-value=CN]:after,
+.disclosure__link--flag[data-value=CN]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 40% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 40% no-repeat;
+}
+
+.currency-flag[data-value=CO]:after,
+.disclosure__link--flag[data-value=CO]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 0 no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 0 no-repeat;
+}
+
+.currency-flag[data-value=CR]:after,
+.disclosure__link--flag[data-value=CR]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 13.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 13.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=CU]:after,
+.disclosure__link--flag[data-value=CU]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 20% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 20% no-repeat;
+}
+
+.currency-flag[data-value=CV]:after,
+.disclosure__link--flag[data-value=CV]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 26.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 26.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=CW]:after,
+.disclosure__link--flag[data-value=CW]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 33.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 33.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=CX]:after,
+.disclosure__link--flag[data-value=CX]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 40% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 40% no-repeat;
+}
+
+.currency-flag[data-value=CY]:after,
+.disclosure__link--flag[data-value=CY]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 46.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 46.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=CZ]:after,
+.disclosure__link--flag[data-value=CZ]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 46.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 46.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=DE]:after,
+.disclosure__link--flag[data-value=DE]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 46.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 46.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=DJ]:after,
+.disclosure__link--flag[data-value=DJ]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 46.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 46.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=DK]:after,
+.disclosure__link--flag[data-value=DK]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 46.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 46.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=DM]:after,
+.disclosure__link--flag[data-value=DM]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 46.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 46.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=DO]:after,
+.disclosure__link--flag[data-value=DO]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 46.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 46.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=DZ]:after,
+.disclosure__link--flag[data-value=DZ]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 0 no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 0 no-repeat;
+}
+
+.currency-flag[data-value=EC]:after,
+.disclosure__link--flag[data-value=EC]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 13.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 13.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=EE]:after,
+.disclosure__link--flag[data-value=EE]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 20% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 20% no-repeat;
+}
+
+.currency-flag[data-value=EG]:after,
+.disclosure__link--flag[data-value=EG]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 26.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 26.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=EH]:after,
+.disclosure__link--flag[data-value=EH]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 33.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 33.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=ER]:after,
+.disclosure__link--flag[data-value=ER]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 40% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 40% no-repeat;
+}
+
+.currency-flag[data-value=ES]:after,
+.disclosure__link--flag[data-value=ES]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 46.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 46.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=ET]:after,
+.disclosure__link--flag[data-value=ET]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 53.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 53.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=FI]:after,
+.disclosure__link--flag[data-value=FI]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 53.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 53.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=FJ]:after,
+.disclosure__link--flag[data-value=FJ]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 53.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 53.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=FK]:after,
+.disclosure__link--flag[data-value=FK]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 53.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 53.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=FM]:after,
+.disclosure__link--flag[data-value=FM]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 53.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 53.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=FO]:after,
+.disclosure__link--flag[data-value=FO]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 53.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 53.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=FR]:after,
+.disclosure__link--flag[data-value=FR]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 0 no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 0 no-repeat;
+}
+
+.currency-flag[data-value=GA]:after,
+.disclosure__link--flag[data-value=GA]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 6.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 6.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=GB]:after,
+.disclosure__link--flag[data-value=GB]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 13.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 13.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=GD]:after,
+.disclosure__link--flag[data-value=GD]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 46.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 46.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=GE]:after,
+.disclosure__link--flag[data-value=GE]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 53.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 53.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=GF]:after,
+.disclosure__link--flag[data-value=GF]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 60% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 60% no-repeat;
+}
+
+.currency-flag[data-value=GG]:after,
+.disclosure__link--flag[data-value=GG]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 60% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 60% no-repeat;
+}
+
+.currency-flag[data-value=GH]:after,
+.disclosure__link--flag[data-value=GH]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 60% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 60% no-repeat;
+}
+
+.currency-flag[data-value=GI]:after,
+.disclosure__link--flag[data-value=GI]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 60% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 60% no-repeat;
+}
+
+.currency-flag[data-value=GL]:after,
+.disclosure__link--flag[data-value=GL]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 60% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 60% no-repeat;
+}
+
+.currency-flag[data-value=GM]:after,
+.disclosure__link--flag[data-value=GM]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 60% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 60% no-repeat;
+}
+
+.currency-flag[data-value=GN]:after,
+.disclosure__link--flag[data-value=GN]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 60% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 60% no-repeat;
+}
+
+.currency-flag[data-value=GP]:after,
+.disclosure__link--flag[data-value=GP]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 60% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 60% no-repeat;
+}
+
+.currency-flag[data-value=GQ]:after,
+.disclosure__link--flag[data-value=GQ]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 60% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 60% no-repeat;
+}
+
+.currency-flag[data-value=GR]:after,
+.disclosure__link--flag[data-value=GR]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 60% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 60% no-repeat;
+}
+
+.currency-flag[data-value=GS]:after,
+.disclosure__link--flag[data-value=GS]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 0 no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 0 no-repeat;
+}
+
+.currency-flag[data-value=GT]:after,
+.disclosure__link--flag[data-value=GT]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 6.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 6.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=GU]:after,
+.disclosure__link--flag[data-value=GU]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 13.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 13.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=GW]:after,
+.disclosure__link--flag[data-value=GW]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 20% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 20% no-repeat;
+}
+
+.currency-flag[data-value=GY]:after,
+.disclosure__link--flag[data-value=GY]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 26.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 26.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=HK]:after,
+.disclosure__link--flag[data-value=HK]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 33.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 33.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=HM]:after,
+.disclosure__link--flag[data-value=HM]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 40% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 40% no-repeat;
+}
+
+.currency-flag[data-value=HN]:after,
+.disclosure__link--flag[data-value=HN]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 46.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 46.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=HR]:after,
+.disclosure__link--flag[data-value=HR]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 53.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 53.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=HT]:after,
+.disclosure__link--flag[data-value=HT]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 60% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 60% no-repeat;
+}
+
+.currency-flag[data-value=HU]:after,
+.disclosure__link--flag[data-value=HU]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 66.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 66.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=ID]:after,
+.disclosure__link--flag[data-value=ID]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 66.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 66.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=IE]:after,
+.disclosure__link--flag[data-value=IE]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 66.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 66.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=IL]:after,
+.disclosure__link--flag[data-value=IL]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 66.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 66.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=IM]:after,
+.disclosure__link--flag[data-value=IM]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 66.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 66.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=IN]:after,
+.disclosure__link--flag[data-value=IN]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 66.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 66.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=IO]:after,
+.disclosure__link--flag[data-value=IO]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 66.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 66.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=IQ]:after,
+.disclosure__link--flag[data-value=IQ]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 66.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 66.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=IR]:after,
+.disclosure__link--flag[data-value=IR]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 66.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 66.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=IS]:after,
+.disclosure__link--flag[data-value=IS]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 66.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 66.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=IT]:after,
+.disclosure__link--flag[data-value=IT]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 0 no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 0 no-repeat;
+}
+
+.currency-flag[data-value=JE]:after,
+.disclosure__link--flag[data-value=JE]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 6.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 6.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=JM]:after,
+.disclosure__link--flag[data-value=JM]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 13.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 13.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=JO]:after,
+.disclosure__link--flag[data-value=JO]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 20% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 20% no-repeat;
+}
+
+.currency-flag[data-value=JP]:after,
+.disclosure__link--flag[data-value=JP]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 26.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 26.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=KE]:after,
+.disclosure__link--flag[data-value=KE]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 33.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 33.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=KG]:after,
+.disclosure__link--flag[data-value=KG]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 40% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 40% no-repeat;
+}
+
+.currency-flag[data-value=KH]:after,
+.disclosure__link--flag[data-value=KH]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 46.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 46.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=KI]:after,
+.disclosure__link--flag[data-value=KI]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 53.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 53.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=KM]:after,
+.disclosure__link--flag[data-value=KM]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 60% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 60% no-repeat;
+}
+
+.currency-flag[data-value=KN]:after,
+.disclosure__link--flag[data-value=KN]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 66.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 66.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=KP]:after,
+.disclosure__link--flag[data-value=KP]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 73.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 73.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=KR]:after,
+.disclosure__link--flag[data-value=KR]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 73.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 73.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=KW]:after,
+.disclosure__link--flag[data-value=KW]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 73.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 73.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=KY]:after,
+.disclosure__link--flag[data-value=KY]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 73.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 73.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=KZ]:after,
+.disclosure__link--flag[data-value=KZ]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 73.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 73.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=LA]:after,
+.disclosure__link--flag[data-value=LA]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 73.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 73.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=LB]:after,
+.disclosure__link--flag[data-value=LB]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 73.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 73.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=LC]:after,
+.disclosure__link--flag[data-value=LC]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 73.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 73.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=LI]:after,
+.disclosure__link--flag[data-value=LI]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 73.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 73.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=LK]:after,
+.disclosure__link--flag[data-value=LK]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 73.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 73.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=LR]:after,
+.disclosure__link--flag[data-value=LR]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 73.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 73.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=LS]:after,
+.disclosure__link--flag[data-value=LS]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 73.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 73.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=LT]:after,
+.disclosure__link--flag[data-value=LT]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 0 no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 0 no-repeat;
+}
+
+.currency-flag[data-value=LU]:after,
+.disclosure__link--flag[data-value=LU]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 6.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 6.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=LV]:after,
+.disclosure__link--flag[data-value=LV]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 13.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 13.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=LY]:after,
+.disclosure__link--flag[data-value=LY]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 20% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 20% no-repeat;
+}
+
+.currency-flag[data-value=MA]:after,
+.disclosure__link--flag[data-value=MA]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 26.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 26.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=MC]:after,
+.disclosure__link--flag[data-value=MC]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 33.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 33.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=MD]:after,
+.disclosure__link--flag[data-value=MD]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 40% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 40% no-repeat;
+}
+
+.currency-flag[data-value=ME]:after,
+.disclosure__link--flag[data-value=ME]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 46.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 46.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=MF]:after,
+.disclosure__link--flag[data-value=MF]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 53.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 53.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=MG]:after,
+.disclosure__link--flag[data-value=MG]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 60% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 60% no-repeat;
+}
+
+.currency-flag[data-value=MH]:after,
+.disclosure__link--flag[data-value=MH]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 66.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 66.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=MK]:after,
+.disclosure__link--flag[data-value=MK]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 73.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 73.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=ML]:after,
+.disclosure__link--flag[data-value=ML]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 80% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 80% no-repeat;
+}
+
+.currency-flag[data-value=MM]:after,
+.disclosure__link--flag[data-value=MM]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 80% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 80% no-repeat;
+}
+
+.currency-flag[data-value=MN]:after,
+.disclosure__link--flag[data-value=MN]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 80% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 80% no-repeat;
+}
+
+.currency-flag[data-value=MO]:after,
+.disclosure__link--flag[data-value=MO]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 80% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 80% no-repeat;
+}
+
+.currency-flag[data-value=MP]:after,
+.disclosure__link--flag[data-value=MP]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 80% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 80% no-repeat;
+}
+
+.currency-flag[data-value=MQ]:after,
+.disclosure__link--flag[data-value=MQ]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 80% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 80% no-repeat;
+}
+
+.currency-flag[data-value=MR]:after,
+.disclosure__link--flag[data-value=MR]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 80% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 80% no-repeat;
+}
+
+.currency-flag[data-value=MS]:after,
+.disclosure__link--flag[data-value=MS]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 80% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 80% no-repeat;
+}
+
+.currency-flag[data-value=MT]:after,
+.disclosure__link--flag[data-value=MT]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 80% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 80% no-repeat;
+}
+
+.currency-flag[data-value=MU]:after,
+.disclosure__link--flag[data-value=MU]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 80% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 80% no-repeat;
+}
+
+.currency-flag[data-value=MV]:after,
+.disclosure__link--flag[data-value=MV]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 80% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 80% no-repeat;
+}
+
+.currency-flag[data-value=MW]:after,
+.disclosure__link--flag[data-value=MW]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 80% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 80% no-repeat;
+}
+
+.currency-flag[data-value=MX]:after,
+.disclosure__link--flag[data-value=MX]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 80% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 80% no-repeat;
+}
+
+.currency-flag[data-value=MY]:after,
+.disclosure__link--flag[data-value=MY]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 0 no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 0 no-repeat;
+}
+
+.currency-flag[data-value=MZ]:after,
+.disclosure__link--flag[data-value=MZ]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 6.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 6.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=NA]:after,
+.disclosure__link--flag[data-value=NA]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 13.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 13.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=NC]:after,
+.disclosure__link--flag[data-value=NC]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 20% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 20% no-repeat;
+}
+
+.currency-flag[data-value=NE]:after,
+.disclosure__link--flag[data-value=NE]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 26.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 26.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=NF]:after,
+.disclosure__link--flag[data-value=NF]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 33.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 33.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=NG]:after,
+.disclosure__link--flag[data-value=NG]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 40% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 40% no-repeat;
+}
+
+.currency-flag[data-value=NI]:after,
+.disclosure__link--flag[data-value=NI]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 46.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 46.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=NL]:after,
+.disclosure__link--flag[data-value=NL]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 53.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 53.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=NO]:after,
+.disclosure__link--flag[data-value=NO]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 60% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 60% no-repeat;
+}
+
+.currency-flag[data-value=NP]:after,
+.disclosure__link--flag[data-value=NP]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 66.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 66.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=NR]:after,
+.disclosure__link--flag[data-value=NR]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 73.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 73.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=NU]:after,
+.disclosure__link--flag[data-value=NU]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 80% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 80% no-repeat;
+}
+
+.currency-flag[data-value=NZ]:after,
+.disclosure__link--flag[data-value=NZ]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 86.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 86.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=OM]:after,
+.disclosure__link--flag[data-value=OM]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 86.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 86.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=PA]:after,
+.disclosure__link--flag[data-value=PA]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 86.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 86.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=PE]:after,
+.disclosure__link--flag[data-value=PE]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 86.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 86.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=PF]:after,
+.disclosure__link--flag[data-value=PF]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 86.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 86.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=PG]:after,
+.disclosure__link--flag[data-value=PG]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 86.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 86.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=PH]:after,
+.disclosure__link--flag[data-value=PH]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 86.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 86.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=PK]:after,
+.disclosure__link--flag[data-value=PK]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 86.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 86.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=PL]:after,
+.disclosure__link--flag[data-value=PL]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 86.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 86.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=PN]:after,
+.disclosure__link--flag[data-value=PN]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 86.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 86.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=PR]:after,
+.disclosure__link--flag[data-value=PR]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 86.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 86.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=PS]:after,
+.disclosure__link--flag[data-value=PS]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 86.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 86.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=PT]:after,
+.disclosure__link--flag[data-value=PT]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 86.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 86.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=PW]:after,
+.disclosure__link--flag[data-value=PW]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 0 no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 0 no-repeat;
+}
+
+.currency-flag[data-value=PY]:after,
+.disclosure__link--flag[data-value=PY]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 6.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 6.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=QA]:after,
+.disclosure__link--flag[data-value=QA]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 13.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 13.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=RE]:after,
+.disclosure__link--flag[data-value=RE]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 20% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 20% no-repeat;
+}
+
+.currency-flag[data-value=RO]:after,
+.disclosure__link--flag[data-value=RO]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 26.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 26.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=RS]:after,
+.disclosure__link--flag[data-value=RS]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 33.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 33.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=RU]:after,
+.disclosure__link--flag[data-value=RU]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 40% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 40% no-repeat;
+}
+
+.currency-flag[data-value=RW]:after,
+.disclosure__link--flag[data-value=RW]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 46.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 46.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=SA]:after,
+.disclosure__link--flag[data-value=SA]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 53.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 53.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=SB]:after,
+.disclosure__link--flag[data-value=SB]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 60% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 60% no-repeat;
+}
+
+.currency-flag[data-value=SC]:after,
+.disclosure__link--flag[data-value=SC]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 66.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 66.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=SD]:after,
+.disclosure__link--flag[data-value=SD]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 73.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 73.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=SE]:after,
+.disclosure__link--flag[data-value=SE]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 80% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 80% no-repeat;
+}
+
+.currency-flag[data-value=SG]:after,
+.disclosure__link--flag[data-value=SG]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 86.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 86.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=SH]:after,
+.disclosure__link--flag[data-value=SH]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 93.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 93.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=SI]:after,
+.disclosure__link--flag[data-value=SI]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 93.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 93.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=SJ]:after,
+.disclosure__link--flag[data-value=SJ]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 93.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 93.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=SK]:after,
+.disclosure__link--flag[data-value=SK]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 93.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 93.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=SL]:after,
+.disclosure__link--flag[data-value=SL]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 93.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 93.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=SM]:after,
+.disclosure__link--flag[data-value=SM]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 93.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 93.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=SN]:after,
+.disclosure__link--flag[data-value=SN]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 93.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 93.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=SO]:after,
+.disclosure__link--flag[data-value=SO]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 93.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 93.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=SR]:after,
+.disclosure__link--flag[data-value=SR]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 93.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 93.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=SS]:after,
+.disclosure__link--flag[data-value=SS]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 93.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 93.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=ST]:after,
+.disclosure__link--flag[data-value=ST]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 93.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 93.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=SV]:after,
+.disclosure__link--flag[data-value=SV]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 93.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 93.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=SX]:after,
+.disclosure__link--flag[data-value=SX]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 93.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 93.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=SY]:after,
+.disclosure__link--flag[data-value=SY]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 93.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 93.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=SZ]:after,
+.disclosure__link--flag[data-value=SZ]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 93.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 93.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=TC]:after,
+.disclosure__link--flag[data-value=TC]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 6.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 6.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=TD]:after,
+.disclosure__link--flag[data-value=TD]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 13.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 13.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=TF]:after,
+.disclosure__link--flag[data-value=TF]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 20% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 20% no-repeat;
+}
+
+.currency-flag[data-value=TG]:after,
+.disclosure__link--flag[data-value=TG]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 26.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 26.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=TH]:after,
+.disclosure__link--flag[data-value=TH]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 33.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 33.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=TJ]:after,
+.disclosure__link--flag[data-value=TJ]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 40% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 40% no-repeat;
+}
+
+.currency-flag[data-value=TK]:after,
+.disclosure__link--flag[data-value=TK]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 46.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 46.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=TL]:after,
+.disclosure__link--flag[data-value=TL]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 53.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 53.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=TM]:after,
+.disclosure__link--flag[data-value=TM]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 60% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 60% no-repeat;
+}
+
+.currency-flag[data-value=TN]:after,
+.disclosure__link--flag[data-value=TN]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 66.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 66.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=TO]:after,
+.disclosure__link--flag[data-value=TO]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 73.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 73.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=TR]:after,
+.disclosure__link--flag[data-value=TR]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 80% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 80% no-repeat;
+}
+
+.currency-flag[data-value=TT]:after,
+.disclosure__link--flag[data-value=TT]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 86.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 86.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=TV]:after,
+.disclosure__link--flag[data-value=TV]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 93.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 93.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=TW]:after,
+.disclosure__link--flag[data-value=TW]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 100% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 100% no-repeat;
+}
+
+.currency-flag[data-value=TZ]:after,
+.disclosure__link--flag[data-value=TZ]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 100% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 100% no-repeat;
+}
+
+.currency-flag[data-value=UA]:after,
+.disclosure__link--flag[data-value=UA]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 100% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 12.5% 100% no-repeat;
+}
+
+.currency-flag[data-value=UG]:after,
+.disclosure__link--flag[data-value=UG]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 100% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 100% no-repeat;
+}
+
+.currency-flag[data-value=UM]:after,
+.disclosure__link--flag[data-value=UM]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 100% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 25% 100% no-repeat;
+}
+
+.currency-flag[data-value=US]:after,
+.disclosure__link--flag[data-value=US]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 100% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 37.5% 100% no-repeat;
+}
+
+.currency-flag[data-value=UY]:after,
+.disclosure__link--flag[data-value=UY]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 100% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 100% no-repeat;
+}
+
+.currency-flag[data-value=UZ]:after,
+.disclosure__link--flag[data-value=UZ]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 100% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 100% no-repeat;
+}
+
+.currency-flag[data-value=VA]:after,
+.disclosure__link--flag[data-value=VA]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 100% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 100% no-repeat;
+}
+
+.currency-flag[data-value=VC]:after,
+.disclosure__link--flag[data-value=VC]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 100% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 62.5% 100% no-repeat;
+}
+
+.currency-flag[data-value=VE]:after,
+.disclosure__link--flag[data-value=VE]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 100% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 68.75% 100% no-repeat;
+}
+
+.currency-flag[data-value=VG]:after,
+.disclosure__link--flag[data-value=VG]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 100% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 75% 100% no-repeat;
+}
+
+.currency-flag[data-value=VI]:after,
+.disclosure__link--flag[data-value=VI]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 100% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 81.25% 100% no-repeat;
+}
+
+.currency-flag[data-value=VN]:after,
+.disclosure__link--flag[data-value=VN]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 100% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 87.5% 100% no-repeat;
+}
+
+.currency-flag[data-value=VU]:after,
+.disclosure__link--flag[data-value=VU]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 100% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 100% no-repeat;
+}
+
+.currency-flag[data-value=WF]:after,
+.disclosure__link--flag[data-value=WF]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 100% 0 no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 100% 0 no-repeat;
+}
+
+.currency-flag[data-value=WS]:after,
+.disclosure__link--flag[data-value=WS]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 100% 6.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 100% 6.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=YE]:after,
+.disclosure__link--flag[data-value=YE]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 100% 26.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 100% 26.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=YT]:after,
+.disclosure__link--flag[data-value=YT]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 100% 33.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 100% 33.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=ZA]:after,
+.disclosure__link--flag[data-value=ZA]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 100% 40% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 100% 40% no-repeat;
+}
+
+.currency-flag[data-value=ZM]:after,
+.disclosure__link--flag[data-value=ZM]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 100% 46.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 100% 46.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=ZW]:after,
+.disclosure__link--flag[data-value=ZW]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 100% 53.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 100% 53.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=AC]:after,
+.disclosure__link--flag[data-value=AC]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 0 no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 0 no-repeat;
+}
+
+.currency-flag[data-value=CP]:after,
+.disclosure__link--flag[data-value=CP]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 6.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 43.75% 6.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=DG]:after,
+.disclosure__link--flag[data-value=DG]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 46.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 46.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=EA]:after,
+.disclosure__link--flag[data-value=EA]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 6.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 50% 6.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=ES-CT]:after,
+.disclosure__link--flag[data-value=ES-CT]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 53.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 0 53.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=ES-GA]:after,
+.disclosure__link--flag[data-value=ES-GA]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 53.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 53.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=EU]:after,
+.disclosure__link--flag[data-value=EU]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 53.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 18.75% 53.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=GB-ENG]:after,
+.disclosure__link--flag[data-value=GB-ENG]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 20% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 20% no-repeat;
+}
+
+.currency-flag[data-value=GB-NIR]:after,
+.disclosure__link--flag[data-value=GB-NIR]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 26.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 26.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=GB-SCT]:after,
+.disclosure__link--flag[data-value=GB-SCT]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 33.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 33.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=GB-WLS]:after,
+.disclosure__link--flag[data-value=GB-WLS]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 40% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 56.25% 40% no-repeat;
+}
+
+.currency-flag[data-value=IC]:after,
+.disclosure__link--flag[data-value=IC]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 66.6666666667% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 6.25% 66.6666666667% no-repeat;
+}
+
+.currency-flag[data-value=TA]:after,
+.disclosure__link--flag[data-value=TA]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 0 no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 93.75% 0 no-repeat;
+}
+
+.currency-flag[data-value=UN]:after,
+.disclosure__link--flag[data-value=UN]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 100% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 31.25% 100% no-repeat;
+}
+
+.currency-flag[data-value=XK]:after,
+.disclosure__link--flag[data-value=XK]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 100% 13.3333333333% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 100% 13.3333333333% no-repeat;
+}
+
+.currency-flag[data-value=XX]:after,
+.disclosure__link--flag[data-value=XX]:before {
+  background: -webkit-image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 100% 20% no-repeat;
+  background: image-set(url(sprite-country.png) 1x, url(sprite-country2x.png) 2x) 100% 20% no-repeat;
+}

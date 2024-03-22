@@ -1,0 +1,439 @@
+
+{{ 'section-product-comparison.css' | asset_url | stylesheet_tag: preload: true }}
+<script src="{{ 'product-comparison.js' | asset_url }}" defer="defer"></script>
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    margin-top: {{ section.settings.margin_top-m }}px;
+    margin-bottom: {{ section.settings.margin_bottom-m }}px;
+    padding-top: {{ section.settings.padding_top_m  }}px;
+    padding-bottom: {{ section.settings.padding_bottom_m }}px;
+  }
+  .section-{{ section.id }}-padding *{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .product-comparison-wrapper{
+    overflow: hidden;
+  }
+  @media screen and (min-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{% assign slidesDesktop = section.settings.desktop_item %}
+{% assign slidesLaptop = section.settings.laptop_item %}
+{% assign direction = section.settings.reverse %}
+{% assign autoPlay = section.settings.autoplay_enabled %}
+{% assign loop = section.settings.loop_enabled %}
+{% assign delay = section.settings.autoplay_timeout | times: 1000 %}
+
+
+  {%liquid
+
+    assign s = section.settings
+    assign background_color = s.background_color
+
+    assign heading = s.heading
+    assign our_store_image = s.our_store_image
+    assign our_store_label = s.our_store_label
+
+    assign other_store_image = s.other_store_image
+    assign other_store_label = s.other_store_label
+
+    assign block_items = section.blocks | where: 'type', 'items'
+
+%}
+
+{% if background_color != blank %}
+  {% style %}
+    #section-{{ section.id }} {
+      background-color: {{ background_color }}
+    }
+   {% endstyle %}
+{% endif %}
+
+<div class="section-{{ section.id }}-padding" id="section-{{ section.id }}">
+  <div class="product-comparison-wrapper container">
+
+  {% if heading != blank %}
+    <div class="comparison-title-mobile">
+      <h4>{{heading}}</h4>
+    </div>
+  {% endif %}
+
+
+    <slider-component>
+      <div
+        class="common__slideshow swiper"
+        data-slidesDesktop="3"
+        data-slidesdesktop="3"
+        data-slidesLaptop="3"
+        data-slidesTab="1.5"
+        data-slidesMobile="1.3"
+        data-direction="{{ direction }}"
+        data-autoPlay="{{ autoPlay }}"
+        data-delay="{{ delay }}"
+        data-loop="{{ loop }}"
+        data-freemode="false"
+        data-freemomentum="false"
+        data-speed="1000"
+        data-desktopspace="0"
+        data-laptopspace="0"
+        data-tabspace="0"
+        data-mobilespace="0"
+      >
+        <div class="swiper-wrapper">
+          <div class="pro_comp_slide swiper-slide">
+            <div class="product-comparison-item ">
+              {% if heading != blank %}
+                <div class="comparison-item-top comparison-title-desktop">
+                  <h4>{{heading }}</h4>
+                </div>
+              {% endif %}
+            
+              <div class="comparison-item-bottom">
+                     {% for block in block_items %}
+                      {%liquid
+                      assign b = block.settings 
+                        assign icon = b.icon
+                        assign title = b.title
+                      %}
+                      <div class="comparison-list-item">
+                          {% if icon != blank %}
+                            <span> 
+                            <img src="{{ icon | img_url: "master" }}" loading="lazy">
+                            </span>
+                          {% endif %}
+                        <span>{{ title }}</span>
+                      </div>
+                     {% endfor %}
+
+              </div>
+            </div>
+          </div>
+          <div class="pro_comp_slide swiper-slide">
+            <div class="product-comparison-item">
+              <div class="comparison-item-top">
+                {% if our_store_image != blank %}
+                  <div class="comparison-item-image">
+              
+                    <img src="{{ our_store_image | img_url: "master" }}" loading="lazy">
+                  </div>
+                {% endif %}
+                      
+                {% if our_store_label != blank %}
+                <h4>{{ our_store_label }}</h4>
+              {% endif %}
+              </div>
+              <div class="comparison-item-bottom">
+                {% for block in block_items %}
+                  {%liquid
+                  assign b = block.settings 
+                    assign our_store_text = b.our_store_text
+                    assign store_status = b.store_status
+                  %}
+                <div class="comparison-list-item">
+                  {% if store_status contains "tick" %}
+                    <span>{% render 'all-icons', name: 'comparison-2' %}</span>
+                  {% else %}
+                        
+                  <span>{% render 'all-icons', name: 'comparison-3' %}</span>
+                    
+                  {% endif %}
+
+               
+                 
+                  <span>{{our_store_text }}</span>
+                </div>
+              {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="pro_comp_slide swiper-slide">
+            <div class="product-comparison-item">
+              <div class="comparison-item-top">
+                {% if other_store_image != blank %}
+                  <div class="comparison-item-image">
+                    <img src="{{ other_store_image | img_url: "master" }}" loading="lazy">
+                  </div>
+                {% endif %}
+                      
+                {% if other_store_label != blank %}
+                <h4>{{ other_store_label }}</h4>
+              {% endif %}
+              </div>
+              <div class="comparison-item-bottom">
+                {% for block in block_items %}
+                  {%liquid
+                  assign b = block.settings 
+                    assign other_store_text = b.other_store_text
+                    assign other_store_status = b.other_store_status
+                  %}
+                <div class="comparison-list-item">
+                 
+                {% if other_store_status contains "tick" %}
+                  <span>{% render 'all-icons', name: 'comparison-2' %}</span>
+                {% else %}
+                      
+                   <span>{% render 'all-icons', name: 'comparison-3' %}</span>
+                  
+                {% endif %}
+
+                  <span>{{other_store_text}}</span>
+                </div>
+
+              {% endfor %}
+             
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </slider-component>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Comparison",
+  "class": "product-comparison-section",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "heading",
+      "default": "US Vs. THEM"
+    },
+    {
+      "type": "header",
+      "content": "Woner Store"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "our_store_image",
+      "label": "Our Store Image"
+    },
+    {
+      "type": "text",
+      "id": "our_store_label",
+      "label": "Our Store Label",
+      "default": "HQC"
+    },
+    {
+      "type": "header",
+      "content": "Other Store"
+    },
+    {
+      "type": "image_picker",
+      "id": "other_store_image",
+      "label": "Other Store Image"
+    },
+    {
+      "type": "text",
+      "id": "other_store_label",
+      "label": "Other Store Label",
+      "default": "Other Product in the market"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay_enabled",
+      "label": "Enable Autoplay",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "loop_enabled",
+      "label": "Enable Loop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse",
+      "label": "Enable Reverse",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_timeout",
+      "label": "Change Slides Every",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 7,
+      "unit": "s"
+    },
+    {
+      "type": "header",
+      "content": "Spacing (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Spacing (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top-m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom-m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 68
+    }
+  ],
+  "blocks": [
+    { 
+      "type": "items",
+      "name": "Items",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title",
+          "default": "STRENGTH"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "our_store_text",
+          "label": "Our Store Text",
+          "default": "Easy clean"
+        },
+        {
+        "type": "select",
+        "id": "store_status",
+        "options": [
+          {
+            "value": "tick",
+            "label": "Tick"
+          },
+          {
+            "value": "cross",
+            "label": "Cross"
+          }
+        ],
+        "default": "tick",
+        "label": "Store Status"
+      },
+        {
+          "type": "inline_richtext",
+          "id": "other_store_text",
+          "label": "Other Store Text",
+          "default": "Stains and Marks"
+        },
+        {
+        "type": "select",
+        "id": "other_store_status",
+        "options": [
+          {
+            "value": "tick",
+            "label": "Tick"
+          },
+          {
+            "value": "cross",
+            "label": "Cross"
+          }
+        ],
+        "default": "cross",
+        "label": "Other Store Status"
+      }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Comparison"
+    }
+  ]
+}
+{% endschema %}

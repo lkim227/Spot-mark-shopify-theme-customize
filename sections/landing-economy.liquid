@@ -1,0 +1,410 @@
+{% assign value = section.settings %}
+
+{{ 'section-landing-economy.css' | asset_url | stylesheet_tag: preload: true }}
+<script src="{{ 'landing-economy.js' | asset_url }}" defer="defer"></script>
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    margin-top: {{ section.settings.margin_top-m }}px;
+    margin-bottom: {{ section.settings.margin_bottom-m }}px;
+    padding-top: {{ section.settings.padding_top_m  }}px;
+    padding-bottom: {{ section.settings.padding_bottom_m }}px;
+
+    background: {{ section.settings.background_color }};
+    color: {{ section.settings.color }};
+  }
+  {% if section.settings.top_gradient_color != blank %}
+    .section-{{ section.id }}-padding .landing-economy-gradient{
+      background: {{ section.settings.top_gradient_color }} ;
+    }
+  {% endif %}
+  @media screen and (min-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+{% assign slidesDesktop = section.settings.desktop_item %}
+{% assign slidesLaptop = section.settings.laptop_item %}
+{% assign slidesTab = section.settings.tab_item %}
+{% assign slidesMobile = section.settings.mobile_item %}
+{% assign direction = section.settings.reverse %}
+{% assign autoPlay = section.settings.autoplay_enabled %}
+{% assign loop = section.settings.loop_enabled %}
+{% assign delay = section.settings.autoplay_timeout | times: 1000 %}
+<div class="section-{{ section.id }}-padding" id="section-{{ section.id }}">
+  <div class="landing-economy-gradient">
+    {% for block in section.blocks %}
+      {% if block.type == 'title' %}
+        <h3 class="section-heading" style="color: {{ value.color }};" {{ block.shopify_attributes }}>{{ block.settings.title }}</h3>
+      {% endif %}
+    {% endfor %}
+    {% for block in section.blocks %}
+      {% if block.type == 'text' %}
+        <div style="color: {{ value.color }};" class="text" {{ block.shopify_attributes }}>
+          {{ block.settings.text }}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="landing-economy-container-gradient">
+    <div class="landing-economy-wrapper">
+      {% if value.bg_img != blank %}
+        <div class="landing-economy-bg-img">
+          <img src="{{ value.bg_img | image_url }}" alt="Background Image">
+        </div>
+      {% endif %}
+      <div class="landing-economy-box container">
+        <div class="landing-economy-box-top">
+          {% for block in section.blocks %}
+            {% if block.type == 'hover-text' %}
+              {% assign val = block.settings %}
+              <div
+                style="color: {{ val.color }};background-color: {{ val.bg_color }};"
+                class="landing-economy-box-top-item"
+                {{ block.shopify_attributes }}
+              >
+                {{ block.settings.text }}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="landing-economy-box-bottom">
+          <economy-slider>
+            <div
+              class="landing__economy_swiper swiper"
+              data-slidesDesktop="{{ slidesDesktop }}"
+              data-slidesdesktop="{{ slidesDesktop }}"
+              data-slidesLaptop="{{ slidesLaptop }}"
+              data-slidesTab="{{ slidesTab }}"
+              data-slidesMobile="{{ slidesMobile }}"
+              data-direction="{{ direction }}"
+              data-autoPlay="{{ autoPlay }}"
+              data-delay="{{ delay }}"
+              data-loop="{{ loop }}"
+            >
+              <div class="swiper-wrapper">
+                {% for block in section.blocks %}
+                  {% if block.type == 'card' %}
+                    {% assign val = block.settings %}
+                    <div class="swiper-slide economy-slide">
+                      <div
+                        style="color: {{ val.color }};background-color: {{ val.bg_color }};"
+                        class="landing-economy-box-bottom-item"
+                        {{ block.shopify_attributes }}
+                      >
+                        <div class="bottom-item-icon">
+                          <div class="icon-container">
+                            {{ val.icon }}
+                          </div>
+                        </div>
+                        <div class="bottom-item-image">
+                          <img src="{{ val.img | image_url }}" alt="Card Image">
+                        </div>
+                        <div class="text">{{ val.text }}</div>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </economy-slider>
+          <div class="landing-economy-navigation">
+            <div class="landing-economy-prev">
+              {% render 'all-icons', name: 'left-nav' %}
+            </div>
+            <div class="landing-economy-next">
+              {% render 'all-icons', name: 'right-nav' %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Landing Economy",
+  "class": "landing-economy-section",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_img",
+      "label": "Background Image"
+    },
+    {
+      "type": "range",
+      "id": "desktop_item",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "default": 4,
+      "label": "Desktop (1440+)"
+    },
+    {
+      "type": "range",
+      "id": "laptop_item",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "default": 4,
+      "label": "Laptop (991+)"
+    },
+    {
+      "type": "range",
+      "id": "tab_item",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "default": 4,
+      "label": "Tab (480+)"
+    },
+    {
+      "type": "range",
+      "id": "mobile_item",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "default": 4,
+      "label": "Mobile (360+)"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay_enabled",
+      "label": "Enable Autoplay",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "loop_enabled",
+      "label": "Enable Loop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse",
+      "label": "Enable Reverse",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_timeout",
+      "label": "Change Slides Every",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 7,
+      "unit": "s"
+    },
+    {
+      "type": "header",
+      "content": "Section Color"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#000"
+    },
+    {
+      "type": "color_background",
+      "id": "top_gradient_color",
+      "label": "Top Gradient color",
+      "default": "linear-gradient(180deg,rgba(92, 170, 182, 0) 1.94%,#26653a 18.37%,#00392a 33.12%,#250000 52.23%,rgba(37, 0, 0, 0) 66.31%)"
+    },
+    {
+      "type": "header",
+      "content": "Spacing (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Spacing (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top-m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom-m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 68
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Title",
+      "type": "title",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "The False Economy Сycle"
+        }
+      ]
+    },
+    {
+      "name": "Text",
+      "type": "text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "We understand how important it is finding the right product, so whether you're a business or a first time painter, We've made the best possible product finder to find the right product."
+        }
+      ]
+    },
+    {
+      "name": "Hover Text",
+      "type": "hover-text",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Text color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background color",
+          "default": "#000"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "We cut out the middlemen, saving up to 50% on the usual costs. "
+        }
+      ]
+    },
+    {
+      "name": "Card",
+      "type": "card",
+      "settings": [
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Text color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background color",
+          "default": "#000"
+        },
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Customer commutes to buy paint. The numerous options are confusing"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing Economy"
+    }
+  ]
+}
+{% endschema %}

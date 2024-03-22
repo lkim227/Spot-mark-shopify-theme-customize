@@ -1,0 +1,350 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "image_banner_7dzkRy": {
+      "type": "image-banner",
+      "settings": {
+        "full_width": true,
+        "color_scheme": "background-1",
+        "subheading": "",
+        "heading": "<p>Some header for your collection<\/p>",
+        "heading_size": "medium",
+        "text_information": "Some descriptive text for your collection. For better alignment, it is better to use text in several lines.",
+        "text_align": "center",
+        "show_view_all": false,
+        "button_label": "",
+        "button_style": "primary",
+        "button_link": "",
+        "image": "shopify:\/\/shop_images\/Rectangle_375_1_2b52d9e0-cddb-4a46-be96-cba9407e2b72.png",
+        "image_ratio": "landscape",
+        "opacity_overlay": 0,
+        "margin_top": "no-indent",
+        "margin_bottom": "no-indent"
+      }
+    },
+    "outlet_tutorial_cfddWJ": {
+      "type": "outlet-tutorial",
+      "blocks": {
+        "blog_PXWFah": {
+          "type": "blog",
+          "settings": {
+            "heading": "How To Paint",
+            "choose_blog": "how-to-paint",
+            "blogs_limit": 12
+          }
+        },
+        "blog_TA3mUC": {
+          "type": "blog",
+          "settings": {
+            "heading": "Emulsion Paints",
+            "choose_blog": "emulsion-paints",
+            "blogs_limit": 12
+          }
+        },
+        "blog_C9NmcW": {
+          "type": "blog",
+          "settings": {
+            "heading": "Masonry Paints",
+            "choose_blog": "masonry-paints",
+            "blogs_limit": 12
+          }
+        },
+        "blog_jTYiem": {
+          "type": "blog",
+          "settings": {
+            "heading": "Matt Paints",
+            "choose_blog": "matt-paints",
+            "blogs_limit": 12
+          }
+        },
+        "blog_9qixip": {
+          "type": "blog",
+          "settings": {
+            "heading": "Masonry Paints",
+            "choose_blog": "masonry-paints",
+            "blogs_limit": 12
+          }
+        }
+      },
+      "block_order": [
+        "blog_PXWFah",
+        "blog_TA3mUC",
+        "blog_C9NmcW",
+        "blog_jTYiem",
+        "blog_9qixip"
+      ],
+      "settings": {
+        "heading": "1. Getting seen & your business online",
+        "text": "<p><\/p><p><strong>In this section, we'll guide you through the steps of building a strong online presence. <\/strong>From creating an impactful website to harnessing the power of social media, we'll provide valuable insights to ensure your business gets noticed by the right audience. <\/p><p>Discover the strategies that will put you in the spotlight and help you stand out from the competition. painter, We've made the best possible product finder to find the right product.<\/p>",
+        "padding_top": 70,
+        "padding_bottom": 76,
+        "padding_top_m": 70,
+        "padding_bottom_m": 70,
+        "btn_label": "View More",
+        "btn_url": ""
+      }
+    },
+    "outlet_tutorial_rDjixg": {
+      "type": "outlet-tutorial",
+      "blocks": {
+        "blog_caLBQU": {
+          "type": "blog",
+          "settings": {
+            "heading": "How To Paint",
+            "choose_blog": "how-to-paint",
+            "blogs_limit": 12
+          }
+        },
+        "blog_9t4Agh": {
+          "type": "blog",
+          "settings": {
+            "heading": "Emulsion Paints",
+            "choose_blog": "emulsion-paints",
+            "blogs_limit": 12
+          }
+        },
+        "blog_Bk8Uyk": {
+          "type": "blog",
+          "settings": {
+            "heading": "Masonry Paints",
+            "choose_blog": "masonry-paints",
+            "blogs_limit": 12
+          }
+        },
+        "blog_rhQYaJ": {
+          "type": "blog",
+          "settings": {
+            "heading": "Matt Paints",
+            "choose_blog": "matt-paints",
+            "blogs_limit": 12
+          }
+        },
+        "blog_xrq9ig": {
+          "type": "blog",
+          "settings": {
+            "heading": "Masonry Paints",
+            "choose_blog": "masonry-paints",
+            "blogs_limit": 12
+          }
+        }
+      },
+      "block_order": [
+        "blog_caLBQU",
+        "blog_9t4Agh",
+        "blog_Bk8Uyk",
+        "blog_rhQYaJ",
+        "blog_xrq9ig"
+      ],
+      "settings": {
+        "heading": "2. Getting better at closing more deals with sales strategies",
+        "text": "<p><strong> Mastering Sales Strategies for Closing More Deals<\/strong><\/p><p>Closing deals is an essential skill for any tradesman looking to grow their business. In this section, we'll equip you with the tools and techniques to become a sales-savvy professional. Learn how to handle customer interactions with finesse, address objections effectively, and ultimately secure more deals. you'll gain the confidence and expertise needed to turn potential clients into loyal customers.<\/p>",
+        "padding_top": 70,
+        "padding_bottom": 76,
+        "padding_top_m": 70,
+        "padding_bottom_m": 70,
+        "btn_label": "View More",
+        "btn_url": ""
+      }
+    },
+    "outlet_tutorial_TPkCEb": {
+      "type": "outlet-tutorial",
+      "blocks": {
+        "blog_Bj78mU": {
+          "type": "blog",
+          "settings": {
+            "heading": "How To Paint",
+            "choose_blog": "how-to-paint",
+            "blogs_limit": 12
+          }
+        },
+        "blog_kRk8af": {
+          "type": "blog",
+          "settings": {
+            "heading": "Emulsion Paints",
+            "choose_blog": "emulsion-paints",
+            "blogs_limit": 12
+          }
+        },
+        "blog_tDQJJW": {
+          "type": "blog",
+          "settings": {
+            "heading": "Masonry Paints",
+            "choose_blog": "masonry-paints",
+            "blogs_limit": 12
+          }
+        },
+        "blog_WGapzT": {
+          "type": "blog",
+          "settings": {
+            "heading": "Matt Paints",
+            "choose_blog": "matt-paints",
+            "blogs_limit": 12
+          }
+        },
+        "blog_NamyPY": {
+          "type": "blog",
+          "settings": {
+            "heading": "Masonry Paints",
+            "choose_blog": "masonry-paints",
+            "blogs_limit": 12
+          }
+        }
+      },
+      "block_order": [
+        "blog_Bj78mU",
+        "blog_kRk8af",
+        "blog_tDQJJW",
+        "blog_WGapzT",
+        "blog_NamyPY"
+      ],
+      "settings": {
+        "heading": "3. Traditional Marketing Methods",
+        "text": "<p>Do traditional marketing methods still work, here we will discuss each one <\/p>",
+        "padding_top": 70,
+        "padding_bottom": 76,
+        "padding_top_m": 70,
+        "padding_bottom_m": 70,
+        "btn_label": "View More",
+        "btn_url": ""
+      }
+    },
+    "outlet_tutorial_NT4g7M": {
+      "type": "outlet-tutorial",
+      "blocks": {
+        "blog_9dmtKJ": {
+          "type": "blog",
+          "settings": {
+            "heading": "How To Paint",
+            "choose_blog": "how-to-paint",
+            "blogs_limit": 12
+          }
+        },
+        "blog_cGAMwT": {
+          "type": "blog",
+          "settings": {
+            "heading": "Emulsion Paints",
+            "choose_blog": "emulsion-paints",
+            "blogs_limit": 12
+          }
+        },
+        "blog_fhFW4L": {
+          "type": "blog",
+          "settings": {
+            "heading": "Masonry Paints",
+            "choose_blog": "masonry-paints",
+            "blogs_limit": 12
+          }
+        },
+        "blog_DzdCy8": {
+          "type": "blog",
+          "settings": {
+            "heading": "Matt Paints",
+            "choose_blog": "matt-paints",
+            "blogs_limit": 12
+          }
+        },
+        "blog_6BMabc": {
+          "type": "blog",
+          "settings": {
+            "heading": "Masonry Paints",
+            "choose_blog": "masonry-paints",
+            "blogs_limit": 12
+          }
+        }
+      },
+      "block_order": [
+        "blog_9dmtKJ",
+        "blog_cGAMwT",
+        "blog_fhFW4L",
+        "blog_DzdCy8",
+        "blog_6BMabc"
+      ],
+      "settings": {
+        "heading": "4. Getting better at closing more deals with sales strategy",
+        "text": "<h1><span style=\"text-decoration:underline\"><strong>Workplace & Dealing with customers<\/strong><\/span><\/h1><p>HANDLE SALES OBJECTIONS AND DEAL WITH DIFFERENT COMMON CUSTOMER SCENARIOS<\/p><p><\/p><p><strong> I<\/strong>n this section, we will focus on two essential aspects of running a successful tradesman business: handling sales objections and dealing with various common customer scenarios.<\/p><p>As a tradesman, you may encounter potential customers who express doubts or concerns about your services. These objections can range from pricing and timelines to doubts about the quality of work. Don't worry; objections are a natural part of the sales process. The key is to address them effectively to your advantage and turn them into opportunities.<\/p><p><span style=\"text-decoration:underline\"><strong> <\/strong><\/span><\/p>",
+        "padding_top": 70,
+        "padding_bottom": 76,
+        "padding_top_m": 70,
+        "padding_bottom_m": 70,
+        "btn_label": "View More",
+        "btn_url": ""
+      }
+    },
+    "outlet_tutorial_tk3NfD": {
+      "type": "outlet-tutorial",
+      "blocks": {
+        "blog_pXEYDT": {
+          "type": "blog",
+          "settings": {
+            "heading": "How To Paint",
+            "choose_blog": "how-to-paint",
+            "blogs_limit": 12
+          }
+        },
+        "blog_iLqJiV": {
+          "type": "blog",
+          "settings": {
+            "heading": "Emulsion Paints",
+            "choose_blog": "emulsion-paints",
+            "blogs_limit": 12
+          }
+        },
+        "blog_XwnQra": {
+          "type": "blog",
+          "settings": {
+            "heading": "Masonry Paints",
+            "choose_blog": "masonry-paints",
+            "blogs_limit": 12
+          }
+        },
+        "blog_rppcn6": {
+          "type": "blog",
+          "settings": {
+            "heading": "Matt Paints",
+            "choose_blog": "matt-paints",
+            "blogs_limit": 12
+          }
+        },
+        "blog_hDngcN": {
+          "type": "blog",
+          "settings": {
+            "heading": "Masonry Paints",
+            "choose_blog": "masonry-paints",
+            "blogs_limit": 12
+          }
+        }
+      },
+      "block_order": [
+        "blog_pXEYDT",
+        "blog_iLqJiV",
+        "blog_XwnQra",
+        "blog_rppcn6",
+        "blog_hDngcN"
+      ],
+      "settings": {
+        "heading": "5.MONEY MANAGEMENT & EXTRA DECORATORS VALUE READS(Have brief intro why this is important)",
+        "text": "<p><strong>MONEY MANAGEMENT & <\/strong><span style=\"text-decoration:underline\"><strong>EXTRA DECORATORS VALUE READS(Have brief intro why this is important)<\/strong><\/span><\/p>",
+        "padding_top": 70,
+        "padding_bottom": 76,
+        "padding_top_m": 70,
+        "padding_bottom_m": 70,
+        "btn_label": "View More",
+        "btn_url": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_7dzkRy",
+    "outlet_tutorial_cfddWJ",
+    "outlet_tutorial_rDjixg",
+    "outlet_tutorial_TPkCEb",
+    "outlet_tutorial_NT4g7M",
+    "outlet_tutorial_tk3NfD"
+  ]
+}

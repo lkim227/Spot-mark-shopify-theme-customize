@@ -1,0 +1,74 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-blog",
+      "disabled": true,
+      "settings": {
+        "show_image": true,
+        "show_tags": true,
+        "show_date": true,
+        "show_author": true,
+        "show_excerpt": false,
+        "padding_top": "no-indent",
+        "padding_bottom": "m"
+      }
+    },
+    "outlet_tutorial_AzUeza": {
+      "type": "outlet-tutorial",
+      "blocks": {
+        "blog_HdWgbT": {
+          "type": "blog",
+          "settings": {
+            "heading": "HOW TO PAINT",
+            "choose_blog": "how-to-paint",
+            "blogs_limit": 12
+          }
+        },
+        "blog_EhxgQ8": {
+          "type": "blog",
+          "settings": {
+            "heading": "EMULSION PAINTS",
+            "choose_blog": "emulsion-paints",
+            "blogs_limit": 12
+          }
+        },
+        "blog_P3Uftw": {
+          "type": "blog",
+          "settings": {
+            "heading": "MASONRY PAINTS",
+            "choose_blog": "masonry-paints",
+            "blogs_limit": 12
+          }
+        },
+        "blog_FA3MxQ": {
+          "type": "blog",
+          "settings": {
+            "heading": "MASONRY PAINTS",
+            "choose_blog": "masonry-paints",
+            "blogs_limit": 12
+          }
+        }
+      },
+      "block_order": [
+        "blog_HdWgbT",
+        "blog_EhxgQ8",
+        "blog_P3Uftw",
+        "blog_FA3MxQ"
+      ],
+      "settings": {
+        "heading": "Paint Outlet Tutorials",
+        "text": "<p>We understand how important it is finding the right product, so whether you're a business or a first time painter, We've made the best possible product finder to find the right product.<\/p>",
+        "padding_top": 126,
+        "padding_bottom": 76,
+        "padding_top_m": 70,
+        "padding_bottom_m": 70,
+        "btn_label": "",
+        "btn_url": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "outlet_tutorial_AzUeza"
+  ]
+}

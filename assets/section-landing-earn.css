@@ -1,0 +1,124 @@
+.landing-earn-wrapper > .container > h3{
+  text-align: center;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 119.5%;
+  max-width: 780px;
+  margin: 0 auto 20px;
+  padding-top: 70px;
+}
+.landing-earn-card-box{
+  display: block;
+  position: relative;
+}
+.landing-earn-card-item{
+  padding: 15px;
+  border-radius: 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  box-sizing: border-box;
+}
+.landing-earn-card-item h4{
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%;
+  margin: 0;
+}
+.landing-earn-card-item .text{
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  margin-bottom: 20px;
+}
+.landing-earn-card-img img{
+  width: 100%;
+  object-fit: scale-down;
+  max-height: 170px;
+}
+.landing-earn-card-btn{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  width: 100%;
+}
+.landing-earn-card-btn a{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  border-radius: 47px;
+  box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.20) inset;
+  text-decoration: none;
+}
+.landing-earn-bottom{
+  padding-top: 150px;
+  margin-top: -100px;
+}
+.landing-earn-bottom > .container > h3{
+  text-align: center;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 111%;
+  margin: 0;
+  margin-bottom: 20px;
+}
+.landing-earn-image-text-container{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+.landing-earn-image-text-item{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  max-width: 377px;
+}
+.landing-earn-image-text-item .text{
+  text-align: center;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+}
+.landing-earn-card-img{
+  max-width: 200px;
+}
+.earn-slide{
+  height: auto;
+}
+@media all and (max-width: 1200px) {
+  .landing-earn-image-text-container{
+    flex-direction: column;
+    align-items: center;
+  }
+
+}
+@media all and (max-width: 768px){
+  .landing-earn-card-item h4{
+    font-size: 16px;
+  }
+  .landing-earn-card-item .text{
+    font-size: 14px;
+  }
+  .landing-earn-image-text-item .text{
+    font-size: 14px;
+  }
+  .landing-earn-image-text-container{
+    gap: 20px;
+  }
+  .landing-earn-wrapper > .container > h3{
+    padding-top: 48px;
+  }
+}

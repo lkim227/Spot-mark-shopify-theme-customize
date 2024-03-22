@@ -1,0 +1,60 @@
+@media screen and (min-width: 990px) {
+  .video-section--banner {
+    min-height: 46rem;
+  }
+}
+.video-section--banner .video-section__poster-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  min-height: 38.4rem;
+}
+.video-section--banner .video-section__content {
+  position: relative;
+  width: 100%;
+  padding: 0 3rem;
+}
+@media (min-width: 990px) {
+  .video-section--banner .video-section__content {
+    padding: 0 11rem;
+  }
+}
+.video-section--banner .video-section__content h2 {
+  color: rgb(var(--color-base-background-2));
+}
+.video-section--banner .video-section__text {
+  color: rgba(var(--color-base-background-2), 0.8);
+  max-width: 44rem;
+}
+.video-section--banner .video-section__wrapper {
+  align-items: flex-start;
+  gap: 1rem;
+  text-align: left;
+}
+.video-section--banner .video-section__button {
+  box-shadow: 0 0 0 0.1rem rgba(var(--color-base-background-2), 0.3);
+  color: rgb(var(--color-base-background-2));
+  margin-top: 3rem;
+}
+@media screen and (min-width: 1200px) {
+  .video-section--banner .video-section__images {
+    max-width: 100%;
+  }
+}
+.video-section--banner .video-section__images li {
+  gap: 1.5rem;
+}
+@media screen and (min-width: 990px) {
+  .video-section--banner .images__bottom {
+    right: 2rem;
+    bottom: -4rem;
+  }
+}
+@media screen and (min-width: 990px) {
+  .video-section--banner .images__bottom img:nth-child(1) {
+    margin-bottom: 0;
+  }
+}
+.video-section--banner .deferred-media__poster {
+  cursor: default;
+}

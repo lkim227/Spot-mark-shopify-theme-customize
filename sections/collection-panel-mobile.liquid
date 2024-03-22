@@ -1,0 +1,893 @@
+{{ 'component-collection-panel.css' | asset_url | stylesheet_tag: preload: true }}
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+<div class="collection-sidebar-panel">
+  <a href="#" class="collection-panel-close" alt="Close">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+      <path d="M 38.982422 6.9707031 A 2.0002 2.0002 0 0 0 37.585938 7.5859375 L 24 21.171875 L 10.414062 7.5859375 A 2.0002 2.0002 0 0 0 8.9785156 6.9804688 A 2.0002 2.0002 0 0 0 7.5859375 10.414062 L 21.171875 24 L 7.5859375 37.585938 A 2.0002 2.0002 0 1 0 10.414062 40.414062 L 24 26.828125 L 37.585938 40.414062 A 2.0002 2.0002 0 1 0 40.414062 37.585938 L 26.828125 24 L 40.414062 10.414062 A 2.0002 2.0002 0 0 0 38.982422 6.9707031 z"></path>
+    </svg>
+  </a>
+  <div class="sidebar-header text-left"><span class="title">Offers</span></div>
+
+  <div class="sidebar-wrapper">
+    <div class="sidebar__search search" role="dialog" aria-modal="true" aria-label="{{ 'general.search.search' | t }}">
+      <div class="header__overlay"></div>
+      <div class="search__content color-background-2">
+        {%- if settings.predictive_search_enabled -%}
+          <predictive-search class="search-modal__form" data-loading-text="{{ 'accessibility.loading' | t }}">
+        {%- endif -%}
+        <form action="{{ routes.search_url }}" method="get" role="search" class="search search__form">
+          <div class="field">
+            <input
+              class="search__input field__input"
+              id="Search-In-Modal-Collection"
+              type="search"
+              name="q"
+              value="{{ search.terms | escape }}"
+              placeholder="{{ 'general.search.placeholder' | t }}"
+              {%- if settings.predictive_search_enabled -%}
+                role="combobox"
+                aria-expanded="false"
+                aria-owns="predictive-search-results-list"
+                aria-controls="predictive-search-results-list"
+                aria-haspopup="listbox"
+                aria-autocomplete="list"
+                autocorrect="off"
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+              {%- endif -%}
+            >
+            <label class="field__label" for="Search-In-Modal-Collection">{{ 'general.search.placeholder' | t }}</label>
+            <input type="hidden" name="options[prefix]" value="last">
+
+            <button class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
+              {% render 'icon-search' %}
+            </button>
+          </div>
+
+          {% if section.settings.enable_search_modal %}
+            {% render 'search-modal' %}
+          {%- endif -%}
+
+          {%- if settings.predictive_search_enabled -%}
+            <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
+              <div class="predictive-search__loading-state">
+                {% render 'icon-spinner' %}
+              </div>
+            </div>
+
+            <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+          {%- endif -%}
+        </form>
+        {%- if settings.predictive_search_enabled -%}
+          </predictive-search>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="custom__scroller">
+		{% if section.settings.show_top_offers %}
+
+      <div class="offer__wrapper">
+
+		{% if section.settings.heading != blank %}
+			<h2 class="offer-title">{{section.settings.heading}}</h2>
+		{% endif %}
+		{% if section.settings.btn_label != blank %}
+        <a href="{{section.settings.btn_link }}" class="offer-view-btn">{{section.settings.btn_label}}</a>
+	  {% endif %}
+        <div class="offer__slider-wrap offer__slider">
+			<div class="swiper-button-prev">
+				   <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect width="3" height="12.2217" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 15 7.90625)" fill="black"/>
+					<rect width="3" height="7.87027" transform="matrix(0.707107 -0.707107 -0.707107 -0.707107 6.01562 11.9062)" fill="black"/>
+					<rect width="3" height="7.87027" transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 8.13672 2.89941)" fill="black"/>
+					</svg>
+					
+			</div>
+			<div class="swiper-button-next">
+				 <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect y="7.90625" width="3" height="12.2217" transform="rotate(-90 0 7.90625)" fill="black"/>
+					<rect x="8.98438" y="11.9062" width="3" height="7.87027" transform="rotate(-135 8.98438 11.9062)" fill="black"/>
+					<rect x="6.86328" y="2.89941" width="3" height="7.87027" transform="rotate(-45 6.86328 2.89941)" fill="black"/>
+					</svg>
+					
+			</div>
+	
+			<div class="swiper-wrapper">
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'offer' -%}
+
+				{%liquid
+					 assign image = block.settings.image 
+					 assign heading = block.settings.heading 
+					 assign text = block.settings.text 
+					 assign btn_label = block.settings.btn_label 
+					 assign btn_link = block.settings.btn_link 
+					
+				 %}
+                <div class="offer__item swiper-slide">
+                  <div class="offer__card">
+                    <div class="offer__content">
+             
+					  {% if heading != blank %}
+						<h3 class="offer__card-title">{{heading  }}</h3>
+					{% endif %}
+
+					{% if text != blank %}
+						{{text }}
+					{% endif %}
+
+					{% if btn_label != blank %}
+						<a href="{{btn_link}}" class="offer__card-btn">{{btn_label }}</a>
+					{% endif %}
+                     
+                    </div>
+                    <div class="offer__image">
+                      {%- if image != blank -%}
+                        {{ image | image_url: width: auto | image_tag: loading: 'lazy' }}
+
+                      {% else %}
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg icon-plaecholder' }}
+                      {%- endif -%}
+                    </div>
+                  </div>
+                </div>
+            {%- endcase -%}
+          {%- endfor -%}
+
+           </div>
+
+	
+
+	     </div>
+      </div>
+	{% endif %}
+
+			{% if section.settings.show_top_offers %}
+
+				<div class="promo__wrapper">
+
+				{% if section.settings.heading_promo != blank %}
+					<h2 class="promo-title">{{section.settings.heading_promo}}</h2>
+				{% endif %}
+				{% if section.settings.btn_label_promo != blank %}
+				<a href="{{section.settings.btn_link_promos}}" class="promo-view-btn">{{section.settings.btn_label_promo}}</a>
+				{% endif %}
+
+				<div class="promo__slider-wrap promo__slider">
+					<div class="swiper-button-prev">
+						   <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<rect width="3" height="12.2217" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 15 7.90625)" fill="black"/>
+							<rect width="3" height="7.87027" transform="matrix(0.707107 -0.707107 -0.707107 -0.707107 6.01562 11.9062)" fill="black"/>
+							<rect width="3" height="7.87027" transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 8.13672 2.89941)" fill="black"/>
+							</svg>
+							
+					</div>
+					<div class="swiper-button-next">
+						 <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<rect y="7.90625" width="3" height="12.2217" transform="rotate(-90 0 7.90625)" fill="black"/>
+							<rect x="8.98438" y="11.9062" width="3" height="7.87027" transform="rotate(-135 8.98438 11.9062)" fill="black"/>
+							<rect x="6.86328" y="2.89941" width="3" height="7.87027" transform="rotate(-45 6.86328 2.89941)" fill="black"/>
+							</svg>
+							
+					</div>
+
+
+					<div class="swiper-wrapper">
+						{%- for block in section.blocks -%}
+							{%- case block.type -%}
+							  {%- when 'promo' -%}
+			  
+							  {%liquid
+								   assign image = block.settings.image 
+								   assign heading = block.settings.heading 
+								   assign text = block.settings.text 
+								   assign btn_label = block.settings.btn_label 
+								   assign btn_link = block.settings.btn_link 
+								  
+							   %}
+							  <div class="promo__item swiper-slide">
+								<div class="promo__card">
+								  <div class="promo__content">
+						   
+									<div class="promo__header-flex">
+									
+									
+								 {% if heading != blank %}
+									  <h3 class="promo__card-title">{{heading}}</h3>
+								  {% endif %}
+
+								  <div class="promo__image">
+									{%- if image != blank -%}
+									  {{ image | image_url: width: auto | image_tag: loading: 'lazy' }}
+			  
+									{% else %}
+									  {{ 'image' | placeholder_svg_tag: 'placeholder-svg icon-plaecholder' }}
+									{%- endif -%}
+								  </div>
+
+								</div>
+			  
+								  {% if text != blank %}
+									  {{text }}
+								  {% endif %}
+
+                 
+                  <div class="discount-code-container" style="display:none">
+                    <h3 class="h3">Enter Promo Or Discount Code:</h3>
+                    <div class="cart-discount input-wrapper">
+                      <label  class="visually-hidden sr-only">Enter Discount Code</label>
+                      <input
+                        type="text"
+                        
+                        name="discount"
+                        class="form-control"
+                        value=""
+                        placeholder="Coupon code"
+                        form="cart"
+                      >
+                      <div class="apply-btn-wrapper">
+                        <button type="button" class="apply-discount-code">Apply</button>
+                      </div>
+                    </div>
+                  </div>
+			  
+
+								  
+									  <a href="javascript:void(0)" class="promo__card-btn">Add Promo</a>
+								
+								   
+								  </div>
+								 
+								</div>
+							  </div>
+						  {%- endcase -%}
+						{%- endfor -%}
+			  
+						 </div>
+			  
+			    	</div>
+				</div>
+			{% endif %}
+	
+
+		{%- for block in section.blocks -%}
+			{%- case block.type -%}
+		
+          {%- when 'banner' -%}
+			{%liquid
+				assign image = block.settings.image 
+				assign heading = block.settings.heading 
+				assign text = block.settings.text 
+				assign btn_label = block.settings.btn_label 
+				assign btn_link = block.settings.btn_link 
+			   
+			%}
+			<div class="banner__card">
+				<div class="banner__content">
+		 
+				  {% if heading != blank %}
+					<h3 class="banner__card-title">{{ heading }}</h3>
+				{% endif %}
+
+				{% if text != blank %}
+					{{text }}
+				{% endif %}
+
+				{% if btn_label != blank %}
+					<a href="{{btn_link}}" class="banner__card-btn">{{ btn_label }}</a>
+				{% endif %}
+				 
+				</div>
+				<div class="banner__image">
+				  {%- if image != blank -%}
+					{{ image | image_url: width: auto | image_tag: loading: 'lazy' }}
+
+				  {% else %}
+					{{ 'image' | placeholder_svg_tag: 'placeholder-svg icon-plaecholder' }}
+				  {%- endif -%}
+				</div>
+			  </div>
+
+			
+
+          {%- when 'product_list' -%}
+			{%liquid
+				assign heading = block.settings.heading 
+				assign product_list = block.settings.product_list 
+				assign show_vendor = block.settings.show_vendor 
+				assign show_price = block.settings.show_price 
+			%}
+			{% if heading != blank %}
+				<h3 class="product-list-title">{{ heading  }}</h3>
+			{% endif %}
+
+			<ul class="product-list-collection-panel">
+				{% for product in product_list  %}
+					<li class="product-list__item">
+						<a
+						  href="{{ product.url }}"
+						  class="product__items-link link link--text"
+						  tabindex="-1"
+						>
+						  {%- if product.featured_media != blank -%}
+							<div class="product-items__img-wrap">
+							<img
+							  class="product__items-image"
+							  src="{{ product.featured_media | image_url: width: 150 }}"
+							  alt="{{ product.featured_media.alt }}"
+							  width="50"
+							  height="50"
+							  loading="lazy"
+							>
+							</div>
+						  {%- endif -%}
+						  <div class="product__items-content">
+							{%- if show_vendor -%}
+							  <span class="visually-hidden subtitle">
+								{{- 'accessibility.vendor' | t -}}
+							  </span>
+							  <div class="search__items-vendor caption-with-letter-spacing subtitle">
+								{{ product.vendor }}
+							  </div>
+							{%- endif -%}
+							<p class="product__items-heading h5">
+							  {{ product.title }}
+							</p>
+							{%- if show_price -%}
+							  {% render 'price', product: product, use_variant: true %}
+							{%- endif -%}
+						  </div>
+						</a>
+		
+
+            {%- assign product_form_id = 'product-form-' | append: section.id | append: forloop.index  -%}
+
+
+
+						<product-form class="card__add-to-cart ">
+						
+						{%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+
+              <input
+                type="hidden"
+                name="id"
+                value="{{ product.selected_or_first_available_variant.id }}"
+                {% if product.selected_or_first_available_variant.available == false %}
+                  disabled
+                {% endif %}
+              >
+							  <button
+								id="{{ product_form_id }}-submit"
+								type="submit"
+								class="button button-add-to-cart-link card-focused"
+								name="add"
+								aria-haspopup="dialog"
+								aria-labelledby="{{ product_form_id }}-submit title-{{ section.id }}-{{ product.id }}"
+								aria-live="polite"
+								data-sold-out-message="true"
+								{% if product.selected_or_first_available_variant.available == false %}
+								  disabled
+								{% endif %}
+								tabindex="-1"
+							  >
+							
+								<span>
+								  {{ 'products.product.add_to_cart' | t }}
+								</span>
+								<span class="sold-out-message hidden">
+								  {{ 'products.product.sold_out' | t }}
+								</span>
+								<div class="loading-overlay__spinner hidden">
+								  <svg
+									aria-hidden="true"
+									focusable="false"
+									role="presentation"
+									class="spinner"
+									viewBox="0 0 66 66"
+									xmlns="http://www.w3.org/2000/svg"
+								  >
+									<circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+								  </svg>
+								</div>
+							  </button>
+							{%- endform -%}
+						  </product-form>
+					
+            </li>
+					
+					
+				{% endfor %}
+			
+			</ul>
+
+       {%- endcase -%}
+      {%- endfor -%}
+
+      {% if section.settings.show_brand  %}
+        
+        {%liquid
+          assign heading = section.settings.heading_brand
+        %}
+        <div class="brand--wrap"> 
+        {% if heading != blank %}
+          <h3 class="brand-title">{{ heading  }}</h3>
+        {% endif %}
+
+
+            <div class="brand-list brand-slider">
+              <div class="swiper-button-prev">
+                <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <rect width="3" height="12.2217" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 15 7.90625)" fill="black"/>
+               <rect width="3" height="7.87027" transform="matrix(0.707107 -0.707107 -0.707107 -0.707107 6.01562 11.9062)" fill="black"/>
+               <rect width="3" height="7.87027" transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 8.13672 2.89941)" fill="black"/>
+               </svg>
+               
+           </div>
+           <div class="swiper-button-next">
+              <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <rect y="7.90625" width="3" height="12.2217" transform="rotate(-90 0 7.90625)" fill="black"/>
+               <rect x="8.98438" y="11.9062" width="3" height="7.87027" transform="rotate(-135 8.98438 11.9062)" fill="black"/>
+               <rect x="6.86328" y="2.89941" width="3" height="7.87027" transform="rotate(-45 6.86328 2.89941)" fill="black"/>
+               </svg>
+               
+           </div>
+ 
+ 
+           <div class="swiper-wrapper">
+
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+          
+                    {%- when 'brand' -%}
+                      {%liquid
+                        assign image = block.settings.image 
+                        assign heading = block.settings.heading 
+                        assign text = block.settings.text 
+                 
+                      %}
+                      <div class="brand-item swiper-slide">
+                        <div class="brand-wrap">
+                          <div class="img-wrap">
+                            {%- if image != blank -%}
+                              {{ image | image_url: width: auto | image_tag: loading: 'lazy' }}
+                  
+                            {% else %}
+                              {{ 'image' | placeholder_svg_tag: 'placeholder-svg icon-plaecholder' }}
+                            {%- endif -%}
+                          </div>
+                          <div class="brand-text-wrap">
+                            {% if heading != blank %}
+                              <h3 class="banner__card-title">{{ heading }}</h3>
+                            {% endif %}
+                          {% if text != blank %}
+                            {{text }}
+                          {% endif %}
+                          
+                          </div>
+                        </div>
+                      </div>
+                    
+              {%- endcase -%}
+            {%- endfor -%}
+
+            </div>
+          </div>
+
+
+    </div>
+    {% endif %}
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .discount-code-container {
+    margin-bottom: 2rem;
+    overflow: hidden;
+  }
+  .discount-code-container .h3 {
+    margin-bottom: 2rem;
+  }
+  .cart-discount.input-wrapper {
+    display: flex;
+    justify-items: center;
+    gap: 20px;
+  }
+  input#discount_code {
+    flex: 1;
+    border-radius: 5px;
+    border: 1px solid gainsboro;
+    padding: 10px;
+    color: #333;
+  }
+  button.apply-discount-code {
+    position: relative;
+    padding: 7px 22px;
+    text-transform: uppercase;
+    border-radius: 9px;
+    border: 1px solid transparent;
+    color: #fff;
+    background-color: #000;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    height: 22px;
+  }
+  .collection-sidebar-panel .loading::before {
+    border: 3px solid #acacac;
+    border-top: 2px solid #000;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    animation: spin .5s linear infinite;
+    content: '';
+    position: absolute;
+    right: 4px;
+    top: 8px;
+ }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+
+<script>
+
+  $(document).on("click",".promo__card-btn",function() {
+   $('.discount-code-container').slideToggle('slow');
+});
+
+  window.shopUrl = '{{ request.origin }}';
+  const discountSubmitBtn = $('.apply-discount-code'),
+    discountCodeInput = document.querySelector('[name="discount"]');
+
+
+
+discountSubmitBtn.each(function( index ) {
+  $(this).on( "click", function(event) {
+    event.preventDefault();
+    const discountCode = $(this).closest('.cart-discount').find('[name="discount"]').val();
+    var btn =  $(this);
+ 
+    // console.log("Tress", discountCode);
+
+    if (discountCode) {
+
+
+           btn.addClass('loading');
+          // Save the discount code as a session cookie
+          document.cookie = `discount_code=${discountCode}; path=/`;
+          // Send GET request to "/discount/[discountcode]"
+          fetch(`/discount/${discountCode}`)
+          .then(function() {
+            // After the discount code has been applied, force the cart to update so the discount is visible instantly
+            return fetch('/cart/update.js', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                updates: {},
+              }),
+            });
+          }).then(function (data) {
+            fetch("?section_id=cart-drawer")
+              .then((response) => response.text())
+              .then((cartData) => {
+                btn.removeClass('loading');
+                var cart_html = $(cartData);
+                var cart_items = $("#CartDrawer", cart_html);
+                $("#CartDrawer").replaceWith(cart_items);
+                $('.drawer').addClass('active');
+                $('body').addClass('overflow-hidden');
+              });
+
+          })
+          .catch(function(error) {
+            console.error('Error:', error);
+          });
+     }
+
+
+
+
+});
+});
+</script>
+
+{% schema %}
+{
+  "name": "Collection Panel Mobile",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Top Offers"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_top_offers",
+      "default": true,
+      "label": "Show Offers"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Top Offers"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button Label",
+      "default": "View All Offers"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Add New Promos"
+    },
+    {
+      "type": "text",
+      "id": "heading_promo",
+      "label": "Heading",
+      "default": "Add New Promos"
+    },
+	 {
+		"type": "checkbox",
+		"id": "show_top_promos",
+		"default": true,
+		"label": "Show Promos"
+	  },
+    {
+      "type": "text",
+      "id": "btn_label_promo",
+      "label": "Button Label",
+      "default": "View All Offers"
+    },
+    {
+      "type": "url",
+      "id": "btn_link_promos",
+      "label": "Button link"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Brands"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_brand",
+      "default": true,
+      "label": "Show Brand"
+    },
+    {
+      "type": "text",
+      "id": "heading_brand",
+      "label": "Heading",
+      "default": "Brands"
+    },
+    {
+      "type": "header",
+      "content": "Products"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_search",
+      "default": true,
+      "label": "t:sections.header.settings.enable_search.label",
+      "info": "t:sections.header.settings.enable_search.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_search_modal",
+      "default": false,
+      "label": "t:sections.header.settings.enable_search_modal.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_card",
+      "default": false,
+      "label": "t:sections.header.settings.show_collection_card.label"
+    },
+    {
+      "type": "collection_list",
+      "id": "collection_list",
+      "label": "t:sections.header.settings.collection_list.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_items",
+      "default": false,
+      "label": "t:sections.header.settings.show_items.label",
+      "info": "t:sections.header.settings.show_items.info"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "limit": 10,
+      "label": "t:sections.header.settings.product_list.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": false,
+      "label": "t:sections.header.settings.show_vendor.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "default": false,
+      "label": "t:sections.header.settings.show_price.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "offer",
+      "name": "Offer",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.brands.blocks.column.settings.image_1.label"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Lorem ipsum, dolor sit amet"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Perferendis ullam velit?</p>"
+        },
+        {
+          "type": "text",
+          "id": "btn_label",
+          "label": "Button Label",
+          "default": "Tap to Order"
+        },
+        {
+          "type": "url",
+          "id": "btn_link",
+          "label": "Button link"
+        }
+      ]
+    },
+    {
+      "type": "promo",
+      "name": "Promo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.brands.blocks.column.settings.image_1.label"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Lorem ipsum, dolor sit amet"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Perferendis ullam velit?</p>"
+        },
+        {
+          "type": "text",
+          "id": "btn_label",
+          "label": "Button Label",
+          "default": "Add Promo"
+        },
+        {
+          "type": "url",
+          "id": "btn_link",
+          "label": "Button link"
+        }
+      ]
+    },
+    {
+      "type": "banner",
+      "name": "Banner",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.brands.blocks.column.settings.image_1.label"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Lorem ipsum, dolor sit amet"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p> Debitis rerum asperiores sed blanditiis mollitia sint ad praesentium autem impedit quod dolorum quasi distinctio. Rerum, ratione!</p>"
+        },
+        {
+          "type": "text",
+          "id": "btn_label",
+          "label": "Button Label",
+          "default": "start inviting"
+        },
+        {
+          "type": "url",
+          "id": "btn_link",
+          "label": "Button link"
+        }
+      ]
+    },
+    {
+      "type": "product_list",
+      "name": "Product List",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Top Product Sales"
+        },
+        {
+          "type": "product_list",
+          "id": "product_list",
+          "label": "t:sections.header.settings.product_list.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_vendor",
+          "default": false,
+          "label": "t:sections.header.settings.show_vendor.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_price",
+          "default": false,
+          "label": "t:sections.header.settings.show_price.label"
+        }
+      ]
+    },
+    {
+      "type": "brand",
+      "name": "Brand",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.brands.blocks.column.settings.image_1.label"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Lorem ipsum, dolor sit amet"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p> Debitis rerum asperiores</p>"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

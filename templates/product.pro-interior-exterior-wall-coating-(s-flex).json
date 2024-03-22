@@ -1,0 +1,1119 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "bf977822-fc54-46a6-adcc-9d42d216879a": {
+          "type": "share",
+          "settings": {
+            "show_share_facebook": true,
+            "show_share_twitter": true,
+            "show_share_pinterest": true,
+            "show_share_copy": true
+          }
+        },
+        "00d96f12-2d89-403f-830d-23e3b1e7b05f": {
+          "type": "shopify:\/\/apps\/loox-reviews\/blocks\/loox-rating\/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "contentSize": 13,
+            "pattern": "[count] reviews",
+            "hideText": false,
+            "alignment": "",
+            "layout": "",
+            "textColor": "",
+            "starColor": "",
+            "showAllReviews": false,
+            "looxOpenFloatingWidget": true,
+            "emptyRatingWidget": true
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h2"
+          }
+        },
+        "0ac1c304-e336-4462-94f8-414e0006eb83": {
+          "type": "manufacture",
+          "settings": {
+            "manufacture_text": "Manufacturer's warranty is 10 years"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_quantity": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "pickup_availability": {
+          "type": "pickup_availability",
+          "settings": {
+          }
+        },
+        "64599f7b-1d41-4d7c-9536-f0281c7f23f9": {
+          "type": "payment",
+          "settings": {
+            "heading": "Payment & Security",
+            "text": "<p>Your payment information is processed securely. We do not store credit card details nor have access to your credit card information.<\/p>"
+          }
+        },
+        "about_brand_fntdNN": {
+          "type": "about_brand",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/HQC_BACKGRONG_LESS_300x_1.png",
+            "heading": "About this Brand",
+            "text": "PRO RANGE by Thermilate technologies  - professional EXTERIOR and INTERIOR paints, coatings and plaster products create a 360° envelope of the most cost-effective decorative insulation available today. Used commercially and industrial now available to everyone"
+          }
+        },
+        "certificate_Fmqqep": {
+          "type": "certificate",
+          "settings": {
+            "heading": "Our Certificate",
+            "pdf_label_1": "PDF 12Mb",
+            "pdf_url_1": "https:\/\/www.paintoutlet.co.uk\/cdn\/shop\/files\/dummy.pdf?v=4457909464436904884",
+            "text_1": "Product instructions, detailed descriptions.",
+            "pdf_label_2": "PDF 12Mb",
+            "pdf_url_2": "https:\/\/www.paintoutlet.co.uk\/cdn\/shop\/files\/dummy.pdf?v=4457909464436904884",
+            "text_2": "Product instructions, detailed descriptions.",
+            "pdf_label_3": "PDF 12Mb",
+            "pdf_url_3": "https:\/\/www.paintoutlet.co.uk\/cdn\/shop\/files\/dummy.pdf?v=4457909464436904884",
+            "text_3": "Product instructions, detailed descriptions.",
+            "pdf_label_4": "PDF 12Mb",
+            "pdf_url_4": "https:\/\/www.paintoutlet.co.uk\/cdn\/shop\/files\/dummy.pdf?v=4457909464436904884",
+            "text_4": "Product instructions, detailed descriptions.",
+            "pdf_label_5": "PDF 12Mb",
+            "pdf_url_5": "https:\/\/www.paintoutlet.co.uk\/cdn\/shop\/files\/dummy.pdf?v=4457909464436904884",
+            "text_5": "Product instructions, detailed descriptions."
+          }
+        },
+        "step_rQPtCT": {
+          "type": "step",
+          "settings": {
+            "heading": "DON’T KNOW WHAT TO BUY?",
+            "text_1": "Try a Colour tester pouch",
+            "text_2": "Accessories & Brushes",
+            "text_3": "Primer",
+            "text_4": "Paint",
+            "text_5": "Sealer if required",
+            "button_label": "SHOP LIKE A PRO",
+            "button_link": "https:\/\/www.paintoutlet.co.uk\/products\/pro-exterior-wall-coating-s-flex-10l"
+          }
+        },
+        "benefits_fcDx7W": {
+          "type": "benefits",
+          "settings": {
+            "heading": "TOP BENEFITS: 🌟",
+            "text": "<ul><li>Guarantee properties remain bone-dry.<\/li><li>Complete rejuvenation of your exterior walls<\/li><li>Reduces heat loss through walls.<\/li><li>Reduces excessive heat gain in summer<\/li><li>SAVE ENERGY and SAVE MONEY on energy bills.<\/li><li>BE RESISTANT to contamination and ageing (from carbonation, penetration of  chlorides, corrosion and damaging salts – in all weather conditions).<\/li><li>PROTECT THE ENVIRONMENT as it is a 100% acrylic water-based product.<\/li><li>PROTECT from penetrating damp.<\/li><li>Breathable waterproofing<\/li><li>Reduces heat loss & energy-bills in winter<\/li><li>Built-in Fungicides. Can be hosed down<\/li><li>Guarantee properties remain bone-dry<\/li><li>Protects from penetrating damp, condensation & mould<\/li><\/ul>"
+          }
+        },
+        "feature_text_zHQaQ9": {
+          "type": "feature_text",
+          "settings": {
+            "color": "",
+            "image": "shopify:\/\/shop_images\/Group_7ae06567-bb88-42dc-9c8d-15d904ad2138.svg",
+            "heading": "Brush, Roller OR Spray",
+            "sub_title": "APPLICATION METHOD:"
+          }
+        },
+        "feature_text_3gWWQp": {
+          "type": "feature_text",
+          "settings": {
+            "color": "#addfe4",
+            "image": "shopify:\/\/shop_images\/Frame.svg",
+            "heading": "100%",
+            "sub_title": "Water based:"
+          }
+        },
+        "feature_text_GxQr8k": {
+          "type": "feature_text",
+          "settings": {
+            "color": "#bdebb6",
+            "image": "shopify:\/\/shop_images\/Group_1_61449d3b-6fb4-409e-b2a4-7e47b6538a3d.svg",
+            "heading": "Matt",
+            "sub_title": "Finish:"
+          }
+        },
+        "feature_text_ACDr8e": {
+          "type": "feature_text",
+          "settings": {
+            "color": "#ffaea6",
+            "image": "shopify:\/\/shop_images\/Group_2_c42909aa-37e2-4048-ae13-1608a72d4edc.svg",
+            "heading": "Coverage:",
+            "sub_title": "12-16 per 1 coat"
+          }
+        }
+      },
+      "block_order": [
+        "bf977822-fc54-46a6-adcc-9d42d216879a",
+        "00d96f12-2d89-403f-830d-23e3b1e7b05f",
+        "title",
+        "0ac1c304-e336-4462-94f8-414e0006eb83",
+        "variant_picker",
+        "price",
+        "buy_buttons",
+        "pickup_availability",
+        "64599f7b-1d41-4d7c-9536-f0281c7f23f9",
+        "about_brand_fntdNN",
+        "certificate_Fmqqep",
+        "step_rQPtCT",
+        "benefits_fcDx7W",
+        "feature_text_zHQaQ9",
+        "feature_text_3gWWQp",
+        "feature_text_GxQr8k",
+        "feature_text_ACDr8e"
+      ],
+      "custom_css": [
+
+      ],
+      "settings": {
+        "desktop_alignment": "left",
+        "image_fit": "cover",
+        "enable_autoheight": false,
+        "heading_description": "",
+        "heading_size_description": "h2",
+        "padding_top": "no-indent",
+        "padding_bottom": "xs"
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "background-1",
+        "heading": "Check Out These Related Products",
+        "link": "Explore",
+        "products_limit": 6,
+        "columns_mobile": "1",
+        "image_ratio": "square",
+        "image_fit": "cover",
+        "show_secondary_image": true,
+        "show_vendor": true,
+        "show_desc": false,
+        "show_sku": false,
+        "padding_top": "m",
+        "padding_bottom": "m"
+      }
+    },
+    "featured-blog": {
+      "type": "featured-blog",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "background-2",
+        "color_scheme_card": "background-2",
+        "subheading": "",
+        "heading": "Latest Articles",
+        "heading_size": "h2",
+        "post_layout": "column-icon",
+        "image_width": "medium",
+        "image_fit": "contain",
+        "icon_background": "background-2",
+        "blog": "",
+        "post_limit": 6,
+        "post_limit_mobile": 3,
+        "show_image": true,
+        "show_tags": false,
+        "show_date": false,
+        "show_author": false,
+        "show_excerpt": false,
+        "show_view_all": true,
+        "show_view_all_mobile": true,
+        "button_label": "Button label",
+        "button_style": "secondary",
+        "padding_top": "m",
+        "padding_bottom": "m"
+      }
+    },
+    "426ec76b-be41-4327-b667-c3bcdddbdfd5": {
+      "type": "product-quality",
+      "blocks": {
+        "overlay_text_jTVDAq": {
+          "type": "overlay_text",
+          "settings": {
+            "text": "Mould killng barrier"
+          }
+        },
+        "overlay_text_cDxfz6": {
+          "type": "overlay_text",
+          "settings": {
+            "text": "Easy clean"
+          }
+        },
+        "overlay_text_mFnweQ": {
+          "type": "overlay_text",
+          "settings": {
+            "text": "Hard wearing"
+          }
+        },
+        "quality_items_MThwfd": {
+          "type": "quality_items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Vector_3_3b20ade0-c41b-4cae-930d-3633881aa89e.svg",
+            "text": "15-year guarantee"
+          }
+        },
+        "quality_items_xLYTJf": {
+          "type": "quality_items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1002_febb7380-ea4c-4874-b69f-9f1122904424.svg",
+            "text": "Prevents flaking, blistering, tearing"
+          }
+        },
+        "quality_items_wptkjz": {
+          "type": "quality_items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_3_d8e1e7f7-5ce5-4932-bb63-e3f1cd8cc266.svg",
+            "text": "Conceals gaps and cracks"
+          }
+        },
+        "quality_items_DB9hXw": {
+          "type": "quality_items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1132_f1e17a30-954a-45b1-872d-d903e4442df4.svg",
+            "text": "Micro porous for breathability"
+          }
+        },
+        "quality_items_P7TPmw": {
+          "type": "quality_items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_4_a3ee4002-42b0-448f-aa48-a92f95a9bde9.svg",
+            "text": "Globally trusted and patent-protected"
+          }
+        }
+      },
+      "block_order": [
+        "overlay_text_jTVDAq",
+        "overlay_text_cDxfz6",
+        "overlay_text_mFnweQ",
+        "quality_items_MThwfd",
+        "quality_items_xLYTJf",
+        "quality_items_wptkjz",
+        "quality_items_DB9hXw",
+        "quality_items_P7TPmw"
+      ],
+      "settings": {
+        "background_color": "#252489",
+        "background_image": "shopify:\/\/shop_images\/Rectangle_610.webp",
+        "image": "shopify:\/\/shop_images\/Group_1261_1_39c04bcd-393c-40f3-b663-58b8da729432.webp",
+        "logo_image": "shopify:\/\/shop_images\/HQC_BACKGRONG_LESS_300x_2.png",
+        "shape": "shopify:\/\/shop_images\/shape-flower_968e3000-9601-4127-9eab-c27c752f73e9.svg",
+        "heading": "PRO S-FLEX Wall Coating",
+        "description": "Flexible & Waterproof Smooth Finish",
+        "button_label": "BUY NOW",
+        "button_url": "https:\/\/www.paintoutlet.co.uk\/products\/pro-exterior-wall-coating-s-flex-10l",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "margin_top-m": 0,
+        "margin_bottom-m": 0,
+        "padding_top_m": 24,
+        "padding_bottom_m": 24
+      }
+    },
+    "2d4a927b-76f8-44fd-b623-f57b354309ac": {
+      "type": "product-benefits",
+      "blocks": {
+        "items_76kabg": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_3_e7e6f22e-913f-450f-bd6d-e3ae9536922f.svg",
+            "heaing": "Superior Flexibility",
+            "title": "Superior Flexibility",
+            "text": "Experience superior flexibility with PRO S-FLEX, as its elasticity protects against flaking, blistering, and tearing, ensuring long-lasting durability.",
+            "button_label_1": "view collection",
+            "button_url_1": "",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_myWfrz": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1001_af0dcc4a-db03-477a-8ea2-ad1767bea226.svg",
+            "heaing": "Waterproofing Properties",
+            "title": "Waterproofing Properties",
+            "text": "Benefit from the waterproofing properties of PRO S-FLEX, providing reliable protection against moisture ingress for enhanced wall protection.",
+            "button_label_1": "view collection",
+            "button_url_1": "",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_E9zz8W": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1002_0e1043d7-32eb-4f35-a205-c1cd2550ade8.svg",
+            "heaing": "Guaranteed Durability",
+            "title": "Guaranteed Durability",
+            "text": "Enjoy peace of mind with PRO S-FLEX's 15-year guarantee, offering assurance of its durability and performance over time.",
+            "button_label_1": "view collection",
+            "button_url_1": "",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_MmDPdb": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/vector5_b1df4cd2-56e9-423e-b907-09979fc1c0eb.svg",
+            "heaing": "Conceals Small Gaps and Cracks",
+            "title": "Conceals Small Gaps and Cracks",
+            "text": "Conceal small gaps and cracks in walls with PRO S-FLEX, creating a smooth and uniform finish for improved aesthetics.",
+            "button_label_1": "view collection",
+            "button_url_1": "",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_WMGUcL": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Vector_3_15d3cfdb-d1ab-4ae3-a2bb-1a6e221d3c47.svg",
+            "heaing": "Unrivaled Breathability",
+            "title": "Unrivaled Breathability",
+            "text": "Ensure unrivaled breathability with PRO S-FLEX's micro porous structures, allowing moisture vapor to escape while preventing condensation build-up.",
+            "button_label_1": "view collection",
+            "button_url_1": "",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_MkriXP": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_4_d88f1f1b-54d5-4dbf-bdb4-e369ee5f5ed8.svg",
+            "heaing": "Prevents Condensation Build-Up",
+            "title": "Prevents Condensation Build-Up",
+            "text": "Protect against water vapor entry from outside with PRO S-FLEX, maintaining a dry and healthy indoor environment.",
+            "button_label_1": "view collection",
+            "button_url_1": "",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_CYMkdz": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1003_7576886f-a910-4993-af2c-25f067ed90a2.svg",
+            "heaing": "Protection Against Water Vapor Entry",
+            "title": "Protection Against Water Vapor Entry",
+            "text": "Trust in the proven track record of PRO S-FLEX, trusted by major companies and industries worldwide for over 25 years.",
+            "button_label_1": "view collection",
+            "button_url_1": "",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_K9i9nY": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1004_ade3bb3a-b42c-417b-b675-2e1afa310d9d.svg",
+            "heaing": "Trusted by Major Companies",
+            "title": "Trusted by Major Companies",
+            "text": "Rely on the patent protected technology of PRO S-FLEX, ensuring unique and innovative wall coating solutions.",
+            "button_label_1": "view collection",
+            "button_url_1": "",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        },
+        "items_AhW8cb": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_5_7a1cf096-5fba-4f87-9807-6afeb4ef78b5.svg",
+            "heaing": "Patent Protected Technology",
+            "title": "Patent Protected Technology",
+            "text": "Join the ranks of top major companies such as Coca Cola, Rolls Royce, Holiday Inn, and IKEA in choosing PRO S-FLEX for your wall coating needs.",
+            "button_label_1": "view collection",
+            "button_url_1": "",
+            "button_label_2": "READ MORE",
+            "button_url_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "items_76kabg",
+        "items_myWfrz",
+        "items_E9zz8W",
+        "items_MmDPdb",
+        "items_WMGUcL",
+        "items_MkriXP",
+        "items_CYMkdz",
+        "items_K9i9nY",
+        "items_AhW8cb"
+      ],
+      "settings": {
+        "background_color": "#252489",
+        "image": "shopify:\/\/shop_images\/Group_1267.webp",
+        "sticker_image": "shopify:\/\/shop_images\/sticker_09781686-2ab2-4c91-945c-98973a6adbef.svg",
+        "heading": "Reasons to PRO Interior \/ Exterior Wall Coating (S-Flex)",
+        "shape_1": "shopify:\/\/shop_images\/Group_1268.svg",
+        "shape_2": "shopify:\/\/shop_images\/Group_711.svg",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 88,
+        "padding_bottom": 78,
+        "margin_top-m": 0,
+        "margin_bottom-m": 0,
+        "padding_top_m": 24,
+        "padding_bottom_m": 24
+      }
+    },
+    "552aca1d-2e3f-4b20-b8f5-6b6872718102": {
+      "type": "product-ingredient",
+      "blocks": {
+        "items_P4atbQ": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1261_3_35bc526d-0a09-4738-9fe2-8c8c6c00bdf5.webp",
+            "heading": "Additives",
+            "text": "The Pro Range is infused with professional-grade additives that boost paint performance in all conditions, offering longevity and advanced features such as one of one insulating feature, mould resistance and enhanced adhesion."
+          }
+        },
+        "items_7Uc4kz": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1262_3ebac73a-9a37-4c1a-9525-47b085b80602.webp",
+            "heading": "Pigment",
+            "text": "Utilising select only high-quality pigments for the Pro Range to ensure your Colours are bright, bold, and lasting, withstanding the rigors of both time and environment."
+          }
+        },
+        "items_KLtkji": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1263_a06628a6-cc3a-4ead-a26c-cec26b9fc05a.webp",
+            "heading": "Resin",
+            "text": "Our high-grade resins provides a resilient, waterproof coating that ensures superior coverage and protection against wear and tear, keeping your surfaces looking professionally painted for years."
+          }
+        }
+      },
+      "block_order": [
+        "items_P4atbQ",
+        "items_7Uc4kz",
+        "items_KLtkji"
+      ],
+      "settings": {
+        "background_color": "#252489",
+        "shape_1": "shopify:\/\/shop_images\/flower_ingridents.svg",
+        "shape_2": "shopify:\/\/shop_images\/cloud-ingrident.svg",
+        "shape_3": "shopify:\/\/shop_images\/stciker-ingriedent.svg",
+        "heading": "INGREDIENTS",
+        "text": "Pro Range offers commercial-grade paint quality at a consumer-friendly price. Our products are designed with the finest materials to deliver a paint that stands up to industrial standards and provides significant savings.",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 120,
+        "padding_bottom": 50,
+        "margin_top-m": 0,
+        "margin_bottom-m": 0,
+        "padding_top_m": 130,
+        "padding_bottom_m": 48
+      }
+    },
+    "9f5744af-addc-432f-a926-07ee8c167af9": {
+      "type": "product-comparison",
+      "blocks": {
+        "items_xUGypE": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_3_1d096ef1-679c-408b-a501-80347a1f82e1.svg",
+            "title": "Price",
+            "our_store_text": "Lowest possible pricing for professional-grade coatings",
+            "store_status": "tick",
+            "other_store_text": "Professional coatings at a highest price points",
+            "other_store_status": "cross"
+          }
+        },
+        "items_JAhTqF": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1001.svg",
+            "title": "Function",
+            "our_store_text": "High quality Decorative insulation for both interior and exterior",
+            "store_status": "tick",
+            "other_store_text": "Only decorative, minimum features - Have to buy multiple paint for different surfaces",
+            "other_store_status": "cross"
+          }
+        },
+        "items_bKBaiM": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1002_1861b3c8-e447-4345-9d8a-67873f7e2907.svg",
+            "title": "Quality",
+            "our_store_text": "Industrial-level quality now available for home use",
+            "store_status": "tick",
+            "other_store_text": "Commercial paints not always suitable or available for home use",
+            "other_store_status": "cross"
+          }
+        },
+        "items_TgGt8b": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/vector5.svg",
+            "title": "Social Proof",
+            "our_store_text": "Used all around the world in commercial and now in residential spaces",
+            "store_status": "tick",
+            "other_store_text": "Often limited to businesses or specialist projects",
+            "other_store_status": "cross"
+          }
+        },
+        "items_bGC37d": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Vector_3_235a270c-5945-4d99-aa6f-88bbe8c52f96.svg",
+            "title": "Guarantees",
+            "our_store_text": "Guaranteed high quality & insulation and high-quality finish",
+            "store_status": "tick",
+            "other_store_text": "Unknown quality and finish guarantees may vary",
+            "other_store_status": "cross"
+          }
+        },
+        "items_rYMAAj": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_4_c544c077-94dc-450a-a855-dcaba1439485.svg",
+            "title": "Technology",
+            "our_store_text": "Advanced technology for effective protection & insulation",
+            "store_status": "tick",
+            "other_store_text": "None to little investment in technology",
+            "other_store_status": "cross"
+          }
+        },
+        "items_Ub6p93": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1003.svg",
+            "title": "Batch Quality",
+            "our_store_text": "Made fresh on  order with highest quality materials",
+            "store_status": "tick",
+            "other_store_text": "Quality unknown & can vary widely among brands",
+            "other_store_status": "cross"
+          }
+        },
+        "items_3BkBtr": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1004.svg",
+            "title": "Colour Opacity",
+            "our_store_text": "Choose any colour at no extra costs",
+            "store_status": "tick",
+            "other_store_text": "Costs extra for in colour",
+            "other_store_status": "cross"
+          }
+        },
+        "items_cpMUaD": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_5_7a1cf096-5fba-4f87-9807-6afeb4ef78b5.svg",
+            "title": "Insulating & Energy Saving",
+            "our_store_text": "Insulates & saves energy for homes and businesses",
+            "store_status": "tick",
+            "other_store_text": "No energy savings features",
+            "other_store_status": "cross"
+          }
+        },
+        "items_eYfn8L": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_5_7a1cf096-5fba-4f87-9807-6afeb4ef78b5.svg",
+            "title": "Maintenance",
+            "our_store_text": "Low maintenance, paint once with a durable finish and  only paint again when you desire another colour",
+            "store_status": "tick",
+            "other_store_text": "High maintenance , unknown quality - fails & makes you keep repainting",
+            "other_store_status": "cross"
+          }
+        }
+      },
+      "block_order": [
+        "items_xUGypE",
+        "items_JAhTqF",
+        "items_bKBaiM",
+        "items_TgGt8b",
+        "items_bGC37d",
+        "items_rYMAAj",
+        "items_Ub6p93",
+        "items_3BkBtr",
+        "items_cpMUaD",
+        "items_eYfn8L"
+      ],
+      "settings": {
+        "background_color": "",
+        "heading": "US Vs. THEM",
+        "our_store_image": "shopify:\/\/shop_images\/Black_and_Beige_Modern_Minimal_Design_Studio_Logo_1.png",
+        "our_store_label": "PRO Interior \/ Exterior Wall Coating (S-Flex)",
+        "other_store_image": "shopify:\/\/shop_images\/water-bucket_9538647_2_1.svg",
+        "other_store_label": "Other Product in the market",
+        "autoplay_enabled": false,
+        "loop_enabled": false,
+        "reverse": false,
+        "autoplay_timeout": 7,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 18,
+        "padding_bottom": 60,
+        "margin_top-m": 0,
+        "margin_bottom-m": 0,
+        "padding_top_m": 24,
+        "padding_bottom_m": 24
+      }
+    },
+    "bc4da305-f621-4869-acc6-1c1f90f022ff": {
+      "type": "product-work",
+      "blocks": {
+        "items_nBhata": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_1.webp",
+            "title": "Superior Elasticity",
+            "text": "Provides exceptional elasticity in its coating, preventing flaking, blistering, and tearing, while adeptly concealing small gaps and cracks in walls."
+          }
+        },
+        "items_hrQAVe": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_2.png",
+            "title": "Micro Porous Structure",
+            "text": "Crafted with micro porous structures to ensure unmatched breathability, preventing condensation build-up and blocking external water vapor entry."
+          }
+        },
+        "items_fp4w6m": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_3.png",
+            "title": "Global Trust and Reliability",
+            "text": "A globally trusted technology, patented and applied on major structures worldwide, and endorsed by top companies like Coca Cola and Rolls Royce."
+          }
+        },
+        "items_8Mbb4y": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_4.png",
+            "title": "Energy Efficiency",
+            "text": "Reduces heat loss through walls and limits heat gain in summer, leading to significant energy savings and reduced utility bills."
+          }
+        },
+        "items_84TxfV": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_5.png",
+            "title": "Environmental Protection",
+            "text": "100% acrylic water-based composition, offering an environmentally friendly solution that effectively protects surfaces without harming the ecosystem."
+          }
+        },
+        "items_9yCWBx": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_6.png",
+            "title": "Durable and Long-Lasting",
+            "text": "Specially formulated to be tough and durable, providing long-lasting protection even in the harshest environments and weather conditions."
+          }
+        },
+        "items_7KfRhr": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_7.png",
+            "title": "Mould and Humidity Resistance",
+            "text": "Incorporates built-in fungicides, effectively preventing Mould, condensation, and humidity-related damage, ensuring a healthy living environment."
+          }
+        },
+        "items_9nGjDR": {
+          "type": "items",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/ci_8.png",
+            "title": "Versatile Application",
+            "text": "Suitable for both interior and exterior surfaces, providing insulation against heat loss and gain, and available in a range of trendy Colours."
+          }
+        }
+      },
+      "block_order": [
+        "items_nBhata",
+        "items_hrQAVe",
+        "items_fp4w6m",
+        "items_8Mbb4y",
+        "items_84TxfV",
+        "items_9yCWBx",
+        "items_7KfRhr",
+        "items_9nGjDR"
+      ],
+      "settings": {
+        "background_color": "#252489",
+        "heading": "How PRO Interior \/ Exterior Wall Coating (S-Flex) works",
+        "image": "shopify:\/\/shop_images\/Group_1040.png",
+        "loop": false,
+        "autoplay": true,
+        "disableoninteraction": false,
+        "reversedirection": false,
+        "speed": "1000",
+        "delay": "3000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 10,
+        "padding_bottom": 60,
+        "margin_top-m": 0,
+        "margin_bottom-m": 0,
+        "padding_top_m": 0,
+        "padding_bottom_m": 24
+      }
+    },
+    "427acd04-a074-4abe-9d87-af9c52160db9": {
+      "type": "product-process",
+      "blocks": {
+        "c213274a-0fae-4091-a5be-ac21dd4e24e9": {
+          "type": "side-image",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Spatula_1_9e8e8610-8c2d-40ae-91f1-392000a8ba1d.png",
+            "pretext": "Step 1",
+            "heading": "PREP",
+            "text": "<p>Prep your area and walls by sanding, cleaning, and ensuring the surface is smooth & dry - use primer (or mist coat) on bare surfaces or fresh plaster board<\/p>"
+          }
+        },
+        "52ea6670-1b63-43eb-ab2a-45eb3a761fd4": {
+          "type": "side-image",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Spatula_2_982a9cb2-567a-4610-b98e-c6e9066e3272.png",
+            "pretext": "Step 2",
+            "heading": "PAINT",
+            "text": "<p>Paint with either a roller, brush or spray Paint with either a roller, brush or spray Paint with either a roller, brush or spray Paint with either a roller, brush or spray<\/p>"
+          }
+        },
+        "ecabd154-d50a-4a36-ba02-35e13c325431": {
+          "type": "side-image",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Spatula_3_e94629f0-d72b-45a1-a4b6-f8a31304a9ab.png",
+            "pretext": "Step 3",
+            "heading": "CLEAN",
+            "text": "<p>Clean up any excess paint with cloths and any type you’ve used Clean up any excess paint with cloths and any type you’ve used Clean up any excess <\/p>"
+          }
+        },
+        "3de3636d-9001-45dc-a026-5ebfc2ea74ce": {
+          "type": "side-image",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Spatula_4_212c43a9-1933-4ebc-a9f5-5ec8d9c265e5.png",
+            "pretext": "Step 4",
+            "heading": "ENJOY",
+            "text": "<p>Enjoy your newly decorated spaces and decor Enjoy your newly decorated spaces and decor Enjoy your newly decorated spaces and decor<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "c213274a-0fae-4091-a5be-ac21dd4e24e9",
+        "52ea6670-1b63-43eb-ab2a-45eb3a761fd4",
+        "ecabd154-d50a-4a36-ba02-35e13c325431",
+        "3de3636d-9001-45dc-a026-5ebfc2ea74ce"
+      ],
+      "settings": {
+        "heading": "HOW DOES IT WORK?",
+        "button_label": "SEE GUIDE HOW TO DECORATE",
+        "button_link": "",
+        "desktop_item": 4,
+        "laptop_item": 4,
+        "tab_item": 1,
+        "mobile_item": 1,
+        "autoplay_enabled": false,
+        "loop_enabled": false,
+        "reverse": false,
+        "autoplay_timeout": 7,
+        "color": "#ffffff",
+        "background_color": "#252489",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 16,
+        "padding_bottom": 24,
+        "margin_top-m": 0,
+        "margin_bottom-m": 0,
+        "padding_top_m": 0,
+        "padding_bottom_m": 24
+      }
+    },
+    "7c81fc37-0852-4ff1-8e48-7c88e2bedc11": {
+      "type": "product-expanding-card",
+      "blocks": {
+        "c7687da9-16a7-4c57-bceb-273316aa71bc": {
+          "type": "card_item",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Rectangle_572.png",
+            "text": "Commercial-Grade at Consumer Prices"
+          }
+        },
+        "6c29607a-4179-43dd-9a87-914d23478281": {
+          "type": "faq",
+          "settings": {
+            "handle": "Commercial-Grade at Consumer Prices",
+            "heading": "<p>Superior Materials<\/p>",
+            "text": "<p>The Thermilate Pro Range is crafted with the finest materials to deliver a paint that not only meets but exceeds commercial expectations, providing exceptional durability and coverage.<\/p>"
+          }
+        },
+        "faq_ca93kF": {
+          "type": "faq",
+          "settings": {
+            "handle": "Commercial-Grade at Consumer Prices",
+            "heading": "<p>Industrial Standards<\/p>",
+            "text": "<p>Engineered to industrial standards, our paints, coatings, and plasters are robust enough for the toughest environments, ensuring long-lasting protection and insulation.<\/p>"
+          }
+        },
+        "faq_FnyqF3": {
+          "type": "faq",
+          "settings": {
+            "handle": "Commercial-Grade at Consumer Prices",
+            "heading": "<p>Cost Savings<\/p>",
+            "text": "<p>Despite its professional-grade quality, the Thermilate Pro Range is priced with the consumer in mind, offering substantial savings and cost-effective solutions for every<\/p>"
+          }
+        },
+        "9cc15fd9-4d45-4c81-82cb-f752dfee8e82": {
+          "type": "card_item",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Rectangle_572.png",
+            "text": "Innovating for Energy Efficiency"
+          }
+        },
+        "e7355bb1-0675-49a3-bfe4-10c41be759de": {
+          "type": "faq",
+          "settings": {
+            "handle": "Innovating for Energy Efficiency",
+            "heading": "<p>Thermal Barrier Technology<\/p>",
+            "text": "<p>Thermilate's premium water-based products create a thermal barrier, preventing heat from escaping through roofs and walls, Utilising our world-leading insulating technology.<\/p>"
+          }
+        },
+        "faq_pERiyH": {
+          "type": "faq",
+          "settings": {
+            "handle": "Innovating for Energy Efficiency",
+            "heading": "<p>Sustainable Protection<\/p>",
+            "text": "<p>Our mission is to reduce carbon and energy use; thus, every Thermilate product is imbued with the ability to renew, protect, and sustain, delivering insulation with every coat.<\/p>"
+          }
+        },
+        "faq_ciPpgp": {
+          "type": "faq",
+          "settings": {
+            "handle": "Innovating for Energy Efficiency",
+            "heading": "<p>Diverse Application<\/p>",
+            "text": "<p>The versatility of the Thermilate Pro Range allows it to serve a variety of sectors, including construction, industrial, retail, and residential, ensuring that every project benefits from superior insulating properties.<\/p>"
+          }
+        },
+        "4934a52c-6d5c-4e05-b8a5-ebbe07f1091f": {
+          "type": "card_item",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Rectangle_572.svg",
+            "text": "The Thermilate Technologies Commitment"
+          }
+        },
+        "2ce21371-5c6d-493b-86b6-00b877112696": {
+          "type": "faq",
+          "settings": {
+            "handle": "The Thermilate Technologies Commitment",
+            "heading": "<p>Continuous Innovation<\/p>",
+            "text": "<p>Thermilate's premium water-based products create a thermal barrier, preventing heat from escaping through roofs and walls, Utilising our world-leading insulating technology.<\/p>"
+          }
+        },
+        "faq_zEgdTf": {
+          "type": "faq",
+          "settings": {
+            "handle": "The Thermilate Technologies Commitment",
+            "heading": "<p>Sector-Wide Utility<\/p>",
+            "text": "<p>Our mission is to reduce carbon and energy use; thus, every Thermilate product is imbued with the ability to renew, protect, and sustain, delivering insulation with every coat.<\/p>"
+          }
+        },
+        "faq_Aj76PX": {
+          "type": "faq",
+          "settings": {
+            "handle": "The Thermilate Technologies Commitment",
+            "heading": "<p>Sector-Wide Utility<\/p>",
+            "text": "<p>The versatility of the Thermilate Pro Range allows it to serve a variety of sectors, including construction, industrial, retail, and residential, ensuring that every project benefits from superior insulating properties.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "c7687da9-16a7-4c57-bceb-273316aa71bc",
+        "6c29607a-4179-43dd-9a87-914d23478281",
+        "faq_ca93kF",
+        "faq_FnyqF3",
+        "9cc15fd9-4d45-4c81-82cb-f752dfee8e82",
+        "e7355bb1-0675-49a3-bfe4-10c41be759de",
+        "faq_pERiyH",
+        "faq_ciPpgp",
+        "4934a52c-6d5c-4e05-b8a5-ebbe07f1091f",
+        "2ce21371-5c6d-493b-86b6-00b877112696",
+        "faq_zEgdTf",
+        "faq_Aj76PX"
+      ],
+      "settings": {
+        "background_color": "",
+        "heading": "<p><strong>Thermilate Pro Range<\/strong> - Industrial <em>Quality<\/em> for <span style=\"text-decoration:underline\">Every Consumer<\/span><\/p>",
+        "text": "<p>The Thermilate Pro Range brings commercial-grade paint quality into the hands of consumers, merging affordability with high-end materials for industrial-standard performance. Designed to stand the rigors of intense environments, our products offer significant savings without compromising on the protective and insulative qualities essential for both professional and personal use. All while saving the environment<br\/><\/p>",
+        "btn_link": "https:\/\/www.paintoutlet.co.uk\/products\/pro-exterior-wall-coating-s-flex-10l",
+        "btn_text": "BUY NOW",
+        "padding_top": 0,
+        "padding_bottom": 30,
+        "padding_top_m": 0,
+        "padding_bottom_m": 32
+      }
+    },
+    "14962891-2601-4116-8c6f-2759ae0c8268": {
+      "type": "product-collection",
+      "blocks": {
+        "product_7zLJ8t": {
+          "type": "product",
+          "settings": {
+            "choose_product": "hqc-masonry-paint",
+            "text": "<p>High quality product with leading weatherproof technology.  Formulated with acrylic resin that provides ultimate protection to your property. The paint will offer years of protection against extreme weather conditions, ensuring unrivalled durability and long lasting protection. <br\/><br\/>HQC Masonry paint wont not only colour your walls but also protects your home against extreme weather and adverse environmental conditions.<br\/><br\/>isn't it something that you have been looking for?<br\/><br\/>All these features of HQC masonry paint for walls enhance the overall value with the assurance of reduced spending on regular maintenance.<br\/><br\/>The outlook that this product facilitates is cleaner, better looking, and protected.<\/p>"
+          }
+        },
+        "product_EUPDHB": {
+          "type": "product",
+          "settings": {
+            "choose_product": "hqc-anti-condensation-insulating-paint",
+            "text": "<p>The time it was on the market, speaks for the product itself. It eliminates mould of damp areas and prevents in future, it won't happen again. It is a long term solution, which offers premium quality, very low odour levels, and maximum performance, you can be assured HQC Anti Condensation Insulating Paint will prevent future condensation problems including mould, blistering paint, discolouration, staining and peeling wallpaper – with just 2 coats. It also reduces heat loss.<br\/><br\/>HQC Anti Condensation coating is the perfect answer for applications requiring long-lasting protection from continuous and severe condensation. Use in kitchens and bathrooms in homes, hotels, schools, universities, restaurants, service stations, gyms, swimming pools and spas. Paint can easily be applied by brush, roller or spray. Use the product in just the same areas as conventional emulsions.<\/p>"
+          }
+        },
+        "product_DFeqRY": {
+          "type": "product",
+          "settings": {
+            "choose_product": "hqc-durable-kitchen-matt-paint",
+            "text": ""
+          }
+        },
+        "product_Qbm8d6": {
+          "type": "product",
+          "settings": {
+            "choose_product": "hqc-furniture-paint",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_7zLJ8t",
+        "product_EUPDHB",
+        "product_DFeqRY",
+        "product_Qbm8d6"
+      ],
+      "settings": {
+        "title": "HQC COLLECTION",
+        "color": "#ffffff",
+        "background_color": "#252489",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "margin_top-m": 0,
+        "margin_bottom-m": 0,
+        "padding_top_m": 0,
+        "padding_bottom_m": 68
+      }
+    },
+    "7fc994d7-8584-4a77-bcad-c0d3c29fbb62": {
+      "type": "about-hero",
+      "blocks": {
+        "8cc173c7-14d9-4c6d-9a73-710cd64f49a6": {
+          "type": "title",
+          "settings": {
+            "title": "PAINT OUTLET"
+          }
+        },
+        "65a1b8c1-0a26-410e-a865-f85f8d798d87": {
+          "type": "sub_title",
+          "settings": {
+            "sub_title": "DEAL DIRECTLY WITH THE SUPPLIER AND REAP THE BENEFITS"
+          }
+        },
+        "bbce03af-1e2a-4baf-bca9-43498f09e1d1": {
+          "type": "info",
+          "settings": {
+            "info": "<p>We’re revolutionizing the decorating industry with higher quality products at a lower cost, while striving to eliminate paint waste.<\/p>"
+          }
+        },
+        "6ec42857-5f7c-4050-aba8-f19598a9b346": {
+          "type": "video",
+          "settings": {
+            "logo_svg": "",
+            "logo_img": "shopify:\/\/shop_images\/Group_5.png",
+            "background": "shopify:\/\/shop_images\/Rectangle_656.png",
+            "hosted_video": "shopify:\/\/files\/videos\/00_fdf2f0f3-a1f8-4a70-9064-47b9ce56a1f5.mp4",
+            "video_url": "",
+            "enable_video_looping": false
+          }
+        }
+      },
+      "block_order": [
+        "8cc173c7-14d9-4c6d-9a73-710cd64f49a6",
+        "65a1b8c1-0a26-410e-a865-f85f8d798d87",
+        "bbce03af-1e2a-4baf-bca9-43498f09e1d1",
+        "6ec42857-5f7c-4050-aba8-f19598a9b346"
+      ],
+      "settings": {
+        "color": "#ffffff",
+        "border_color": "#ffffff",
+        "background_color": "#0e1513",
+        "padding_top": 40,
+        "padding_bottom": 60,
+        "padding_top_m": 50,
+        "padding_bottom_m": 50
+      }
+    },
+    "promises_section_8UhgXf": {
+      "type": "promises-section",
+      "blocks": {
+        "items_rdhgXa": {
+          "type": "items",
+          "settings": {
+            "heaing": "See Our Trust & gaurentee"
+          }
+        },
+        "items_R7gCXp": {
+          "type": "items",
+          "settings": {
+            "heaing": "See Our Trust & gaurentee"
+          }
+        },
+        "items_Xq7hbW": {
+          "type": "items",
+          "settings": {
+            "heaing": "See Our Trust & gaurentee"
+          }
+        },
+        "items_RH8LqT": {
+          "type": "items",
+          "settings": {
+            "heaing": "See Our Trust & gaurentee"
+          }
+        }
+      },
+      "block_order": [
+        "items_rdhgXa",
+        "items_R7gCXp",
+        "items_Xq7hbW",
+        "items_RH8LqT"
+      ],
+      "settings": {
+        "heading": "Still Unsure about your purchase?",
+        "text": "Check Our Promisies & assurance"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product-recommendations",
+    "featured-blog",
+    "426ec76b-be41-4327-b667-c3bcdddbdfd5",
+    "2d4a927b-76f8-44fd-b623-f57b354309ac",
+    "552aca1d-2e3f-4b20-b8f5-6b6872718102",
+    "9f5744af-addc-432f-a926-07ee8c167af9",
+    "bc4da305-f621-4869-acc6-1c1f90f022ff",
+    "427acd04-a074-4abe-9d87-af9c52160db9",
+    "7c81fc37-0852-4ff1-8e48-7c88e2bedc11",
+    "14962891-2601-4116-8c6f-2759ae0c8268",
+    "7fc994d7-8584-4a77-bcad-c0d3c29fbb62",
+    "promises_section_8UhgXf"
+  ]
+}

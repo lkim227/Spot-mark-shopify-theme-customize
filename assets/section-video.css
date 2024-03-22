@@ -1,0 +1,99 @@
+@media screen and (min-width: 750px) {
+  .video-section.page-width {
+    margin-top: calc(5rem + var(--page-width-margin));
+    margin-bottom: calc(5rem + var(--page-width-margin));
+  }
+}
+.video-section .container .video-section__media,
+.video-section .container .video-section__poster,
+.video-section .container .video-section__overlay {
+  border-radius: 0.6rem;
+}
+
+.video-section__media {
+  position: relative;
+  max-width: 100%;
+}
+
+.video-section__overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.video-section__media.deferred-media {
+  overflow: visible;
+}
+
+.video-section__poster.deferred-media__poster:focus {
+  outline-offset: 0.3rem;
+}
+
+.video-section__media iframe {
+  background-color: rgba(var(--color-foreground), 0.03);
+  border: 0;
+}
+
+.video-section__poster,
+.video-section__media iframe,
+.video-section__media video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.video-section__media--cover video {
+  object-fit: cover;
+}
+
+.video-section__content {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  z-index: 2;
+  text-align: center;
+}
+
+.video-section__content h2 {
+  margin: 0 auto;
+  max-width: 44rem;
+}
+
+.video-section__play-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 6.4rem;
+  height: 6.4rem;
+  background-color: #fff;
+  border-radius: 100%;
+}
+.video-section__play-button svg {
+  margin-left: 0.2rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  color: #282828;
+  transition: transform var(--duration-default);
+}
+.video-section__play-button:hover svg {
+  transform: scale(1.2);
+}
+
+.video-section__subheading.subtitle {
+  margin: 0;
+}
+
+.video-section__subheading + .video-section__heading {
+  margin-top: 0.8rem;
+}
+
+.video-section__subheading + .video-section__play-button,
+.video-section__heading + .video-section__play-button {
+  margin-top: 2.4rem;
+}

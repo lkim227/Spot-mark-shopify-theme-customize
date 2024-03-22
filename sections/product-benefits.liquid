@@ -1,0 +1,326 @@
+
+
+{{ 'section-product-benefits.css' | asset_url | stylesheet_tag: preload: true }}
+<script src="{{ 'product-benefits.js' | asset_url }}" defer="defer"></script>
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    margin-top: {{ section.settings.margin_top-m }}px;
+    margin-bottom: {{ section.settings.margin_bottom-m }}px;
+    padding-top: {{ section.settings.padding_top_m  }}px;
+    padding-bottom: {{ section.settings.padding_bottom_m }}px;
+  }
+ 
+  @media screen and (min-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+
+  {%liquid
+
+  assign s = section.settings
+
+    assign background_color = s.background_color
+    assign sticker_image = s.sticker_image
+    assign image = s.image
+    assign heading = s.heading
+
+    assign benefits_items = section.blocks | where: 'type', 'items'
+
+
+%}
+
+{% if background_color != blank %}
+  {% style %}
+    #section-{{ section.id }} {
+      background-color: {{ background_color }}
+    }
+   {% endstyle %}
+{% endif %}
+
+<div class="section-{{ section.id }}-padding" id="section-{{ section.id }}">
+  <div class="container">
+    <div class="product-benefits-wrapper">
+      <div class="benefits-left">
+        {% for block in benefits_items %}
+          {%liquid
+            assign b = block.settings 
+            assign heading = b.heaing
+            assign description = b.text
+            assign view_collection_button_label = b.button_label_1
+            assign view_collection_button_link = b.button_url_1
+            assign read_more_button_label = b.button_label_2
+            assign read_more_button_link = b.button_url_2
+        
+        %}
+      
+        <div class="benefits-left-item {%if forloop.first %} active {%endif %}" data-benefit-tab="{{forloop.index}}">
+          {% if heading != blank %}
+            <h3>{{heading }}</h3>
+          {% endif %}
+    
+          <div class="text">
+            {{description }}
+          </div>
+          <div class="benefits-left-btns">
+            {% if view_collection_button_label != blank %}
+              <a class="button-color" href="{{view_collection_button_link }}">{{view_collection_button_label }}</a>
+            {% endif %}
+
+            {% if read_more_button_label != blank %}
+              <a class="button-color" href="{{read_more_button_link }}">{{read_more_button_label }}</a>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    
+      </div>
+      <div class="benefits-center">
+ 
+            <div class="benefits-center-img">
+              {% if sticker_image != blank %}
+                <span class="sticker_image">
+                <img src="{{ sticker_image | img_url: "master" }}" loading="lazy">
+              </span>
+              {% endif %}
+            
+              {% if image != blank %}
+                <img src="{{ image | img_url: "master" }}" loading="lazy">
+              {% endif %}
+     
+            </div>
+        
+      </div>
+      <div class="benefits-right">
+        {% if heading != blank %}
+          <h4>{{heading}}</h4>
+        {% endif %}
+   
+        <div class="benefits-right-tab-list">
+
+          {% for block in benefits_items %}
+            {%liquid
+            assign b = block.settings 
+              assign icon = b.icon
+              assign title = b.title
+            %}
+          <div class="benefits-right-list-item {%if forloop.first %} active {%endif %}" data-benefit-tab="{{forloop.index}}">
+           
+           {% if icon != blank %}
+            <span>
+              <img src="{{ icon | img_url: "master" }}" loading="lazy">
+            </span>
+           {% endif %} 
+            <span>{{ title }}</span>
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+
+      {% if s.shape_1 %}
+          <div class="benefit-overlay-1">
+            <img src="{{ s.shape_1 | img_url: "master" }}" loading="lazy">
+          </div>
+        {% endif %}
+        {% if s.shape_2 %}
+          <div class="benefit-overlay-2">
+            <img src="{{ s.shape_2 | img_url: "master" }}" loading="lazy">
+          </div>
+        {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Benefits",
+  "class": "product-benefits-section",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "sticker_image",
+      "label": "Sticker Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "heading"
+    },
+    {
+      "type": "image_picker",
+      "id": "shape_1",
+      "label": "Shape Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "shape_2",
+      "label": "Shape Image"
+    },
+    {
+      "type": "header",
+      "content": "Spacing (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Spacing (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top-m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom-m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 68
+    }
+  ],
+  "blocks": [
+    { 
+      "type": "items",
+      "name": "Items",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "heaing",
+          "label": "heading",
+          "default": "FIXED COLOUR PRICES"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "FIXED COLOUR PRICES"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "The new HQC Anti Damp Paint is a high-performance solution developed to create a breathable, obliterating membrane that seals and permanently stops the reappearance of damp, water, and other household stains.It is your go-to paint if you have damp issues on your walls."
+        },
+        {
+          "type": "text",
+          "id": "button_label_1",
+          "label": "Button Label",
+          "default": "view collection"
+        },
+        {
+          "type": "text",
+          "id": "button_url_1",
+          "label": "Button Url"
+        },
+        {
+          "type": "text",
+          "id": "button_label_2",
+          "label": "Button Label",
+          "default": "READ MORE"
+        },
+        {
+          "type": "text",
+          "id": "button_url_2",
+          "label": "Button Url"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Benefits"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,403 @@
+<div class="header__overlay"></div>
+<div class="header__top color-{{ section.settings.color_scheme }}">
+	<div class="header__top-inner container container--header">
+		{%- if section.settings.menu != blank -%}
+			{% render 'header-drawer' %}
+		{%- endif -%}
+		<nav class="header__inline-menu">
+			{%- if section.settings.menu != blank -%}
+				<ul class="list-menu list-menu--inline" role="list">
+					{%- for link in section.settings.menu.links -%}
+						{% assign mega_menu = false %}
+						{%- if link.links != blank -%}
+							{% if section.blocks.size > 0 %}
+								{% for block in section.blocks %}
+									{% assign mega_menu_trigger = block.settings.mega_menu_trigger | handle | strip %}
+									{% if link.handle == mega_menu_trigger %}
+										{% assign mega_menu = true %}
+										{% assign shopify_attributes = block.shopify_attributes %}
+									{% endif %}
+								{% endfor %}
+							{% endif %}
+							<li class="{% if mega_menu %}list-menu--megamenu{% endif %}" {{ shopify_attributes }}>
+								<span class="header__menu-item list-menu__item link focus-inset"{% if link.current %} aria-current="page"{% endif %} aria-label="{{ link.title | escape }}">
+									<span {%- if link.active %} class="header__active-menu-item"{% endif %} title="{{ link.title | escape }}">
+										{{ link.title | escape }}
+									</span>
+									{% render 'icon-caret' %}
+								</span>
+								{% if mega_menu %}
+									<div class="header__mega-menu mega-menu container color-background-2">
+										{% render 'mega-menu', link: link, blocks: section.blocks %}
+									</div>
+								{% else %}
+									{% render 'submenu', link: link %}
+								{% endif %}
+							</li>
+						{%- else -%}
+						<li>
+							<a href="{{ link.url }}" class="header__menu-item list-menu__item link focus-inset"{% if link.current %} aria-current="page"{% endif %} aria-label="{{ link.title | escape }}">
+								<span {%- if link.active %} class="header__active-menu-item"{% endif %} title="{{ link.title | escape }}">
+									{{ link.title | escape }}
+								</span>
+							</a>
+						</li>
+						{%- endif -%}
+					{%- endfor -%}
+				</ul>
+			{%- endif -%}
+		</nav>
+		{%- if request.page_type == 'index' -%}
+			<h1 class="header__heading">
+		{%- endif -%}
+				<a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+					{%- if section.settings.logo != blank -%}
+						{%- assign image_size = section.settings.logo_width | append: 'x' -%}
+						{%- assign image_size_2x = section.settings.logo_width | times: 2 | at_most: 5760 -%}
+						<img srcset="{{ section.settings.logo | image_url: width: image_size }} 1x, {{ section.settings.logo | image_url: width: image_size_2x }} 2x"
+									src="{{ section.settings.logo | image_url: width: image_size }}"
+									class="header__heading-logo"
+									width="{{ section.settings.logo_width }}"
+									height="auto"
+									alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
+									loading="lazy"
+						>
+						{%- if section.settings.logo_2 != blank -%}
+							<img srcset="{{ section.settings.logo_2 | image_url: width: image_size }} 1x, {{ section.settings.logo_2 | image_url: width: image_size_2x }} 2x"
+										src="{{ section.settings.logo_2 | image_url: width: image_size }}"
+										class="header__heading-logo header__heading-logo--overlay"
+										width="{{ section.settings.logo_width }}"
+										height="auto"
+										alt="{{ section.settings.logo_2.alt | default: shop.name | escape }}"
+										loading="lazy"
+							>
+						{%- endif -%}
+					{%- elsif section.settings.logo_2 != blank -%}
+						{%- assign image_size = section.settings.logo_width | append: 'x' -%}
+						{%- assign image_size_2x = section.settings.logo_width | times: 2 | at_most: 5760 -%}
+							<img srcset="{{ section.settings.logo_2 | image_url: width: image_size }} 1x, {{ section.settings.logo_2 | image_url: width: image_size_2x }} 2x"
+										src="{{ section.settings.logo_2 | image_url: width: image_size }}"
+										class="header__heading-logo header__heading-logo--overlay"
+										width="{{ section.settings.logo_width }}"
+										height="auto"
+										alt="{{ section.settings.logo_2.alt | default: shop.name | escape }}"
+										loading="lazy"
+							>
+					{%- else -%}
+						<span class="h5">{{ shop.name }}</span>
+					{%- endif -%}
+				</a>
+		{%- if request.page_type == 'index' -%}
+			</h1>
+		{%- endif -%}
+	
+		<div class="header__column">
+			{% if section.settings.small_menu != blank %}
+				<ul class="header__small-menu small-menu list-unstyled" role="list">
+					{%- for link in section.settings.small_menu.links limit: 3 -%}
+						<li class="small-menu__item">
+							{%- if link != blank -%}
+								<a href="{{ link.url }}" class="small-menu__link link link--text focus-inset caption-large{% if link.current %}{% endif %}"{% if link.current %} aria-current="page"{% endif %}>
+									<span>
+										{{ link.title | escape }}
+									</span>
+								</a>
+							{% endif %}
+						</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+			<div class="header__icons">
+				{% render 'color-scheme' %}
+	
+				{%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+					<div class="header__localization">
+						<noscript>
+							{%- form 'localization', id: 'HeaderCountryFormNoScript', class: 'localization-form' -%}
+								<div class="localization-form__select">
+									<select class="localization-selector link" name="country_code" aria-labelledby="FooterCountryLabelNoScript">
+										{%- for country in localization.available_countries -%}
+											<option value="{{ country.iso_code }}" {%- if country.iso_code == localization.country.iso_code %} selected{% endif %}>
+												{{ country.name }} ({{ country.currency.iso_code }} {{ country.currency.symbol }})
+											</option>
+										{%- endfor -%}
+									</select>
+									{% render 'icon-caret' %}
+								</div>
+								<button class="button button--small">{{ 'localization.update_country' | t }}</button>
+							{%- endform -%}
+						</noscript>
+						<localization-form>
+							{%- form 'localization', id: 'HeaderCountryForm', class: 'localization-form' -%}
+								<div class="no-js-hidden">
+									<div class="disclosure">
+										<button type="button" class="header__localization-button disclosure__button localization-form__select localization-selector link link--text caption-large" aria-expanded="false" aria-controls="HeaderCountryList" aria-describedby="HeaderCountryLabel" aria-label="Localization">
+											<div style="display: inline" class="currency-flag" data-value="{{ localization.country.iso_code }}" aria-hidden="true"></div>
+											<span class="currency-country">{{ localization.country.iso_code }}</span>
+										</button>
+										<ul id="HeaderCountryList" role="list" class="disclosure__list list-unstyled color-background-2" hidden>
+											{%- for country in localization.available_countries -%}
+												<li class="disclosure__item" tabindex="-1">
+													<a class="link link--text disclosure__link disclosure__link--flag caption-large{% if country.iso_code == localization.country.iso_code %} disclosure__link--active{% endif %} focus-inset" href="#"{% if country.iso_code == localization.country.iso_code %} aria-current="true"{% endif %} data-value="{{ country.iso_code }}" data-flag="{{ country.currency.iso_code }}">
+														<span>
+															{{ country.name }}
+															<span class="localization-form__currency">({{ country.currency.iso_code }} {{ country.currency.symbol }})</span>
+														</span>
+													</a>
+												</li>
+											{%- endfor -%}
+										</ul>
+									</div>
+									<input type="hidden" name="country_code" value="{{ localization.country.iso_code }}">
+								</div>
+							{%- endform -%}
+						</localization-form>
+					</div>
+				{%- endif -%}
+	
+				{%- if section.settings.enable_language_selector
+					and localization.available_languages.size > 1
+				-%}
+					<div class="header__localization header__localization--language">
+						<noscript>
+							{%- form 'localization',
+								id: 'HeaderLanguageFormNoScript',
+								class: 'localization-form'
+							-%}
+								<div class="localization-form__select">
+									<h2
+										class="visually-hidden"
+										id="HeaderLanguageLabelNoScript"
+									>
+										{{ 'localization.language_label' | t }}
+									</h2>
+									<select
+										class="localization-selector link"
+										name="locale_code"
+										aria-labelledby="HeaderLanguageLabelNoScript"
+									>
+										{%- for language in localization.available_languages -%}
+											<option
+												value="{{ language.iso_code }}"
+												lang="{{ language.iso_code }}"
+												{%- if language.iso_code
+														== localization.language.iso_code
+												%}
+													selected
+												{% endif %}
+											>
+												{{ language.endonym_name | capitalize }}
+											</option>
+										{%- endfor -%}
+									</select>
+									{% render 'icon-caret' %}
+								</div>
+								<button class="button button--primary">
+									{{ 'localization.update_language' | t }}
+								</button>
+							{%- endform -%}
+						</noscript>
+						<localization-form>
+							{%- form 'localization',
+								id: 'HeaderLanguageForm',
+								class: 'localization-form'
+							-%}
+								<div class="no-js-hidden">
+									<div class="disclosure">
+										<button
+											type="button"
+											class="disclosure__button localization-form__select localization-selector link link--text"
+											aria-expanded="false"
+											aria-controls="HeaderLanguageList"
+											aria-describedby="HeaderLanguageLabel"
+										>
+											<span class="value">
+												{{-
+													localization.language.iso_code
+													| upcase
+												}}
+											</span>
+											{% render 'icon-caret' -%}
+										</button>
+										<ul
+											id="HeaderLanguageList"
+											role="list"
+											class="disclosure__list list-unstyled color-background-2"
+											hidden
+										>
+											{%- for language in localization.available_languages -%}
+												<li class="disclosure__item" tabindex="-1">
+													<a
+														class="link link--text disclosure__link caption-large{% if language.iso_code == localization.language.iso_code %} disclosure__link--active{% endif %} focus-inset"
+														href="#"
+														hreflang="{{ language.iso_code }}"
+														lang="{{ language.iso_code }}"
+														{% if language.iso_code
+																== localization.language.iso_code
+														%}
+															aria-current="true"
+														{% endif %}
+														data-value="{{ language.iso_code }}"
+													>
+														<span>
+															{{ language.endonym_name | capitalize }}
+														</span>
+													</a>
+												</li>
+											{%- endfor -%}
+										</ul>
+									</div>
+									<input
+										type="hidden"
+										name="locale_code"
+										value="{{ localization.language.iso_code }}"
+									>
+								</div>
+							{%- endform -%}
+						</localization-form>
+					</div>
+				{%- endif -%}
+	
+				{%- if shop.customer_accounts_enabled -%}
+	
+					<details-disclosure class="header__account">
+						<details>
+							<summary class="header__icon header__icon--account link--text  header__icon--summary focus-inset modal__toggle" aria-haspopup="dialog" role="button">
+								{% render 'icon-account' %}
+							</summary>
+							<div class="header__account-modal modal__toggle color-background-2" role="dialog" aria-modal="true">
+								{%- if customer -%}
+									<div class="header__account__account">
+										<div class="header__account__name">{{ customer.name }}</div>
+										<ul class="header__account__body">
+											<li class="header__account__link">
+												<a href="{{ routes.account_url }}">
+													{{ 'customer.account_fallback' | t }}
+												</a>
+											</li>
+											<li class="header__account__address">
+												<a href="{{ routes.account_addresses_url }}">{{ 'customer.addresses.book' | t }}</a>
+											</li>
+										</ul>
+										<a class="header__account__logout button button--primary" href="{{ routes.account_logout_url }}">
+											{{ 'customer.log_out' | t }}
+										</a>
+									</div>
+	
+								{%- else -%}
+									<a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="button button--primary header__account__login link  focus-inset">
+										{% render 'icon-account' %}
+										{%- liquid
+											if customer
+												echo 'customer.account_fallback' | t
+											else
+												echo 'customer.log_in' | t
+												endif -%}
+									</a>
+	
+									<a class="header__account__register link " href="{{ routes.account_register_url }}"><span>{{ 'customer.login_page.create_account' | t }}</span></a>
+								{%- endif -%}
+							</div>
+						</details>
+	
+					</details-disclosure>
+	
+				{%- endif -%}
+	
+					<a href="{{ routes.cart_url }}" class=" {% if request.page_type != 'cart' %}header__cart{% endif %} header__icon header__icon--cart link link--text focus-inset" id="cart-icon-bubble" aria-label="{{ 'accessibility.cart_link' | t }}">
+						{% render 'icon-cart' %}
+						<span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+						{%- if cart != empty -%}
+							<div class="cart-count-bubble">
+								{%- if cart.item_count < 100 -%}
+									<span aria-hidden="true">{{ cart.item_count }}</span>
+								{%- endif -%}
+								<span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+							</div>
+						{%- endif -%}
+					</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="header__bottom {% if section.settings.color_scheme == 'background-2' %}color-background-2{% else %}color-background-1{% endif %}">
+	<div class="header__bottom-inner container container--header">
+		{% for block in section.blocks %}
+			{% case block.type %}
+				{% when "dropdown" %}
+					{% render 'shop-button', block: block %}
+			{% endcase %}
+		{% endfor %}
+		{%- if section.settings.enable_search -%}		
+			<div class="header__search search" role="dialog" aria-modal="true" aria-label="{{ 'general.search.search' | t }}">
+				<div class="search__content color-background-2">
+					{%- if settings.predictive_search_enabled -%}
+						<predictive-search class="search-modal__form" data-loading-text="{{ 'accessibility.loading' | t }}">
+					{%- endif -%}
+						<form action="{{ routes.search_url }}" method="get" role="search" class="search search__form">
+							<div class="field">
+								<input class="search__input field__input"
+									id="Search-In-Modal-top-menu"
+									type="search"
+									name="q"
+									value="{{ search.terms | escape }}"
+									placeholder="{{ 'general.search.placeholder' | t }}"
+									{%- if settings.predictive_search_enabled -%}
+										role="combobox"
+										aria-expanded="false"
+										aria-owns="predictive-search-results-list"
+										aria-controls="predictive-search-results-list"
+										aria-haspopup="listbox"
+										aria-autocomplete="list"
+										autocorrect="off"
+										autocomplete="off"
+										autocapitalize="off"
+										spellcheck="false"
+									{%- endif -%}
+								>
+								<label class="field__label" for="Search-In-Modal-top-menu">{{ 'general.search.placeholder' | t }}</label>
+								<input type="hidden" name="options[prefix]" value="last">
+								<button class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
+									{% render 'icon-search' %}
+								</button>
+							</div>
+							
+							{% if section.settings.enable_search_modal %}
+								{% render 'search-modal' %}
+							{%- endif -%}
+	
+							{%- if settings.predictive_search_enabled -%}
+								<div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
+									<div class="predictive-search__loading-state">
+										{% render 'icon-spinner' %}
+									</div>
+								</div>
+				
+								<span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+							{%- endif -%}
+						</form>
+					{%- if settings.predictive_search_enabled -%}
+						</predictive-search>
+					{%- endif -%}
+					
+				</div>
+			</div>
+		{%- endif -%}
+		
+	
+		{% if section.settings.enable_contact_block and section.settings.contact_text != blank or section.settings.contact_text_accent != blank %}
+			<div class="header__contact contact">
+		
+				{% if section.settings.contact_text != blank %}
+					<span class="contact__text">{{ section.settings.contact_text }}</span>
+				{% endif %}
+		
+				{% if section.settings.contact_text_accent != blank %}
+					<span class="contact__text contact__text--accent">{{ section.settings.contact_text_accent }}</span>
+				{% endif %}
+		
+			</div>
+		{% endif %}
+	</div>
+</div>

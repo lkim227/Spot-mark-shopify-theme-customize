@@ -1,0 +1,31 @@
+.discounts {
+  font-size: 1.2rem;
+  color: rgb(var(--color-foreground-secondary));
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.discounts__wrapper {
+  margin-top: 1rem;
+}
+
+.discounts__discount {
+  display: flex;
+  align-items: center;
+  line-height: 1.5;
+}
+
+.discounts__discount--end {
+  justify-content: flex-end;
+}
+
+.discounts__discount--center {
+  justify-content: center;
+}
+
+.discounts__discount > .icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 0.7rem;
+}

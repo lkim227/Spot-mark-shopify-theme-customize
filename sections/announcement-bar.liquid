@@ -1,0 +1,334 @@
+<style>
+	:root {
+		--announcement-height: {{ section.settings.height_mobile }}px;
+	}
+.announcement-bar{
+      background-color:{{section.settings.bg_color}};
+}
+ .announcement-bar .list-icon-item{color:{{section.settings.text_color}};
+	@media screen and (min-width: 765px) {
+		:root {
+		--announcement-height: {{ section.settings.height }}px;
+	}
+	}
+</style>
+
+{%liquid
+
+	assign direction = section.settings.direction 
+	assign autoPlay = section.settings.autoplay_enabled
+	assign loop = section.settings.loop_enabled
+	assign delay = section.settings.autoplay_timeout
+	assign smooth_scroll = section.settings.smooth_scroll
+%}
+
+
+<div class="newslatter-panel" >
+
+	<a href="javascrip:void(0)" class="close-toggle-newslatter">
+	   {% render 'icon-close' %}
+	</a>
+
+	 <div class="container ">
+		 <div class="row">
+		   <div class="col-lg-8 m-auto">
+			<div class="newsletter__form">
+				{% if section.settings.heading != blank %}
+					<h3 class="newsletter__title h3 title--section">
+						{{ section.settings.heading }}
+					  </h3>
+				{% endif %}
+	
+				<div class="newsletter__text">
+				  {{ section.settings.newsletter_text }}
+				</div>
+				{% form 'customer', id:"newsletter_form", class: 'newsletter-form' %}
+				  <div class="newsletter-form__inner">
+					<input type="hidden" name="contact[tags]" value="newsletter">
+					<div class="newsletter-form__field-wrapper">
+					  <div class="field">
+						<input
+						  id="NewsletterForm--{{ section.id }}"
+						  type="email"
+						  name="contact[email]"
+						  class="field__input field"
+						  value="{{ form.email }}"
+						  aria-required="true"
+						  autocorrect="off"
+						  autocapitalize="off"
+						  autocomplete="email"
+						  {% if form.errors %}
+							autofocus
+							aria-invalid="true"
+							aria-describedby="Newsletter-error--{{ section.id }}"
+						  {% elsif form.posted_successfully? %}
+							aria-describedby="Newsletter-success--{{ section.id }}"
+						  {% endif %}
+						  placeholder="{{ 'newsletter.label' | t }}"
+						  required
+						>
+						<label class="field__label" for="NewsletterForm--{{ section.id }}" type="hidden">
+						  {{- 'newsletter.label' | t -}}
+						</label>
+					  </div>
+					  {%- if form.errors -%}
+						<small
+						  class="newsletter-form__message form__message"
+						  id="Newsletter-error--{{ section.id }}"
+						>
+						  {%- render 'icon-error' -%}
+						  {{- form.errors.translated_fields.email | capitalize }}
+						  {{ form.errors.messages.email -}}
+						</small>
+					  {%- endif -%}
+					</div>
+					<button
+					  type="submit"
+					  class="newsletter__button button button--{{ section.settings.button_style }}"
+					  name="commit"
+					>
+					  <span>{{ 'newsletter.button_label' | t }}</span>
+					</button>
+				  </div>
+				  {%- if form.posted_successfully? -%}
+					<h3
+					  class="newsletter-form__message newsletter-form__message--success form__message"
+					  id="Newsletter-success--{{ section.id }}"
+					  tabindex="-1"
+					  autofocus
+					>
+					  {% render 'icon-success' -%}
+					  {{- 'newsletter.success' | t }}
+					</h3>
+				  {%- endif -%}
+				{% endform %}
+			   
+			  </div>
+		  </div>
+		</div>
+	  </div>
+
+</div>
+
+<div class="announcement-bar" role="region" aria-label="{{ 'sections.header.announcement' | t }}" {{ block.shopify_attributes }}>
+
+	<div class="container container--header">
+		<div class="row align-items-center">
+			<div class="col-md-12 col-lg-8">
+
+
+
+				<slider-component >
+
+					<div class="common__slideshow swiper swiper-marquee-text"
+					  data-slidesdesktop="4"
+					  data-slidesLaptop="3"
+					  data-slidesTab="2"
+					  data-slidesMobile="1"
+					  data-direction="{{ direction }}"
+					  data-autoPlay="{{ autoPlay }}"
+					  data-delay="{{ delay }}"
+					  data-loop="{{ loop }}"
+					  data-freemode="false"
+					  data-freemomentum="false"
+					  data-speed="5000"
+					  data-desktopspace="88"
+					  data-laptopspace="60"
+					  data-tabspace="30"
+					  data-mobilespace="15"
+					  >
+
+                    <ul class="icon-list swiper-wrapper {%if smooth_scroll %} smooth-scroll {%endif%}">
+					{% for block in section.blocks %}
+						{%- case block.type -%}
+							{%- when 'texticon' -%}
+								{%liquid
+								 assign icon = block.settings.icon 
+								 assign text = block.settings.text 
+								%}
+								{% if text != blank  %}
+									<li class="swiper-slide">
+										<div class="list-icon-item"> 
+										<span>{{text }}</span>
+										<span>{{icon }}</span>
+								     	</div>	
+									</li>
+								{% endif %}
+							
+						{%- endcase -%}
+					{% endfor %}
+				  </ul>
+
+				</div>
+
+			</slider-component >
+			</div>
+
+			{%liquid
+				assign text = section.settings.text 
+				
+			   %}
+			<div class="col-lg-4 small-hide medium-hide text-right">
+		
+				   {% if text != blank %}
+					<a href="javascript:void(0)" class="mail-to-btn mail-toggle"> <span class="icon">
+						  <img src="{{"mail.png" | asset_url  }}" alt="mail">
+						</span><span> {{text }}</span></a>
+				   {% endif %}
+		
+			</div>
+		
+		</div>
+	
+	</div>
+
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.announcement-bar.name",
+	"class": "section-announcement",
+	"settings": [
+		{
+			"type": "range",
+			"id": "height",
+			"min": 40,
+			"max": 100,
+			"step": 5,
+			"default": 40,
+			"label": "t:sections.announcement-bar.settings.height.label"
+		},
+		{
+			"type": "range",
+			"id": "height_mobile",
+			"min": 40,
+			"max": 100,
+			"step": 5,
+			"default": 40,
+			"label": "t:sections.announcement-bar.settings.height_mobile.label"
+		},
+      {
+         "type": "color",
+            "id": "text_color",
+            "label": "Text Color",
+            "default": "#000000"
+      },
+                {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background Color",
+            "default": "#d5dedb"
+          },
+          		{
+			"type": "header",
+			"content": "Mailing Text"
+		},
+		{
+			"type": "text",
+			"id": "text",
+			"label": "Label"
+		  },
+		  {
+			"type": "text",
+			"id": "heading",
+			"default": "Heading for subscribe form",
+			"label": "t:sections.newsletter.settings.heading.label"
+		  },
+		  {
+			"type": "richtext",
+			"id": "newsletter_text",
+			"default": "<p>Additional text for subscribe form.</p>",
+			"label": "t:sections.newsletter.settings.newsletter_text.label"
+		  },
+		  {
+			"type": "select",
+			"id": "button_style",
+			"options": [
+			  {
+				"value": "primary",
+				"label": "t:sections.newsletter.settings.button_style.options__1.label"
+			  },
+			  {
+				"value": "secondary",
+				"label": "t:sections.newsletter.settings.button_style.options__2.label"
+			  }
+			],
+			"default": "primary",
+			"label": "t:sections.newsletter.settings.button_style.label"
+		  },
+		  {
+			"type": "header",
+			"content": "Mobile Carousels Settings"
+		  },
+		  {
+			"type": "checkbox",
+			"id": "autoplay_enabled",
+			"label": "Enable Autoplay",
+			"default": false
+		  },
+		  {
+			"type": "checkbox",
+			"id": "loop_enabled",
+			"label": "Enable Loop",
+			"default": true
+		  },
+		  {
+			"type": "checkbox",
+			"id": "direction",
+			"label": "Enable Reverse",
+			"default": false
+		  },
+		  {
+			"type": "checkbox",
+			"id": "smooth_scroll",
+			"label": "Enable Smoothe Scroll",
+			"default": false
+		  },
+		  {
+			"type": "range",
+			"id": "autoplay_timeout",
+			"label": "Change Slides Every",
+			"min": 1,
+			"max": 10,
+			"step": 1,
+			"default": 7,
+			"unit": "s"
+		  }
+	],
+	 "blocks": [
+		{
+		  "type": "texticon",
+		  "name": "Text",
+		  "settings": [
+			{
+			  "type": "liquid",
+			  "id": "icon",
+			  "label": "Svg Icon"
+			},
+			{
+			  "type": "text",
+			  "id": "text",
+			  "default": "Free shipping on orders over $80",
+			  "label": "Text"
+			}
+		  ]
+		}
+	  ],
+	"presets": [
+		{
+		  "name": "Text",
+		  "blocks": [
+			{
+			  "type": "texticon"
+			},
+			{
+			  "type": "texticon"
+			},
+			{
+			  "type": "texticon"
+			}
+		  ]
+		}
+	  ]
+}
+{% endschema %}

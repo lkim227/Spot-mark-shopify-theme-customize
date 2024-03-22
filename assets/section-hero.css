@@ -1,0 +1,23 @@
+.hero-section {
+  padding-top: 9.3rem;
+  text-align: center;
+}
+
+.hero-section__title {
+  margin: 0 auto;
+  max-width: 92.4rem;
+}
+.hero-section__title p {
+  margin: 0;
+}
+
+.hero-section__text {
+  margin: 0 auto;
+  margin-top: 2.4rem;
+  max-width: 40.6rem;
+}
+
+.hero-section__button {
+  margin-top: 5.6rem;
+  padding: 2rem -5rem;
+}

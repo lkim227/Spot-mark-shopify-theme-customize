@@ -1,0 +1,281 @@
+{% assign value = section.settings %}
+
+{{ 'section-landing-banner.css' | asset_url | stylesheet_tag: preload: true }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_m  }}px;
+    padding-bottom: {{ section.settings.padding_bottom_m }}px;
+    background: {{ section.settings.background_color }};
+    color: {{ section.settings.color }};
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  #section-{{ section.id }} .landing-banner-top .text,
+  #section-{{ section.id }} .landing-banner-top h1,
+  #section-{{ section.id }} .landing-banner-top h3{
+    color: {{ value.color }};
+  }
+  #section-{{ section.id }} .landing-banner-top a{
+    color: {{ value.btn_color }};
+    background-color: {{ value.btn_bg_color }};
+  }
+  #section-{{ section.id }} .landing-banner-top a:hover{
+    background-color: {{ value.btn_bg_hover_color }};
+  }
+  {% for block in section.blocks %}
+    {% if block.type == 'text' %}
+      {% assign val = block.settings %}
+      .text-{{ block.id }} {
+        color: {{ val.color }};
+        background-color: {{ val.bg_color }};
+        top: {{ val.pos_y | append: '%' }};
+        left: {{ val.pos_x | append: '%' }};
+      }
+      {% if forloop.index == 1 %}
+        @media all and (max-width: 1300px) {
+          .text-{{ block.id }} {
+            top: calc( {{ val.pos_y | append: '%' }} + 16% );
+            left: 0;
+          }
+
+        }
+      {% endif %}
+      {% if forloop.index == 2 %}
+        @media all and (max-width: 1300px) {
+          .text-{{ block.id }} {
+            top: calc( {{ val.pos_y | append: '%' }} + 29% );
+            left: calc( {{ val.pos_x | append: '%' }} - 13% );
+          }
+
+        }
+      {% endif %}
+      {% if forloop.index == 3 %}
+        @media all and (max-width: 1300px) {
+          .text-{{ block.id }} {
+            top: calc( {{ val.pos_y | append: '%' }} - 25% );
+          }
+
+        }
+      {% endif %}
+      {% if forloop.index == 4 %}
+        @media all and (max-width: 1300px) {
+          .text-{{ block.id }} {
+            left: 0;
+          }
+
+        }
+      {% endif %}
+      {% if forloop.index == 5 %}
+        @media all and (max-width: 1200px) {
+          .text-{{ block.id }} {
+            left: calc( {{ val.pos_x | append: '%' }} + 9% ) ;
+          }
+
+        }
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{%- endstyle -%}
+
+
+<div class="landing-banner-wrapper section-{{ section.id }}-padding" id="section-{{ section.id }}">
+  <div class="landing-banner-top container">
+    <div class="text">{{ value.top_text }}</div>
+    <h1>{{ value.title }}</h1>
+    <h3>{{ value.sub_title }}</h3>
+    {% if value.btn_link != blank and value.btn != blank %}
+      <a href="{{ value.btn_link }}">{{ value.btn }}</a>
+    {% endif %}
+  </div>
+  <div class="landing-banner-bottom">
+    {% if value.img != blank %}
+      {{ value.img | image_url: width: auto | image_tag: loading: 'lazy' }}
+    {% endif %}
+    <div class="landing-banner-hover-text">
+      {% for block in section.blocks %}
+        {% if block.type == 'text' %}
+          {% assign val = block.settings %}
+          <div class="text text-{{ block.id }}" {{ block.shopify_attributes }}>{{ val.title }}</div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Landing Banner",
+  "class": "landing-banner-section",
+  "tag": "section",
+  "max_blocks": 5,
+  "enabled_on": {
+    "templates": ["*"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "top_text",
+      "label": "Top text"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": "Sub Title"
+    },
+    {
+      "type": "text",
+      "id": "btn",
+      "label": "Button text"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button link"
+    },
+    {
+      "type": "color",
+      "id": "btn_color",
+      "label": "Button text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_color",
+      "label": "Button text background Color",
+      "default": "#00C172"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_hover_color",
+      "label": "Button text background Color on hover",
+      "default": "#ff003d"
+    },
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Section Color"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background",
+      "default": "linear-gradient(180deg, #0232D9 0%, #0029BB 21.46%, #05207A 83.33%)"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_top_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 68
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Text",
+      "type": "text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background Color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "range",
+          "id": "pos_x",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position (Left to right)",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "pos_y",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position (top to bottom)",
+          "default": 0
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing Banner"
+    }
+  ]
+}
+{% endschema %}

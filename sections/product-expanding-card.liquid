@@ -1,0 +1,411 @@
+{{ 'section-product-expanding-card.css' | asset_url | stylesheet_tag: preload: true }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_m  }}px;
+    padding-bottom: {{ section.settings.padding_bottom_m }}px;
+  }
+  {% if section.settings.background_color != blank %}
+    .product-expanding-card-section{
+      background: {{ section.settings.background_color }};
+    }
+  {% endif %}
+  .product-expanding-card-wrapper{
+    overflow: hidden;
+  }
+  @media screen and (min-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+
+
+  {% liquid
+  assign s = section.settings
+  assign background_color = s.background_color
+
+  assign heading = s.heading
+  assign text = s.text
+  assign button_text = s.btn_text
+  assign button_link = s.btn_link
+  assign logo_image = s.logo_image
+
+
+  assign card_items = section.blocks | where: 'type', 'card_item'
+
+  %}
+
+  {% if background_color != blank %}
+    {% style %}
+      #section-{{ section.id }} {
+        background-color: {{ background_color }}
+      }
+     {% endstyle %}
+  {% endif %}
+
+  <div class="section-{{ section.id }}-padding" id="section-{{ section.id }}">
+    <div class="inner-wrapper">
+      <div class="container">
+        <div class="product-expanding-card-wrapper">
+          <div class="product-expanding-card-left">
+            {% if heading != blank %}
+              <div class="product-expanding-card-heading">
+                {{ heading }}
+              </div>
+            {% endif %}
+
+            {% if text != blank %}
+              <div class="product-expanding-card-text">
+                {{ text }}
+              </div>
+            {% endif %}
+
+            <div class="expanding-card-left-button">
+              {% if button_text != blank %}
+                <a href="{{ button_link }}" class="read-more-btn">
+                  {{ button_text }}
+                </a>
+  
+              {% endif %}
+           
+              {% if logo_image != blank %}
+                <div class="expanding-card-left-image">
+                  <img src="{{ logo_image | image_url }}" alt="{{logo_image.alt}}">
+                </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="product-expanding-card-right product-expanding-card-desktop">
+            {% for block  in card_items %}
+                   {%liquid
+                        assign b = block.settings 
+                        assign heading = b.text
+                        assign image = b.img
+                        assign targetHandle = heading | handleize 
+                      %}
+             
+
+                <div
+                  class="expanding-card-item-container"
+                  {% if image != blank %}
+                    style="background-image: url('{{ image | img_url: "master" }}');"
+                  {% endif %}
+                >
+                  <div class="product-expanding-card-item-flex">
+                    <div class="product-expanding-card-item-left">
+                      {% if heading != blank %}
+                        <h4 class="product-expanding-title">{{ heading}}</h4>
+                      {% endif %}
+                    </div>
+                    <div class="product-expanding-card-item-right">
+                      <div class="expanding-card-faq">
+
+                      {%liquid
+                      assign custom_accordion_items = section.blocks | where: 'type', 'faq'
+                    %}
+                      
+                        {% for block in custom_accordion_items %}
+                        
+                          {%liquid
+                          assign b = block.settings 
+                          assign title = b.heading
+                          assign acc_text = b.text
+                        %}
+
+
+                        {% assign gethandle = block.settings.handle | handleize %}
+                        {% if gethandle == targetHandle %}
+               
+                              <div class="expanding-card-faq-item">
+                                {% if title != blank %}
+                                  <div class="accordain-heading">
+                                    <span class="arrow-icon">
+                                      <span>
+                                        <svg
+                                          class="plus"
+                                          width="10"
+                                          height="10"
+                                          viewBox="0 0 10 10"
+                                          fill="none"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                          <path d="M9.82955 4.214V5.686H5.73555V9.78H4.26355V5.686H0.169551V4.214H4.26355V0.12H5.73555V4.214H9.82955Z" fill="#2457A0"/>
+                                        </svg>
+                                        <svg
+                                          class="minus"
+                                          width="10"
+                                          height="2"
+                                          viewBox="0 0 10 2"
+                                          fill="none"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                          <path d="M0.865391 1.629V0.157H9.14539V1.629H0.865391Z" fill="#2457A0"/>
+                                        </svg>
+                                      </span>
+                                    </span>
+                                    <span>{{ title}}</span>
+                                  </div>
+                                {% endif %}
+                                {% if acc_text != blank %}
+                                  <div class="accordain-text">{{ acc_text }}</div>
+                                {% endif %}
+                              </div>
+                
+                            {% endif %}
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {% if heading != blank %}
+                  <div class="product-expanding-card-header">
+                    <span class="product-expanding-card-header-title">{{ heading }}</span>
+                    <span class="product-expanding-icon">+</span>
+                  </div>
+                {% endif %}
+        
+            {% endfor %}
+          </div>
+          <div class="product-expanding-card-wrapper product-expanding-card-mobile">
+            {% for block in card_items %}
+            
+              {%liquid
+
+              assign b = block.settings 
+              assign heading = b.text
+              assign image = b.img
+              assign targetHandle = heading | handleize 
+            %}
+
+     
+
+                <div class="expanding-card-item-mobile">
+                  {% if heading != blank %}
+                    <div class="product-expanding-card-head">
+                      <span class="product-expanding-icon">+</span>
+                      <span class="product-expanding-card-head-title">{{ heading }}</span>
+                    </div>
+                  {% endif %}
+
+                  <div
+                    class="expanding-card-item-accordion"
+                    {% if image != blank %}
+                      style="background-image: url('{{ image | img_url: "master" }}');"
+                    {% endif %}
+                  >
+                    <div class="product-expanding-card-item-block">
+                      <div class="product-expanding-card-item-left">
+                        {% if heading!= blank %}
+                          <h4 class="product-expanding-title">{{ heading }}</h4>
+                        {% endif %}
+                      </div>
+                      <div class="product-expanding-card-item-right">
+                        <div class="expanding-card-faq">
+                          {%liquid
+                          assign custom_accordion_items = section.blocks | where: 'type', 'faq'
+                        %}
+
+                          {% for block in custom_accordion_items %}
+                        
+                            {%liquid
+                            
+                            assign b = block.settings 
+                            assign title = b.heading
+                            assign acc_text = b.text
+                          %}
+
+                          {% assign gethandle = block.settings.handle | handleize %}
+                          {% if gethandle == targetHandle %}
+                 
+                                <div class="expanding-card-faq-item">
+                                  {% if title != blank %}
+                                    <div class="accordain-heading">
+                                      <span class="arrow-icon">
+                                        <span>
+                                          <svg
+                                            class="plus"
+                                            width="10"
+                                            height="10"
+                                            viewBox="0 0 10 10"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          >
+                                            <path d="M9.82955 4.214V5.686H5.73555V9.78H4.26355V5.686H0.169551V4.214H4.26355V0.12H5.73555V4.214H9.82955Z" fill="#2457A0"/>
+                                          </svg>
+                                          <svg
+                                            class="minus"
+                                            width="10"
+                                            height="2"
+                                            viewBox="0 0 10 2"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          >
+                                            <path d="M0.865391 1.629V0.157H9.14539V1.629H0.865391Z" fill="#2457A0"/>
+                                          </svg>
+                                        </span>
+                                      </span>
+                                      <span>{{ title }}</span>
+                                    </div>
+                                  {% endif %}
+                                  {% if acc_text != blank %}
+                                    <div class="accordain-text">{{ acc_text }}</div>
+                                  {% endif %}
+                                </div>
+                              {% endif %}
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+       
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% schema %}
+{
+  "name": "Product Expanding Card",
+  "class": "product-expanding-card-section",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "default" : "<p>High Quality  Coatings  is the smartest way to decorate</p>",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "default" : "<p>The time it was on the market, speaks for the product itself. It eliminates mould of damp areas and prevents in future, it won’t happen again. It is a long term sollution, which offers premium quality, very low odour levels, and maximum performance.</p>",
+      "label": "Text"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Label",
+      "default" : "READ MORE"
+    },
+    {
+      "type": "image_picker",
+      "id": "log_img",
+      "label": "Logo Image"
+    },
+    {
+      "type": "header",
+      "content": "Spacing (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Spacing (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 68
+    }
+  ],
+  "blocks": [
+    {
+      "name": "FAQ",
+      "type": "faq",
+      "settings": [
+        {
+          "type": "text",
+          "id": "handle",
+          "label": "Handle Name"
+        },
+        {
+          "type": "richtext",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "name": "Card",
+      "type": "card_item",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "Image"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default" : "Utilizes only high grade ingredients"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Expanding Card"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,427 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  {% render 'section-margin' %}
+  {% render 'section-padding' %}
+{%- endstyle -%}
+
+<div class="customer account order section-{{ section.id }}-padding">
+  <div class="container">
+    <div class="page-header">
+      <div class="page-header__inner">
+        <div class="customer__top">
+          <h1 class="main-page-title page-title title--page">
+            {{ 'customer.order.title_1' | t }}
+            <span>{{ 'customer.order.title_2' | t }}</span>
+          </h1>
+          <a class="title-link" href="{{ routes.account_url }}">{{ 'customer.account.return' | t }}</a>
+        </div>
+      </div>
+    </div>
+    <div class="account__wrapper">
+      <div class="account__left">
+        <div class="account__order-info">
+          <h4 class="account__subtitle">{{ 'customer.order.title' | t: name: order.name }}</h4>
+          {%- assign order_date = order.created_at | time_tag: format: 'date_at_time' -%}
+          <span>{{ 'customer.order.date_html' | t: date: order_date }}</span>
+
+          {%- if order.cancelled -%}
+            {%- assign cancelled_at = order.cancelled_at | time_tag: format: 'date_at_time' -%}
+            <span>{{ 'customer.order.cancelled_html' | t: date: cancelled_at }}</span>
+            <span>{{ 'customer.order.cancelled_reason' | t: reason: order.cancel_reason_label }}</span>
+          {%- endif -%}
+        </div>
+        <div role="table" class="order-table order-table--details">
+          <div class="visually-hidden">{{ 'customer.order.title' | t: name: order.name }}</div>
+          <div class="row thead">
+            <div id="ColumnProduct">{{ 'customer.order.product' | t }}</div>
+            <div id="ColumnSku">{{ 'customer.order.sku' | t }}</div>
+            <div id="ColumnPrice">{{ 'customer.order.price' | t }}</div>
+            <div id="ColumnQuantity">{{ 'customer.order.quantity' | t }}</div>
+            <div id="ColumnTotal">{{ 'customer.order.total' | t }}</div>
+          </div>
+
+          {%- for line_item in order.line_items -%}
+            <div class="row tbody">
+              <div id="Row{{ line_item.key }}" data-label="{{ 'customer.order.product' | t }}">
+                <div class="product-name">
+                  {%- if line_item.product.url != blank -%}
+                    <a href="{{ line_item.product.url }}">{{ line_item.product.title }}</a>
+                  {%- else -%}
+                    <p>{{ line_item.product.title }}</p>
+                  {%- endif -%}
+
+                  {%- assign property_size = line_item.properties | size -%}
+                  <div class="properties">
+                    {%- unless line_item.product.has_only_default_variant -%}
+                      {%- for option in line_item.options_with_values -%}
+                        <span> {{ option.name }}: {{ option.value }} </span>
+                      {%- endfor -%}
+                    {%- endunless -%}
+                    {%- unless line_item.selling_plan_allocation == null -%}
+                      <span>
+                        {{ line_item.selling_plan_allocation.selling_plan.name }}
+                      </span>
+                    {%- endunless -%}
+                  </div>
+                </div>
+              </div>
+              <div data-label="{{ 'customer.order.sku' | t }}">
+                {%- if line_item.sku != blank -%}
+                  {{ line_item.sku }}
+                {%- else -%}
+                  –
+                {%- endif -%}
+              </div>
+              <div data-label="{{ 'customer.order.price' | t }}">
+                {%- if line_item.original_price != line_item.final_price or line_item.unit_price_measurement -%}
+                  <div>
+                    {%- if line_item.original_price != line_item.final_price -%}
+                      <div>
+                        <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+                      </div>
+                      <div>
+                        <s>{{ line_item.original_price | money }}</s>
+                      </div>
+                      <div>
+                        <span class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</span>
+                      </div>
+                      <div>
+                        <span>{{ line_item.final_price | money }}</span>
+                      </div>
+                    {%- else -%}
+                      <div>
+                        <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+                      </div>
+                      <div>
+                        {{ line_item.original_price | money }}
+                      </div>
+                    {%- endif -%}
+                    {%- if line_item.unit_price_measurement -%}
+                      <div>
+                        <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
+                      </div>
+                      <div>
+                        <span>
+                          {%- capture unit_price_separator -%}
+														<span aria-hidden="true">/</span>
+														<span class="visually-hidden">{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span>
+													{%- endcapture -%}
+                          {%- capture unit_price_base_unit -%}
+														{%- if line_item.unit_price_measurement.reference_value != 1 -%}
+															{{- line_item.unit_price_measurement.reference_value -}}
+														{%- endif -%}
+														{{ line_item.unit_price_measurement.reference_unit }}
+													{%- endcapture -%}
+                          <span
+                            data-unit-price
+                          >
+                            {{- line_item.unit_price | money -}}
+                          </span>
+                          {{- unit_price_separator -}}
+                          {{- unit_price_base_unit -}}
+                        </span>
+                      </div>
+                    {%- endif -%}
+                  </div>
+                {%- else -%}
+                  <span>{{ line_item.final_price | money }}</span>
+                {%- endif -%}
+              </div>
+              <div data-label="{{ 'customer.order.quantity' | t }}">
+                {{ line_item.quantity }}
+              </div>
+              <div data-label="{{ 'customer.order.total' | t }}">
+                {%- if line_item.original_line_price != line_item.final_line_price -%}
+                  <div>
+                    <div>
+                      <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+                    </div>
+                    <div>
+                      <s>{{ line_item.original_line_price | money }}</s>
+                    </div>
+                    <div>
+                      <span class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</span>
+                    </div>
+                    <div>
+                      <span>{{ line_item.final_line_price | money }}</span>
+                    </div>
+                  </div>
+                {%- else -%}
+                  {{ line_item.original_line_price | money }}
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endfor -%}
+
+          <div class="row tfoot">
+            <div>
+              <span>{{ 'customer.order.subtotal' | t }}</span>
+              <span>{{ order.line_items_subtotal_price | money }}</span>
+            </div>
+            {%- for shipping_method in order.shipping_methods -%}
+              <div>
+                <span id="RowShipping">{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }}) </span>
+                <span data-label="{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})">
+                  {{ shipping_method.price | money }}
+                </span>
+              </div>
+            {%- endfor -%}
+            {%- for tax_line in order.tax_lines -%}
+              <div>
+                <span id="RowTax">
+                  {{- 'customer.order.tax' | t }} ({{ tax_line.title }}
+                  {{ tax_line.rate | times: 100 }}%)
+                </span>
+                <span
+                  data-label="{{ 'customer.order.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)"
+                >
+                  {{ tax_line.price | money }}
+                </span>
+              </div>
+            {%- endfor -%}
+            <div class="total-price">
+              <span id="RowTotal">{{ 'customer.order.total' | t }}</span>
+              <span data-label="{{ 'customer.order.total' | t }}">{{ order.total_price | money_with_currency }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="account__right">
+        <h4 class="account__subtitle">{{ 'customer.account.details' | t }}</h4>
+        {%- if customer.addresses_count > 0 -%}
+          <div class="account-address">
+            <ul class="account-address__list account-address__default list-unstyled">
+              {%- if customer.default_address.name != blank -%}
+                <li class="account-address__item account-address__item-name">{{ customer.default_address.name }}</li>
+              {%- endif -%}
+
+              {%- if customer.default_address != blank -%}
+                <li>
+                  {%- if customer.default_address.street != blank -%}
+                    <span class="account-address__item">{{ customer.default_address.street }}</span>
+                  {%- endif -%}
+
+                  {%- if customer.default_address.company != blank -%}
+                    <span class="account-address__item">{{ customer.default_address.company }}</span>
+                  {%- endif -%}
+
+                  {%- if customer.default_address.city != blank -%}
+                    <span class="account-address__item">{{ customer.default_address.city }}</span>
+                  {%- endif -%}
+
+                  {%- if customer.default_address.zip != blank -%}
+                    <span class="account-address__item">{{ customer.default_address.zip }}</span>
+                  {%- endif -%}
+
+                  {%- if customer.default_address.phone != blank -%}
+                    <span class="account-address__item">{{ customer.default_address.phone }}</span>
+                  {%- endif -%}
+
+                  {%- if customer.default_address.country != blank -%}
+                    <span class="account-address__item account-address__item-address">
+                      {{- customer.default_address.country -}}
+                    </span>
+                  {%- endif -%}
+                </li>
+              {%- endif -%}
+            </ul>
+            <a
+              class="button button--arrow button--primary account-address__link"
+              href="{{ routes.account_addresses_url }}"
+            >
+              <span>
+                {{ 'customer.account.view_addresses' | t }}
+                ({{ customer.addresses_count }})
+              </span>
+              <span>{%- render 'icon-button-arrow' -%}</span>
+            </a>
+          </div>
+        {%- else -%}
+          <div class="account-none">
+            <div class="account-none__wrapper">
+              {% render 'icon-account-address-none' %}
+              <div class="account-none__content">
+                {%- if section.settings.heading_addresses != blank -%}
+                  <h4>{{ section.settings.heading_addresses }}</h4>
+                {%- endif -%}
+                {%- if section.settings.text_addresses != blank -%}
+                  <div class="account-none__text">
+                    {{ section.settings.text_addresses | escape }}
+                  </div>
+                {%- endif -%}
+              </div>
+              <a
+                href="{{ routes.account_addresses_url }}"
+                class="button button--arrow button--primary account-none__button"
+              >
+                <span>{{ 'customer.addresses.add_new' | t }}</span>
+                <span>{%- render 'icon-button-arrow' -%}</span>
+              </a>
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-order.name",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.main-account.settings.header_2.content"
+    },
+    {
+      "type": "textarea",
+      "id": "heading_addresses",
+      "default": "Some heading for empty order history placeholder",
+      "label": "t:sections.all.heading.label"
+    },
+    {
+      "type": "textarea",
+      "id": "text_addresses",
+      "default": "Some text for empty order history placeholder",
+      "label": "t:sections.all.text.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.section-margin.header.content"
+    },
+    {
+      "type": "select",
+      "id": "margin_top",
+      "options": [
+        {
+          "value": "no-indent",
+          "label": "t:sections.all.section-margin.options__1.label"
+        },
+        {
+          "value": "xs",
+          "label": "t:sections.all.section-margin.options__2.label"
+        },
+        {
+          "value": "s",
+          "label": "t:sections.all.section-margin.options__3.label"
+        },
+        {
+          "value": "m",
+          "label": "t:sections.all.section-margin.options__4.label"
+        },
+        {
+          "value": "l",
+          "label": "t:sections.all.section-margin.options__5.label"
+        },
+        {
+          "value": "xl",
+          "label": "t:sections.all.section-margin.options__6.label"
+        }
+      ],
+      "default": "no-indent",
+      "label": "t:sections.all.section-margin.margin_top.label"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom",
+      "options": [
+        {
+          "value": "no-indent",
+          "label": "t:sections.all.section-margin.options__1.label"
+        },
+        {
+          "value": "xs",
+          "label": "t:sections.all.section-margin.options__2.label"
+        },
+        {
+          "value": "s",
+          "label": "t:sections.all.section-margin.options__3.label"
+        },
+        {
+          "value": "m",
+          "label": "t:sections.all.section-margin.options__4.label"
+        },
+        {
+          "value": "l",
+          "label": "t:sections.all.section-margin.options__5.label"
+        },
+        {
+          "value": "xl",
+          "label": "t:sections.all.section-margin.options__6.label"
+        }
+      ],
+      "default": "no-indent",
+      "label": "t:sections.all.section-margin.margin_bottom.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.section-padding.header.content"
+    },
+    {
+      "type": "select",
+      "id": "padding_top",
+      "options": [
+        {
+          "value": "no-indent",
+          "label": "t:sections.all.section-padding.options__1.label"
+        },
+        {
+          "value": "xs",
+          "label": "t:sections.all.section-padding.options__2.label"
+        },
+        {
+          "value": "s",
+          "label": "t:sections.all.section-padding.options__3.label"
+        },
+        {
+          "value": "m",
+          "label": "t:sections.all.section-padding.options__4.label"
+        },
+        {
+          "value": "l",
+          "label": "t:sections.all.section-padding.options__5.label"
+        },
+        {
+          "value": "xl",
+          "label": "t:sections.all.section-padding.options__6.label"
+        }
+      ],
+      "default": "m",
+      "label": "t:sections.all.section-padding.padding_top.label"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom",
+      "options": [
+        {
+          "value": "no-indent",
+          "label": "t:sections.all.section-padding.options__1.label"
+        },
+        {
+          "value": "xs",
+          "label": "t:sections.all.section-padding.options__2.label"
+        },
+        {
+          "value": "s",
+          "label": "t:sections.all.section-padding.options__3.label"
+        },
+        {
+          "value": "m",
+          "label": "t:sections.all.section-padding.options__4.label"
+        },
+        {
+          "value": "l",
+          "label": "t:sections.all.section-padding.options__5.label"
+        },
+        {
+          "value": "xl",
+          "label": "t:sections.all.section-padding.options__6.label"
+        }
+      ],
+      "default": "no-indent",
+      "label": "t:sections.all.section-padding.padding_bottom.label"
+    }
+  ]
+}
+{% endschema %}

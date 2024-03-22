@@ -1,0 +1,107 @@
+.newsletter-form__inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+  position: relative;
+}
+@media (min-width: 990px) {
+  .newsletter-form__inner {
+    flex-direction: row;
+  }
+}
+.newsletter-form__field-wrapper {
+  flex: 1;
+  width: 100%;
+  position: relative;
+}
+@media (min-width: 990px) {
+  .newsletter-form__field-wrapper {
+    width: auto;
+  }
+}
+.newsletter-form__message {
+  margin-bottom: 0;
+}
+@media (min-width: 750px) {
+  .newsletter-form__message {
+    justify-content: flex-start;
+  }
+}
+.newsletter-form__message--success {
+  margin-top: 2rem;
+}
+@media (min-width: 750px) {
+  .newsletter-form__message--success {
+    width: 100%;
+  }
+}
+.newsletter-form__button {
+  margin-left: 1.4rem;
+}
+.newsletter-form .field {
+  min-height: 6.5rem;
+}
+.newsletter-form .field input {
+  padding: 0.7rem 14.8rem 0.7rem 1.8rem;
+}
+
+.newsletter--left .newsletter__title p, .newsletter--left .newsletter__text p {
+  text-align: left;
+}
+.newsletter--right .newsletter__form {
+  margin-left: auto;
+}
+.newsletter--right .newsletter__title p, .newsletter--right .newsletter__text p {
+  text-align: right;
+}
+.newsletter--center .newsletter {
+  text-align: center;
+}
+.newsletter--center .newsletter__form {
+  margin: 0 auto;
+}
+.newsletter--center .newsletter__title p, .newsletter--center .newsletter__text p {
+  text-align: center;
+}
+.newsletter__form {
+  max-width: 42.5rem;
+  width: 100%;
+}
+.newsletter__form .rte {
+  color: rgba(var(--color-foreground), 0.6);
+}
+.newsletter__form .rte p {
+  margin-bottom: 0;
+  font-size: 1.4rem;
+}
+.newsletter__form .rte a {
+  color: rgb(var(--color-link), 1);
+  transition: color var(--duration-default);
+}
+.newsletter__form .rte a:hover {
+  color: rgba(var(--color-foreground), 0.8);
+}
+.newsletter__form--fullwidth {
+  max-width: 100%;
+}
+.newsletter__title {
+  margin-top: 0;
+  margin-bottom: 2.4rem;
+}
+.newsletter__text {
+  margin-top: 2.4rem;
+}
+.newsletter__text p {
+  font-size: 1.2rem;
+}
+.newsletter__button {
+  position: absolute;
+  right: 0.8rem;
+  width: 13rem;
+  min-height: 5rem;
+  border-radius: var(--border-radius-button);
+}

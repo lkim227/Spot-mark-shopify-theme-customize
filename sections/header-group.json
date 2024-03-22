@@ -1,0 +1,648 @@
+{
+  "type": "header",
+  "name": "t:sections.header.settings.header-group.label",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "607a269f-9ece-40fe-8e0a-741e95b38d5b": {
+          "type": "texticon",
+          "settings": {
+            "icon": "<svg width=\"23\" height=\"21\" viewBox=\"0 0 23 21\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M12.4063 4.57505L11.506 2.65723L10.5977 4.57126L8.90511 8.13779L4.88817 8.58984L2.66761 8.83974L4.3335 10.3291L7.30933 12.9895L6.51651 16.7961L6.07443 18.9187L7.97595 17.877L11.5011 15.9459L15.0263 17.877L16.9278 18.9187L16.4857 16.7961L15.6929 12.9895L18.6665 10.3312L20.3334 8.84104L18.1114 8.59194L14.0799 8.13999L12.4063 4.57505Z\" stroke=\"black\" stroke-width=\"2\"\/>\n<\/svg>",
+            "text": "Free shipping on orders over $80"
+          }
+        },
+        "877ace64-6c75-46b9-963d-b42f07790f25": {
+          "type": "texticon",
+          "settings": {
+            "icon": "<svg width=\"23\" height=\"23\" viewBox=\"0 0 23 23\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M15.1094 21.2036L15.1113 21.2017L21.2313 15.05C21.2316 15.0497 21.232 15.0493 21.2323 15.049C21.7343 14.5466 22 13.9128 22 13.201C22 12.4887 21.7339 11.8546 21.2313 11.352L12.2864 2.40706C11.8483 1.96893 11.3104 1.65146 10.6913 1.3965C10.0504 1.1326 9.44531 1.00398 8.85142 1.00398H3.64908C2.90424 0.962237 2.26116 1.24848 1.76869 1.74095C1.26609 2.24354 1 2.87766 1 3.58996V8.79196C1 9.38585 1.12862 9.99092 1.39252 10.6318C1.64413 11.2429 1.96441 11.7941 2.45021 12.2424L11.4114 21.2036C11.914 21.7062 12.5481 21.9723 13.2604 21.9723C13.9727 21.9723 14.6069 21.7062 15.1094 21.2036Z\" fill=\"#FF003D\" stroke=\"black\" stroke-width=\"2\"\/>\n<circle cx=\"7\" cy=\"7\" r=\"2\" fill=\"black\"\/>\n<\/svg>",
+            "text": "Sales of the week!"
+          }
+        },
+        "df488509-c881-4bfd-83ef-c23719ea28a8": {
+          "type": "texticon",
+          "settings": {
+            "icon": "<svg width=\"24\" height=\"17\" viewBox=\"0 0 24 17\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M23.1158 6.46051C23.6211 6.46051 24 6.05514 24 5.57377V3.8763C24 1.7228 22.2568 0 20.1347 0H3.86526C1.71789 0 0 1.74814 0 3.8763V5.57377C0 6.08048 0.404211 6.46051 0.884211 6.46051C2.02105 6.46051 2.93053 7.37258 2.93053 8.48733C2.93053 9.62742 2.02105 10.5395 0.884211 10.5395C0.378947 10.5395 0 10.9449 0 11.4262V13.1237C0 15.2772 1.74316 17 3.86526 17H20.1095C22.2568 17 23.9747 15.2519 23.9747 13.1237V11.4262C23.9747 10.9195 23.5705 10.5395 23.0905 10.5395C21.9537 10.5395 21.0442 9.62742 21.0442 8.48733C21.0695 7.37258 21.9789 6.46051 23.1158 6.46051Z\" fill=\"#FF003D\"\/>\n<path d=\"M23.1158 6.46051C23.6211 6.46051 24 6.05514 24 5.57377V3.8763C24 1.7228 22.2568 0 20.1347 0H3.86526C1.71789 0 0 1.74814 0 3.8763V5.57377C0 6.08048 0.404211 6.46051 0.884211 6.46051C2.02105 6.46051 2.93053 7.37258 2.93053 8.48733C2.93053 9.62742 2.02105 10.5395 0.884211 10.5395C0.378947 10.5395 0 10.9449 0 11.4262V13.1237C0 15.2772 1.74316 17 3.86526 17H20.1095C22.2568 17 23.9747 15.2519 23.9747 13.1237V11.4262C23.9747 10.9195 23.5705 10.5395 23.0905 10.5395C21.9537 10.5395 21.0442 9.62742 21.0442 8.48733C21.0695 7.37258 21.9789 6.46051 23.1158 6.46051ZM22.2063 12.2116V13.0984C22.2063 14.2638 21.2716 15.2012 20.1095 15.2012H3.86526C2.70316 15.2012 1.76842 14.2638 1.76842 13.0984V12.2116C3.46105 11.8063 4.69895 10.2861 4.69895 8.48733C4.69895 6.68852 3.43579 5.16841 1.76842 4.76304V3.85097C1.76842 2.68554 2.70316 1.74814 3.86526 1.74814H20.1095C21.2716 1.74814 22.2063 2.68554 22.2063 3.85097V4.76304C20.5137 5.16841 19.2758 6.68852 19.2758 8.48733C19.2758 10.2861 20.5389 11.8063 22.2063 12.2116Z\" fill=\"black\"\/>\n<path d=\"M9.24625 7.06834C10.1113 7.06834 10.8126 6.36507 10.8126 5.49755C10.8126 4.63002 10.1113 3.92676 9.24625 3.92676C8.38119 3.92676 7.67993 4.63002 7.67993 5.49755C7.67993 6.36507 8.38119 7.06834 9.24625 7.06834Z\" fill=\"black\"\/>\n<path d=\"M14.7536 13.0478C15.6186 13.0478 16.3199 12.3446 16.3199 11.477C16.3199 10.6095 15.6186 9.90625 14.7536 9.90625C13.8885 9.90625 13.1873 10.6095 13.1873 11.477C13.1873 12.3446 13.8885 13.0478 14.7536 13.0478Z\" fill=\"black\"\/>\n<path d=\"M15.6127 4.00315C15.2338 3.69913 14.6527 3.7498 14.3496 4.12983L8.26113 11.7051C7.95797 12.0851 8.0085 12.6678 8.38745 12.9719C8.56429 13.0985 8.74113 13.1745 8.94324 13.1745C9.19587 13.1745 9.47376 13.0732 9.65061 12.8452L15.739 5.29525C16.0422 4.88989 15.9917 4.33251 15.6127 4.00315Z\" fill=\"black\"\/>\n<\/svg>",
+            "text": "Extra 10% Off On First Order"
+          }
+        },
+        "b71bd87f-fae4-4252-83b5-f2ce825b574c": {
+          "type": "texticon",
+          "settings": {
+            "icon": "<svg width=\"23\" height=\"21\" viewBox=\"0 0 23 21\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M12.4063 4.57505L11.506 2.65723L10.5977 4.57126L8.90511 8.13779L4.88817 8.58984L2.66761 8.83974L4.3335 10.3291L7.30933 12.9895L6.51651 16.7961L6.07443 18.9187L7.97595 17.877L11.5011 15.9459L15.0263 17.877L16.9278 18.9187L16.4857 16.7961L15.6929 12.9895L18.6665 10.3312L20.3334 8.84104L18.1114 8.59194L14.0799 8.13999L12.4063 4.57505Z\" stroke=\"black\" stroke-width=\"2\"\/>\n<\/svg>",
+            "text": "Free shipping on orders over $80"
+          }
+        },
+        "78627027-785f-4bd6-9e4b-44fedca98932": {
+          "type": "texticon",
+          "settings": {
+            "icon": "",
+            "text": "Extra 10% Off On First Order"
+          }
+        }
+      },
+      "block_order": [
+        "607a269f-9ece-40fe-8e0a-741e95b38d5b",
+        "877ace64-6c75-46b9-963d-b42f07790f25",
+        "df488509-c881-4bfd-83ef-c23719ea28a8",
+        "b71bd87f-fae4-4252-83b5-f2ce825b574c",
+        "78627027-785f-4bd6-9e4b-44fedca98932"
+      ],
+      "settings": {
+        "height": 50,
+        "height_mobile": 50,
+        "text_color": "#ffffff",
+        "bg_color": "#ff0000",
+        "text": "subscribe & Get exclusive trade + discounts",
+        "heading": "Subscribe & Save",
+        "newsletter_text": "<p>Subscribe to get notified about product launches, special offers and news<\/p>",
+        "button_style": "primary",
+        "autoplay_enabled": true,
+        "loop_enabled": true,
+        "direction": false,
+        "smooth_scroll": true,
+        "autoplay_timeout": 4
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "dropdown": {
+          "type": "dropdown",
+          "settings": {
+            "shop_button_label": "Shop Now",
+            "shop_button_menu": "test-shop",
+            "button_style": "tertiary",
+            "show_promo_1": false,
+            "color_scheme_1": "dark",
+            "heading_1": "",
+            "description_1": "",
+            "overlay_opacity_1": 0,
+            "show_button_1": false,
+            "button_link_1": "",
+            "button_label_1": "Button label",
+            "button_style_1": "primary",
+            "text_1": "",
+            "text_accent_1": "",
+            "show_promo_2": false,
+            "color_scheme_2": "dark",
+            "heading_2": "",
+            "description_2": "",
+            "overlay_opacity_2": 0,
+            "show_button_2": false,
+            "button_link_2": "",
+            "button_label_2": "Button label",
+            "button_style_2": "primary",
+            "text_2": "",
+            "text_accent_2": ""
+          }
+        },
+        "bf757111-76d7-44be-a7ea-2483022810e5": {
+          "type": "mega_menu",
+          "settings": {
+            "mega_menu_icon": "shopify:\/\/shop_images\/fi_2400622.svg",
+            "mega_menu_trigger": "Interior Range",
+            "heading": "",
+            "show_mega_menu_1": false,
+            "color_scheme_1": "dark",
+            "heading_1": "PREMIUM TRACKED & FAST SHIPPING",
+            "description_1": "MON - FRI Nextday - 48 hour shipping",
+            "image_1": "shopify:\/\/shop_images\/734294472.png",
+            "overlay_opacity_1": 0,
+            "enable_mobile_overlay_1": false,
+            "show_button_1": true,
+            "button_link_1": "",
+            "button_label_1": "Shop Now",
+            "button_style_1": "primary",
+            "text_1": "",
+            "text_accent_1": "",
+            "show_mega_menu_2": false,
+            "color_scheme_2": "dark",
+            "heading_2": "BUY A COLOR TESTER POUCH",
+            "description_2": "BUY A COLOR TESTER POUCH",
+            "image_2": "shopify:\/\/shop_images\/223.png",
+            "overlay_opacity_2": 0,
+            "enable_mobile_overlay_2": false,
+            "show_button_2": true,
+            "button_link_2": "",
+            "button_label_2": "Shop Now",
+            "button_style_2": "primary",
+            "text_2": "",
+            "text_accent_2": ""
+          }
+        },
+        "mega_menu_ndqqtQ": {
+          "type": "mega_menu",
+          "settings": {
+            "mega_menu_icon": "shopify:\/\/shop_images\/fi_9254718.svg",
+            "mega_menu_trigger": "Exterior Range",
+            "heading": "",
+            "show_mega_menu_1": false,
+            "color_scheme_1": "dark",
+            "heading_1": "PREMIUM TRACKED & FAST SHIPPING",
+            "description_1": "MON - FRI Nextday - 48 hour shipping",
+            "image_1": "shopify:\/\/shop_images\/734294472.png",
+            "overlay_opacity_1": 0,
+            "enable_mobile_overlay_1": false,
+            "show_button_1": true,
+            "button_link_1": "shopify:\/\/collections\/all",
+            "button_label_1": "Shop Now",
+            "button_style_1": "primary",
+            "text_1": "",
+            "text_accent_1": "",
+            "show_mega_menu_2": false,
+            "color_scheme_2": "dark",
+            "heading_2": "BUY A COLOR TESTER POUCH",
+            "description_2": "BUY A COLOR TESTER POUCH",
+            "image_2": "shopify:\/\/shop_images\/223.png",
+            "overlay_opacity_2": 0,
+            "enable_mobile_overlay_2": false,
+            "show_button_2": true,
+            "button_link_2": "shopify:\/\/collections\/all",
+            "button_label_2": "Shop Now",
+            "button_style_2": "primary",
+            "text_2": "",
+            "text_accent_2": ""
+          }
+        },
+        "mega_menu_6kijw8": {
+          "type": "mega_menu",
+          "settings": {
+            "mega_menu_icon": "shopify:\/\/shop_images\/fi_1010368.svg",
+            "mega_menu_trigger": "Wood, Furniture & Garden",
+            "heading": "",
+            "show_mega_menu_1": false,
+            "color_scheme_1": "dark",
+            "heading_1": "PREMIUM TRACKED & FAST SHIPPING",
+            "description_1": "MON - FRI Nextday - 48 hour shipping",
+            "image_1": "shopify:\/\/shop_images\/734294472.png",
+            "overlay_opacity_1": 0,
+            "enable_mobile_overlay_1": false,
+            "show_button_1": true,
+            "button_link_1": "",
+            "button_label_1": "Shop Now",
+            "button_style_1": "primary",
+            "text_1": "",
+            "text_accent_1": "",
+            "show_mega_menu_2": false,
+            "color_scheme_2": "dark",
+            "heading_2": "BUY A COLOR TESTER POUCH",
+            "description_2": "BUY A COLOR TESTER POUCH",
+            "image_2": "shopify:\/\/shop_images\/223.png",
+            "overlay_opacity_2": 0,
+            "enable_mobile_overlay_2": false,
+            "show_button_2": true,
+            "button_link_2": "",
+            "button_label_2": "Shop Now",
+            "button_style_2": "primary",
+            "text_2": "",
+            "text_accent_2": ""
+          }
+        },
+        "mega_menu_pYWHim": {
+          "type": "mega_menu",
+          "settings": {
+            "mega_menu_icon": "shopify:\/\/shop_images\/fi_9590350.svg",
+            "mega_menu_trigger": "Roofing",
+            "heading": "",
+            "show_mega_menu_1": false,
+            "color_scheme_1": "dark",
+            "heading_1": "PREMIUM TRACKED & FAST SHIPPING",
+            "description_1": "MON - FRI Nextday - 48 hour shipping",
+            "image_1": "shopify:\/\/shop_images\/734294472.png",
+            "overlay_opacity_1": 0,
+            "enable_mobile_overlay_1": false,
+            "show_button_1": true,
+            "button_link_1": "",
+            "button_label_1": "Shop Now",
+            "button_style_1": "primary",
+            "text_1": "",
+            "text_accent_1": "",
+            "show_mega_menu_2": false,
+            "color_scheme_2": "dark",
+            "heading_2": "BUY A COLOR TESTER POUCH",
+            "description_2": "BUY A COLOR TESTER POUCH",
+            "image_2": "shopify:\/\/shop_images\/223.png",
+            "overlay_opacity_2": 0,
+            "enable_mobile_overlay_2": false,
+            "show_button_2": true,
+            "button_link_2": "",
+            "button_label_2": "Shop Now",
+            "button_style_2": "primary",
+            "text_2": "",
+            "text_accent_2": ""
+          }
+        },
+        "mega_menu_EqARHe": {
+          "type": "mega_menu",
+          "settings": {
+            "mega_menu_icon": "shopify:\/\/shop_images\/fi_2196705.svg",
+            "mega_menu_trigger": "Tarmac & Driveways",
+            "heading": "",
+            "show_mega_menu_1": false,
+            "color_scheme_1": "dark",
+            "heading_1": "PREMIUM TRACKED & FAST SHIPPING",
+            "description_1": "MON - FRI Nextday - 48 hour shipping",
+            "image_1": "shopify:\/\/shop_images\/734294472.png",
+            "overlay_opacity_1": 0,
+            "enable_mobile_overlay_1": false,
+            "show_button_1": true,
+            "button_link_1": "",
+            "button_label_1": "Shop Now",
+            "button_style_1": "primary",
+            "text_1": "",
+            "text_accent_1": "",
+            "show_mega_menu_2": false,
+            "color_scheme_2": "dark",
+            "heading_2": "BUY A COLOR TESTER POUCH",
+            "description_2": "BUY A COLOR TESTER POUCH",
+            "image_2": "shopify:\/\/shop_images\/223.png",
+            "overlay_opacity_2": 0,
+            "enable_mobile_overlay_2": false,
+            "show_button_2": true,
+            "button_link_2": "",
+            "button_label_2": "Shop Now",
+            "button_style_2": "primary",
+            "text_2": "",
+            "text_accent_2": ""
+          }
+        },
+        "mega_menu_xHwMEP": {
+          "type": "mega_menu",
+          "settings": {
+            "mega_menu_icon": "shopify:\/\/shop_images\/fi_10457363.svg",
+            "mega_menu_trigger": "Metal",
+            "heading": "",
+            "show_mega_menu_1": false,
+            "color_scheme_1": "dark",
+            "heading_1": "PREMIUM TRACKED & FAST SHIPPING",
+            "description_1": "MON - FRI Nextday - 48 hour shipping",
+            "image_1": "shopify:\/\/shop_images\/734294472.png",
+            "overlay_opacity_1": 0,
+            "enable_mobile_overlay_1": false,
+            "show_button_1": true,
+            "button_link_1": "",
+            "button_label_1": "Shop Now",
+            "button_style_1": "primary",
+            "text_1": "",
+            "text_accent_1": "",
+            "show_mega_menu_2": false,
+            "color_scheme_2": "dark",
+            "heading_2": "BUY A COLOR TESTER POUCH",
+            "description_2": "BUY A COLOR TESTER POUCH",
+            "image_2": "shopify:\/\/shop_images\/223.png",
+            "overlay_opacity_2": 0,
+            "enable_mobile_overlay_2": false,
+            "show_button_2": true,
+            "button_link_2": "",
+            "button_label_2": "Shop Now",
+            "button_style_2": "primary",
+            "text_2": "",
+            "text_accent_2": ""
+          }
+        },
+        "mega_menu_H46nxw": {
+          "type": "mega_menu",
+          "settings": {
+            "mega_menu_icon": "shopify:\/\/shop_images\/fi_1415522.svg",
+            "mega_menu_trigger": "Mould, Damp & Additives Range",
+            "heading": "",
+            "show_mega_menu_1": true,
+            "color_scheme_1": "dark",
+            "heading_1": "PREMIUM TRACKED & FAST SHIPPING",
+            "description_1": "",
+            "image_1": "shopify:\/\/shop_images\/734294472.png",
+            "overlay_opacity_1": 0,
+            "enable_mobile_overlay_1": false,
+            "show_button_1": true,
+            "button_link_1": "shopify:\/\/collections\/all",
+            "button_label_1": "Shop Now",
+            "button_style_1": "primary",
+            "text_1": "",
+            "text_accent_1": "",
+            "show_mega_menu_2": false,
+            "color_scheme_2": "dark",
+            "heading_2": "PREMIUM TRACKED & FAST SHIPPING",
+            "description_2": "MON - FRI Nextday - 48 hour shipping",
+            "image_2": "shopify:\/\/shop_images\/223.png",
+            "overlay_opacity_2": 0,
+            "enable_mobile_overlay_2": false,
+            "show_button_2": true,
+            "button_link_2": "shopify:\/\/collections\/all",
+            "button_label_2": "Shop Now",
+            "button_style_2": "primary",
+            "text_2": "",
+            "text_accent_2": ""
+          }
+        },
+        "mega_menu_cqGi9p": {
+          "type": "mega_menu",
+          "settings": {
+            "mega_menu_icon": "shopify:\/\/shop_images\/fi_471658.svg",
+            "mega_menu_trigger": "Sealers And Primers",
+            "heading": "",
+            "show_mega_menu_1": false,
+            "color_scheme_1": "dark",
+            "heading_1": "PREMIUM TRACKED & FAST SHIPPING",
+            "description_1": "MON - FRI Nextday - 48 hour shipping",
+            "image_1": "shopify:\/\/shop_images\/734294472.png",
+            "overlay_opacity_1": 0,
+            "enable_mobile_overlay_1": false,
+            "show_button_1": true,
+            "button_link_1": "",
+            "button_label_1": "Shop Now",
+            "button_style_1": "primary",
+            "text_1": "",
+            "text_accent_1": "",
+            "show_mega_menu_2": false,
+            "color_scheme_2": "dark",
+            "heading_2": "BUY A COLOR TESTER POUCH",
+            "description_2": "BUY A COLOR TESTER POUCH",
+            "image_2": "shopify:\/\/shop_images\/223.png",
+            "overlay_opacity_2": 0,
+            "enable_mobile_overlay_2": false,
+            "show_button_2": true,
+            "button_link_2": "",
+            "button_label_2": "Shop Now",
+            "button_style_2": "primary",
+            "text_2": "",
+            "text_accent_2": ""
+          }
+        },
+        "mega_menu_htpadn": {
+          "type": "mega_menu",
+          "settings": {
+            "mega_menu_icon": "shopify:\/\/shop_images\/fi_2985511.svg",
+            "mega_menu_trigger": "Fire Sale",
+            "heading": "",
+            "show_mega_menu_1": false,
+            "color_scheme_1": "dark",
+            "heading_1": "PREMIUM TRACKED & FAST SHIPPING",
+            "description_1": "MON - FRI Nextday - 48 hour shipping",
+            "image_1": "shopify:\/\/shop_images\/734294472.png",
+            "overlay_opacity_1": 0,
+            "enable_mobile_overlay_1": false,
+            "show_button_1": true,
+            "button_link_1": "",
+            "button_label_1": "Shop Now",
+            "button_style_1": "primary",
+            "text_1": "",
+            "text_accent_1": "",
+            "show_mega_menu_2": false,
+            "color_scheme_2": "dark",
+            "heading_2": "BUY A COLOR TESTER POUCH",
+            "description_2": "BUY A COLOR TESTER POUCH",
+            "image_2": "shopify:\/\/shop_images\/223.png",
+            "overlay_opacity_2": 0,
+            "enable_mobile_overlay_2": false,
+            "show_button_2": true,
+            "button_link_2": "",
+            "button_label_2": "Shop Now",
+            "button_style_2": "primary",
+            "text_2": "",
+            "text_accent_2": ""
+          }
+        },
+        "mega_menu_XUQHnx": {
+          "type": "mega_menu",
+          "settings": {
+            "mega_menu_icon": "shopify:\/\/shop_images\/fi_4713698.svg",
+            "mega_menu_trigger": "Accessories",
+            "heading": "",
+            "show_mega_menu_1": false,
+            "color_scheme_1": "dark",
+            "heading_1": "PREMIUM TRACKED & FAST SHIPPING",
+            "description_1": "MON - FRI Nextday - 48 hour shipping",
+            "image_1": "shopify:\/\/shop_images\/734294472.png",
+            "overlay_opacity_1": 0,
+            "enable_mobile_overlay_1": false,
+            "show_button_1": true,
+            "button_link_1": "",
+            "button_label_1": "Shop Now",
+            "button_style_1": "primary",
+            "text_1": "",
+            "text_accent_1": "",
+            "show_mega_menu_2": false,
+            "color_scheme_2": "dark",
+            "heading_2": "BUY A COLOR TESTER POUCH",
+            "description_2": "BUY A COLOR TESTER POUCH",
+            "image_2": "shopify:\/\/shop_images\/223.png",
+            "overlay_opacity_2": 0,
+            "enable_mobile_overlay_2": false,
+            "show_button_2": true,
+            "button_link_2": "",
+            "button_label_2": "Shop Now",
+            "button_style_2": "primary",
+            "text_2": "",
+            "text_accent_2": ""
+          }
+        },
+        "navlink_btVcGa": {
+          "type": "navlink",
+          "settings": {
+            "heading": "All",
+            "small_text": "brands",
+            "spilit": false,
+            "nav_link": "shopify:\/\/collections"
+          }
+        },
+        "navlink_cWrmFt": {
+          "type": "navlink",
+          "settings": {
+            "heading": "HQC",
+            "small_text": "paints",
+            "spilit": true,
+            "nav_link": "shopify:\/\/collections\/hqc"
+          }
+        },
+        "navlink_kmBEPt": {
+          "type": "navlink",
+          "settings": {
+            "heading": "PRO",
+            "small_text": "thermilate",
+            "spilit": true,
+            "nav_link": "shopify:\/\/collections\/pro-range"
+          }
+        },
+        "navlink_pBGee9": {
+          "type": "navlink",
+          "settings": {
+            "heading": "ultra",
+            "small_text": "insopaint",
+            "spilit": true,
+            "nav_link": "shopify:\/\/collections\/insopaint-range"
+          }
+        },
+        "navlink_UpTYQF": {
+          "type": "navlink",
+          "settings": {
+            "heading": "Allpaints",
+            "small_text": "landlords",
+            "spilit": true,
+            "nav_link": "shopify:\/\/collections\/landlords-paint"
+          }
+        },
+        "navlink_98dAri": {
+          "type": "navlink",
+          "settings": {
+            "heading": "evelin",
+            "small_text": "grant",
+            "spilit": true,
+            "nav_link": "shopify:\/\/collections\/evelyn-grant"
+          }
+        }
+      },
+      "block_order": [
+        "dropdown",
+        "bf757111-76d7-44be-a7ea-2483022810e5",
+        "mega_menu_ndqqtQ",
+        "mega_menu_6kijw8",
+        "mega_menu_pYWHim",
+        "mega_menu_EqARHe",
+        "mega_menu_xHwMEP",
+        "mega_menu_H46nxw",
+        "mega_menu_cqGi9p",
+        "mega_menu_htpadn",
+        "mega_menu_XUQHnx",
+        "navlink_btVcGa",
+        "navlink_cWrmFt",
+        "navlink_kmBEPt",
+        "navlink_pBGee9",
+        "navlink_UpTYQF",
+        "navlink_98dAri"
+      ],
+      "settings": {
+        "header_type": "bottom-menu",
+        "color_scheme": "background-1",
+        "logo": "shopify:\/\/shop_images\/LOGO.svg",
+        "logo_width": 255,
+        "menu": "header-bottom",
+        "small_menu": "header-main-menu",
+        "category_search_menu": "main-menu",
+        "call_text": "<strong>Call Us: <\/strong><a href=\"tel:+84 2500 888 33\" title=\"tel:+84 2500 888 33\"><strong> +84 2500 888 33<\/strong><\/a>",
+        "enable_country_selector": true,
+        "enable_language_selector": false,
+        "btn_label": "Help",
+        "pre_sale_heading": "PRE-SALES",
+        "pre_sale_content": "If you have any questions before making a purchase chat with our online operators to get more information.",
+        "pre_sale_button_label": "Ask An Expert",
+        "pre_sale_content2": "or find our Questions & Answers",
+        "after_sale_heading": "AFTER-SALES",
+        "after_sale_content": "If you have need any help about the After-Sales issues, please contact us.",
+        "after_sale_button_label": "Contact Us",
+        "after_sale_button_link": "",
+        "sticky_header_type": "on-scroll-up",
+        "enable_contact_block": false,
+        "contact_text": "Description",
+        "contact_text_accent": "<p>Contact info<\/p>",
+        "enable_search": true,
+        "enable_search_modal": true,
+        "show_collection_card": true,
+        "collection_list": [
+          "anti-mould-paints",
+          "anti-damp",
+          "anti-condensation-paint",
+          "browns",
+          "brilliant-white",
+          "decking",
+          "cold-house-hard-to-heat-loses-heat-quickly",
+          "classic-grey",
+          "chalkboard-paint",
+          "evelyn-grant",
+          "emulsion-paint",
+          "eggshell-paint",
+          "exterior-coatings",
+          "fence-gate",
+          "gloss-coatings",
+          "gloves-clothing",
+          "interior-coatings",
+          "insulation-paint",
+          "hqc",
+          "ivory",
+          "kitchen-paint",
+          "tiles-bathrooms-kitchens-etc"
+        ],
+        "show_items": true,
+        "product_list": [
+          "evelyn-grant-cupboard-paint",
+          "hqc-anti-damp-paint",
+          "hqc-blackboard-and-chalkboard-paint-1-litre",
+          "hqc-anti-mould-insulating-paint",
+          "hqc-anti-condensation-insulating-paint",
+          "hqc-durable-kitchen-matt-paint",
+          "hqc-masonry-paint",
+          "hqc-kitchen-bathroom-paint",
+          "hqc-garden-paint",
+          "hqc-furniture-paint"
+        ],
+        "show_vendor": false,
+        "show_price": true,
+        "items_link": "",
+        "show_articles": false,
+        "blog": "",
+        "show_image": false,
+        "show_date": false,
+        "blog_link": "",
+        "show_search_block": false,
+        "search_color_scheme": "dark",
+        "search_heading": "Heading",
+        "search_text": "Text",
+        "search_text_accent": "Accent text",
+        "button_link": "",
+        "button_label": "Button label",
+        "button_style": "primary",
+        "icon_1": "shopify:\/\/shop_images\/fi_2400622.svg",
+        "icon_2": "shopify:\/\/shop_images\/fi_9254718.svg",
+        "icon_3": "shopify:\/\/shop_images\/fi_1010368.svg",
+        "icon_4": "shopify:\/\/shop_images\/fi_9590350.svg",
+        "icon_5": "shopify:\/\/shop_images\/fi_2196705.svg",
+        "icon_6": "shopify:\/\/shop_images\/fi_10457363.svg",
+        "icon_7": "shopify:\/\/shop_images\/fi_1415522.svg",
+        "icon_8": "shopify:\/\/shop_images\/fi_471658.svg",
+        "icon_9": "shopify:\/\/shop_images\/fi_2985511.svg",
+        "icon_10": "shopify:\/\/shop_images\/fi_4713698.svg"
+      }
+    },
+    "0d995515-cf5a-463b-9c97-d2dbe4350d24": {
+      "type": "custom-block-section",
+      "blocks": {
+        "29aca170-8c2c-4d36-b0a2-c267c0a94440": {
+          "type": "custom_block",
+          "settings": {
+            "heading": "PREMIUM TRACKED & FAST SHIPPING",
+            "text": "<p>MON - FRI Nextday - 48 hour shipping<\/p>",
+            "link": ""
+          }
+        },
+        "914b9501-381a-40b1-a602-ed2d584bf736": {
+          "type": "custom_block",
+          "settings": {
+            "heading": "BUY A COLOR TESTER POUCH",
+            "text": "<p>FREE COLOUR VISULISER TOOL<\/p>",
+            "link": ""
+          }
+        },
+        "custom_block_XHRPQT": {
+          "type": "custom_block",
+          "settings": {
+            "heading": "PREMIUM TRACKED & FAST SHIPPING",
+            "text": "<p>MON - FRI Nextday - 48 hour shipping<\/p>",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "29aca170-8c2c-4d36-b0a2-c267c0a94440",
+        "914b9501-381a-40b1-a602-ed2d584bf736",
+        "custom_block_XHRPQT"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header",
+    "0d995515-cf5a-463b-9c97-d2dbe4350d24"
+  ]
+}

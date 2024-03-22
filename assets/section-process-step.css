@@ -1,0 +1,117 @@
+.process-step-wrapper h3{
+  margin: 0 0 20px;
+  color: #00c172;
+  text-align: center;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 111%;
+}
+.process-step-wrapper > .text{
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  margin: 0 auto 45px;
+  max-width: 760px;
+}
+.step-container {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.step-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.step-img{
+  display: flex;
+  margin-bottom: 38px;
+  max-height: 165px;
+}
+.step-img img{
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.step-no{
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 151.5%;
+}
+.step-item h4{
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 130%;
+  margin: 0 0 15px;
+  max-width: 245px;
+}
+.step-item > .text{
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 151.5%;
+}
+.step-bar{
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(4,auto);
+  gap: 65px;
+  justify-items: center;
+  position: relative;
+  margin-top: 42px;
+}
+.step-bar-item{
+  z-index: 2;
+}
+.step-bar-arrow{
+  position: absolute;
+  display: flex;
+  top: 0;
+  right: 0;
+  width: 100%;
+  justify-content: flex-end;
+  height: 3px;
+  transform: translateY(200%);
+  z-index: 1;
+  background-color: #CCEEF2;
+}
+.step-bar-arrow svg{
+  transform: translate(26%, -44%);
+}
+@media all and (max-width: 992px){
+  .step-bar{
+    display: none;
+  }
+}
+@media all and (max-width: 768px){
+  .process-step-wrapper h3{
+    margin-bottom: 15px;
+  }
+  .process-step-wrapper > .text{
+    font-size: 16px;
+    margin-bottom: 40px;
+    margin-bottom: 30px;
+  }
+  .step-img{
+    margin-bottom: 20px;
+  }
+  .step-no{
+    font-size: 14px;
+  }
+  .step-item h4{
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .step-item > .text{
+    font-size: 14px;
+  }
+}

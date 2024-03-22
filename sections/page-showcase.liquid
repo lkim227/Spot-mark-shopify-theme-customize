@@ -1,0 +1,225 @@
+{{ 'section-page-showcase.css' | asset_url | stylesheet_tag: preload: true }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_m }}px;
+    padding-bottom: {{ section.settings.padding_bottom_m }}px;
+    color: {{ section.settings.color }};
+  }
+  .section-{{ section.id }}-padding .need-extra-title h1, 
+  .section-{{ section.id }}-padding .need-extra-info p{
+    color: {{ section.settings.color }};
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="page-showcase-wrapper section-{{ section.id }}-padding" id="section-{{ section.id }}">
+  <div class="container">
+    <div class="need-extra-content-area" style="text-align: {{ section.settings.text_align }};">
+      {% for block in section.blocks %}
+        {%- case block.type -%}
+          {%- when 'title' -%}
+            {%- liquid
+                assign title = block.settings.title
+            -%}
+            <div class="page-showcase-title" {{ block.shopify_attributes }}>
+              {%- if title != blank -%}
+                  <h1>{{ title }}</h1>
+              {%- endif -%}
+            </div>
+          {% when 'info' %}
+            {% liquid
+                assign info = block.settings.info
+            %}
+            <div class="page-showcase-info" {{ block.shopify_attributes }}>
+              {%- if info != blank -%}
+                <p>{{ info }}</p>
+              {%- endif -%}
+            </div>
+          {% when 'button' %}
+            {% liquid
+                assign btn = block.settings.btn
+                assign link = block.settings.link
+            %}
+            <div class="page-showcase-button" {{ block.shopify_attributes }}>
+              {%- if link != blank -%}
+                <a href="{{ link }}" class="button page-showcase-btn">{{ btn }}</a>
+              {%- endif -%}
+            </div>
+        {%- endcase -%}
+      {% endfor %}
+    </div>
+    <div class="page-showcase-bottom-area">
+        <div class="row">
+            {% for block in section.blocks %}
+                {% liquid
+                    assign image = block.settings.image
+                    assign box_title = block.settings.box_title 
+                    assign box_subtitle = block.settings.box_subtitle 
+                    assign link = block.settings.link 
+                %}
+                {%- case block.type -%}
+                  {%- when 'box' -%}
+                    <div class="col-lg-4 col-md-6 col-sm-6" {{ block.shopify_attributes }}>
+                        <a href="{{ link }}" class="page-showcase-wrap">
+                            <div class="box-content-area">
+                                <h4>{{ box_title }}</h4>
+                                <p>{{ box_subtitle }}</p>
+                            </div>
+                            <div class="box-image-area">
+                              {%- if image != blank -%}
+                                  {{
+                                      image | image_url: width: auto | image_tag: loading: 'lazy'
+                                  }}
+                                {%- endif -%}
+                            </div>
+                        </a>
+                    </div>
+            {%- endcase -%}
+        {% endfor %}
+        </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Page Showcase",
+    "class": "page-showcase-section",
+    "tag": "section",
+    "enabled_on": {
+      "templates": ["*"]
+    },
+    "settings": [
+        {
+      "type": "select",
+      "id": "text_align",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Text Align"
+    },
+      {
+        "type": "color",
+        "id": "color",
+        "label": "Text Color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "background",
+        "label": "Section Bakground"
+      },
+      {
+        "type": "header",
+        "content": "Section Padding"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 100
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 100
+      }, {
+        "type": "range",
+        "id": "padding_top_m",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Top (Mobile)",
+        "default": 64
+      }, {
+        "type": "range",
+        "id": "padding_bottom_m",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Bottom (Mobile)",
+        "default": 68
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Title",
+        "type": "title",
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "title",
+            "label": "Text"
+          }
+        ]
+      },
+    {
+        "name": "Info",
+        "type": "info",
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "info",
+            "label": "Info"
+          }
+        ]
+      }, 
+    {
+        "name": "Box",
+        "type": "box",
+        "settings": [
+          {
+            "type": "text",
+            "id": "box_title",
+            "label": "Text"
+          },
+          {
+            "type": "textarea",
+            "id": "box_subtitle",
+            "label": "Text"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Page Showcase"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,14 @@
+.gift-card-header {
+  padding: 2.4rem 0;
+  text-align: center;
+}
+
+.header__heading-link {
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 576px) {
+  .header__heading-logo {
+    max-width: 90px;
+  }
+}

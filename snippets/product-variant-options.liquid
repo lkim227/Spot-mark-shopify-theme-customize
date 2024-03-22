@@ -1,0 +1,237 @@
+{% comment %}
+  Renders product variant options
+  Accepts:
+  - product: {Object} product object.
+  - option: {Object} current product_option object.
+  - block: {Object} block object.
+  Usage:
+  {% render 'product-variant-options',
+    product: product,
+    option: option,
+    block: block
+  %}
+{% endcomment %}
+{%- liquid
+  assign variants_available_arr = product.variants | map: 'available'
+  assign variants_option1_arr = product.variants | map: 'option1'
+  assign variants_option2_arr = product.variants | map: 'option2'
+  assign variants_option3_arr = product.variants | map: 'option3'
+
+  assign product_form_id = 'product-form-' | append: section.id
+-%}
+
+{%- for value in option.values -%}
+  {%- liquid
+    assign option_disabled = true
+
+    for option1_name in variants_option1_arr
+      case option.position
+        when 1
+          if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+            assign option_disabled = false
+          endif
+        when 2
+          if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+            assign option_disabled = false
+          endif
+        when 3
+          if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+            assign option_disabled = false
+          endif
+      endcase
+    endfor
+  -%}
+
+  {% liquid
+    assign color_trigger = settings.trigger_swatch | handle | strip
+    assign name_option = option.name | handle | strip
+  %}
+
+  {% if settings.show_color_swatch and color_trigger == name_option %}
+    {% liquid
+      assign color_value = value | handle | strip
+      assign color_value_custom = color_value
+
+      if settings.custom_colors != blank
+        assign custom_colors_string = settings.custom_colors | strip
+        assign custom_colors_obj = custom_colors_string | newline_to_br | split: '<br />'
+
+        for obj in custom_colors_obj
+          assign obj_strip = obj | strip
+          assign obj_key = obj_strip | split: ':' | first
+          assign obj_value = obj_strip | split: ':' | last
+          assign obj_color_name = obj_key | handle | strip
+
+          if color_value == obj_color_name
+            assign obj_color_value = obj_value
+            assign color_value_custom = obj_color_value | strip
+            break
+          endif
+        endfor
+      endif
+    %}
+
+    {% liquid
+      assign variant_link = product.url
+
+      for variant in product.variants
+        assign flag = false
+        if variant.available
+          for option_variant in variant.options
+            if option_variant == value
+              assign flag = true
+              break
+            endif
+          endfor
+        endif
+
+        if flag == true
+          assign variant_link = variant.url
+          assign variant_id = variant.id
+          assign variant_img = variant.featured_image
+          break
+        endif
+      endfor
+
+ assign show_img_swatch = settings.show_img_swatch 
+    %}
+
+    
+
+    <input
+      type="radio"
+      id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}-{{ product.id }}__{{uniq_id}}"
+      name="{{ option.name }}-{{ section.id }}-{{ product.id }}"
+      value="{{ value | escape }}"
+      {% if variant_link %}
+        data-variant-link="{{ variant_link }}"
+      {% endif %}
+      {% if variant_id %}
+        data-variant-id="{{ variant_id }}"
+      {% endif %}
+      {% if no_form_id != true %}
+        form="{{ product_form_id }}"
+      {% endif %}
+      {% if option.selected_value == value %}
+        checked
+      {% endif %}
+      {% if option_disabled and no_form_id != true %}
+        class="disabled"
+      {% endif %}
+      class="{% if forloop.index > 10 %}hidden{% endif %}"
+
+ 
+    >
+    <label
+      for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}-{{ product.id }}__{{ uniq_id }}"
+      class="color-swatch  {%if show_img_swatch %} img {%endif %} {% if forloop.index > 10 and expand == true %}hidden{% endif %}"
+      title="{{ value | escape }}"
+      {%if show_img_swatch %}  style="--swatch-url:url({{variant_img | img_url:"master" }})" {%else %}   style="--swatch-color: {{ color_value_custom | remove: '-' }};"{%endif %}
+    >
+      <span class="visually-hidden">{{ value -}}</span>
+    </label>
+
+    {% if forloop.index == forloop.length and expand == true %}
+      <a href="javascript:void(0);" class="product-more product-more--offset js-show-more">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_1999_347)">
+        <rect width="20" height="20" rx="8" fill="white"/>
+        <path d="M10 0C4.48566 0 0 4.48566 0 10C0 15.5143 4.48566 20 10 20C15.5143 20 20 15.5136 20 10C20 4.48645 15.5143 0 10 0ZM10 18.4508C5.34082 18.4508 1.54918 14.66 1.54918 10C1.54918 5.34004 5.34082 1.54918 10 1.54918C14.6592 1.54918 18.4508 5.34004 18.4508 10C18.4508 14.66 14.66 18.4508 10 18.4508Z" fill="black" fill-opacity="0.3"/>
+        <path d="M13.8721 9.15568H10.7737V6.05732C10.7737 5.62975 10.4275 5.28271 9.99914 5.28271C9.57078 5.28271 9.22453 5.62975 9.22453 6.05732V9.15568H6.12617C5.69781 9.15568 5.35156 9.50272 5.35156 9.93029C5.35156 10.3579 5.69781 10.7049 6.12617 10.7049H9.22453V13.8033C9.22453 14.2308 9.57078 14.5779 9.99914 14.5779C10.4275 14.5779 10.7737 14.2308 10.7737 13.8033V10.7049H13.8721C14.3005 10.7049 14.6467 10.3579 14.6467 9.93029C14.6467 9.50272 14.3005 9.15568 13.8721 9.15568Z" fill="black" fill-opacity="0.3"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_1999_347">
+        <rect width="20" height="20" rx="8" fill="white"/>
+        </clipPath>
+        </defs>
+        </svg>
+
+      </a>
+    {% endif %}
+
+  {% else %}
+    {%- if block.settings.picker_type == 'button' -%}
+      {%- if forloop.length > 4 -%}
+        <input
+          type="radio"
+          id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+          name="{{ option.name }}"
+          value="{{ value | escape }}"
+          {% if no_form_id != true %}
+            form="{{ product_form_id }}"
+          {% endif %}
+          {% if option.selected_value == value %}
+            checked
+          {% endif %}
+          class="{% if option_disabled %}disabled{% endif %} {% if forloop.index > 4 and expand == true %}hidden{% endif %}"
+        >
+        <label
+          for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+          class="{% if forloop.index > 4 and expand == true %}hidden{% endif %}"
+        >
+          {{ value -}}
+          <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
+        </label>
+
+        {% if forloop.index == forloop.length and expand == true %}
+          <a href="javascript:void(0);" class="product-more product-more--offset js-show-more link-hover-line">
+            {{ 'products.product.show_more' | t }}
+          </a>
+        {% endif %}
+      {% else %}
+        <input
+          type="radio"
+          id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+          name="{{ option.name }}"
+          value="{{ value | escape }}"
+          {% if no_form_id != true %}
+            form="{{ product_form_id }}"
+          {% endif %}
+          {% if option.selected_value == value %}
+            checked
+          {% endif %}
+          {% if option_disabled %}
+            class="disabled"
+          {% endif %}
+        >
+        <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+          {{ value -}}
+          <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
+        </label>
+      {%- endif -%}
+    {%- elsif block.settings.picker_type == 'dropdown' -%}
+      <option
+        value="{{ value | escape }}"
+        {% if option.selected_value == value %}
+          selected="selected"
+        {% endif %}
+      >
+        {% if option_disabled -%}
+          {{- 'products.product.value_unavailable' | t: option_value: value -}}
+        {%- else -%}
+          {{- value -}}
+        {%- endif %}
+      </option>
+    {% endif %}
+
+    {% if dropdown %}
+
+      <option
+      value="{{ value | escape }}"
+      {% if option.selected_value == value %}
+        selected="selected"
+      {% endif %}
+    >
+      {% if option_disabled -%}
+        {{- 'products.product.value_unavailable' | t: option_value: value -}}
+      {%- else -%}
+        {{- value -}}
+      {%- endif %}
+    </option>
+      
+    {% endif %}
+
+
+
+  {% endif %}
+{%- endfor -%}

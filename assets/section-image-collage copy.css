@@ -1,0 +1,251 @@
+.image-collage-section {
+  padding-bottom: var(--spaced-section);
+}
+
+.image-collage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: auto;
+  overflow: hidden;
+}
+.image-collage--border {
+  padding-top: 20rem;
+  border-top: 0.1rem solid rgb(var(--color-border));
+}
+.image-collage .icon-instagram {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 0;
+  margin-right: 0.7rem;
+}
+.image-collage .rte {
+  margin-top: 1.6rem;
+}
+.image-collage .container {
+  position: relative;
+}
+
+.image-collage__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 3;
+  width: 36.6rem;
+  max-width: 100%;
+}
+
+.image-collage__title {
+  margin: 0;
+}
+
+.image-collage__follow {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 4rem;
+  gap: 4rem;
+}
+
+.image-collage__account {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.image-collage__photo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.9rem;
+  height: 5.9rem;
+  margin: 0;
+  border-radius: 50%;
+}
+.image-collage__photo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5.9rem;
+  height: 5.9rem;
+  background: linear-gradient(219.66deg, #EA00C2 25.95%, #FF2015 51.64%, #FFCC00 85.37%);
+  border-radius: 50%;
+}
+.image-collage__photo::after {
+  content: "";
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
+  width: 5.5rem;
+  height: 5.5rem;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.image-collage__photo img {
+  display: block;
+  width: 4.7rem;
+  height: 4.7rem;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.image-collage__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.image-collage__name {
+  font-weight: var(--font-button-weight);
+  color: rgba(var(--color-foreground));
+}
+
+.image-collage__text {
+  font-size: 1.5rem;
+}
+
+.image-collage__images {
+  display: none;
+}
+@media (min-width: 990px) {
+  .image-collage__images {
+    display: block;
+  }
+}
+
+.image-collage-center .image-collage__images {
+  width: 100%;
+  left: 0;
+}
+
+.image-collage__image,
+.image-collage__main-image {
+  position: absolute;
+  border-radius: 0.3rem;
+  overflow: hidden;
+}
+
+.image-collage__images img {
+  display: block;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.image-collage__link span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+.image-collage__link span svg {
+  margin: 0;
+}
+
+.image-collage__main-image {
+  background-color: #aaaaaa;
+}
+@media screen and (min-width: 990px) {
+  .image-collage__main-image {
+    width: 36.9rem;
+    height: 24.6rem;
+    right: 9rem;
+    top: 14rem;
+    z-index: 1;
+  }
+}
+@media screen and (min-width: 1360px) {
+  .image-collage__main-image {
+    width: 59.6rem;
+    height: 39.4rem;
+    right: 16.9rem;
+    top: 7.2rem;
+    z-index: 1;
+  }
+}
+.image-collage__main-image img,
+.image-collage__main-image svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media screen and (min-width: 990px) {
+  .image-collage__image:nth-child(1) {
+    width: 5.6rem;
+    height: 7.4rem;
+    right: 44rem;
+    top: 14.9rem;
+    z-index: 2;
+  }
+}
+@media screen and (min-width: 1360px) {
+  .image-collage__image:nth-child(1) {
+    width: 9.6rem;
+    height: 12.8rem;
+    right: 74rem;
+    top: 14rem;
+    z-index: 2;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .image-collage__image:nth-child(2) {
+    width: 7.9rem;
+    height: 11.9rem;
+    right: 4.3rem;
+    top: 6.7rem;
+    z-index: 0;
+  }
+}
+@media screen and (min-width: 1360px) {
+  .image-collage__image:nth-child(2) {
+    width: 13.6rem;
+    height: 20.5rem;
+    right: 7.4rem;
+    top: -4rem;
+    z-index: 0;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .image-collage__image:nth-child(3) {
+    width: 4.2rem;
+    height: 6.2rem;
+    right: 0;
+    bottom: 3.6rem;
+  }
+}
+@media screen and (min-width: 1360px) {
+  .image-collage__image:nth-child(3) {
+    width: 7.2rem;
+    height: 10.7rem;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .image-collage {
+    min-height: 57rem;
+  }
+  .image-collage__follow {
+    flex-direction: row;
+    width: auto;
+  }
+  .image-collage__link {
+    width: auto;
+  }
+}

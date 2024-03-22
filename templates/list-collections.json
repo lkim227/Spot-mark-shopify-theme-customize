@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-list-collections",
+      "settings": {
+        "title": "Collections",
+        "sort": "alphabetical_reversed",
+        "image": "product_hover",
+        "image_ratio": "square",
+        "image_fit": "cover",
+        "show_desc": false
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

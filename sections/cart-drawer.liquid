@@ -1,0 +1,54 @@
+{%- render 'cart-drawer' -%}
+
+{% schema %}
+{
+	"name": "Cart Drawer",
+	"settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "t:sections.header.settings.logo.label"
+        },
+        {
+            "type": "header",
+            "content": "Free Shipping Progress"
+          },
+          {
+            "type": "number",
+            "id": "free_shipping_rate",
+            "label": "Free Shipping Rate",
+            "default": 90
+          }
+	],
+  "blocks": [
+    {
+      "type": "upsell_product",
+      "name": "Upsell Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "choose_product",
+          "label": "Chooase Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.brands.blocks.column.settings.image_1.label"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "HQC Anti-Mould Insulating Paint"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "Buy 2 Get 1 Free"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

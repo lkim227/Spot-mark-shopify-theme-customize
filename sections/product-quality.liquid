@@ -1,0 +1,304 @@
+
+{{ 'section-product-quality.css' | asset_url | stylesheet_tag: preload: true }}
+<script src="{{ 'product-quality.js' | asset_url }}" defer="defer"></script>
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    margin-top: {{ section.settings.margin_top-m }}px;
+    margin-bottom: {{ section.settings.margin_bottom-m }}px;
+    padding-top: {{ section.settings.padding_top_m  }}px;
+    padding-bottom: {{ section.settings.padding_bottom_m }}px;
+    background: {{ product_quality.background }}
+  }
+  .product-quality-wrapper{
+    overflow: hidden;
+  }
+  @media screen and (min-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+
+
+  {%liquid
+
+       assign s = section.settings
+
+       assign background_color = s.background_color
+       assign background_image = s.background_image
+       assign logo_image = s.logo_image
+
+       assign shape = s.shape
+       assign image = s.image
+       assign heading = s.heading
+       assign description = s.description
+   
+       assign button_label = s.button_label
+       assign button_url = s.button_url
+
+
+
+       assign image_over_texts = section.blocks | where: 'type', 'overlay_text'
+       assign quality_items = section.blocks | where: 'type', 'quality_items'
+
+   %}
+{% if background_color != blank %}
+  {% style %}
+    #section-{{ section.id }} {
+      background-color: {{ background_color }}
+    }
+   {% endstyle %}
+{% endif %}
+ 
+  
+<div class="section-{{ section.id }}-padding" id="section-{{ section.id }}">
+  <div class="product-quality-wrapper container-fluid">
+    <div
+      class="product-quality-container"
+      {% if background_image != blank %} style="background-image: url('{{ background_image | img_url: "master" }}');" {% endif %}
+    >
+      <div class="product-quality-left">
+            <div class="quality-left-img">
+
+                <img src="{{ image | img_url: "master" }}" loading="lazy">
+            </div>
+        <div class="quality-left-overlay">
+
+          {% for block in image_over_texts %}
+            {% assign b = block.settings %}
+            <div class="left-overlay-item">
+              <span>{{ b.text }}</span>
+              <span>{% render 'all-icons', name: 'plus-circle' %}</span>
+            </div>
+          {% endfor %}
+        
+        </div>
+      </div>
+      <div class="product-quality-right">
+        {% if heading != blank %}
+          <h3> {{ heading }} </h3>
+        {% endif %}
+        
+        {% if description != blank %}
+          {{ description }}
+        {% endif %}
+        {% if button_label != blank %}
+          <div class="quality-right-btn">
+            <a class="button-color" href="{{button_url}}">{{button_label}}</a>
+          </div>
+        {% endif %}
+      
+        <div class="quality-right-icon-text">
+          {% for block in quality_items %}
+            {% assign b = block.settings %}
+            <div class="quality-item">
+              {% if b.image != blank %}
+                <span><img src="{{ b.image | img_url: "master" }}" loading="lazy"></span>
+              {% endif %}
+      
+              <span>{{ b.text }}</span>
+            </div>
+          {% endfor %}
+        
+        </div>
+      </div>
+      {% if logo_image != blank %}
+        <div class="product-quality-overlay-1">
+          <img src="{{ logo_image | img_url: "master" }}" loading="lazy">
+        </div>
+      {% endif %}
+      {% if shape != blank %}
+        <div class="product-quality-overlay-2">
+          <img src="{{ shape | img_url: "master" }}" loading="lazy">
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Quality",
+  "class": "product-quality-section",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logo Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "shape",
+      "label": "Shape Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label"
+    },
+    {
+      "type": "text",
+      "id": "button_url",
+      "label": "Button Url"
+    },
+    {
+      "type": "header",
+      "content": "Spacing (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Spacing (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top-m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom-m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 68
+    }
+  ],
+  "blocks": [
+    { 
+      "type": "overlay_text",
+      "name": "Overlay Text",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "text",
+          "default": "Easy clean"
+        }
+      ]
+    },
+    { 
+      "type": "quality_items",
+      "name": "Quality Items",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "text",
+          "default": "Easy clean"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Quality"
+    }
+  ]
+}
+{% endschema %}

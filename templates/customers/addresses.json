@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-addresses",
+      "settings": {
+      }
+    },
+    "popular-products": {
+      "type": "popular-products",
+      "settings": {
+        "heading": "<p>You May be Interested<\/p>",
+        "products_limit": 4,
+        "filter": false,
+        "show_vendor": true,
+        "image_ratio": "landscape",
+        "image_fit": "cover"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "popular-products"
+  ]
+}

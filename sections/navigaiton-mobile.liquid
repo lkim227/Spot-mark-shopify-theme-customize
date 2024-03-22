@@ -1,0 +1,726 @@
+{%- liquid
+
+assign image_type = section.settings.image_type
+assign image_style = section.settings.image_style
+assign show_icon = section.settings.show_icon
+assign icon_type = section.settings.icon_type
+
+assign get_width = section.settings.icon_width | append: 'x'
+assign show_image = section.settings.show_image
+
+
+assign show_nav_all = section.settings.show_nav_all
+assign image_style_lower = section.settings.image_style_lower
+-%}
+
+<ul
+  class="list-menu-mobile list-unstyled is-visible"
+  role="list"
+  id="MenuMobileListSection-menu"
+  data-heading="Menu"
+>
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+
+
+      {%- when 'menu-1' -%}
+
+        {%- liquid
+        assign menu_item_heading = block.settings.heading
+        assign menu_item_url = block.settings.url
+        assign menu_item_label = block.settings.label
+        assign menu_item_icon = block.settings.icon
+        assign menu_item_image = block.settings.image
+      
+        assign show_banner = block.settings.show_banner 
+        assign banner_lv_2 = block.settings.banner_lv_2
+        assign banner_lv_3 = block.settings.banner_lv_3
+    -%}
+
+
+                    {%- liquid
+                    assign menu_item_menu = block.settings.menu
+                    assign menu_handle = menu_item_menu.handle
+                    if menu_item_heading == blank
+                        if menu_item_menu != blank
+                            assign menu_item_heading = menu_item_menu.title
+                        else menu_item_heading == blank
+                            assign menu_item_heading = 'Menu Item'
+                        endif
+                    endif
+                -%}
+
+
+                <li class="menu-lv-item menu-lv-1 text-left no-megamenu{% if menu_item_menu != blank %} dropdown{% endif %}">
+                    {%- if menu_item_menu != blank -%}
+                        <a {% if menu_item_url == blank %} role="link" aria-disabled="true"{% else %} href="{{ menu_item_url }}"{% endif %} class="menu-lv-1__action list-menu__item link focus-inset{% if show_icon %} menu-lv__flex{% endif %} menu_mobile_link" >
+                            {%- if show_icon -%}
+                                {%- if icon_type == 'icon' -%}
+                                    {%- if menu_item_icon != blank -%}
+                                        <span class="custom-icon">
+                                            {{ menu_item_icon }}
+                                        </span>
+                                    {%- endif -%}
+                                {%- else -%}
+                                    {%- if menu_item_image != blank -%}
+                                        <span class="custom-icon style-{{ image_style }}">
+                                            <img src="{{ menu_item_image | img_url: "master"}}" alt="{{ menu_item_image.alt | default: menu_item_heading | escape }}">
+                                        </span>
+                                    {%- endif -%}
+                                {%- endif -%}
+                            {%- endif -%}
+                            <span class="text">{{ menu_item_heading | escape }}</span>
+                            <span class="icon-dropdown" data-toggle-menu-mb>
+                                {% render 'icon-caret-right' %}
+                            </span>
+                            {%- if menu_item_label != blank -%}
+                                <span class="label custom-label">
+                                    {{ menu_item_label | escape }}
+                                </span>
+                            {%- endif -%}
+                        </a>
+                        {% render 'navigation-mobile-list',
+                            menu_item_heading: menu_item_heading,
+                            menu_item_url: menu_item_url,
+                            menu: menu_item_menu.links,
+                            menu_handle: menu_handle,
+                            show_icon: show_icon,
+                            show_image: show_image,
+                            image_type: image_type,
+                            image_style: image_style,
+                            show_nav_all: show_nav_all,
+                            show_banner: show_banner,
+                            banner_lv_2: banner_lv_2,
+                            banner_lv_3: banner_lv_3,
+                            image_style_lower: image_style_lower
+                        %}
+                    {%- else -%}
+                        <a {% if menu_item_url == blank %} role="link" aria-disabled="true"{% else %} href="{{ menu_item_url }}"{% endif %} class="menu-lv-1__action list-menu__item list-menu__item--end link focus-inset {% if show_icon %} menu-lv__flex{% endif %} menu_mobile_link" >
+                            {%- if show_icon -%}
+                                {%- if icon_type == 'icon' -%}
+                                    {%- if menu_item_icon != blank -%}
+                                        <span class="custom-icon">
+                                            {{ menu_item_icon }}
+                                        </span>
+                                    {%- endif -%}
+                                {%- else -%}
+                                    {%- if menu_item_image != blank -%}
+                                        <span class="custom-icon style-{{ image_style }}">
+                                            <img src="{{ menu_item_image | img_url: "master"}}" alt="{{ menu_item_image.alt | default: menu_item_heading | escape }}">
+                                        </span>
+                                    {%- endif -%}
+                                {%- endif -%}
+                            {%- endif -%}
+                            <span class="text">{{ menu_item_heading | escape }}</span>
+                            {%- if menu_item_label != blank -%}
+                                <span class="label custom-label" >
+                                    {{ menu_item_label | escape }}
+                                </span>
+                            {%- endif -%}
+                        </a>
+                    {%- endif -%}
+                </li>
+
+
+      {%- when 'menu-2' -%}
+
+        {%- liquid
+        assign menu_item_heading = block.settings.heading
+        assign menu_item_url = block.settings.url
+        assign menu_item_label = block.settings.label
+        assign menu_item_icon = block.settings.icon
+        assign menu_item_image = block.settings.image
+      
+        assign show_banner = block.settings.show_banner 
+        assign banner_lv_2 = block.settings.banner_lv_2
+        assign banner_lv_3 = block.settings.banner_lv_3
+    -%}
+
+ 
+
+
+        {%- liquid
+                if menu_item_heading == blank
+                    assign menu_item_heading = 'Menu Item'
+                endif
+            -%}
+
+            <li class="menu-lv-item menu-lv-1 text-left no-megamenu dropdown">
+								<a {% if menu_item_url == blank %} role="link" aria-disabled="true"{% else %} href="{{ menu_item_url }}"{% endif %} class="menu-lv-1__action list-menu__item link focus-inset{% if show_icon %} menu-lv__flex{% endif %} menu_mobile_link" >
+									{%- if show_icon -%}
+										{%- if icon_type == 'icon' -%}
+											{%- if menu_item_icon != blank -%}
+												<span class="custom-icon">
+													{{ menu_item_icon }}
+												</span>
+											{%- endif -%}
+										{%- else -%}
+											{%- if menu_item_image != blank -%}
+												<span class="custom-icon style-{{ image_style }}">
+													<img src="{{ menu_item_image | img_url: "master" }}" alt="{{ menu_item_image.alt | default: menu_item_heading | escape }}">
+												</span>
+											{%- endif -%}
+										{%- endif -%}
+									{%- endif -%}
+									<span class="text">{{ menu_item_heading | escape }}</span>
+									<span class="icon-dropdown" data-toggle-menu-mb>
+										{% render 'icon-caret-right' %}
+									</span>
+									{%- if menu_item_label != blank -%}
+						                <span class="label custom-label" >
+						                    {{ menu_item_label | escape }}
+						                </span>
+						            {%- endif -%}
+								</a>
+								{% render 'navigation-mobile-list-2',
+									menu_item_heading: menu_item_heading,
+									menu_item_url: menu_item_url,
+									block: block,
+                                    show_nav_all: show_nav_all,
+                                    show_banner: show_banner,
+                                    banner_lv_2: banner_lv_2,
+                                    banner_lv_3: banner_lv_3,
+                                    image_style_lower: image_style_lower
+								%}
+							</li>
+
+
+
+      {%- when 'menu-3' -%}
+
+        {%- liquid
+        assign menu_item_heading = block.settings.heading
+        assign menu_item_url = block.settings.url
+        assign menu_item_label = block.settings.label
+        assign menu_item_icon = block.settings.icon
+        assign menu_item_image = block.settings.image
+      
+        assign show_banner = block.settings.show_banner 
+        assign banner_lv_2 = block.settings.banner_lv_2
+        assign banner_lv_3 = block.settings.banner_lv_3
+    -%}
+
+	            	{%- liquid
+								assign menu_item_menu = block.settings.menu
+								assign menu_handle = menu_item_menu.handle
+							-%}
+							{%- if menu_item_menu != blank -%}
+								{% render 'navigation-mobile-list-3',
+									menu: menu_item_menu.links,
+									menu_handle: menu_handle,
+									show_icon: show_icon,
+									show_image: show_image,
+									image_type: image_type,
+									image_style: image_style,
+                                    show_nav_all: show_nav_all,
+                                    show_banner: show_banner,
+                                    banner_lv_2: banner_lv_2,
+                                    banner_lv_3: banner_lv_3,
+                                    image_style_lower: image_style_lower
+								%}
+							{%- endif -%}
+
+
+    {%- endcase -%}
+
+  {%- endfor -%}
+</ul>
+
+{% schema %}
+{
+  "name": "Mobile Menu",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+            "type": "select",
+            "id": "image_type",
+            "label": "Image Type",
+            "default": "jpg",
+            "options": [
+            {
+                "value": "png",
+                "label": "Png"
+            },
+            {
+                "value": "jpg",
+                "label": "Jpg"
+            }]
+        },
+    {
+      "type": "select",
+      "id": "image_style",
+      "label": "Image Style",
+      "options": [
+        {
+          "value": "circle",
+          "label": "Circle"
+        },
+        {
+          "value": "rectangle",
+          "label": "Rectangle"
+        }
+      ],
+      "default": "circle"
+    },
+    {
+      "type": "paragraph",
+      "content": "Icons Beside The Menu Items"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icon",
+      "label": "Show Icons Beside The Menu Items?",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "icon_type",
+      "label": "Icon Type",
+      "default": "icon",
+      "options": [
+        {
+          "value": "icon",
+          "label": "Icon"
+        },
+        {
+          "value": "image",
+          "label": "Image"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "icon_width",
+      "min": 20,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Width",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "icon_height",
+      "min": 20,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Height",
+      "default": 24
+    },
+    {
+      "type": "paragraph",
+      "content": "mages Below The Sub Menu Items"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Show Images Below The Sub Menu Items?",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "min": 20,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Width",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "min": 20,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Height",
+      "default": 200
+    },
+    {
+      "type": "select",
+      "id": "image_style_lower",
+      "label": "Image Style For Level 3",
+      "options": [
+        {
+          "value": "circle",
+          "label": "Circle"
+        },
+        {
+          "value": "rectangle",
+          "label": "Rectangle"
+        }
+      ],
+      "default": "rectangle"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu-1",
+      "name": "Menu Item",
+      "settings": [
+        {
+          "type": "header",
+          "content": "General"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_banner",
+          "label": "Show Banner?",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "banner_lv_2",
+          "label": "Banner Level 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "banner_lv_3",
+          "label": "Banner Level 3"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Demo"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label"
+        },
+        {
+          "type": "textarea",
+          "id": "icon",
+          "label": "SVG Icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    },
+    {
+      "type": "menu-2",
+      "name": "Link Item",
+      "settings": [
+        {
+          "type": "header",
+          "content": "General"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Demo"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label"
+        },
+        {
+          "type": "textarea",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "header",
+          "content": "Item"
+        },
+        {
+          "type": "paragraph",
+          "content": "Menu Item 1"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_item_1",
+          "label": "Show This Item?",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading_1",
+          "label": "Title"
+        },
+        {
+          "type": "url",
+          "id": "link_1",
+          "label": "Link"
+        },
+        {
+          "type": "paragraph",
+          "content": "Menu Item 2"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_item_2",
+          "label": "Show This Item?",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading_2",
+          "label": "Title"
+        },
+        {
+          "type": "url",
+          "id": "link_2",
+          "label": "Link"
+        },
+        {
+          "type": "paragraph",
+          "content": "Menu Item 3"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_item_3",
+          "label": "Show This Item?",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading_3",
+          "label": "Title"
+        },
+        {
+          "type": "url",
+          "id": "link_3",
+          "label": "Link"
+        },
+        {
+          "type": "paragraph",
+          "content": "Menu Item 4"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_item_4",
+          "label": "Show This Item?",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "image_4",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading_4",
+          "label": "Title"
+        },
+        {
+          "type": "url",
+          "id": "link_4",
+          "label": "Link"
+        },
+        {
+          "type": "paragraph",
+          "content": "Menu Item 5"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_item_5",
+          "label": "Show This Item?",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "image_5",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading_5",
+          "label": "Title"
+        },
+        {
+          "type": "url",
+          "id": "link_5",
+          "label": "Link"
+        },
+        {
+          "type": "paragraph",
+          "content": "Menu Item 6"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_item_6",
+          "label": "Show This Item?",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "image_6",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading_6",
+          "label": "Title"
+        },
+        {
+          "type": "url",
+          "id": "link_6",
+          "label": "Link"
+        },
+        {
+          "type": "paragraph",
+          "content": "Menu Item 7"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_item_7",
+          "label": "Show This Item?",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "image_7",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading_7",
+          "label": "Title"
+        },
+        {
+          "type": "url",
+          "id": "link_7",
+          "label": "Link"
+        },
+        {
+          "type": "paragraph",
+          "content": "Menu Item 8"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_item_8",
+          "label": "Show This Item?",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "image_8",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading_8",
+          "label": "Title"
+        },
+        {
+          "type": "url",
+          "id": "link_8",
+          "label": "Link"
+        },
+        {
+          "type": "paragraph",
+          "content": "Menu Item 9"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_item_9",
+          "label": "Show This Item?",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "image_9",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading_9",
+          "label": "Title"
+        },
+        {
+          "type": "url",
+          "id": "link_9",
+          "label": "Link"
+        },
+        {
+          "type": "paragraph",
+          "content": "Menu Item 10"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_item_10",
+          "label": "Show This Item?",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "image_10",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading_10",
+          "label": "Title"
+        },
+        {
+          "type": "url",
+          "id": "link_10",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "menu-3",
+      "name": "Menu List",
+      "settings": [
+        {
+          "type": "header",
+          "content": "General"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

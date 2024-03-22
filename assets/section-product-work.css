@@ -1,0 +1,218 @@
+.product-work-section{
+  background-color: #252489;
+  position: relative;
+}
+
+.product-work-wrapper {
+  border-radius: 20px;
+  background: #e5e7f4;
+  padding: 50px 70px;
+  filter: drop-shadow(0px 0px 7px #cceef2);
+  max-width: 1512px;
+  margin: 0 auto;
+}
+.product-work-wrapper h3 {
+  color: #252489;
+  text-align: center;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 140%;
+  margin: 0;
+  margin-bottom: 48px;
+}
+.product-work-box-desktop {
+  position: relative;
+}
+.product-work-image {
+  display: flex;
+  justify-content: center;
+}
+.text-overlay {
+  display: flex;
+  /* align-items: center; */
+  gap: 10px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  max-width: 368px;
+  z-index: 1;
+  cursor: pointer;
+}
+.text-overlay.active{
+  z-index: 2;
+}
+.text-overlay:nth-child(1) {
+  left: 7%;
+  top: -4%;
+}
+.text-overlay:nth-child(2) {
+  left: 2.5%;
+  top: 18%;
+}
+.text-overlay:nth-child(3) {
+  left: 3.5%;
+  top: 41%;
+}
+.text-overlay:nth-child(4) {
+  left: 5.5%;
+  top: 82%;
+}
+.text-overlay:nth-child(5) {
+  right: 7%;
+  top: -4%;
+  flex-direction: row-reverse;
+}
+.text-overlay:nth-child(6) {
+  right: 3%;
+  top: 24%;
+  flex-direction: row-reverse;
+}
+.text-overlay:nth-child(7) {
+  right: 6%;
+  top: 55%;
+  flex-direction: row-reverse;
+}
+.text-overlay:nth-child(8) {
+  right: 3.5%;
+  top: 82%;
+  flex-direction: row-reverse;
+}
+.work-point-content {
+  border-radius: 15px;
+  border: 1px solid #001192;
+  background: linear-gradient(
+    275deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  backdrop-filter: blur(8px);
+  padding: 8px 12px;
+  width: 100%;
+  max-width: 316px;
+}
+.work-point-content > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #252489;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+}
+.work-point-content > .text {
+  color: #252489;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  display: flex;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .4s ease-out,opacity .4s linear;
+}
+.work-point-content > div span {
+  display: flex;
+}
+.work-point-icon span:first-child{
+  position: absolute; 
+  transform: translateY(90%);
+}
+.work-point-icon.active span:last-child{
+  opacity: 0;
+}
+.work-point-icon {
+  display: flex;
+  width: 100%;
+  max-width: 41px;
+  position: relative;
+  cursor: pointer;
+  transform: translateY(10px);
+}
+.work-point-icon span {
+  display: flex;
+  /* align-items: center; */
+  width: 100%;
+  justify-content: center;
+  transition: opacity .1s linear;
+}
+.text-overlay-container.mobile{
+  display: none;
+}
+
+@media all and (max-width: 992px){
+  .product-work-box-desktop{
+    display: flex;
+    justify-content: center;
+    gap: 46px;
+  }
+  .product-work-image{
+    align-items: center;
+  }
+  .product-work-image img{
+    object-fit: contain;
+  }
+  .text-overlay-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .text-overlay{
+    position: static;
+    flex-direction: row !important;
+  }
+}
+@media all and (max-width: 768px){
+  .product-work-wrapper{
+    padding: 20px;
+  }
+  .product-work-wrapper h3{
+    font-size: 32px;
+    line-height: 100%;
+    margin: 0 0 24px;
+  }
+  .product-work-box-desktop{
+    flex-direction: column;
+    gap: 20px;
+  }
+  .text-overlay-container{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+  }
+  .text-overlay-container.desktop{
+    display: none;
+  }
+  .text-overlay-container.mobile{
+    display: block;
+  }
+  .text-overlay{
+    max-width: 314px;
+  }
+  .work-point-content{
+    max-width: 263px;
+  }
+  .work-point-content>div:first-child{
+    font-size: 16px;
+  }
+  .work-point-content>.text{
+    font-size: 16px;
+  }
+
+  /* For swiper */
+  /* .text-overlay{
+    max-width: unset;
+    width: unset;
+  }
+  .work-point-content{
+    max-width: unset;
+    width: unset;
+  }
+  .work-point-content>.text{
+    display: none;
+  }
+  .work-point-content>.text{
+    width: unset;
+  } */
+}

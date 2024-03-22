@@ -1,0 +1,304 @@
+{% assign value = section.settings %}
+
+{{ 'section-landing-vision.css' | asset_url | stylesheet_tag: preload: true }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    margin-top: {{ section.settings.margin_top-m }}px;
+    margin-bottom: {{ section.settings.margin_bottom-m }}px;
+    padding-top: {{ section.settings.padding_top_m  }}px;
+    padding-bottom: {{ section.settings.padding_bottom_m }}px;
+
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.color }};
+    background-image: url('{{ value.bg_img | image_url }}');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+  }
+  @media screen and (min-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-padding" id="section-{{ section.id }}">
+  <div class="landing-vision-wrapper container">
+    
+    {% for block in section.blocks %}
+      {% assign val = block.settings %}
+      <div class="vision-cloud-container" {{ block.shopify_attributes }}>
+        {% if forloop.index == 1 %}
+          <div
+          class="vision-cloud-{{ forloop.index }}"
+        >
+        <div class="cloud-1-img">
+          <img src="{{ val.bg_img | image_url }}" alt="Cloud 1 image">
+        </div>
+        <div class="cloud-container">
+          {% if  forloop.index == 1 %}<h3 class="section-heading" style="color: {{ value.color }};">{{ value.title }}</h3>{% endif %}
+          <h4 style="color: {{ val.title_color }};">{{ val.title }}</h4>
+          {% if val.btn_1 != blank or val.btn_2 != blank %}
+            <div class="vision-cloud-btn">
+              {% if val.btn_1 != blank -%}
+                <a
+                  href="{{ val.btn_1 }}"
+                  class="btn-1"
+                  style="color: {{ val.btn_1_title_color }};background-color: {{ val.btn_1_bg_color }}"
+                  ><span>{{ val.btn_1_title }}</span
+                  ><span>{% render 'all-icons', name: 'left-arrow-btn', color: val.btn_1_bg_color %}</span></a
+                >
+              {%- endif %}
+              {% if val.btn_2 != blank -%}
+                <a
+                  href="{{ val.btn_2 }}"
+                  class="btn-2"
+                  style="color: {{ val.btn_2_title_color }};background-color: {{ val.btn_2_bg_color }}"
+                  ><span>{{ val.btn_2_title }}</span
+                  ><span>{% render 'all-icons', name: 'left-arrow-btn', color: val.btn_2_bg_color %}</span></a
+                >
+              {%- endif %}
+            </div>
+          {% endif %}
+        </div>
+        </div>
+      {% else %}
+
+        <div
+          class="vision-cloud-{{ forloop.index }}"
+          style="background-image: url('{{ val.bg_img | image_url }}')"
+        >
+          <h4 style="color: {{ val.title_color }};">{{ val.title }}</h4>
+          {% if val.btn_1 != blank or val.btn_2 != blank %}
+            <div class="vision-cloud-btn">
+              {% if val.btn_1 != blank -%}
+                <a
+                  href="{{ val.btn_1 }}"
+                  class="btn-1"
+                  style="color: {{ val.btn_1_title_color }};background-color: {{ val.btn_1_bg_color }}"
+                  ><span>{{ val.btn_1_title }}</span
+                  ><span>{% render 'all-icons', name: 'left-arrow-btn', color: val.btn_1_bg_color %}</span></a
+                >
+              {%- endif %}
+              {% if val.btn_2 != blank -%}
+                <a
+                  href="{{ val.btn_2 }}"
+                  class="btn-2"
+                  style="color: {{ val.btn_2_title_color }};background-color: {{ val.btn_2_bg_color }}"
+                  ><span>{{ val.btn_2_title }}</span
+                  ><span>{% render 'all-icons', name: 'left-arrow-btn', color: val.btn_2_bg_color %}</span></a
+                >
+              {%- endif %}
+            </div>
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Landing Vision",
+  "class": "landing-vision-section",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+  "max_blocks": 2,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_img",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "header",
+      "content": "Section Color"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Text color",
+      "default": "#000"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#000"
+    },
+    {
+      "type": "header",
+      "content": "Spacing (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Spacing (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top-m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom-m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 68
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Item",
+      "type": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "bg_img",
+          "label": "Background Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title Color",
+          "default": "#000000"
+        },
+        {
+          "type": "url",
+          "id": "btn_1",
+          "label": "Button Link 1"
+        },
+        {
+          "type": "text",
+          "id": "btn_1_title",
+          "label": "Button Title 1"
+        },
+        {
+          "type": "color",
+          "id": "btn_1_title_color",
+          "label": "Button Title Color 1",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "btn_1_bg_color",
+          "label": "Button Background Color 1",
+          "default": "#00C172"
+        },
+        {
+          "type": "url",
+          "id": "btn_2",
+          "label": "Button Link 2"
+        },
+        {
+          "type": "text",
+          "id": "btn_2_title",
+          "label": "Button Title 2"
+        },
+        {
+          "type": "color",
+          "id": "btn_2_title_color",
+          "label": "Button Title Color 2",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "btn_2_bg_color",
+          "label": "Button Background Color 2",
+          "default": "#000000"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing Vision"
+    }
+  ]
+}
+{% endschema %}

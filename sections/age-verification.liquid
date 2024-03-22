@@ -1,0 +1,111 @@
+<div class="age-verification popup"
+  data-exit-animation = "popupExitFade"
+  data-body-scroll-disable = "true"
+  data-open-trigger = "none"
+  data-id = "{{ section.id }}"
+  data-limit-display = "1"
+  data-limit-lifetime = "30"
+>
+  <div class="age-verification__wrapper popup-wrap">
+    <div class="container">
+      <div class="age-verification__content">
+        <div class="age-verification__question show">
+          {% if section.settings.heading %}
+            <h2 class="popup-heading age-verification__heading h1">
+              {{ section.settings.heading }}
+            </h2>
+          {% endif %}
+          {% if section.settings.text %}
+            <div class="popup-text">
+              {{ section.settings.text }}
+            </div>
+          {% endif %}
+          <div class="age-verification__buttons">
+            <button class="button button--secondary age-verification__button-no">
+              {{ section.settings.button_label_no }}
+            </button>
+            <button class="button button--primary age-verification__popup-close">
+              {{ section.settings.button_label_yes }}
+            </button>
+          </div>
+        </div>
+
+        <div class="age-verification__declined">
+          <div class="age-declined__wrapper">
+            {% if section.settings.heading_declined %}
+              <h2 class="popup-heading age-verification__heading h1">
+                {{ section.settings.heading_declined }}
+              </h2>
+            {% endif %}
+            {% if section.settings.text_declined %}
+              <div class="popup-text">
+                {{ section.settings.text_declined }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.overlay-group.age-verification.name",
+  "limit": 1,
+  "enabled_on": {
+    "groups": ["custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.overlay-group.age-verification.settings.header_1.content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Confirm your age",
+      "label": "t:sections.overlay-group.age-verification.settings.heading.label"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "default": "<p>Are you over 18 years old?</p>",
+      "label": "t:sections.overlay-group.age-verification.settings.text.label"
+    },
+    {
+      "type": "text",
+      "id": "button_label_no",
+      "default": "No I'm not",
+      "label": "t:sections.overlay-group.age-verification.settings.button_label_no.label"
+    },
+    {
+      "type": "text",
+      "id": "button_label_yes",
+      "default": "Yes I am",
+      "label": "t:sections.overlay-group.age-verification.settings.button_label_yes.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.overlay-group.age-verification.settings.header_2.content"
+    },
+    {
+      "type": "text",
+      "id": "heading_declined",
+      "default": "Some heading",
+      "label": "t:sections.overlay-group.age-verification.settings.heading.label"
+    },
+    {
+      "type": "richtext",
+      "id": "text_declined",
+      "default": "<p>Some text</p>",
+      "label": "t:sections.overlay-group.age-verification.settings.text.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.overlay-group.age-verification.name"
+    }
+  ]
+}
+{% endschema %}

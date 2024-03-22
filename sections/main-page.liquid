@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="{{ 'section-main-page.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'section-main-page.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+
+<div class="container">
+	<div class="page-header">
+		<div class="page-header__inner">
+			<h1 class="main-page-title page-title title--page">
+				{{ page.title | escape }}
+			</h1>
+		</div>
+	</div>
+	<div class="rte">
+		{{ page.content }}
+	</div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-page.name",
+  "tag": "section",
+  "class": "page-section"
+}
+{% endschema %}
+

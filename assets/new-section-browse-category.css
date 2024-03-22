@@ -1,0 +1,28 @@
+.browsecategory .textimage-card-content-absolute {
+    padding: 2% 8%;
+}
+.browsecategory .section-header {
+    margin-bottom: 40px;
+}
+.browsecategory {
+    overflow: hidden;
+}
+
+.browsecategory .section-text{
+   margin-left: auto;
+   margin-right: auto;
+}
+
+
+@media (max-width: 767px) {
+
+    .browsecategory .textimage-card-content-absolute {
+        padding: 2% 5%;
+    }
+}
+
+@media (max-width: 576px) {
+    .browsecategory-list__item {
+        min-width: auto;
+    }
+}

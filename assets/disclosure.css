@@ -1,0 +1,105 @@
+.disclosure {
+  position: relative;
+}
+
+.disclosure__button {
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  padding: 0 1rem 0 1rem;
+  font-size: 1.4rem;
+  background-color: rgba(var(--color-background));
+  cursor: pointer;
+}
+
+.disclosure__list {
+  position: absolute;
+  bottom: 100%;
+  max-width: 22rem;
+  min-width: 100%;
+  width: max-content;
+  min-height: 8.2rem;
+  max-height: 19rem;
+  margin-top: -0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1.5rem;
+  color: rgb(var(--color-foreground));
+  background-color: rgb(var(--color-background));
+  box-shadow: 0rem 0.5rem 2rem rgba(1, 1, 1, 0.04);
+  border-radius: 0.6rem;
+  transform: translateY(-1rem);
+  z-index: 2;
+  overflow-y: auto;
+}
+
+.disclosure__list .link {
+  padding: 1rem 1.4rem;
+  font-size: 1.5rem;
+  line-height: var(--font-body-line-height);
+  font-family: var(--font-header-menu-family);
+  font-style: var(--font-header-menu-style);
+  font-weight: 400;
+  text-transform: var(--font-header-menu-text-transform);
+}
+.disclosure__list .link span {
+  gap: 0.4rem;
+  transition: color var(--duration-default);
+}
+.disclosure__list .link:hover {
+  color: rgb(var(--color-accent));
+}
+
+.disclosure__item {
+  position: relative;
+}
+
+.disclosure__link {
+  display: block;
+  padding: 0.5rem 2.2rem;
+  text-decoration: none;
+  line-height: 1.5;
+}
+.disclosure__link > span {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#FooterLanguageList .disclosure__link > span {
+  display: inline;
+  width: unset;
+}
+
+.disclosure__link--active span::after {
+  width: 100%;
+}
+
+.localization-selector.link {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.8rem 2rem;
+  width: 100%;
+  height: auto;
+  background-color: rgb(var(--color-background-input));
+  text-decoration: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 0.4rem;
+}
+.localization-selector.link .value {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 1.5rem;
+}
+.localization-selector.link .icon-caret {
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
