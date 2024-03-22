@@ -85,30 +85,53 @@
   margin-right: 5rem;
 }
 .landing-banner-hover-text .text {
-  max-width: 373px;
+  max-width: 293.91px;
   position: absolute;
   text-align: center;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 140%;
-  border-radius: 20px;
-  padding: 10px 25px;
+  line-height: 22.4px;
+  border-radius: 4px;
+  padding: 7px 25px;
+  font-family: 'Poppins';
 }
 .landing-banner-hover-text .text:nth-child(1) {
-  transform: rotate(-10.173deg);
+  position: absolute;
+  top: 58%;
+  left: 0;
+  transform: rotate(-15deg);
 }
 .landing-banner-hover-text .text:nth-child(2) {
-  transform: rotate(-8.125deg);
+  transform: rotate(15deg);
+  position: absolute;
+  top: 45%;
+  left: 78%;
 }
 .landing-banner-hover-text .text:nth-child(3) {
-  transform: rotate(-1.945deg);
+  width: 242.2px;
+  height: 56.05px;
+  background-color: #00C172;
+  border-radius: 2.67px;
+  transform: rotate(-19.3deg);
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 12.7px;
+  line-height: 17.78px;
 }
 .landing-banner-hover-text .text:nth-child(4) {
-  transform: rotate(-3.229deg);
+  position: absolute;
+  top: 65%;
+  left: 25%;
+  transform: rotate(15deg);
 }
 .landing-banner-hover-text .text:nth-child(5) {
-  transform: rotate(5.183deg);
+  transform: rotate(30deg);
+  position: absolute;
+  width: 242.2px;
+  height: 56.05px;
+  background-color: #04217E;
+  left: 80%;
 }
 @media all and (max-width: 1440px) {
   .landing-banner-hover-text {

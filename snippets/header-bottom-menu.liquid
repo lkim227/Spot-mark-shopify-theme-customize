@@ -468,7 +468,7 @@
   <div class="header__bottom-inner container container--header">
     <nav class="header__inline-menu">
       {%- if section.settings.menu != blank -%}
-        <ul class="list-menu list-menu--inline" role="list">
+        <ul class="list-menu list-menu--inline" style="gap:0;justify-content:between-content;" role="list">
           {% assign index = 1 %}
           {%- for link in section.settings.menu.links -%}
             {% assign svg_icon = index | prepend: 'icon_' %}
@@ -485,7 +485,7 @@
                   {% endif %}
                 {% endfor %}
               {% endif %}
-              <li class="{% if mega_menu %}list-menu--megamenu{% endif %}" {{ shopify_attributes }}>
+              <li class="{% if mega_menu %}list-menu--megamenu{% endif %}" {{ shopify_attributes }} style="flex:1;gap:0;">
                 <span
                   class="header__menu-item list-menu__item link focus-inset"
                   {% if link.current %}
@@ -518,7 +518,7 @@
                 {% endif %}
               </li>
             {%- else -%}
-              <li>
+              <li style="flex:1;gap:0;">
                 <a
                   href="{{ link.url }}"
                   class="header__menu-item list-menu__item link focus-inset"

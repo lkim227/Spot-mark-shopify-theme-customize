@@ -1,17 +1,1 @@
-{
-  "sections": {
-    "main": {
-      "type": "main-login",
-      "settings": {
-        "subtitle": "Enter your e-mail and password:",
-        "margin_top": "no-indent",
-        "margin_bottom": "no-indent",
-        "padding_top": "no-indent",
-        "padding_bottom": "xl"
-      }
-    }
-  },
-  "order": [
-    "main"
-  ]
-}
+{"sections":{"main":{"type":"main-login","settings":{"subtitle":"Enter your e-mail and password:","margin_top":"no-indent","margin_bottom":"no-indent","padding_top":"no-indent","padding_bottom":"xl"}}},"order":["main"]}

@@ -14,10 +14,12 @@ overflow: hidden;
   align-items: center;
   gap: 20px;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 @media only screen and (max-width: 991px) {
   .promo-icon-wrap {
     justify-content: center;
+    cursor: pointer;
   }
 }
 .promo-icon-wrap .icon-box {

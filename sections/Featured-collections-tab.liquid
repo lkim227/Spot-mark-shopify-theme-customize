@@ -23,6 +23,21 @@
       as="style"
       onload="this.onload=null;this.rel='stylesheet'"
     >
+
+      {% style %}
+        @media (min-width: 1536px) {
+          .feature-products-section {
+            margin: auto;
+            display: flex !important;
+            justify-content: center !important;
+            transform: scale(1.05) !important;
+          }
+          .feature-product-slide {
+            margin-left: 0;
+            margin-right: 0;
+          }
+        }
+      {% endstyle %}
   
     <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
@@ -31,7 +46,7 @@
 
 
 <div class="feature-products-section">
-<div class="container">
+<div class="container feature-product-slide">
     <div class="row">
         <div class="col-md-12 text-center m-auto">
             {% if  section.settings.heading != blank  %}
@@ -102,10 +117,15 @@
                     >
 
                       <div class="collection-product__inner">
-                      {% render 'product-card-2',
+                      {% render 'product-card', 
                         product_card_product: product,
                         media_size: section.settings.image_ratio,
                         media_fit: section.settings.image_fit,
+                        cart_btn_text_color: section.settings.cart_btn_text_color,
+                        cart_btn_background_color: section.settings.cart_btn_background_color,
+                        option_btn_text_color: section.settings.option_btn_text_color,
+                        option_btn_background_color: section.settings.option_btn_background_color,
+                        stock_badge_color: section.settings.stock_badge_background_color,
                         show_secondary_image: section.settings.show_secondary_image,
                         show_vendor: section.settings.show_vendor,
                         show_button: section.settings.show_button,
@@ -287,6 +307,36 @@
           }
         ],
         "default": "cover"
+      },
+      {
+        "type": "color",
+        "id": "cart_btn_text_color",
+        "label": "t:sections.all.card.cart_btn_text_color.label",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "cart_btn_background_color",
+        "label": "t:sections.all.card.cart_btn_background_color.label",
+        "default": "#FFF"
+      },
+      {
+        "type": "color",
+        "id": "option_btn_text_color",
+        "label": "t:sections.all.card.option_btn_text_color.label",
+        "default": "#FFF"
+      },
+      {
+        "type": "color",
+        "id": "option_btn_background_color",
+        "label": "t:sections.all.card.option_btn_background_color.label",
+        "default": "#0000FF"
+      },
+      {
+        "type": "color",
+        "id": "stock_badge_background_color",
+        "label": "Stock badge color",
+        "default": "#00cF72"
       },
       {
         "type": "checkbox",
