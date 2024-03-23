@@ -1,8 +1,22 @@
 {% style %}
-  @media (max-width: 1290px) {
+  @media (max-width: 1340px) and (min-width: 1290px) {
     ul.list-menu * {
       font-size: 14px;
     }
+  }
+
+  @media (max-width: 1290px) {
+    ul.list-menu * {
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    {% if section.settings.hide_mobile_search %}
+      .header__search {
+        display:none !important;
+      }
+    {% endif %}
   }
 
   ::-webkit-scrollbar {

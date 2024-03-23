@@ -7886,3 +7886,10 @@ img {
 .custom-scrollbar-x::-webkit-scrollbar-thumb{
   background-color: var(--color-background-30);
 }
+
+* {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+}
