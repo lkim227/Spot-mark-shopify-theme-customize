@@ -18,6 +18,27 @@
       }
     {% endif %}
   }
+  .header__inline-menu .header__menu-item {
+    gap: 0;
+  }
+ 
+  @media (max-width: 1380px) {
+    .header__inline-menu li span.icon img {
+      max-width: 30px;
+    }
+    .header-bottom-list {
+      padding: 0 7px !important;
+    }
+  }
+  @media (max-width: 1243px) {
+    .header__inline-menu li span.icon img {
+      max-width: 27px;
+    }
+
+    .header-bottom-list {
+      padding: 0 5px !important;
+    }
+  }
 
   ::-webkit-scrollbar {
     width: 20px;
@@ -533,7 +554,7 @@
               <li class="{% if mega_menu %}list-menu--megamenu{% endif %}" {{ shopify_attributes }} style="width:auto;gap:0;display:flex;justify-content:center;">
                 <span
                   class="header__menu-item list-menu__item link focus-inset"
-                  style="display:flex;justify-content:center;text-align:center;padding:0 5px;"
+                  style="display:flex;justify-content:center;padding:0 5px;"
                   {% if link.current %}
                     aria-current="page"
                   {% endif %}
@@ -547,6 +568,7 @@
                   {% endif %}
 
                   <span
+                    class="header-bottom-list"
                     {%- if link.active %}
                       class="header__active-menu-item"
                     {% endif %}
@@ -577,12 +599,12 @@
                 >
                   {% if icon != blank %}
                     <span class="icon">
-                      <img src="{{icon | img_url:"master" }}" style="max-width:{{ icon.width }}px" alt="{{icon.alt }}">
+                      <img src="{{icon | img_url:"master" }}" alt="{{icon.alt }}">
                     </span>
                   {% endif %}
                   <span
                     {%- if link.active %}
-                      class="header__active-menu-item"
+                      class="header__active-menu-item header-bottom-list"
                     {% endif %}
                     title="{{ link.title | escape }}"
                     style="padding:0 10px;"

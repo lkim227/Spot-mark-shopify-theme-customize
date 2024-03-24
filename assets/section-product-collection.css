@@ -21,7 +21,8 @@
 .pc_swiper_img_container {
   overflow: hidden;
   padding: 60px 60px 60px;
-}
+  position: relative;
+  }
 .pc_item_img {
   transition: all 0.5s;
   transform: scale(1);
@@ -79,6 +80,7 @@
   left: 0;
   width: 100%;
   padding: 0 20px;
+  top: 40%;
 }
 .pc_swiper_navigation > * {
   cursor: pointer;
@@ -221,6 +223,7 @@
 
   .pc_swiper_img_container {
     padding: 75px 36px 160px;
+    position: relative;
   }
   .pc_swiper_details_container {
     margin-top: 30px;
@@ -230,6 +233,7 @@
  
   .pc_swiper_img_container {
     padding: 75px 36px 96px;
+    position: relative;
   }
 }
 @media only screen and (max-width: 1024px) {
@@ -241,11 +245,17 @@
     content: none;
   }
 }
-
-
-@media only screen and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 900px) {
   .pc_swiper_navigation {
     padding: 0;
+    top: 35%;
+}
+}
+
+@media only screen and (max-width: 767.9px) {
+  .pc_swiper_navigation {
+    padding: 0;
+    top: 40%;
 }
 
   .pc_item_img {
@@ -273,6 +283,7 @@
   }
   .pc_swiper_img_container {
     padding: 0;
+    position: relative;
   }
 
   .pc_details_item_left h4 {
