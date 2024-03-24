@@ -24,6 +24,17 @@
       margin-bottom: {{ section.settings.margin_bottom }}px;
     }
   }
+@media screen and (max-width: 767.9px)
+{
+  .comparison-swipe-to-view-image {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      /* float: right; */
+    }
+}
 {%- endstyle -%}
 
 {% assign slidesDesktop = section.settings.desktop_item %}
@@ -63,7 +74,8 @@
 
   {% if heading != blank %}
     <div class="comparison-title-mobile">
-      <h4>{{heading}}</h4>
+      <h4 style="color: {{ section.settings.heading_color }}">{{ heading }}</h4>
+      <img alt="swipe to view" class="comparison-swipe-to-view-image" src="{{ section.settings.swipe_to_view |  img_url: 'master' }}" loading="lazy">
     </div>
   {% endif %}
 
@@ -93,7 +105,7 @@
             <div class="product-comparison-item ">
               {% if heading != blank %}
                 <div class="comparison-item-top comparison-title-desktop">
-                  <h4>{{heading }}</h4>
+                  <h4 style="color: {{ section.settings.heading_color }};">{{ heading }}</h4>
                 </div>
               {% endif %}
             
@@ -218,6 +230,17 @@
       "id": "heading",
       "label": "heading",
       "default": "US Vs. THEM"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#fff"
+    },
+    {
+      "type": "image_picker",
+      "id": "swipe_to_view",
+      "label": "Swipe To View"
     },
     {
       "type": "header",
