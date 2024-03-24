@@ -76,7 +76,6 @@
   display: flex;
   justify-content: space-between;
   position: absolute;
-  top: 38%;
   left: 0;
   width: 100%;
   padding: 0 20px;
@@ -246,7 +245,6 @@
 
 @media only screen and (max-width: 991px) {
   .pc_swiper_navigation {
-    top: 28%;
     padding: 0;
 }
 

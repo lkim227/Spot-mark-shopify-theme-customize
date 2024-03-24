@@ -530,7 +530,7 @@
                   {% endif %}
                 {% endfor %}
               {% endif %}
-              <li class="{% if mega_menu %}list-menu--megamenu{% endif %}" {{ shopify_attributes }} style="flex:1;gap:0;display:flex;justify-content:center;">
+              <li class="{% if mega_menu %}list-menu--megamenu{% endif %}" {{ shopify_attributes }} style="width:auto;gap:0;display:flex;justify-content:center;">
                 <span
                   class="header__menu-item list-menu__item link focus-inset"
                   style="display:flex;justify-content:center;text-align:center;padding:0 5px;"
@@ -566,7 +566,7 @@
                 {% endif %}
               </li>
             {%- else -%}
-              <li style="flex:1;gap:0;display:flex;justify-content:center;">
+              <li style="width:auto;gap:0;display:flex;justify-content:center;">
                 <a
                   href="{{ link.url }}"
                   class="header__menu-item list-menu__item link focus-inset"
@@ -585,6 +585,7 @@
                       class="header__active-menu-item"
                     {% endif %}
                     title="{{ link.title | escape }}"
+                    style="padding:0 10px;"
                   >
                     {{ link.title | escape }}
                   </span>

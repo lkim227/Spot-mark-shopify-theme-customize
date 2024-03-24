@@ -85,7 +85,7 @@
   margin-right: 5rem;
 }
 .landing-banner-hover-text .text {
-  max-width: 293.91px;
+  max-width: 313.91px;
   position: absolute;
   text-align: center;
   font-size: 16px;
@@ -94,7 +94,6 @@
   line-height: 22.4px;
   border-radius: 4px;
   padding: 7px 25px;
-  font-family: 'Poppins';
 }
 .landing-banner-hover-text .text:nth-child(1) {
   position: absolute;
@@ -109,12 +108,11 @@
   left: 78%;
 }
 .landing-banner-hover-text .text:nth-child(3) {
-  width: 242.2px;
+  width: 252.2px;
   height: 56.05px;
   background-color: #00C172;
   border-radius: 2.67px;
   transform: rotate(-19.3deg);
-  font-family: "Poppins";
   font-weight: 400;
   font-size: 12.7px;
   line-height: 17.78px;

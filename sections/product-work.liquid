@@ -63,7 +63,7 @@
   <div class="container">
     <div class="product-work-wrapper">
       {% if heading != blank %}
-        <h3>{{heading  }}</h3>
+        <h3 style="color: {{ section.settings.heading_color }}">{{heading  }}</h3>
       {% endif %}
 
       <div class="product-work-box-desktop">
@@ -90,12 +90,12 @@
                     </span>
                   {% endif %}
                   {% if title != blank %}
-                    <span>{{title}}</span>
+                    <span style="color: {{ b.title_color }};">{{title}}</span>
                   {% endif %}
              
                 </div>
                 {% if text != blank %}
-                  <div class="text">
+                  <div class="text" style="color: {{ b.text_color }};">
                     {{text}}
                     </div>
                 {% endif %}
@@ -150,11 +150,11 @@
                             </span>
                           {% endif %}
                             {% if title != blank %}
-                                 <span>{{title}}</span>
+                                 <span style="color: {{ b.title_color }};">{{title}}</span>
                             {% endif %}
                       </div>
                       {% if text != blank %}
-                        <div class="text">
+                        <div class="text" style="color: {{ b.text_color }};">
                              {{text }}
                           </div>
                       {% endif %}
@@ -195,6 +195,12 @@
       "id": "heading",
       "label": "heading",
       "default": "how insulating paint works"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "heading color",
+      "default": "#252489"
     },
     {
       "type": "image_picker",
@@ -347,10 +353,22 @@
           "default": "destroys mould"
         },
         {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title color",
+          "default": "#252489"
+        },
+        {
           "type": "inline_richtext",
           "id": "text",
           "label": "Text",
           "default": "It is a long term solution, which offers premium quality, very low odor levels, and maximum performance."
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Title color",
+          "default": "#252489"
         }
       ]
     }

@@ -104,13 +104,13 @@
                         assign icon = b.icon
                         assign title = b.title
                       %}
-                      <div class="comparison-list-item">
+                      <div class="comparison-list-item" style="height: {{ b.height }};">
                           {% if icon != blank %}
                             <span> 
                             <img src="{{ icon | img_url: "master" }}" loading="lazy">
                             </span>
                           {% endif %}
-                        <span>{{ title }}</span>
+                        <span style="color: {{ b.title_color }};">{{ title }}</span>
                       </div>
                      {% endfor %}
 
@@ -138,7 +138,7 @@
                     assign our_store_text = b.our_store_text
                     assign store_status = b.store_status
                   %}
-                <div class="comparison-list-item">
+                <div class="comparison-list-item" style="height: {{ b.height }};">
                   {% if store_status contains "tick" %}
                     <span>{% render 'all-icons', name: 'comparison-2' %}</span>
                   {% else %}
@@ -149,7 +149,7 @@
 
                
                  
-                  <span>{{our_store_text }}</span>
+                  <span style="color: {{ b.our_store_text_color }};">{{our_store_text }}</span>
                 </div>
               {% endfor %}
               </div>
@@ -175,7 +175,7 @@
                     assign other_store_text = b.other_store_text
                     assign other_store_status = b.other_store_status
                   %}
-                <div class="comparison-list-item">
+                <div class="comparison-list-item" style="height: {{ b.height }};">
                  
                 {% if other_store_status contains "tick" %}
                   <span>{% render 'all-icons', name: 'comparison-2' %}</span>
@@ -185,7 +185,7 @@
                   
                 {% endif %}
 
-                  <span>{{other_store_text}}</span>
+                  <span style="color: {{ b.other_store_text_color }};">{{other_store_text}}</span>
                 </div>
 
               {% endfor %}
@@ -378,16 +378,38 @@
           "label": "Icon"
         },
         {
+          "type": "range",
+          "id": "height",
+          "min": 50,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "label": "Height",
+          "default": 68
+        },
+        {
           "type": "text",
           "id": "title",
           "label": "title",
           "default": "STRENGTH"
         },
         {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title Color",
+          "default": "#fff"
+        },
+        {
           "type": "inline_richtext",
           "id": "our_store_text",
           "label": "Our Store Text",
           "default": "Easy clean"
+        },
+        {
+          "type": "color",
+          "id": "our_store_text_color",
+          "label": "Our Store Text Color",
+          "default": "#001192"
         },
         {
         "type": "select",
@@ -410,6 +432,12 @@
           "id": "other_store_text",
           "label": "Other Store Text",
           "default": "Stains and Marks"
+        },
+        {
+          "type": "color",
+          "id": "other_store_text_color",
+          "label": "Other Store Text Color",
+          "default": "#fff"
         },
         {
         "type": "select",

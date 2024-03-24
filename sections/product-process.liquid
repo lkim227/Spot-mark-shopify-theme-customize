@@ -69,7 +69,7 @@
   <div class="bg_line"></div>
   <div class="product-process-wrapper container-fluid">
     {% if heading != blank %}
-      <h3>{{ heading }}</h3>
+      <h3 style="color: {{ section.settings.heading_color }}">{{ heading }}</h3>
     {% endif %}
 
     <div class="product-process-box">
@@ -104,14 +104,14 @@
               %}
 
               <div class="product-slide swiper-slide" {{ block.shopify_attributes }}>
-                <div class="product-process-item">
+                <div class="product-process-item" style="background: {{ block.settings.box_color }}">
                   <div class="product-process-item-top">
                     <div class="product-process-item-top-left">
                       {% if pretext != blank %}
-                        <h6>{{ pretext }}</h6>
+                        <h6 style="color: {{ block.settings.pretext_color }};">{{ pretext }}</h6>
                       {% endif %}
                       {% if heading != blank %}
-                        <h4>{{ heading }}</h4>
+                        <h4 style="color: {{ block.settings.heading_color }}">{{ heading }}</h4>
                       {% endif %}
                     </div>
                     <div class="product-process-item-top-right">
@@ -124,7 +124,7 @@
                   </div>
                   {% if text != blank %}
                     <div class="product-process-item-bottom">
-                      <div class="text">
+                      <div class="text" style="color: {{ block.settings.text_color }};">
                         {{ text }}
                       </div>
                     </div>
@@ -158,6 +158,12 @@
       "id": "heading",
       "label": "Heading",
       "default": "HOW DOES IT WORK?"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#fff"
     },
     {
       "type": "text",
@@ -350,10 +356,22 @@
           "label": "Image"
         },
         {
+          "type": "color",
+          "id": "box_color",
+          "label": "Box Color",
+          "default": "#fff"
+        },
+        {
           "type": "text",
           "id": "pretext",
           "label": "Pre Text",
           "default": "Step"
+        },
+        {
+          "type": "color",
+          "id": "pretext_color",
+          "label": "Pre Text Color",
+          "default": "#000"
         },
         {
           "type": "text",
@@ -362,10 +380,22 @@
           "default": "PREP"
         },
         {
+          "type": "color",
+          "id": "heading_color",
+          "label": "Heading Color",
+          "default": "#000"
+        },
+        {
           "type": "richtext",
           "id": "text",
           "label": "Text",
           "default": "<p>Prep your area and walls by sanding, cleaning, and ensuring the surface is smooth & dry - use primer (or mist coat) on bare surfaces or fresh plaster board</p>"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#000"
         }
       ]
     }
