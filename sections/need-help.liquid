@@ -65,7 +65,7 @@
                 <a 
                   href="{{ link }}" 
                   class="need-help-wrap"
-                  style="border-radius: {{ section.settings.box_border_radius }}px;"
+                  style="border-radius: {{ section.settings.box_border_radius }}px;text-align:center;"
                 >
                   <div class="box-content-area">
                     <h4>{{ box_title }}</h4>
@@ -76,6 +76,15 @@
                     {% else %}
                       {{ 'image' | placeholder_svg_tag: 'placeholder-svg gray-plaecholder' }}
                     {%- endif -%}
+                    {% if section.settings.show_button %}
+                      <div 
+                        class="textimage-card-btn d-flex align-items-center justify-content-center"
+                        style="position:relative;"
+                      >
+                        <span>SHOP NOW</span>
+                        {% render 'icon-right-arrow-fill' %}                            
+                      </div>
+                    {% endif %}
                   </div>
                 </a>
               </div>
@@ -113,6 +122,12 @@
       ],
       "default": "center",
       "label": "Text Align"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show button for shop",
+      "default": false
     },
     {
       "type": "header",
