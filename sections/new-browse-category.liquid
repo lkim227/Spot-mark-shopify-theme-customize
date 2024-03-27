@@ -33,6 +33,7 @@
             margin-bottom: {{ section.settings.margin_bottom }}px;
         }
     }
+
 {% endstyle %}
 
 <div class="browsecategory browsecategory-{{ section.id }} section-{{ section.id }}-padding">
@@ -40,11 +41,11 @@
         <div class="container">
             <div class="section-header text-center no-margin">
                 {% if section.settings.heading != blank %}
-                    <h2 class="section-heading text-white">{{ section.settings.heading | newline_to_br }}</h2>
+                    <h2 class="section-heading">{{ section.settings.heading | newline_to_br }}</h2>
                 {% endif %}
 
                 {% if section.settings.text != blank %}
-                    <div class="section-text text-white width_1499">{{ section.settings.text | newline_to_br }}</div>
+                    <div class="section-text width_1499">{{ section.settings.text | newline_to_br }}</div>
                 {% endif %}
             </div>
         </div>
@@ -67,6 +68,11 @@
                     btn_label: block.settings.btn_label,
                     btn_link: block.settings.btn_link,
                     show_icon: section.settings.show_icon,
+                    remove_btn: section.settings.remove_button,
+                    box_radius: section.settings.box_radius,
+                    button_radius: section.settings.button_radius,
+                    ht_btn_padding: section.settings.btn_horizontal_padding,
+                    vt_btn_padding: section.settings.btn_vertical_padding,
                     flex: 'align-items-center'
                 %}
             </li>
@@ -159,6 +165,43 @@
             "id": "show_icon",
             "label": "Show icon with button",
             "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "remove_button",
+            "label": "Remove button",
+            "default": false
+        },
+        {
+            "type": "range",
+            "id": "box_radius",
+            "label": "Change box roundness",
+            "default": 30,
+            "step": 2,
+            "min": 0,
+            "max": 200,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "id": "button_radius",
+            "label": "Change button roundness",
+            "min": 0,
+            "max": 100,
+            "unit": "px",
+            "default": 30
+        },
+        {
+            "type": "number",
+            "id": "btn_horizontal_padding",
+            "label": "Horizontal padding of button",
+            "default": 0
+        },
+        {
+            "type": "number",
+            "id": "btn_vertical_padding",
+            "label": "Vertical padding of button",
+            "default": 24
         },
         {
             "type": "header",

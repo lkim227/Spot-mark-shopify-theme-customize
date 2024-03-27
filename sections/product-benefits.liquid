@@ -50,7 +50,7 @@
         {% for block in benefits_items %}
           {%liquid
             assign b = block.settings 
-            assign heading = b.heaing
+            assign heading = b.heading
             assign description = b.text
             assign view_collection_button_label = b.button_label_1
             assign view_collection_button_link = b.button_url_1
@@ -61,10 +61,10 @@
       
         <div class="benefits-left-item {%if forloop.first %} active {%endif %}" data-benefit-tab="{{forloop.index}}">
           {% if heading != blank %}
-            <h3>{{heading }}</h3>
+            <h3 style="color: {{ b.heading_color }};">{{heading }}</h3>
           {% endif %}
     
-          <div class="text">
+          <div class="text" style="color: {{ b.text_color }}">
             {{description }}
           </div>
           <div class="benefits-left-btns">
@@ -90,7 +90,7 @@
               {% endif %}
             
               {% if image != blank %}
-                <img src="{{ image | img_url: "master" }}" loading="lazy">
+              <img src="{{ image | img_url: "master" }}" class="{% if section.settings.remove_mobile_image == true %} product-benefits-remove-mobile-image {% endif %}" loading="lazy">
               {% endif %}
      
             </div>
@@ -98,7 +98,7 @@
       </div>
       <div class="benefits-right">
         {% if heading != blank %}
-          <h4>{{heading}}</h4>
+          <h4 style="color: {{ section.settings.heading_color }}">{{heading}}</h4>
         {% endif %}
    
         <div class="benefits-right-tab-list">
@@ -116,7 +116,7 @@
               <img src="{{ icon | img_url: "master" }}" loading="lazy">
             </span>
            {% endif %} 
-            <span>{{ title }}</span>
+            <span style="color: {{ b.title_color }};">{{ title }}</span>
           </div>
         {% endfor %}
         </div>
@@ -135,6 +135,16 @@
     </div>
   </div>
 </div>
+
+<style>
+  {% if section.settings.remove_mobile_image == true %}
+  @media (max-width: 768px) {
+    .product-benefits-remove-mobile-image {
+        display: none;
+    }
+  }
+{% endif %}
+</style>
 
 {% schema %}
 {
@@ -156,6 +166,12 @@
       "label": "Image"
     },
     {
+      "type": "checkbox",
+      "id": "remove_mobile_image",
+      "label": "Remove Mobile Image",
+      "default": false
+    },
+    {
       "type": "image_picker",
       "id": "sticker_image",
       "label": "Sticker Image"
@@ -164,6 +180,12 @@
       "type": "text",
       "id": "heading",
       "label": "heading"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#fff"
     },
     {
       "type": "image_picker",
@@ -276,9 +298,15 @@
         },
         {
           "type": "text",
-          "id": "heaing",
+          "id": "heading",
           "label": "heading",
           "default": "FIXED COLOUR PRICES"
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "label": "Heading Color",
+          "default": "#fff"
         },
         {
           "type": "text",
@@ -287,10 +315,22 @@
           "default": "FIXED COLOUR PRICES"
         },
         {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title Color",
+          "default": "#fff"
+        },
+        {
           "type": "inline_richtext",
           "id": "text",
           "label": "Text",
           "default": "The new HQC Anti Damp Paint is a high-performance solution developed to create a breathable, obliterating membrane that seals and permanently stops the reappearance of damp, water, and other household stains.It is your go-to paint if you have damp issues on your walls."
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#fff"
         },
         {
           "type": "text",

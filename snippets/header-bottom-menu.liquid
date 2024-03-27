@@ -1,3 +1,61 @@
+{% style %}
+  @media (max-width: 1340px) and (min-width: 1290px) {
+    ul.list-menu * {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 1290px) {
+    ul.list-menu * {
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    {% if section.settings.hide_mobile_search %}
+      .header__search {
+        display:none !important;
+      }
+    {% endif %}
+  }
+  .header__inline-menu .header__menu-item {
+    gap: 0;
+  }
+ 
+  @media (max-width: 1380px) {
+    .header__inline-menu li span.icon img {
+      max-width: 30px;
+    }
+    .header-bottom-list {
+      padding: 0 7px !important;
+    }
+  }
+  @media (max-width: 1243px) {
+    .header__inline-menu li span.icon img {
+      max-width: 27px;
+    }
+
+    .header-bottom-list {
+      padding: 0 5px !important;
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 20px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+  }
+{% endstyle %}
 <div class="header__top color-{{ section.settings.color_scheme }}">
   <div class=" container container--header">
     <div class="header__top-inner">
@@ -167,11 +225,15 @@
         </div>
       {%- endif -%}
 
-      <div class="header__column">
+      <div class="header__column" style="overflow-x:auto;">
 
           
         {% if section.settings.small_menu != blank %}
-          <ul class="header__small-menu small-menu list-unstyled" role="list">
+          <ul 
+            class="header__small-menu small-menu list-unstyled" 
+            role="list"
+            style="flex-wrap:unset;overflow-x:auto;white-space:nowrap;"
+          >
             {% assign menu_limit = 7 %}
 
             {% if section.settings.call_text != blank %}
@@ -184,7 +246,11 @@
               
             {% endif %}
 
-             
+            {% style %}
+              .header__small-menu li {
+                width: max-content;
+              }
+            {% endstyle %}
 
             {%- for link in section.settings.small_menu.links limit: menu_limit -%}
               <li class="small-menu__item">
@@ -468,7 +534,7 @@
   <div class="header__bottom-inner container container--header">
     <nav class="header__inline-menu">
       {%- if section.settings.menu != blank -%}
-        <ul class="list-menu list-menu--inline" role="list">
+        <ul class="list-menu list-menu--inline" style="gap:0;justify-content:space-between;" role="list">
           {% assign index = 1 %}
           {%- for link in section.settings.menu.links -%}
             {% assign svg_icon = index | prepend: 'icon_' %}
@@ -485,13 +551,15 @@
                   {% endif %}
                 {% endfor %}
               {% endif %}
-              <li class="{% if mega_menu %}list-menu--megamenu{% endif %}" {{ shopify_attributes }}>
+              <li class="{% if mega_menu %}list-menu--megamenu{% endif %}" {{ shopify_attributes }} style="width:auto;gap:0;display:flex;justify-content:center;">
                 <span
                   class="header__menu-item list-menu__item link focus-inset"
+                  style="display:flex;justify-content:center;padding:0 5px;"
                   {% if link.current %}
                     aria-current="page"
                   {% endif %}
                   aria-label="{{ link.title | escape }}"
+                  style="display:flex;justify-content:center;text-align:center;"
                 >
                   {% if icon != blank %}
                     <span class="icon">
@@ -500,10 +568,12 @@
                   {% endif %}
 
                   <span
+                    class="header-bottom-list"
                     {%- if link.active %}
                       class="header__active-menu-item"
                     {% endif %}
                     title="{{ link.title | escape }}"
+                    style="padding:0 10px;"
                   >
                     {{ link.title | escape }}
                   </span>
@@ -518,7 +588,7 @@
                 {% endif %}
               </li>
             {%- else -%}
-              <li>
+              <li style="width:auto;gap:0;display:flex;justify-content:center;">
                 <a
                   href="{{ link.url }}"
                   class="header__menu-item list-menu__item link focus-inset"
@@ -528,15 +598,16 @@
                   aria-label="{{ link.title | escape }}"
                 >
                   {% if icon != blank %}
-                    <span>
-                      <img src="{{icon | img_url:"master" }}" style="max-width:{{ icon.width }}" alt="{{icon.alt }}">
+                    <span class="icon">
+                      <img src="{{icon | img_url:"master" }}" alt="{{icon.alt }}">
                     </span>
                   {% endif %}
                   <span
                     {%- if link.active %}
-                      class="header__active-menu-item"
+                      class="header__active-menu-item header-bottom-list"
                     {% endif %}
                     title="{{ link.title | escape }}"
+                    style="padding:0 10px;"
                   >
                     {{ link.title | escape }}
                   </span>

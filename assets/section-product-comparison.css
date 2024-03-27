@@ -159,6 +159,8 @@
     display: block;
     text-align: center;
     margin-bottom: 40px;
+    position: relative;
+    width: 100%;
   }
   .comparison-title-desktop{
     opacity: 0;

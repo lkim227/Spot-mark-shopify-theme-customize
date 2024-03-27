@@ -6,7 +6,11 @@
       {% for block in section.blocks %}
         {% liquid
           assign heading = block.settings.heading
+          assign heading_color = block.settings.heading_color
+          assign heading_size = block.settings.heading_size
           assign small_text = block.settings.small_text
+          assign small_text_color = block.settings.small_text_color
+          assign small_text_size = block.settings.small_text_size
           assign spilit = block.settings.spilit
           assign nav_link = block.settings.nav_link
           assign activeClass = ''
@@ -31,7 +35,11 @@
               {% if spilit %}
                 <span class="small-case">{{ small_text }}</span>
               {% endif %}
-              <span>{{ heading }}</span>
+              <span 
+                style="color:{{heading_color}};font-size:{{heading_size}}"
+              >
+                {{ heading }}
+              </span>
               {% if spilit == false %}
                 <span class="small-case">{{ small_text }}</span>
               {% endif %}
@@ -570,10 +578,40 @@
           "label": "Nav Label"
         },
         {
+          "type": "color",
+          "id": "heading_color",
+          "default": "#FFF",
+          "label": "Change color of Nav label"
+        },
+        {
+          "type": "range",
+          "id": "heading_size",
+          "default": 24,
+          "unit": "px",
+          "min": 0,
+          "max": 100,
+          "label": "Change Nav label size"
+        },
+        {
           "type": "text",
           "id": "small_text",
           "default": "brands",
           "label": "Small Text"
+        },
+        {
+          "type": "color",
+          "id": "small_text_color",
+          "default": "#FFF",
+          "label": "Change small text size"
+        },
+        {
+          "type": "range",
+          "id": "small_text_size",
+          "default": 16,
+          "unit": "px",
+          "min": 0,
+          "max": 100,
+          "label": "Change small text size"
         },
         {
           "type": "checkbox",

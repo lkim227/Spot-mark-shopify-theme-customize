@@ -2,7 +2,7 @@
 
 <div class="custom-block-wrapper"> 
 
-      <ul class="custom-block-list">
+      <ul class="custom-block-list" style="background-color:{{section.settings.custom-block-bgcolor}}">
         {%- for block in section.blocks -%}
           {%- case block.type -%}
           {%- when 'custom_block' -%}
@@ -42,6 +42,12 @@
   {
     "name": "Custom Block",
     "settings": [
+      {
+        "type": "color",
+        "id": "custom-block-bgcolor",
+        "label": "Change background color",
+        "default": "#D5DEDB"
+      }
     ],
     "blocks": [
       {

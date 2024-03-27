@@ -242,54 +242,62 @@
         "overlay_text_jTVDAq": {
           "type": "overlay_text",
           "settings": {
-            "text": "Mould killng barrier"
+            "text": "Mould killng barrier",
+            "text_color": "#fff"
           }
         },
         "overlay_text_cDxfz6": {
           "type": "overlay_text",
           "settings": {
-            "text": "Easy clean"
+            "text": "Easy clean",
+            "text_color": "#fff"
           }
         },
         "overlay_text_mFnweQ": {
           "type": "overlay_text",
           "settings": {
-            "text": "Hard wearing"
+            "text": "Hard wearing",
+            "text_color": "#fff"
           }
         },
         "quality_items_MThwfd": {
           "type": "quality_items",
           "settings": {
             "image": "shopify:\/\/shop_images\/Vector_3_3b20ade0-c41b-4cae-930d-3633881aa89e.svg",
-            "text": "Premium Quality"
+            "text": "Premium Quality",
+            "text_color": "#fff"
           }
         },
         "quality_items_xLYTJf": {
           "type": "quality_items",
           "settings": {
             "image": "shopify:\/\/shop_images\/Group_1002_febb7380-ea4c-4874-b69f-9f1122904424.svg",
-            "text": "Waterproof Outdoor Paint"
+            "text": "Waterproof Outdoor Paint",
+            "text_color": "#fff"
           }
         },
         "quality_items_wptkjz": {
           "type": "quality_items",
           "settings": {
             "image": "shopify:\/\/shop_images\/Group_3_d8e1e7f7-5ce5-4932-bb63-e3f1cd8cc266.svg",
-            "text": "Multi-Purpose Usage"
+            "text": "Multi-Purpose Usage",
+            "text_color": "#fff"
           }
         },
         "quality_items_DB9hXw": {
           "type": "quality_items",
           "settings": {
             "image": "shopify:\/\/shop_images\/Group_1132_f1e17a30-954a-45b1-872d-d903e4442df4.svg",
-            "text": "Quick-Drying Formula"
+            "text": "Quick-Drying Formula",
+            "text_color": "#fff"
           }
         },
         "quality_items_P7TPmw": {
           "type": "quality_items",
           "settings": {
             "image": "shopify:\/\/shop_images\/Group_4_a3ee4002-42b0-448f-aa48-a92f95a9bde9.svg",
-            "text": "Easy Application"
+            "text": "Easy Application",
+            "text_color": "#fff"
           }
         }
       },
@@ -310,7 +318,9 @@
         "logo_image": "shopify:\/\/shop_images\/HQC_BACKGRONG_LESS_300x_2.png",
         "shape": "shopify:\/\/shop_images\/shape-flower_968e3000-9601-4127-9eab-c27c752f73e9.svg",
         "heading": "ELEVATE YOUR WOODEN SURFACES",
+        "heading_color": "#fff",
         "description": "WITH LUXURIOUS SATIN FINISH",
+        "description_color": "#fff",
         "button_label": "BUY NOW",
         "button_url": "https:\/\/www.paintoutlet.co.uk\/products\/copy-of-hqc-wood-paint",
         "margin_top": 0,
@@ -330,9 +340,12 @@
           "type": "items",
           "settings": {
             "icon": "shopify:\/\/shop_images\/Group_3_e7e6f22e-913f-450f-bd6d-e3ae9536922f.svg",
-            "heaing": "BENEFITS",
+            "heading": "FIXED COLOUR PRICES",
+            "heading_color": "#fff",
             "title": "Premium Quality",
+            "title_color": "#fff",
             "text": "Crafted to enrich and preserve wooden surfaces, this paint dries quickly, offers long-lasting colour, and is enriched with wax for added durability.",
+            "text_color": "#fff",
             "button_label_1": "view collection",
             "button_url_1": "",
             "button_label_2": "READ MORE",
@@ -343,9 +356,12 @@
           "type": "items",
           "settings": {
             "icon": "shopify:\/\/shop_images\/Group_1001_af0dcc4a-db03-477a-8ea2-ad1767bea226.svg",
-            "heaing": "Waterproof Outdoor Paint",
+            "heading": "FIXED COLOUR PRICES",
+            "heading_color": "#fff",
             "title": "Waterproof Outdoor Paint",
+            "title_color": "#fff",
             "text": "Elevates garden aesthetics with vibrant colours, exceptional coverage, and effective rainwater and moisture repellence, ensuring long-lasting protection for outdoor furniture.",
+            "text_color": "#fff",
             "button_label_1": "view collection",
             "button_url_1": "",
             "button_label_2": "READ MORE",
@@ -356,9 +372,12 @@
           "type": "items",
           "settings": {
             "icon": "shopify:\/\/shop_images\/Group_1002_0e1043d7-32eb-4f35-a205-c1cd2550ade8.svg",
-            "heaing": "Multi-Purpose Usage",
+            "heading": "FIXED COLOUR PRICES",
+            "heading_color": "#fff",
             "title": "Multi-Purpose Usage",
+            "title_color": "#fff",
             "text": "Versatile paint suitable for fences, garden arches, wooden benches, sheds, and patio furniture, providing weather protection to maintain garden splendour.",
+            "text_color": "#fff",
             "button_label_1": "view collection",
             "button_url_1": "",
             "button_label_2": "READ MORE",
@@ -369,9 +388,12 @@
           "type": "items",
           "settings": {
             "icon": "shopify:\/\/shop_images\/vector5_b1df4cd2-56e9-423e-b907-09979fc1c0eb.svg",
-            "heaing": "Quick-Drying Formula",
+            "heading": "FIXED COLOUR PRICES",
+            "heading_color": "#fff",
             "title": "Quick-Drying Formula",
+            "title_color": "#fff",
             "text": "Ideal for small DIY projects with rapid drying times, allowing for quick transformation of outdoor spaces and safeguarding possessions with superior decking paint.",
+            "text_color": "#fff",
             "button_label_1": "view collection",
             "button_url_1": "",
             "button_label_2": "READ MORE",
@@ -382,9 +404,12 @@
           "type": "items",
           "settings": {
             "icon": "shopify:\/\/shop_images\/Vector_3_15d3cfdb-d1ab-4ae3-a2bb-1a6e221d3c47.svg",
-            "heaing": "Easy Application",
+            "heading": "FIXED COLOUR PRICES",
+            "heading_color": "#fff",
             "title": "Easy Application",
+            "title_color": "#fff",
             "text": "Applies easily with a brush, roller, or spray on various surfaces like metal, concrete, stone, timber, and wood, ensuring mess-free application with its thick viscosity.",
+            "text_color": "#fff",
             "button_label_1": "view collection",
             "button_url_1": "",
             "button_label_2": "READ MORE",
@@ -395,9 +420,12 @@
           "type": "items",
           "settings": {
             "icon": "shopify:\/\/shop_images\/Group_4_d88f1f1b-54d5-4dbf-bdb4-e369ee5f5ed8.svg",
-            "heaing": "Enhanced Durability",
+            "heading": "FIXED COLOUR PRICES",
+            "heading_color": "#fff",
             "title": "Enhanced Durability",
+            "title_color": "#fff",
             "text": "Improves the longevity of wooden surfaces, offering protection against weathering and wear, ultimately reducing maintenance needs.",
+            "text_color": "#fff",
             "button_label_1": "view collection",
             "button_url_1": "",
             "button_label_2": "READ MORE",
@@ -408,9 +436,12 @@
           "type": "items",
           "settings": {
             "icon": "shopify:\/\/shop_images\/Group_1003_7576886f-a910-4993-af2c-25f067ed90a2.svg",
-            "heaing": "Environmentally Friendly",
+            "heading": "FIXED COLOUR PRICES",
+            "heading_color": "#fff",
             "title": "Environmentally Friendly",
+            "title_color": "#fff",
             "text": "Water-based formula reduces environmental impact, providing a sustainable painting solution for eco-conscious consumers.",
+            "text_color": "#fff",
             "button_label_1": "view collection",
             "button_url_1": "",
             "button_label_2": "READ MORE",
@@ -421,9 +452,12 @@
           "type": "items",
           "settings": {
             "icon": "shopify:\/\/shop_images\/Group_1004_ade3bb3a-b42c-417b-b675-2e1afa310d9d.svg",
-            "heaing": "Wide Array of Trendy Colours",
+            "heading": "FIXED COLOUR PRICES",
+            "heading_color": "#fff",
             "title": "Wide Array of Trendy Colours",
+            "title_color": "#fff",
             "text": "Offers a diverse range of vibrant colours to suit various design preferences, enhancing the aesthetic appeal of outdoor spaces.",
+            "text_color": "#fff",
             "button_label_1": "view collection",
             "button_url_1": "",
             "button_label_2": "READ MORE",
@@ -434,9 +468,12 @@
           "type": "items",
           "settings": {
             "icon": "shopify:\/\/shop_images\/Group_5_7a1cf096-5fba-4f87-9807-6afeb4ef78b5.svg",
-            "heaing": "Effective Water and Mildew Repellent",
+            "heading": "FIXED COLOUR PRICES",
+            "heading_color": "#fff",
             "title": "Effective Water and Mildew Repellent",
+            "title_color": "#fff",
             "text": "Protects against moisture damage and mould growth, ensuring the longevity and cleanliness of wooden surfaces.",
+            "text_color": "#fff",
             "button_label_1": "view collection",
             "button_url_1": "",
             "button_label_2": "READ MORE",
@@ -458,8 +495,10 @@
       "settings": {
         "background_color": "#252489",
         "image": "shopify:\/\/shop_images\/Group_1267.webp",
+        "remove_mobile_image": false,
         "sticker_image": "shopify:\/\/shop_images\/sticker_09781686-2ab2-4c91-945c-98973a6adbef.svg",
         "heading": "Reasons to choose HQC",
+        "heading_color": "#fff",
         "shape_1": "shopify:\/\/shop_images\/Group_1268.svg",
         "shape_2": "shopify:\/\/shop_images\/Group_711.svg",
         "margin_top": 0,
@@ -529,10 +568,14 @@
           "type": "items",
           "settings": {
             "icon": "shopify:\/\/shop_images\/Group_3_1d096ef1-679c-408b-a501-80347a1f82e1.svg",
+            "height": 68,
             "title": "Price",
+            "title_color": "#fff",
             "our_store_text": "Fixed price + WITH up to 50% in discount + Free shipping + no retail Markups",
+            "our_store_text_color": "#001192",
             "store_status": "tick",
             "other_store_text": "5L £85+ NO DISCOUNT + shipping cost + retail markups",
+            "other_store_text_color": "#fff",
             "other_store_status": "cross"
           }
         },
@@ -540,10 +583,14 @@
           "type": "items",
           "settings": {
             "icon": "shopify:\/\/shop_images\/Group_1001.svg",
+            "height": 68,
             "title": "STRENGTH",
+            "title_color": "#fff",
             "our_store_text": "Only Hard wearing & long lasting performance",
+            "our_store_text_color": "#001192",
             "store_status": "tick",
             "other_store_text": "Options vary from High grade, Fair, Poor Wear",
+            "other_store_text_color": "#fff",
             "other_store_status": "cross"
           }
         },
@@ -551,10 +598,14 @@
           "type": "items",
           "settings": {
             "icon": "shopify:\/\/shop_images\/Group_1002_1861b3c8-e447-4345-9d8a-67873f7e2907.svg",
+            "height": 68,
             "title": "MAINTENANCE",
+            "title_color": "#fff",
             "our_store_text": "Easy clean",
+            "our_store_text_color": "#001192",
             "store_status": "tick",
             "other_store_text": "Stains and Marks",
+            "other_store_text_color": "#fff",
             "other_store_status": "cross"
           }
         },
@@ -562,10 +613,14 @@
           "type": "items",
           "settings": {
             "icon": "shopify:\/\/shop_images\/vector5.svg",
+            "height": 68,
             "title": "CONVENIENCE",
+            "title_color": "#fff",
             "our_store_text": "Paint once, and simply  wipe to refresh your walls",
+            "our_store_text_color": "#001192",
             "store_status": "tick",
             "other_store_text": "Makes you Repaint to Refresh your Walls",
+            "other_store_text_color": "#fff",
             "other_store_status": "cross"
           }
         },
@@ -573,10 +628,14 @@
           "type": "items",
           "settings": {
             "icon": "shopify:\/\/shop_images\/Vector_3_235a270c-5945-4d99-aa6f-88bbe8c52f96.svg",
+            "height": 68,
             "title": "MOULD",
+            "title_color": "#fff",
             "our_store_text": "Mould killing barrier fights against moulds and tough humid conditions for years",
+            "our_store_text_color": "#001192",
             "store_status": "tick",
             "other_store_text": "Added Chemicals that fight mould a short time before they wear out",
+            "other_store_text_color": "#fff",
             "other_store_status": "cross"
           }
         },
@@ -584,10 +643,14 @@
           "type": "items",
           "settings": {
             "icon": "shopify:\/\/shop_images\/Group_4_c544c077-94dc-450a-a855-dcaba1439485.svg",
+            "height": 68,
             "title": "COLOUR",
+            "title_color": "#fff",
             "our_store_text": "Choose the trendiest colours in season",
+            "our_store_text_color": "#001192",
             "store_status": "tick",
             "other_store_text": "Basic Colours that fade quick",
+            "other_store_text_color": "#fff",
             "other_store_status": "cross"
           }
         },
@@ -595,10 +658,14 @@
           "type": "items",
           "settings": {
             "icon": "shopify:\/\/shop_images\/Group_1003.svg",
+            "height": 68,
             "title": "ECO-FRIENDLY",
+            "title_color": "#fff",
             "our_store_text": "Our product is freshly made, only when it's needed in the world.",
+            "our_store_text_color": "#001192",
             "store_status": "tick",
             "other_store_text": "Made from Stock Paint that Causes Waste in the World",
+            "other_store_text_color": "#fff",
             "other_store_status": "cross"
           }
         },
@@ -606,10 +673,14 @@
           "type": "items",
           "settings": {
             "icon": "shopify:\/\/shop_images\/Group_1004.svg",
+            "height": 68,
             "title": "VALUE FOR MONEY",
+            "title_color": "#fff",
             "our_store_text": "Highest quality at low costs",
+            "our_store_text_color": "#001192",
             "store_status": "tick",
             "other_store_text": "Too Cheap or Too Expensive",
+            "other_store_text_color": "#fff",
             "other_store_status": "cross"
           }
         },
@@ -617,10 +688,14 @@
           "type": "items",
           "settings": {
             "icon": "shopify:\/\/shop_images\/Group_5_7a1cf096-5fba-4f87-9807-6afeb4ef78b5.svg",
+            "height": 68,
             "title": "INSULATING PRODUCT OPTIONS",
+            "title_color": "#fff",
             "our_store_text": "Insulates your walls",
+            "our_store_text_color": "#001192",
             "store_status": "tick",
             "other_store_text": "Accommodates Cold Walls and Heat Loss",
+            "other_store_text_color": "#fff",
             "other_store_status": "cross"
           }
         }
@@ -639,6 +714,8 @@
       "settings": {
         "background_color": "",
         "heading": "US Vs. THEM",
+        "heading_color": "#fff",
+        "swipe_to_view": "shopify:\/\/shop_images\/Group__1_983945c8-7c45-4349-ac87-d3ea8af255b3.svg",
         "our_store_image": "shopify:\/\/shop_images\/Black_and_Beige_Modern_Minimal_Design_Studio_Logo_1.png",
         "our_store_label": "HQC Satin Wood Paint",
         "other_store_image": "shopify:\/\/shop_images\/water-bucket_9538647_2_1.svg",
@@ -665,7 +742,9 @@
           "settings": {
             "icon": "shopify:\/\/shop_images\/ci_1.webp",
             "title": "Premium Quality Protection",
-            "text": "HQC Satin Wood Paint's premium formulation adds a protective layer to wooden surfaces, shielding them from weathering and wear."
+            "title_color": "#252489",
+            "text": "HQC Satin Wood Paint's premium formulation adds a protective layer to wooden surfaces, shielding them from weathering and wear.",
+            "text_color": "#252489"
           }
         },
         "items_hrQAVe": {
@@ -673,7 +752,9 @@
           "settings": {
             "icon": "shopify:\/\/shop_images\/ci_2.png",
             "title": "Waterproof Barrier",
-            "text": "The paint forms a waterproof barrier on outdoor furniture, preventing water ingress and moisture damage, preserving the wood's integrity."
+            "title_color": "#252489",
+            "text": "The paint forms a waterproof barrier on outdoor furniture, preventing water ingress and moisture damage, preserving the wood's integrity.",
+            "text_color": "#252489"
           }
         },
         "items_fp4w6m": {
@@ -681,7 +762,9 @@
           "settings": {
             "icon": "shopify:\/\/shop_images\/ci_3.png",
             "title": "Versatile Application",
-            "text": "Whether applied to fences, sheds, or garden furniture, this paint provides durable weather protection, keeping outdoor spaces looking their best."
+            "title_color": "#252489",
+            "text": "Whether applied to fences, sheds, or garden furniture, this paint provides durable weather protection, keeping outdoor spaces looking their best.",
+            "text_color": "#252489"
           }
         },
         "items_8Mbb4y": {
@@ -689,7 +772,9 @@
           "settings": {
             "icon": "shopify:\/\/shop_images\/ci_4.png",
             "title": "Rapid Drying",
-            "text": "Its quick-drying formula allows for swift completion of projects, enabling users to enjoy their newly painted surfaces sooner."
+            "title_color": "#252489",
+            "text": "Its quick-drying formula allows for swift completion of projects, enabling users to enjoy their newly painted surfaces sooner.",
+            "text_color": "#252489"
           }
         },
         "items_84TxfV": {
@@ -697,7 +782,9 @@
           "settings": {
             "icon": "shopify:\/\/shop_images\/ci_5.png",
             "title": "Easy Application",
-            "text": "With its user-friendly application methods, including brush, roller, or spray, this paint ensures hassle-free and mess-free painting experiences."
+            "title_color": "#252489",
+            "text": "With its user-friendly application methods, including brush, roller, or spray, this paint ensures hassle-free and mess-free painting experiences.",
+            "text_color": "#252489"
           }
         },
         "items_9yCWBx": {
@@ -705,7 +792,9 @@
           "settings": {
             "icon": "shopify:\/\/shop_images\/ci_6.png",
             "title": "Long-lasting Colour",
-            "text": "The paint's unique pigments and wax-enriched formulation deliver vibrant, long-lasting colour, enhancing the natural beauty of wooden surfaces."
+            "title_color": "#252489",
+            "text": "The paint's unique pigments and wax-enriched formulation deliver vibrant, long-lasting colour, enhancing the natural beauty of wooden surfaces.",
+            "text_color": "#252489"
           }
         },
         "items_7KfRhr": {
@@ -713,7 +802,9 @@
           "settings": {
             "icon": "shopify:\/\/shop_images\/ci_7.png",
             "title": "Environmentally Conscious",
-            "text": "Made with a water-based formula, this paint Minimises environmental impact while providing superior protection and aesthetics."
+            "title_color": "#252489",
+            "text": "Made with a water-based formula, this paint Minimises environmental impact while providing superior protection and aesthetics.",
+            "text_color": "#252489"
           }
         },
         "items_9nGjDR": {
@@ -721,7 +812,9 @@
           "settings": {
             "icon": "shopify:\/\/shop_images\/ci_8.png",
             "title": "Trusted Performance",
-            "text": "Backed by years of successful use in various settings, HQC Satin Wood Paint is a trusted choice for homeowners and professionals alike."
+            "title_color": "#252489",
+            "text": "Backed by years of successful use in various settings, HQC Satin Wood Paint is a trusted choice for homeowners and professionals alike.",
+            "text_color": "#252489"
           }
         }
       },
@@ -738,6 +831,7 @@
       "settings": {
         "background_color": "#252489",
         "heading": "How HQC Satin Wood Paint Works",
+        "heading_color": "#252489",
         "image": "shopify:\/\/shop_images\/Group_1040.png",
         "loop": false,
         "autoplay": true,
@@ -762,36 +856,52 @@
           "type": "side-image",
           "settings": {
             "img": "shopify:\/\/shop_images\/Spatula_1_9e8e8610-8c2d-40ae-91f1-392000a8ba1d.png",
+            "box_color": "#fff",
             "pretext": "Step 1",
+            "pretext_color": "#000",
             "heading": "PREP",
-            "text": "<p>Prep your area and walls by sanding, cleaning, and ensuring the surface is smooth & dry - use primer (or mist coat) on bare surfaces or fresh plaster board<\/p>"
+            "heading_color": "#000",
+            "text": "<p>Prep your area and walls by sanding, cleaning, and ensuring the surface is smooth & dry - use primer (or mist coat) on bare surfaces or fresh plaster board<\/p>",
+            "text_color": "#000"
           }
         },
         "52ea6670-1b63-43eb-ab2a-45eb3a761fd4": {
           "type": "side-image",
           "settings": {
             "img": "shopify:\/\/shop_images\/Spatula_2_982a9cb2-567a-4610-b98e-c6e9066e3272.png",
+            "box_color": "#fff",
             "pretext": "Step 2",
+            "pretext_color": "#000",
             "heading": "PAINT",
-            "text": "<p>Paint with either a roller, brush or spray Paint with either a roller, brush or spray Paint with either a roller, brush or spray Paint with either a roller, brush or spray<\/p>"
+            "heading_color": "#000",
+            "text": "<p>Paint with either a roller, brush or spray Paint with either a roller, brush or spray Paint with either a roller, brush or spray Paint with either a roller, brush or spray<\/p>",
+            "text_color": "#000"
           }
         },
         "ecabd154-d50a-4a36-ba02-35e13c325431": {
           "type": "side-image",
           "settings": {
             "img": "shopify:\/\/shop_images\/Spatula_3_e94629f0-d72b-45a1-a4b6-f8a31304a9ab.png",
+            "box_color": "#fff",
             "pretext": "Step 3",
+            "pretext_color": "#000",
             "heading": "CLEAN",
-            "text": "<p>Clean up any excess paint with cloths and any type you’ve used Clean up any excess paint with cloths and any type you’ve used Clean up any excess <\/p>"
+            "heading_color": "#000",
+            "text": "<p>Clean up any excess paint with cloths and any type you’ve used Clean up any excess paint with cloths and any type you’ve used Clean up any excess <\/p>",
+            "text_color": "#000"
           }
         },
         "3de3636d-9001-45dc-a026-5ebfc2ea74ce": {
           "type": "side-image",
           "settings": {
             "img": "shopify:\/\/shop_images\/Spatula_4_212c43a9-1933-4ebc-a9f5-5ec8d9c265e5.png",
+            "box_color": "#fff",
             "pretext": "Step 4",
+            "pretext_color": "#000",
             "heading": "ENJOY",
-            "text": "<p>Enjoy your newly decorated spaces and decor Enjoy your newly decorated spaces and decor Enjoy your newly decorated spaces and decor<\/p>"
+            "heading_color": "#000",
+            "text": "<p>Enjoy your newly decorated spaces and decor Enjoy your newly decorated spaces and decor Enjoy your newly decorated spaces and decor<\/p>",
+            "text_color": "#000"
           }
         }
       },
@@ -803,6 +913,7 @@
       ],
       "settings": {
         "heading": "HOW DOES IT WORK?",
+        "heading_color": "#fff",
         "button_label": "SEE GUIDE HOW TO DECORATE",
         "button_link": "",
         "desktop_item": 4,
@@ -990,6 +1101,9 @@
         "title": "HQC COLLECTION",
         "color": "#ffffff",
         "background_color": "#252489",
+        "product_bg_color": "transparent",
+        "product_bottom_bg_color": "transparent",
+        "product_des_bg_color": "transparent",
         "margin_top": 0,
         "margin_bottom": 0,
         "padding_top": 0,
@@ -1084,6 +1198,8 @@
         "items_RH8LqT"
       ],
       "settings": {
+        "background_color": "#57bd79",
+        "text_color": "#000",
         "heading": "Still Unsure about your purchase?",
         "text": "Check Our Promisies & assurance"
       }

@@ -1,143 +1,155 @@
-
 {{ 'brand-products-section.css' | asset_url | stylesheet_tag: preload: true }}
 {{ 'component-badge.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 
-{%- if settings.quickview_show == false and settings.show_color_swatch and section.settings.show_color_swatch-%}
-    {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
-  {% endif %}
+{%- if settings.quickview_show == false and settings.show_color_swatch and section.settings['show_color_swatch-'] %}
+  {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
+{% endif %}
 
 {%- if settings.quickview_show or settings.add_to_cart_enabled -%}
-    <link
-      rel="preload"
-      href="{{ 'section-main-product.css' | asset_url }}"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-    >
-    <link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="all">
-    <link
-      rel="preload"
-      href="{{ 'quick-add.css' | asset_url }}"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-    >
-  
-    <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
-    <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
-  {%- endif -%}
+  <link
+    rel="preload"
+    href="{{ 'section-main-product.css' | asset_url }}"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
+  >
+  <link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="all">
+  <link
+    rel="preload"
+    href="{{ 'quick-add.css' | asset_url }}"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
+  >
+
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
 
 <div class="brand-products-section">
+  <div style="position: absolute; top:0; right:0; width:40%; display:flex;margin-top:-110px;">
 
+  </div>
+  <div style="position: absolute; top:0; left:0; width:40%; display:flex;margin-top:-110px;">
+
+  </div>
   {% if section.settings.shapeimage != blank %}
-      <div class="shape-img">
-        {{ section.settings.shapeimage | image_url: width: auto  | image_tag: loading: 'lazy' }}
-      </div>
+    <div class="shape-img">
+      {{ section.settings.shapeimage | image_url: width: auto | image_tag: loading: 'lazy' }}
+    </div>
   {% endif %}
 
-
-    <div class="container">
-         <div class="row">
-            <div class="col-md-12 text-center m-auto">
-                {% if  section.settings.heading != blank  %}
-                    <h2 class="section-heading-brand">{{ section.settings.heading}}</h2>
-                {% endif %}
-                {% if  section.settings.description != blank  %}
-                  <div class="section-dsc-brand">
-                    <p>{{section.settings.description }}</p>
-                 </div>
-                {% endif %}
-            </div>
-         </div>
-
-    </div>
-    <div class="container"> 
-          <div class="row brand-list-row">
-               <div class="col-12">
-                  <tab-component>
-                    <div class="tab__slideshow swiper"
-                      data-centeredslides="false"
-                      data-slidesdesktop="7"
-                      data-slidesLaptop="7"
-                      data-slidesTab="3"
-                      data-slidesMobile="1.5"
-                      data-direction="false"
-                      data-autoPlay="false"
-                      data-delay="5000"
-                      data-loop="true"
-                      data-freemode="true"
-                      data-freemomentum="false"
-                      data-speed="500"
-                      data-desktopspace="20"
-                      data-laptopspace="20"
-                      data-tabspace="20"
-                      data-mobilespace="15"
-                     >
-                        <ul class="brand-list swiper-wrapper">
-                     {% assign count = 1 %}
-                     {% for block in section.blocks %}
-                        {%- case block.type -%}
-                            {%- when 'collection' -%}
-                              {%liquid
-                               assign collection = block.settings.collection 
-                              %}
-                             <li class="swiper-slide {%if count == 1 %} swiper-slide-active {%endif %}"  data-tab="tab-{{block.id}}-{{count}}">
-                                {% if block.settings.image != blank %}
-                                    {{ block.settings.image | image_url: width: auto  | image_tag: loading: 'lazy' }}
-
-                                    {% elsif collection != blank %}
-
-                                      {{ collection.image | image_url: width: auto  | image_tag: loading: 'lazy' }}
-
-                                    {% else %}
-                                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-                                {% endif %}
-       
-                            </li>
-                        {%- endcase -%}
-                        {% assign count = count | plus: 1 %}
-                     {% endfor %}
-                   </ul>
-                  </div>
-                </tab-component>
-              </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center m-auto brand-heading">
+        {% style %}
+          .brand-heading {
+            padding: 0 15%;
+          }
+          {% endstyle %}
+        {% if section.settings.heading != blank %}
+          <h2 
+            class="section-heading-brand"
+          >
+            {{ section.settings.heading }}
+          </h2>
+        {% endif %}
+        {% if section.settings.description != blank %}
+          <div class="section-dsc-brand">
+            <p>{{ section.settings.description }}</p>
           </div>
-
-
-          <div class="row">
-            <div class="col-12">
-                   
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row brand-list-row">
+      <div>
+        <tab-component>
+          <div
+            class="tab__slideshow swiper"
+            data-centeredslides="false"
+            data-slidesdesktop="7"
+            data-slidesLaptop="7"
+            data-slidesTab="3"
+            data-slidesMobile="1.5"
+            data-direction="false"
+            data-autoPlay="false"
+            data-delay="5000"
+            data-loop="true"
+            data-freemode="true"
+            data-freemomentum="false"
+            data-speed="500"
+            data-desktopspace="20"
+            data-laptopspace="20"
+            data-tabspace="20"
+            data-mobilespace="15"
+          >
+            <ul class="brand-list swiper-wrapper">
               {% assign count = 1 %}
               {% for block in section.blocks %}
                 {%- case block.type -%}
-                    {%- when 'collection' -%}
-                      {%liquid
-                        assign collection = block.settings.collection 
-                       %}
-                <div id="tab-{{block.id}}-{{forloop.index}}" class="brand-content {%if count == 1 %} active {%endif %} ">
-                    <slider-component >
-                    <div class="common__slideshow swiper  list-unstyled"
-                        data-centeredslides="false"
-                        data-slidesdesktop="5"
-                        data-slidesLaptop="5"
-                        data-slidesTab="3"
-                        data-slidesMobile="1"
-                        data-direction="false"
-                        data-autoPlay="false"
-                        data-delay="0"
-                        data-loop="true"
-                        data-freemode="false"
-                        data-freemomentum="false"
-                        data-speed="500"
-                        data-desktopspace="20"
-                        data-laptopspace="20"
-                        data-tabspace="20"
-                        data-mobilespace="15"
-                     >
-                        <div class="swiper-wrapper brand-list-swiper">
-                        {%- for product in collection.products limit: section.settings.products_limit -%}
+                  {%- when 'collection' -%}
+                    {% liquid
+                      assign collection = block.settings.collection
+                    %}
+                    <li
+                      class="swiper-slide {%if count == 1 %} swiper-slide-active {%endif %}"
+                      data-tab="tab-{{block.id}}-{{count}}"
+                    >
+                      {% if block.settings.image != blank %}
+                        {{ block.settings.image | image_url: width: auto | image_tag: loading: 'lazy' }}
+
+                      {% elsif collection != blank %}
+                        {{ collection.image | image_url: width: auto | image_tag: loading: 'lazy' }}
+                      {% else %}
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                      {% endif %}
+                    </li>
+                {%- endcase -%}
+                {% assign count = count | plus: 1 %}
+              {% endfor %}
+            </ul>
+          </div>
+        </tab-component>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        {% assign count = 1 %}
+        {% for block in section.blocks %}
+          {%- case block.type -%}
+            {%- when 'collection' -%}
+              {% liquid
+                assign collection = block.settings.collection
+              %}
+              <div id="tab-{{block.id}}-{{forloop.index}}" class="brand-content {%if count == 1 %} active {%endif %} ">
+                <slider-component>
+                  <div
+                    class="common__slideshow swiper  list-unstyled"
+                    data-centeredslides="false"
+                    data-slidesdesktop="5"
+                    data-slidesLaptop="5"
+                    data-slidesTab="3"
+                    data-slidesMobile="1"
+                    data-direction="false"
+                    data-autoPlay="false"
+                    data-delay="0"
+                    data-loop="true"
+                    data-freemode="false"
+                    data-freemomentum="false"
+                    data-speed="500"
+                    data-desktopspace="20"
+                    data-laptopspace="20"
+                    data-tabspace="20"
+                    data-mobilespace="15"
+                  >
+                    <div class="swiper-wrapper brand-list-swiper">
+                      {%- for product in collection.products limit: section.settings.products_limit -%}
                         <div
-                          class=" swiper-slide
+                          class="
+                            swiper-slide
                             collection-product-card
                             quickview{%- if settings.quickview_hover -%}--hover{% endif %}
                           "
@@ -153,153 +165,145 @@
                             show_sku: section.settings.show_sku,
                             section_id: section.id,
                             show_color_swatch: section.settings.show_color_swatch,
-                            loop: block.id
+                            loop: block.id,
                             collection: collection.id
                           %}
                         </div>
                       {%- else -%}
-                        {%- for i in (1..section.settings.products_limit ) -%}
+                        {%- for i in (1..section.settings.products_limit) -%}
                           <div class="collection-product-card swiper-slide">
                             {% render 'product-card-placeholder', media_size: 'square' %}
                           </div>
                         {%- endfor -%}
                       {%- endfor -%}
                     </div>
-    
-                    </div> 
-    
-                    <div class="featured-products-navigation">
-                        <div class="swiper-button-prev">
-                           <svg width="76" height="76" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
-                               <g filter="url(#filter0_d_1447_211)">
-                               <circle cx="30" cy="30" r="30" transform="matrix(-1 0 0 1 68 4)" fill="white"/>
-                               <rect width="3" height="12.2217" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 45 35.9062)" fill="black"/>
-                               <rect width="3" height="7.87027" transform="matrix(0.707107 -0.707107 -0.707107 -0.707107 36.0156 39.9062)" fill="black"/>
-                               <rect width="3" height="7.87027" transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 38.1367 30.8994)" fill="black"/>
-                               </g>
-                               <defs>
-                               <filter id="filter0_d_1447_211" x="0" y="0" width="76" height="76" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                               <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                               <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                               <feOffset dy="4"/>
-                               <feGaussianBlur stdDeviation="4"/>
-                               <feComposite in2="hardAlpha" operator="out"/>
-                               <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.07 0"/>
-                               <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1447_211"/>
-                               <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1447_211" result="shape"/>
-                               </filter>
-                               </defs>
-                               </svg>
-                               
-                       </div>
-                       <div class="swiper-button-next">
-                           <svg width="76" height="76" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
-                               <g filter="url(#filter0_d_1447_205)">
-                               <circle cx="38" cy="34" r="30" fill="white"/>
-                               <rect x="31" y="35.9062" width="3" height="12.2217" transform="rotate(-90 31 35.9062)" fill="black"/>
-                               <rect x="39.9844" y="39.9062" width="3" height="7.87027" transform="rotate(-135 39.9844 39.9062)" fill="black"/>
-                               <rect x="37.8633" y="30.8994" width="3" height="7.87027" transform="rotate(-45 37.8633 30.8994)" fill="black"/>
-                               </g>
-                               <defs>
-                               <filter id="filter0_d_1447_205" x="0" y="0" width="76" height="76" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                               <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                               <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                               <feOffset dy="4"/>
-                               <feGaussianBlur stdDeviation="4"/>
-                               <feComposite in2="hardAlpha" operator="out"/>
-                               <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.07 0"/>
-                               <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1447_205"/>
-                               <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1447_205" result="shape"/>
-                               </filter>
-                               </defs>
-                               </svg>
-                               
-                       </div>
-                   </div>
-                 </slider-component>
-    
-               </div>
-              {%- endcase -%}
-              {% assign count = count | plus: 1 %}
-           {% endfor %}
-            </div>
-           </div>
+                  </div>
 
-           <mobile-slider> 
-           <div class="mobile__slideshow"  data-slides="2" data-loop="true" data-direction="horizontal" data-space="30">
-         <div class="icon-box-list icon-box-section swiper-wrapper">
-          {% for block in section.blocks %}
-            {%- case block.type -%}
-                {%- when 'image_icon' -%}
-                  <div class="icon-box__item swiper-slide">
-                    <div class="icon-box">
-                          <div class="img-wrap">
-                            {% if block.settings.image != blank %}
-                              {{ block.settings.image | image_url: width: auto  | image_tag: loading: 'lazy' }}
-                              {% else %}
-                              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-                          {% endif %}
-                          </div>
-
-                          <h3>{{block.settings.text }}</h3>
+                  <div class="featured-products-navigation">
+                    <div class="swiper-button-prev">
+                      <svg width="76" height="76" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g filter="url(#filter0_d_1447_211)">
+                        <circle cx="30" cy="30" r="30" transform="matrix(-1 0 0 1 68 4)" fill="white"/>
+                        <rect width="3" height="12.2217" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 45 35.9062)" fill="black"/>
+                        <rect width="3" height="7.87027" transform="matrix(0.707107 -0.707107 -0.707107 -0.707107 36.0156 39.9062)" fill="black"/>
+                        <rect width="3" height="7.87027" transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 38.1367 30.8994)" fill="black"/>
+                        </g>
+                        <defs>
+                        <filter id="filter0_d_1447_211" x="0" y="0" width="76" height="76" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                        <feOffset dy="4"/>
+                        <feGaussianBlur stdDeviation="4"/>
+                        <feComposite in2="hardAlpha" operator="out"/>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.07 0"/>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1447_211"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1447_211" result="shape"/>
+                        </filter>
+                        </defs>
+                      </svg>
+                    </div>
+                    <div class="swiper-button-next">
+                      <svg width="76" height="76" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g filter="url(#filter0_d_1447_205)">
+                        <circle cx="38" cy="34" r="30" fill="white"/>
+                        <rect x="31" y="35.9062" width="3" height="12.2217" transform="rotate(-90 31 35.9062)" fill="black"/>
+                        <rect x="39.9844" y="39.9062" width="3" height="7.87027" transform="rotate(-135 39.9844 39.9062)" fill="black"/>
+                        <rect x="37.8633" y="30.8994" width="3" height="7.87027" transform="rotate(-45 37.8633 30.8994)" fill="black"/>
+                        </g>
+                        <defs>
+                        <filter id="filter0_d_1447_205" x="0" y="0" width="76" height="76" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                        <feOffset dy="4"/>
+                        <feGaussianBlur stdDeviation="4"/>
+                        <feComposite in2="hardAlpha" operator="out"/>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.07 0"/>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1447_205"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1447_205" result="shape"/>
+                        </filter>
+                        </defs>
+                      </svg>
                     </div>
                   </div>
-                {%- endcase -%}
-             {% endfor %}
-         </div>
-         <div class="icon-box-navigation">
-          <div class="swiper-button-prev-mobile">
-             <svg width="76" height="76" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <g filter="url(#filter0_d_1447_211)">
-                 <circle cx="30" cy="30" r="30" transform="matrix(-1 0 0 1 68 4)" fill="white"/>
-                 <rect width="3" height="12.2217" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 45 35.9062)" fill="black"/>
-                 <rect width="3" height="7.87027" transform="matrix(0.707107 -0.707107 -0.707107 -0.707107 36.0156 39.9062)" fill="black"/>
-                 <rect width="3" height="7.87027" transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 38.1367 30.8994)" fill="black"/>
-                 </g>
-                 <defs>
-                 <filter id="filter0_d_1447_211" x="0" y="0" width="76" height="76" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                 <feOffset dy="4"/>
-                 <feGaussianBlur stdDeviation="4"/>
-                 <feComposite in2="hardAlpha" operator="out"/>
-                 <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.07 0"/>
-                 <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1447_211"/>
-                 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1447_211" result="shape"/>
-                 </filter>
-                 </defs>
-                 </svg>
-                 
-         </div>
-         <div class="swiper-button-next-mobile">
-             <svg width="76" height="76" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <g filter="url(#filter0_d_1447_205)">
-                 <circle cx="38" cy="34" r="30" fill="white"/>
-                 <rect x="31" y="35.9062" width="3" height="12.2217" transform="rotate(-90 31 35.9062)" fill="black"/>
-                 <rect x="39.9844" y="39.9062" width="3" height="7.87027" transform="rotate(-135 39.9844 39.9062)" fill="black"/>
-                 <rect x="37.8633" y="30.8994" width="3" height="7.87027" transform="rotate(-45 37.8633 30.8994)" fill="black"/>
-                 </g>
-                 <defs>
-                 <filter id="filter0_d_1447_205" x="0" y="0" width="76" height="76" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                 <feOffset dy="4"/>
-                 <feGaussianBlur stdDeviation="4"/>
-                 <feComposite in2="hardAlpha" operator="out"/>
-                 <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.07 0"/>
-                 <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1447_205"/>
-                 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1447_205" result="shape"/>
-                 </filter>
-                 </defs>
-                 </svg>
-                 
-         </div>
-     </div>
-
-        </div>
-        </mobile-slider>
-
+                </slider-component>
+              </div>
+          {%- endcase -%}
+          {% assign count = count | plus: 1 %}
+        {% endfor %}
+      </div>
     </div>
+
+    <mobile-slider>
+      <div class="mobile__slideshow" data-slides="2" data-loop="true" data-direction="horizontal" data-space="30">
+        <div class="icon-box-list icon-box-section swiper-wrapper">
+          {% for block in section.blocks %}
+            {%- case block.type -%}
+              {%- when 'image_icon' -%}
+                <div class="icon-box__item swiper-slide">
+                  <div class="icon-box">
+                    <div class="img-wrap">
+                      {% if block.settings.image != blank %}
+                        {{ block.settings.image | image_url: width: auto | image_tag: loading: 'lazy' }}
+                      {% else %}
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                      {% endif %}
+                    </div>
+
+                    <h3>{{ block.settings.text }}</h3>
+                  </div>
+                </div>
+            {%- endcase -%}
+          {% endfor %}
+        </div>
+        <div class="icon-box-navigation">
+          <div class="swiper-button-prev-mobile">
+            <svg width="76" height="76" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g filter="url(#filter0_d_1447_211)">
+              <circle cx="30" cy="30" r="30" transform="matrix(-1 0 0 1 68 4)" fill="white"/>
+              <rect width="3" height="12.2217" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 45 35.9062)" fill="black"/>
+              <rect width="3" height="7.87027" transform="matrix(0.707107 -0.707107 -0.707107 -0.707107 36.0156 39.9062)" fill="black"/>
+              <rect width="3" height="7.87027" transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 38.1367 30.8994)" fill="black"/>
+              </g>
+              <defs>
+              <filter id="filter0_d_1447_211" x="0" y="0" width="76" height="76" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+              <feOffset dy="4"/>
+              <feGaussianBlur stdDeviation="4"/>
+              <feComposite in2="hardAlpha" operator="out"/>
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.07 0"/>
+              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1447_211"/>
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1447_211" result="shape"/>
+              </filter>
+              </defs>
+            </svg>
+          </div>
+          <div class="swiper-button-next-mobile">
+            <svg width="76" height="76" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g filter="url(#filter0_d_1447_205)">
+              <circle cx="38" cy="34" r="30" fill="white"/>
+              <rect x="31" y="35.9062" width="3" height="12.2217" transform="rotate(-90 31 35.9062)" fill="black"/>
+              <rect x="39.9844" y="39.9062" width="3" height="7.87027" transform="rotate(-135 39.9844 39.9062)" fill="black"/>
+              <rect x="37.8633" y="30.8994" width="3" height="7.87027" transform="rotate(-45 37.8633 30.8994)" fill="black"/>
+              </g>
+              <defs>
+              <filter id="filter0_d_1447_205" x="0" y="0" width="76" height="76" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+              <feOffset dy="4"/>
+              <feGaussianBlur stdDeviation="4"/>
+              <feComposite in2="hardAlpha" operator="out"/>
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.07 0"/>
+              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1447_205"/>
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1447_205" result="shape"/>
+              </filter>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </mobile-slider>
+  </div>
 </div>
 {% schema %}
 {
@@ -310,18 +314,18 @@
   },
   "settings": [
     {
-        "type": "textarea",
-        "id": "heading",
-        "default": "Shop only Scientifically Proven Brands",
-        "label": "t:sections.popular-products.settings.heading.label"
-      },
-      {
-          "type": "inline_richtext",
-          "id": "description",
-          "default": "We understand how important it is finding the right product, so whether you're a business or a first time painter, We've made the best possible product finder to find the right product.",
-          "label": "Description"
-     },
-     {
+      "type": "textarea",
+      "id": "heading",
+      "default": "Shop only Scientifically Proven Brands",
+      "label": "t:sections.popular-products.settings.heading.label"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "description",
+      "default": "We understand how important it is finding the right product, so whether you're a business or a first time painter, We've made the best possible product finder to find the right product.",
+      "label": "Description"
+    },
+    {
       "type": "range",
       "id": "products_limit",
       "min": 4,
@@ -331,122 +335,122 @@
       "label": "t:sections.popular-products.settings.products_limit.label"
     },
     {
-        "type": "header",
-        "content": "t:sections.all.card.header_card.content"
-      },
-      {
-        "type": "select",
-        "id": "image_ratio",
-        "options": [
-          {
-            "value": "landscape",
-            "label": "t:sections.all.card.image_ratio.options__1.label"
-          },
-          {
-            "value": "portrait",
-            "label": "t:sections.all.card.image_ratio.options__2.label"
-          },
-          {
-            "value": "square",
-            "label": "t:sections.all.card.image_ratio.options__3.label"
-          }
-        ],
-        "default": "square",
-        "label": "t:sections.all.card.image_ratio.label"
-      },
-      {
-        "type": "select",
-        "id": "image_fit",
-        "label": "t:sections.all.card.image_fit.label",
-        "options": [
-          {
-            "value": "contain",
-            "label": "t:sections.all.card.image_fit.options__1.label"
-          },
-          {
-            "value": "cover",
-            "label": "t:sections.all.card.image_fit.options__2.label"
-          }
-        ],
-        "default": "cover"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_secondary_image",
-        "default": false,
-        "label": "t:sections.all.card.show_secondary_image.label"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_vendor",
-        "default": true,
-        "label": "t:sections.all.card.show_vendor.label"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_button",
-        "default": false,
-        "label": "Show Button"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_desc",
-        "default": false,
-        "label": "t:sections.all.card.show_desc.label"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_sku",
-        "default": false,
-        "label": "t:sections.all.card.show_sku.label"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_color_swatch",
-        "default": false,
-        "label": "Color Swatch"
-      },
-      {
-        "type" : "image_picker",
-        "id" : "shapeimage",
-        "label": "Image"
+      "type": "header",
+      "content": "t:sections.all.card.header_card.content"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "landscape",
+          "label": "t:sections.all.card.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.all.card.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.all.card.image_ratio.options__3.label"
+        }
+      ],
+      "default": "square",
+      "label": "t:sections.all.card.image_ratio.label"
+    },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "t:sections.all.card.image_fit.label",
+      "options": [
+        {
+          "value": "contain",
+          "label": "t:sections.all.card.image_fit.options__1.label"
+        },
+        {
+          "value": "cover",
+          "label": "t:sections.all.card.image_fit.options__2.label"
+        }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "t:sections.all.card.show_secondary_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": true,
+      "label": "t:sections.all.card.show_vendor.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "default": false,
+      "label": "Show Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_desc",
+      "default": false,
+      "label": "t:sections.all.card.show_desc.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sku",
+      "default": false,
+      "label": "t:sections.all.card.show_sku.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_color_swatch",
+      "default": false,
+      "label": "Color Swatch"
+    },
+    {
+      "type": "image_picker",
+      "id": "shapeimage",
+      "label": "Image"
     }
   ],
   "blocks": [
     {
-    "name": "Collection",
-    "type": "collection",
-    "settings": [
-                {
-                    "type" : "image_picker",
-                    "id" : "image",
-                    "label": "Image"
-                },
-                {
-                  "type": "collection",
-                  "id": "collection",
-                  "label": "Choose Collection"
-                }
-            ]
+      "name": "Collection",
+      "type": "collection",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Choose Collection"
+        }
+      ]
     },
     {
       "name": "Icon",
       "type": "image_icon",
       "settings": [
-                  {
-                      "type" : "image_picker",
-                      "id" : "image",
-                      "label": "Image"
-                  },
-                  {
-                    "type": "inline_richtext",
-                    "id": "text",
-                     "default": "HIGH-GRADE   UK IN HOUSE quality",
-                    "label": "Text"
-                  }
-              ]
-      }
-],
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "default": "HIGH-GRADE   UK IN HOUSE quality",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
       "name": "Brand with Products"

@@ -2,156 +2,163 @@
 
 
 {% assign sectId = section.id | prepend: 'shopify-section-' %}
-{% assign code = sectId | slice: -8, 8 | replace: "-", "" %}
+{% assign code = sectId | slice: -8, 8 | replace: '-', '' %}
 
 <div class="hidden-data" style="height:0px; overflow: hidden; ">
-{% paginate collections.all.products by 175 %}
-{% for product in collections.all.products %}
-{{ forloop.index }}
-<div class="hidden-product" data-productname="{{ product.title }}" data-producturl="{{ shop.url }}{{ product.url }}" data-productbrand="{% for tag in product.tags %}{% if tag contains "Brand-" %}{{ tag | remove: "Brand-" }}{% endif %}{% endfor %}">
-<div class="hidden-product-variants">
-{% for variant in product.variants %}
-<p class="hidden-product-variant-item" data-variantname="{{ variant.title }}" data-variantid="{{ variant.id }}" data-variantlink= "{{ shop.url }}{{ product.url }}?variant={{ variant.id }}" data-variantimage="{{ shop.url }}/cdn/shop/{{ variant.image }}" data-variantbrand="{% for tag in product.tags %}{% if tag contains "Brand-" %}{{ tag | remove: "Brand-" }}{% endif %}{% endfor %}">
-{{ variant.title }}
-</p>
-{% endfor %}
-</div>
-<div class="hidden-product-tags">
-{% for tag in product.tags %}
-<p class="hidden-product-tag-item" data-tagname="{{ tag }}">{{ tag }}</p>
-  
-{% if tag contains "Brand-" %}
-{% endif %}
-  
-{% endfor %}
-</div>
-</div>
-{% endfor %}
-{{- paginate | default_pagination }}
-{% endpaginate %}
+  {% paginate collections.all.products by 175 %}
+    {% for product in collections.all.products %}
+      {{ forloop.index }}
+      <div
+        class="hidden-product"
+        data-productname="{{ product.title }}"
+        data-producturl="{{ shop.url }}{{ product.url }}"
+        data-productbrand="{% for tag in product.tags %}{% if tag contains "Brand-" %}{{ tag | remove: "Brand-" }}{% endif %}{% endfor %}"
+      >
+        <div class="hidden-product-variants">
+          {% for variant in product.variants %}
+            <p
+              class="hidden-product-variant-item"
+              data-variantname="{{ variant.title }}"
+              data-variantid="{{ variant.id }}"
+              data-variantlink="{{ shop.url }}{{ product.url }}?variant={{ variant.id }}"
+              data-variantimage="{{ shop.url }}/cdn/shop/{{ variant.image }}"
+              data-variantbrand="{% for tag in product.tags %}{% if tag contains "Brand-" %}{{ tag | remove: "Brand-" }}{% endif %}{% endfor %}"
+            >
+              {{ variant.title }}
+            </p>
+          {% endfor %}
+        </div>
+        <div class="hidden-product-tags">
+          {% for tag in product.tags %}
+            <p class="hidden-product-tag-item" data-tagname="{{ tag }}">{{ tag }}</p>
+
+            {% if tag contains 'Brand-' %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+    {{- paginate | default_pagination }}
+  {% endpaginate %}
 </div>
 
 <script>
-const data{{ code }} = document.querySelector("#{{ sectId }} .hidden-data");
-const products{{ code }} = data{{ code }}.querySelectorAll(".hidden-product");
-const jsProducts{{ code }} = [];
-const globalColors{{ code }} = new Set();
-const globalBrands{{ code }} = new Set();
+  const data{{ code }} = document.querySelector("#{{ sectId }} .hidden-data");
+  const products{{ code }} = data{{ code }}.querySelectorAll(".hidden-product");
+  const jsProducts{{ code }} = [];
+  const globalColors{{ code }} = new Set();
+  const globalBrands{{ code }} = new Set();
 
-products{{ code }}.forEach(product => {
-  const productName = product.dataset.productname;
-  const productUrl = product.dataset.producturl;
-  const productBrand = product.dataset.productbrand;
+  products{{ code }}.forEach(product => {
+    const productName = product.dataset.productname;
+    const productUrl = product.dataset.producturl;
+    const productBrand = product.dataset.productbrand;
 
-  const variantArray = [];
-  const variants = product.querySelectorAll(".hidden-product-variants .hidden-product-variant-item");
-  variants.forEach(variant => {
-    let variantName = variant.dataset.variantname;
-    const variantId = variant.dataset.variantid;
-    const variantLink = variant.dataset.variantlink;
-    const variantImage = variant.dataset.variantimage;
-    const variantBrand = variant.dataset.variantbrand;
+    const variantArray = [];
+    const variants = product.querySelectorAll(".hidden-product-variants .hidden-product-variant-item");
+    variants.forEach(variant => {
+      let variantName = variant.dataset.variantname;
+      const variantId = variant.dataset.variantid;
+      const variantLink = variant.dataset.variantlink;
+      const variantImage = variant.dataset.variantimage;
+      const variantBrand = variant.dataset.variantbrand;
 
-    if (variantName.includes("RAL")) {
-      variantName = variantName.replace(/RAL \d{4}\s/, "").trim();
-    }
+      if (variantName.includes("RAL")) {
+        variantName = variantName.replace(/RAL \d{4}\s/, "").trim();
+      }
 
-    const variantObject = {
-      "name": variantName,
-      "id": variantId,
-      "link": variantLink,
-      "image": variantImage,
-      "brand": variantBrand
-    };
+      const variantObject = {
+        "name": variantName,
+        "id": variantId,
+        "link": variantLink,
+        "image": variantImage,
+        "brand": variantBrand
+      };
 
-    var pattern = /RAL \d{4}/;
-    var containsPattern = pattern.test(variantName);
+      var pattern = /RAL \d{4}/;
+      var containsPattern = pattern.test(variantName);
 
-    if (!containsPattern) {
-      if (!(variantName == undefined)) {
-        if (!(productName == "TRADE - HQC Blackboard And Chalkboard Paint")) {
-          if (variantName.includes("/")) {
-            if (!variantName.toLowerCase().includes("custom")) {
-              if (!variantName.toLowerCase().includes("clear")) {
-                variantArray.push(variantObject);
+      if (!containsPattern) {
+        if (!(variantName == undefined)) {
+          if (!(productName == "TRADE - HQC Blackboard And Chalkboard Paint")) {
+            if (variantName.includes("/")) {
+              if (!variantName.toLowerCase().includes("custom")) {
+                if (!variantName.toLowerCase().includes("clear")) {
+                  variantArray.push(variantObject);
+                }
               }
             }
           }
         }
       }
-    }
-  });
+    });
 
-  const tagArray = [];
-  const tags = product.querySelectorAll(".hidden-product-tags .hidden-product-tag-item");
-  tags.forEach(tag => {
-    const tagName = tag.dataset.tagname;
-    const tagObject = {
-      "name": tagName
-    };
-    tagArray.push(tagObject);
-  });
+    const tagArray = [];
+    const tags = product.querySelectorAll(".hidden-product-tags .hidden-product-tag-item");
+    tags.forEach(tag => {
+      const tagName = tag.dataset.tagname;
+      const tagObject = {
+        "name": tagName
+      };
+      tagArray.push(tagObject);
+    });
 
-  const paintColors = {};
+    const paintColors = {};
 
-  variantArray.forEach(obj => {
-{% comment %}     console.log(obj.brand); {% endcomment %}
-    const nameParts = obj.name.split(' / ');
-    let paintColor = nameParts[1];
-    if (paintColor.includes("/")) {
-      paintColor = paintColor.split('/')[0];
-    }
-
-    globalColors{{ code }}.add(paintColor);
-
-    paintColors[paintColor] = obj;
-  });
-
-  const result = Object.values(paintColors);
-
-  const productObject = {
-    "name": productName,
-    "url": productUrl,
-    "variants": result,
-    "tags": tagArray,
-    "brand": productBrand
-  };
-
-  jsProducts{{ code }}.push(productObject);
-});
-
-// Create the globalColorsWithBrand array
-const globalColorsWithBrand{{ code }} = [];
-
-globalColors{{ code }}.forEach(colorname => {
-  const brands = [];
-
-  // Find all the brands associated with the current color
-  jsProducts{{ code }}.forEach(product => {
-    product.variants.forEach(variant => {
-      if (variant.name.includes(colorname)) {
-        if (!brands.includes(variant.brand)) {
-          brands.push(variant.brand);
-          globalBrands{{ code }}.add(variant.brand);
-        }
+    variantArray.forEach(obj => {
+  {% comment %}     console.log(obj.brand); {% endcomment %}
+      const nameParts = obj.name.split(' / ');
+      let paintColor = nameParts[1];
+      if (paintColor.includes("/")) {
+        paintColor = paintColor.split('/')[0];
       }
+
+      globalColors{{ code }}.add(paintColor);
+
+      paintColors[paintColor] = obj;
+    });
+
+    const result = Object.values(paintColors);
+
+    const productObject = {
+      "name": productName,
+      "url": productUrl,
+      "variants": result,
+      "tags": tagArray,
+      "brand": productBrand
+    };
+
+    jsProducts{{ code }}.push(productObject);
+  });
+
+  // Create the globalColorsWithBrand array
+  const globalColorsWithBrand{{ code }} = [];
+
+  globalColors{{ code }}.forEach(colorname => {
+    const brands = [];
+
+    // Find all the brands associated with the current color
+    jsProducts{{ code }}.forEach(product => {
+      product.variants.forEach(variant => {
+        if (variant.name.includes(colorname)) {
+          if (!brands.includes(variant.brand)) {
+            brands.push(variant.brand);
+            globalBrands{{ code }}.add(variant.brand);
+          }
+        }
+      });
+    });
+
+    globalColorsWithBrand{{ code }}.push({
+      colorname: colorname,
+      brands: brands
     });
   });
 
-  globalColorsWithBrand{{ code }}.push({
-    colorname: colorname,
-    brands: brands
-  });
-});
-
-//console.log(globalColorsWithBrand{{ code }});
-//console.log(jsProducts{{ code }});
-//console.log(globalBrands{{ code }});
-
+  //console.log(globalColorsWithBrand{{ code }});
+  //console.log(jsProducts{{ code }});
+  //console.log(globalBrands{{ code }});
 </script>
-
-
-
 
 <script>
   function waitForElm(selector) {
@@ -211,15 +218,16 @@ globalColors{{ code }}.forEach(colorname => {
   });
 </script>
 
-
-
-
 {% capture featuredPaint %}
 <div class="featured-paint">
 <style>
   #shopify-section-{{ section.id }},
   #shopify-section-{{ section.id }} .heading {
     color: {{ section.settings.color }};
+  }
+
+  .disable {
+    display: none !important;
   }
 
   #{{ sectId }} .featured-paint{
@@ -538,7 +546,7 @@ globalColors{{ code }}.forEach(colorname => {
             
             <div class="paint-calculator__bckgrnd-img">
             </div>
-            <div class="paint-calculator__calculator">
+            <div class="paint-calculator__calculator collapse hide">
                 <div class="paint-calculator__calculator-intro">
                     {{ section.settings.calculator_title }}
                 </div>
@@ -603,7 +611,7 @@ globalColors{{ code }}.forEach(colorname => {
             </div>
         </div>
         
-            <div class="paint-calculator__faqs">
+            <div class="paint-calculator__faqs collapse hide">
   {{ section.settings.calculator_text }}
   {% comment %}
                 <h3 class="paint-calculator__faqs-title">
@@ -633,29 +641,26 @@ globalColors{{ code }}.forEach(colorname => {
 </div>  
 {% endcapture %}
 <div class="paint-slider-wrapper">
-
-<div class="container">
+  <div class="container">
     <div class="row">
-     <div class="col-12">
-         <div class="section-header-paint text-center">
-             {% if section.settings.heading  != blank %}
-                 <h2 class="paint-heading">{{section.settings.heading }}</h2>
-             {% endif %}
-             {% if section.settings.description  != blank %} 
-                <div class="paint-dec">
-                
-                  <p> {{section.settings.description  }}</p>
-                </div>
-             {% endif %}
-         </div>
-     
-     </div>
-   </div>
- </div>
+      <div class="col-12">
+        <div class="section-header-paint text-center">
+          {% if section.settings.heading != blank %}
+            <h2 class="paint-heading">{{ section.settings.heading }}</h2>
+          {% endif %}
+          {% if section.settings.description != blank %}
+            <div class="paint-dec">
+              <p>{{ section.settings.description }}</p>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="paint-slider-v1">
-    {% unless section.settings.stacked %}
+  {% unless section.settings.stacked %}
     <div class="paint-slider-top-nav">
       <span class="paint-slider-top-nav-item paint-slider-top-nav-item-selected">Featured Colours</span>
       <span class="paint-slider-top-nav-item">Colour Finder</span>
@@ -664,7 +669,7 @@ globalColors{{ code }}.forEach(colorname => {
       <span class="paint-slider-bottom-nav-item paint-slider-bottom-nav-item-selected"></span>
       <span class="paint-slider-bottom-nav-item"></span>
     </div>
-    {% endunless %}
+  {% endunless %}
   <div class="paint-slider-inner-container">
     <div class="slide-1" style="display:none;">{{ featuredPaint }}</div>
     <div class="slide-2">{{ paintSelector }}</div>
@@ -676,7 +681,6 @@ globalColors{{ code }}.forEach(colorname => {
 <div class="paint-calculator-pro">
   {{ paintCalculator }}
 </div>
-
 
 <style>
   .paint-calculator__calculator-intro {
@@ -692,7 +696,7 @@ globalColors{{ code }}.forEach(colorname => {
     font-weight: 200;
     font-size: 22px;
   }
-  
+
   .paint-calculator__faqs h4 {
     font-weight: 700;
     font-size: 1.5rem;
@@ -706,763 +710,762 @@ globalColors{{ code }}.forEach(colorname => {
   }
 </style>
 
-
-<!-- Featured Paint Style & Scripts  -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js" integrity="sha512-XlJ5OxV+f3wJcGwgHf01GolB3Av3I6+gFcCewcgVIQrbdZ5M5EDcoW30Pu13cAbomLKnuy8uz3nF25bjmHWUJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- Featured Paint Style & Scripts -->
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"
+  integrity="sha512-XlJ5OxV+f3wJcGwgHf01GolB3Av3I6+gFcCewcgVIQrbdZ5M5EDcoW30Pu13cAbomLKnuy8uz3nF25bjmHWUJA=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
 
 <style>
   .featured-paint-swiper-container {
     width: 100%;
     --swiper-navigation-size: 21px;
-}
+  }
 
-
-.swiper-pagination {
+  .swiper-pagination {
     &-bullet {
-        background-color: transparent;
-        border: 2px solid #fff;
-        border-radius: 50%;
-        width: 12px;
-        height: 12px;
-        opacity: 1;
+      background-color: transparent;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      width: 12px;
+      height: 12px;
+      opacity: 1;
     }
 
     &-bullet-active {
-        background-color: #fff;
+      background-color: #fff;
     }
-}
+  }
 
-  .swiper-button-next:after,.swiper-button-prev:after {
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
     font-family: swiper-icons;
     font-size: var(--swiper-navigation-size);
-    text-transform: none!important;
+    text-transform: none !important;
     letter-spacing: 0;
     text-transform: none;
     font-variant: initial;
     color: white;
-    line-height: 1
-}
+    line-height: 1;
+  }
 
-
-.swiper-button-prev, .swiper-rtl .swiper-button-next {
+  .swiper-button-prev,
+  .swiper-rtl .swiper-button-next {
     left: 30px;
     right: auto;
-    text-shadow: 1px 2px 4px rgba(0,0,0,.2);
-}
-.swiper-button-next, .swiper-rtl .swiper-button-prev {
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  .swiper-button-next,
+  .swiper-rtl .swiper-button-prev {
     right: 30px;
     left: auto;
-    text-shadow: 1px 2px 4px rgba(0,0,0,.2);
-}
-
-  @media screen and (max-width: 789px){
-    .swiper-button-prev, .swiper-rtl .swiper-button-next {
-    left: 10px;
-    right: auto;
-}
-.swiper-button-next, .swiper-rtl .swiper-button-prev {
-    right: 10px;
-    left: auto;
-
-}
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
   }
 
-
+  @media screen and (max-width: 789px) {
+    .swiper-button-prev,
+    .swiper-rtl .swiper-button-next {
+      left: 10px;
+      right: auto;
+    }
+    .swiper-button-next,
+    .swiper-rtl .swiper-button-prev {
+      right: 10px;
+      left: auto;
+    }
+  }
 </style>
 <script>
-document.addEventListener("DOMContentLoaded", function(event) {
-  var Swipes = new Swiper('#{{ sectId }} .featured-paint-swiper-container', {
-      loop: true,
-      speed: 1500,
-      {% if section.settings.autoplay %}autoplay:  {
-       delay: 7000,
-     },{% endif %}
-      navigation: {
-          nextEl: '#{{ sectId }} .swiper-button-next',
-          prevEl: '#{{ sectId }} .swiper-button-prev',
-      }
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var Swipes = new Swiper('#{{ sectId }} .featured-paint-swiper-container', {
+        loop: true,
+        speed: 1500,
+        {% if section.settings.autoplay %}autoplay:  {
+         delay: 7000,
+       },{% endif %}
+        navigation: {
+            nextEl: '#{{ sectId }} .swiper-button-next',
+            prevEl: '#{{ sectId }} .swiper-button-prev',
+        }
+    });
   });
-});
 </script>
 
-<!--End Featured Paint Style & Scripts -->
+<!-- End Featured Paint Style & Scripts -->
 
-
-
-
-<!-- Paint Calculator Style & Scripts  -->
+<!-- Paint Calculator Style & Scripts -->
 <style>
-
-#{{sectId}} .a-input-text, #{{sectId}} input[type=text], #{{sectId}} input[type=search], #{{sectId}} input[type=number], 
-  #{{sectId}} input[type=tel], #{{sectId}} input[type=password], #{{sectId}} input[type=date], #{{sectId}} input[type=email] {
-    background-color: #fff;
-    height: 31px;
-    padding: 3px 7px;
-    line-height: normal;
-}
-.a-input-text-wrapper input {
-    line-height: 1;
-    border: 0;
-    float: none;
-    width: 100%;
-    background-color: transparent;
-    margin: 0.2rem 0 0;
-    padding: 0 1.1rem;
-    height: 4.3rem;
-    -webkit-appearance: none;
-    -webkit-tap-highlight-color: transparent;
-    box-shadow: none;
-}
-
-/*   Desktop */
-  @media only screen and (min-width: 768px){
-    .paint-calculator {
-      max-width: 1500px;
-      margin: 0 auto;
-      grid-template-columns: 70% 30%;
-      display: grid;
-      display: -ms-grid;
-      -ms-grid-columns: 70% 30%;
-      font-family: sans-serif;
-      background-color: #eaeaea;
-    } 
-    
-    .paint-calculator__bckgrnd-img-wrapper {
-        min-height: 418px;
-        width: 100%;
-        grid-template-columns: 40% 60%;
-        position: relative;
-        display: grid;
-        display: -ms-grid;
-        -ms-grid-columns: 40% 60%;
-        -ms-grid-column: 1;
-    }
-
-    .paint-calculator__bckgrnd-img {
-        background-repeat: no-repeat;
-        background-color: #eaeaea;
-        background-image: {% if section.settings.calculator_bg != blank %} url({{ section.settings.calculator_bg | img_url: 'master' }}) {% else %} url(https://m.media-amazon.com/images/G/01/hix/paintcalculatorwidget/paint-calculator-background.jpg) {% endif %};
-        background-size: {% if section.settings.calculator_bg != blank %} cover {% else %}contain{% endif %};
-        {% if section.settings.calculator_bg == blank %}background-position: 0 100%;{% endif %}
-        {% if section.settings.calculator_bg != blank %}
-        height: 100%;
-        width: 100%;
-        {% endif %}
-        display: block;
-        position: absolute;
-        {% if section.settings.calculator_bg == blank %}
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: -150px;
-        {% endif %}
-    }
-
-    .paint-calculator__calculator {
-        padding: 40px 0 0 10px;
-        width: 100%;
-        -ms-grid-column: 2;
-        grid-column: 2;
-        z-index: 1;
-    }
-
-    .paint-calculator__calculator-intro {
-        width: 100%;
-        text-align: left;
-        font-family: sans-serif;
-        font-weight: 200;
-        font-size: 30px;
-        line-height: 30px;
-        color: #6c7778;
-        position: relative;
-    }   
-
-    .paint-calculator__calculator-wrapper {
-        grid-template-columns: 4fr 1.4fr;
-        display: grid;
-        display: -ms-grid;
-        -ms-grid-columns: 4fr 1.4fr;
-        margin-top: 15px;
-        width: 100%;
-        border-top: thin solid #b9b7b7;
-        border-bottom: thin solid #b9b7b7;
-        position: relative;
-    }
-
-
-
-    .paint-calculator__calculator-recommended-text {
-        display: inline-block;
-        margin: 5px 0 37px 0;
-        font-family: sans-serif;
-        font-weight: 400;
-        font-size: 13px;
-        color: #373D3E;
-    }
-    
-
-    .paint-calculator__faqs {
-        width: 100%;
-        min-height: 418px;
-        padding: 40px 20px 20px;
-        background: #fff 0 0 no-repeat padding-box;
-        color: #6c7778;
-        -ms-grid-column: 2;
-        position: relative;
-    }
-    
-    .paint-calculator__faqs-title {
-        margin: 5px 0 5px 0;
-        font-family: sans-serif;
-        font-weight: 200;
-        font-size: 22px;
-    }
-    
-    .paint-calculator__faqs div {
-        padding-bottom: 20px;
-    }
-
-    .paint-calculator__faqs div h4 {
-        font-weight: 700;
-        font-size: 1.5rem;
-        line-height: 1.35;
-    }
-    
-    .paint-calculator__faqs span {
-        font-family: sans-serif;
-        font-weight: 400;
-        font-size: 14px;
-    }
-
-    .paint-calculator__faqs div {
-        padding-bottom: 20px;
-    }
-
-    .paint-calculator__calculator-inputs-wrapper {
-        width: 100%;
-        padding: 8px 15px 0 0;
-        border-right: thin solid #b9b7b7;
-        -ms-grid-column: 1;
-    }
-
-    .paint-calculator__calculator-walls {
-        padding-left: 0;
-        list-style: none;
-        margin: 10px 0 0 0;
-    }
-
-    .paint-calculator__calculator-wall-input {
-        display: grid;
-        grid-template-columns: 50px 1fr 1fr;
-        display: -ms-grid;
-        -ms-grid-columns: 50px 1fr 1fr;
-        grid-gap: 5px;
-        padding: 0 15px 8px 0;
-    }
-
-    .paint-calculator__calculator-wall {
-        background: #FFF;
-        display: grid;
-        display: -ms-grid;
-        border: thin solid #b9b7b7;
-        border-radius: 3px;
-        margin-right: 5px;
-        max-height: 75px;
-        -ms-grid-column: 1;
-    }
-
-    .paint-calculator__calculator-wall-text {
-        margin-top: 2px;
-        text-align: center;
-        font-size: 11px;
-        color: #4c5758;
-    }
-
-    .paint-calculator__calculator-length {
-        display: grid;
-        margin-right: 5px;
-        -ms-grid-column: 2;
-    }
-
-    .paint-calculator__calculator-length-input {
-        width: 100%;
-        min-height: 75px;
-        font-family: sans-serif;
-        font-weight: 100;
-        font-size: 30px;
-        color: #6c6c6c;
-        text-align: center;
-        border: thin solid #b9b7b7;
-        border-radius: 3px;
-        -moz-appearance: textfield;
-        background: white;
-    }
-
-    .paint-calculator__calculator-length-input input{
-     text-align: center;
-    }
-
-    .a-input-text-wrapper:after {
-        clear: both;
-    }
-
-    .a-input-text-wrapper input {
-        line-height: 1;
-        border: 0;
-        float: none;
-        width: 100%;
-        background-color: transparent;
-        margin: 0.2rem 0 0;
-        padding: 0 1.1rem;
-        height: 4.3rem;
-        -webkit-appearance: none;
-        -webkit-tap-highlight-color: transparent;
-        box-shadow: none;
-    }
-
-    .paint-calculator__calculator-length-text {
-        margin-top: -18px;
-        text-align: center;
-        font-size: 11px;
-        color: #4c5758;
-    }
-
-    .paint-calculator__calculator-height {
-        display: grid;
-        -ms-grid-column: 3;
-    }
-
-    .paint-calculator__calculator-height-input {
-        width: 100%;
-        min-height: 75px;
-        font-family: sans-serif;
-        font-weight: 100;
-        font-size: 30px;
-        color: #6c6c6c;
-        text-align: center;
-        border: thin solid #b9b7b7;
-        border-radius: 3px;
-        -moz-appearance: textfield;
-        background: white;
-    }
-
-    .paint-calculator__calculator-height-input input{
-      text-align: center;
-    }
-
-    .paint-calculator__calculator-height-text {
-        margin-top: -18px;
-        text-align: center;
-        font-size: 11px;
-        color: #4c5758;
-    }
-
-    .paint-calculator__calculator-add-wall-wrapper {
-        display: flex;
-        padding-bottom: 10px;
-    }
-
-    .paint-calculator__add-wall-img-wrapper {
-        background: #fff;
-        min-height: 40px;
-        border: thin solid #b9b7b7;
-        border-radius: 3px;
-    }
-
-    .paint-calculator__add-wall-img {
-        height: 30px;
-        min-width: 44px;
-        object-fit: cover;
-        object-position: 0 110%;
-    }
-
-    .paint-calculator__plus-sign-img {
-        margin: 0 0 18px -52px;
-        transform: scale(1,1);
-    }
-    
-    .paint-calculator__add-wall-btn {
-        display: inline-block;
-        padding-left: 60px;
-        margin-left: -10px;
-        border: none;
-        background: 0 0;
-        text-decoration: underline;
-    }
-
-   .paint-calculator__add-wall-text {
-        font-size: 13px;
-        font-weight: 200;
-        color: #373d3e;
-    }  
-
-    .paint-calculator__sqr-m {
-        display: flex;
-        margin: 20px 0 0 20px;
-        font-weight: 700;
-        font-size: 15px;
-        color: #5f5f5f;
-    }
-
-
-    .paint-calculator__sqr-m-text {
-        margin-left: 5px;
-    }
-    
-    .paint-calculator__sq-m-gal-divider {
-        margin-top: 20px;
-        width: 100px;
-        border-top: thin solid #b9b7b7;
-    }
-    
-    .paint-calculator__gal {
-        display: flex;
-        margin: 0 0 0 10px;
-        font-family: sans-serif;
-        font-weight: 200;
-        font-size: 17px;
-        color: #373d3e;
-        flex-wrap: wrap;
-        align-items: flex-end;
-    }
-
-    .paint-calculator__gal-number {
-        font-weight: 200;
-        font-size: 50px;
-        line-height: 50px;
-        padding-right: 10px;
-    }
-
-    .paint-calculator__gal-text {
-        margin: 50px 0 0 5px;
-      margin: 0;
-    }
-
-
-    .paint-calculator__calculator-recommended-text {
-        display: inline-block;
-        margin: 5px 0 37px 0;
-        font-family: sans-serif;
-        font-weight: 400;
-        font-size: 13px;
-        color: #373D3E;
-    }
-    
-    
-
+  #{{sectId}} .a-input-text, #{{sectId}} input[type=text], #{{sectId}} input[type=search], #{{sectId}} input[type=number],
+    #{{sectId}} input[type=tel], #{{sectId}} input[type=password], #{{sectId}} input[type=date], #{{sectId}} input[type=email] {
+      background-color: #fff;
+      height: 31px;
+      padding: 3px 7px;
+      line-height: normal;
+  }
+  .a-input-text-wrapper input {
+      line-height: 1;
+      border: 0;
+      float: none;
+      width: 100%;
+      background-color: transparent;
+      margin: 0.2rem 0 0;
+      padding: 0 1.1rem;
+      height: 4.3rem;
+      -webkit-appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      box-shadow: none;
   }
 
-/*   Mobile */
-  @media only screen and (max-width: 767px){
-    .paint-calculator {
-      position: relative;
-      margin-top: 15px;
-      font-family: sans-serif;
-      overflow: hidden;
-    }
-    
-    .paint-calculator__bckgrnd-img-wrapper {
-        min-height: 418px;
-        position: relative;
-        width: 100%;
-    }
-
-    .paint-calculator__bckgrnd-img {
-        background-repeat: no-repeat;
+  /*   Desktop */
+    @media only screen and (min-width: 768px){
+      .paint-calculator {
+        max-width: 1500px;
+        margin: 0 auto;
+        grid-template-columns: 70% 30%;
+        display: grid;
+        display: -ms-grid;
+        -ms-grid-columns: 70% 30%;
+        font-family: sans-serif;
         background-color: #eaeaea;
-        background-image: url(https://m.media-amazon.com/images/G/01/hix/paintcalculatorwidget/paint-calculator-background.jpg);
-        background-size: contain;
-        background-position: 0 100%;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: -100px;
-        height: 240px;
-    }
+      }
 
-    .paint-calculator__calculator {
-        padding: 55px 0 0;
-        position: relative;
-    }
+      .paint-calculator__bckgrnd-img-wrapper {
+          min-height: 418px;
+          width: 100%;
+          grid-template-columns: 40% 60%;
+          position: relative;
+          display: grid;
+          display: -ms-grid;
+          -ms-grid-columns: 40% 60%;
+          -ms-grid-column: 1;
+      }
 
-    .paint-calculator__calculator-intro {
-        height: 185px;
-        padding-left: 40%;
-        font-family: sans-serif;
-        font-weight: 200;
-        font-size: 25px;
-        line-height: 25px;
-        color: #6c7778;
-        line-height: 1.2;
-    }
+      .paint-calculator__bckgrnd-img {
+          background-repeat: no-repeat;
+          background-color: #eaeaea;
+          background-image: {% if section.settings.calculator_bg != blank %} url({{ section.settings.calculator_bg | img_url: 'master' }}) {% else %} url(https://m.media-amazon.com/images/G/01/hix/paintcalculatorwidget/paint-calculator-background.jpg) {% endif %};
+          background-size: {% if section.settings.calculator_bg != blank %} cover {% else %}contain{% endif %};
+          {% if section.settings.calculator_bg == blank %}background-position: 0 100%;{% endif %}
+          {% if section.settings.calculator_bg != blank %}
+          height: 100%;
+          width: 100%;
+          {% endif %}
+          display: block;
+          position: absolute;
+          {% if section.settings.calculator_bg == blank %}
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: -150px;
+          {% endif %}
+      }
+
+      .paint-calculator__calculator {
+          padding: 40px 0 0 10px;
+          width: 100%;
+          -ms-grid-column: 2;
+          grid-column: 2;
+          z-index: 1;
+      }
+
+      .paint-calculator__calculator-intro {
+          width: 100%;
+          text-align: left;
+          font-family: sans-serif;
+          font-weight: 200;
+          font-size: 30px;
+          line-height: 30px;
+          color: #6c7778;
+          position: relative;
+      }
+
+      .paint-calculator__calculator-wrapper {
+          grid-template-columns: 4fr 1.4fr;
+          display: grid;
+          display: -ms-grid;
+          -ms-grid-columns: 4fr 1.4fr;
+          margin-top: 15px;
+          width: 100%;
+          border-top: thin solid #b9b7b7;
+          border-bottom: thin solid #b9b7b7;
+          position: relative;
+      }
 
 
-    .paint-calculator__calculator-wrapper {
-        display: grid;
-        grid-template-columns: 4fr 1.4fr;
-        width: 100%;
-        border-top: thin solid #b9b7b7;
-        border-bottom: thin solid #b9b7b7;
-        padding-left: 15px;
-    }
 
-    .paint-calculator__calculator-inputs-wrapper {
-        border-right: thin solid #b9b7b7;
-    }
+      .paint-calculator__calculator-recommended-text {
+          display: inline-block;
+          margin: 5px 0 37px 0;
+          font-family: sans-serif;
+          font-weight: 400;
+          font-size: 13px;
+          color: #373D3E;
+      }
 
-    
 
-    .paint-calculator__calculator-recommended-text {
-        display: inline-block;
-        padding: 10px;
-        color: #373D3E;
-        font-family: sans-serif;
-        font-weight: 400;
-        font-size: 13px;
-    }
+      .paint-calculator__faqs {
+          width: 100%;
+          min-height: 418px;
+          padding: 40px 20px 20px;
+          background: #fff 0 0 no-repeat padding-box;
+          color: #6c7778;
+          -ms-grid-column: 2;
+          position: relative;
+      }
 
-    .paint-calculator__calculator-walls {
-        list-style: none;
-        margin: 10px 0 0 0;
-        width: 100%;
-        padding-right: 15px;
-    }
+      .paint-calculator__faqs-title {
+          margin: 5px 0 5px 0;
+          font-family: sans-serif;
+          font-weight: 200;
+          font-size: 22px;
+      }
 
-    .paint-calculator__calculator-wall-input {
-        display: grid;
-        grid-template-columns: 50px 1fr 1fr;
-        grid-gap: 5px;
-        padding: 0 0 10px 5px;
-    }
+      .paint-calculator__faqs div {
+          padding-bottom: 20px;
+      }
 
-    .paint-calculator__calculator-wall {
-        display: grid;
-        border: 1px solid #b9b7b7;
-    }
+      .paint-calculator__faqs div h4 {
+          font-weight: 700;
+          font-size: 1.5rem;
+          line-height: 1.35;
+      }
 
-    .paint-calculator__calculator-wall-img {
-        display: grid;
-        width: 100%;
-    }
+      .paint-calculator__faqs span {
+          font-family: sans-serif;
+          font-weight: 400;
+          font-size: 14px;
+      }
 
-    .paint-calculator__calculator-wall-text {
-        display: inline-block;
+      .paint-calculator__faqs div {
+          padding-bottom: 20px;
+      }
+
+      .paint-calculator__calculator-inputs-wrapper {
+          width: 100%;
+          padding: 8px 15px 0 0;
+          border-right: thin solid #b9b7b7;
+          -ms-grid-column: 1;
+      }
+
+      .paint-calculator__calculator-walls {
+          padding-left: 0;
+          list-style: none;
+          margin: 10px 0 0 0;
+      }
+
+      .paint-calculator__calculator-wall-input {
+          display: grid;
+          grid-template-columns: 50px 1fr 1fr;
+          display: -ms-grid;
+          -ms-grid-columns: 50px 1fr 1fr;
+          grid-gap: 5px;
+          padding: 0 15px 8px 0;
+      }
+
+      .paint-calculator__calculator-wall {
+          background: #FFF;
+          display: grid;
+          display: -ms-grid;
+          border: thin solid #b9b7b7;
+          border-radius: 3px;
+          margin-right: 5px;
+          max-height: 75px;
+          -ms-grid-column: 1;
+      }
+
+      .paint-calculator__calculator-wall-text {
+          margin-top: 2px;
+          text-align: center;
+          font-size: 11px;
+          color: #4c5758;
+      }
+
+      .paint-calculator__calculator-length {
+          display: grid;
+          margin-right: 5px;
+          -ms-grid-column: 2;
+      }
+
+      .paint-calculator__calculator-length-input {
+          width: 100%;
+          min-height: 75px;
+          font-family: sans-serif;
+          font-weight: 100;
+          font-size: 30px;
+          color: #6c6c6c;
+          text-align: center;
+          border: thin solid #b9b7b7;
+          border-radius: 3px;
+          -moz-appearance: textfield;
+          background: white;
+      }
+
+      .paint-calculator__calculator-length-input input{
+       text-align: center;
+      }
+
+      .a-input-text-wrapper:after {
+          clear: both;
+      }
+
+      .a-input-text-wrapper input {
+          line-height: 1;
+          border: 0;
+          float: none;
+          width: 100%;
+          background-color: transparent;
+          margin: 0.2rem 0 0;
+          padding: 0 1.1rem;
+          height: 4.3rem;
+          -webkit-appearance: none;
+          -webkit-tap-highlight-color: transparent;
+          box-shadow: none;
+      }
+
+      .paint-calculator__calculator-length-text {
+          margin-top: -18px;
+          text-align: center;
+          font-size: 11px;
+          color: #4c5758;
+      }
+
+      .paint-calculator__calculator-height {
+          display: grid;
+          -ms-grid-column: 3;
+      }
+
+      .paint-calculator__calculator-height-input {
+          width: 100%;
+          min-height: 75px;
+          font-family: sans-serif;
+          font-weight: 100;
+          font-size: 30px;
+          color: #6c6c6c;
+          text-align: center;
+          border: thin solid #b9b7b7;
+          border-radius: 3px;
+          -moz-appearance: textfield;
+          background: white;
+      }
+
+      .paint-calculator__calculator-height-input input{
         text-align: center;
-        width: 100%;
-        font-weight: 300;
-        font-size: 11px;
-        color: #4c5758;
-    }
+      }
 
-    .paint-calculator__calculator-length {
-        display: grid;
-        margin-right: 5px;
-    }
+      .paint-calculator__calculator-height-text {
+          margin-top: -18px;
+          text-align: center;
+          font-size: 11px;
+          color: #4c5758;
+      }
 
-    .paint-calculator__calculator-length-input {
-        width: 100%;
-        min-height: 75px;
-        font-family: sans-serif;
-        font-weight: 100;
-        font-size: 30px;
-        color: #6c6c6c;
-        text-align: center;
-        border: thin solid #b9b7b7;
-        border-radius: 3px;
-        -moz-appearance: textfield;
-        background: white;
-    }
+      .paint-calculator__calculator-add-wall-wrapper {
+          display: flex;
+          padding-bottom: 10px;
+      }
 
-    .a-input-text-wrapper:after {
-        clear: both;
-    }
+      .paint-calculator__add-wall-img-wrapper {
+          background: #fff;
+          min-height: 40px;
+          border: thin solid #b9b7b7;
+          border-radius: 3px;
+      }
 
-    #paint-calculator__calculator-length-input {
-        text-align: center;
-        padding-top: 10%;
-        color: #565959;
-    }
+      .paint-calculator__add-wall-img {
+          height: 30px;
+          min-width: 44px;
+          object-fit: cover;
+          object-position: 0 110%;
+      }
 
-    #paint-calculator__calculator-length-input input {
-        text-align: center;
-    }
+      .paint-calculator__plus-sign-img {
+          margin: 0 0 18px -52px;
+          transform: scale(1,1);
+      }
+
+      .paint-calculator__add-wall-btn {
+          display: inline-block;
+          padding-left: 60px;
+          margin-left: -10px;
+          border: none;
+          background: 0 0;
+          text-decoration: underline;
+      }
+
+     .paint-calculator__add-wall-text {
+          font-size: 13px;
+          font-weight: 200;
+          color: #373d3e;
+      }
+
+      .paint-calculator__sqr-m {
+          display: flex;
+          margin: 20px 0 0 20px;
+          font-weight: 700;
+          font-size: 15px;
+          color: #5f5f5f;
+      }
 
 
-    .paint-calculator__calculator-length-text {
-        position: relative;
-        margin-top: -18px;
-        text-align: center;
-        font-size: 11px;
-        color: #4c5758;
-    }
+      .paint-calculator__sqr-m-text {
+          margin-left: 5px;
+      }
 
-    .paint-calculator__calculator-height {
-        display: grid;
-    }
+      .paint-calculator__sq-m-gal-divider {
+          margin-top: 20px;
+          width: 100px;
+          border-top: thin solid #b9b7b7;
+      }
 
-    .paint-calculator__calculator-height-input {
-        width: 100%;
-        min-height: 75px;
-        font-family: sans-serif;
-        font-weight: 100;
-        font-size: 30px;
-        color: #6c6c6c;
-        text-align: center;
-        border: thin solid #b9b7b7;
-        border-radius: 3px;
-        -moz-appearance: textfield;
-        background: white;
-    }
+      .paint-calculator__gal {
+          display: flex;
+          margin: 0 0 0 10px;
+          font-family: sans-serif;
+          font-weight: 200;
+          font-size: 17px;
+          color: #373d3e;
+          flex-wrap: wrap;
+          align-items: flex-end;
+      }
 
-    .paint-calculator__calculator-height-input input{
-      text-align: center;
-    }
+      .paint-calculator__gal-number {
+          font-weight: 200;
+          font-size: 50px;
+          line-height: 50px;
+          padding-right: 10px;
+      }
 
-    #paint-calculator__calculator-height-input {
-        text-align: center;
-        padding-top: 10%;
-        color: #565959;
-    }
-    
-    .paint-calculator__calculator-height-text {
-        position: relative;
-        margin-top: -18px;
-        text-align: center;
-        font-size: 11px;
-        color: #4c5758;
-    }
-
-    .paint-calculator__calculator-add-wall-wrapper {
-        display: flex;
-        margin: 0 0 10px 5px;
-    }
-
-    .paint-calculator__add-wall-img-wrapper {
-        background: #fff;
-        min-height: 40px;
-        border: thin solid #b9b7b7;
-        border-radius: 3px;
-        width: 50px;
-    }
-
-    .paint-calculator__add-wall-img {
-        height: 30px;
-        width: 100%;
-        object-fit: cover;
-        object-position: 0 110%;
-    }
-
-    .paint-calculator__plus-sign-img {
-        margin: 0 0 18px -52px;
-        transform: scale(1,1);
-    }
-
-    .paint-calculator__add-wall-btn {
-        display: inline-block;
-        padding-left: 60px;
-        margin-left: -10px;
-        border: none;
-        background: 0 0;
-        text-decoration: underline;
-    }
-
-    .paint-calculator__add-wall-text {
-        font-size: 13px;
-        font-weight: 200;
-        color: #373d3e;
-    }
-    
-    .paint-calculator__sqr-m {
-        display: flex;
-        margin: 20px 0 0 20px;
-        word-break: break-word;
-        font-weight: 700;
-        font-size: 15px;
-        color: #5f5f5f;
-    }
-
-    .paint-calculator__sqr-m-text {
-        margin-left: 5px;
-    }
-
-    .paint-calculator__sq-m-gal-divider {
-        margin-top: 15px;
-        width: 100px;
-        border-top: thin solid #b9b7b7;
-    }
-
-    .paint-calculator__gal {
-        display: flex;
-        margin: 0 0 0 10px;
-        font-family: sans-serif;
-        font-weight: 100;
-        font-size: 17px;
-        color: #373D3E;
-        flex-wrap: wrap;
-    }
-
-    .paint-calculator__gal-number {
-        font-size: 30px;
-        line-height: 30px;
-        flex-basis: 100%;
-        padding-right: 10px;
-    }
-
-    .paint-calculator__gal-text {
-        margin: 50px 0 0 5px;
+      .paint-calculator__gal-text {
+          margin: 50px 0 0 5px;
         margin: 0;
+      }
+
+
+      .paint-calculator__calculator-recommended-text {
+          display: inline-block;
+          margin: 5px 0 37px 0;
+          font-family: sans-serif;
+          font-weight: 400;
+          font-size: 13px;
+          color: #373D3E;
+      }
+
+
+
     }
 
-    .paint-calculator__calculator-recommended-text {
-        display: inline-block;
-        padding: 10px;
-        color: #373D3E;
+  /*   Mobile */
+    @media only screen and (max-width: 767px){
+      .paint-calculator {
+        position: relative;
+        margin-top: 15px;
         font-family: sans-serif;
-        font-weight: 400;
-        font-size: 13px;
-    }
+        overflow: hidden;
+      }
+
+      .paint-calculator__bckgrnd-img-wrapper {
+          min-height: 418px;
+          position: relative;
+          width: 100%;
+      }
+
+      .paint-calculator__bckgrnd-img {
+          background-repeat: no-repeat;
+          background-color: #eaeaea;
+          background-image: url(https://m.media-amazon.com/images/G/01/hix/paintcalculatorwidget/paint-calculator-background.jpg);
+          background-size: contain;
+          background-position: 0 100%;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          left: -100px;
+          height: 240px;
+      }
+
+      .paint-calculator__calculator {
+          padding: 55px 0 0;
+          position: relative;
+      }
+
+      .paint-calculator__calculator-intro {
+          height: 185px;
+          padding-left: 40%;
+          font-family: sans-serif;
+          font-weight: 200;
+          font-size: 25px;
+          line-height: 25px;
+          color: #6c7778;
+          line-height: 1.2;
+      }
+
+
+      .paint-calculator__calculator-wrapper {
+          display: grid;
+          grid-template-columns: 4fr 1.4fr;
+          width: 100%;
+          border-top: thin solid #b9b7b7;
+          border-bottom: thin solid #b9b7b7;
+          padding-left: 15px;
+      }
+
+      .paint-calculator__calculator-inputs-wrapper {
+          border-right: thin solid #b9b7b7;
+      }
 
 
 
-    
-    
-    .paint-calculator__faqs {
-        background: #fff 0 0 no-repeat padding-box;
-        width: 100%;
-        min-height: 290px;
-        padding: 15px;
-        padding-right: 15px;
-        color: #6c7778;
-    }
+      .paint-calculator__calculator-recommended-text {
+          display: inline-block;
+          padding: 10px;
+          color: #373D3E;
+          font-family: sans-serif;
+          font-weight: 400;
+          font-size: 13px;
+      }
 
-    .paint-calculator__faqs-title {
-        font-family: sans-serif;
-        font-weight: 200;
-        font-size: 22px;
-    }
+      .paint-calculator__calculator-walls {
+          list-style: none;
+          margin: 10px 0 0 0;
+          width: 100%;
+          padding-right: 15px;
+      }
 
-    .paint-calculator__faqs div {
-        padding-bottom: 15px;
-    }
+      .paint-calculator__calculator-wall-input {
+          display: grid;
+          grid-template-columns: 50px 1fr 1fr;
+          grid-gap: 5px;
+          padding: 0 0 10px 5px;
+      }
 
-    .paint-calculator__faqs div h4 {
-        font-weight: 700;
-        font-size: 1.5rem;
-        line-height: 1.35;
-    }
+      .paint-calculator__calculator-wall {
+          display: grid;
+          border: 1px solid #b9b7b7;
+      }
 
-    .paint-calculator__faqs span {
-        font-family: sans-serif;
-        font-weight: 400;
-        font-size: 14px;
+      .paint-calculator__calculator-wall-img {
+          display: grid;
+          width: 100%;
+      }
+
+      .paint-calculator__calculator-wall-text {
+          display: inline-block;
+          text-align: center;
+          width: 100%;
+          font-weight: 300;
+          font-size: 11px;
+          color: #4c5758;
+      }
+
+      .paint-calculator__calculator-length {
+          display: grid;
+          margin-right: 5px;
+      }
+
+      .paint-calculator__calculator-length-input {
+          width: 100%;
+          min-height: 75px;
+          font-family: sans-serif;
+          font-weight: 100;
+          font-size: 30px;
+          color: #6c6c6c;
+          text-align: center;
+          border: thin solid #b9b7b7;
+          border-radius: 3px;
+          -moz-appearance: textfield;
+          background: white;
+      }
+
+      .a-input-text-wrapper:after {
+          clear: both;
+      }
+
+      #paint-calculator__calculator-length-input {
+          text-align: center;
+          padding-top: 10%;
+          color: #565959;
+      }
+
+      #paint-calculator__calculator-length-input input {
+          text-align: center;
+      }
+
+
+      .paint-calculator__calculator-length-text {
+          position: relative;
+          margin-top: -18px;
+          text-align: center;
+          font-size: 11px;
+          color: #4c5758;
+      }
+
+      .paint-calculator__calculator-height {
+          display: grid;
+      }
+
+      .paint-calculator__calculator-height-input {
+          width: 100%;
+          min-height: 75px;
+          font-family: sans-serif;
+          font-weight: 100;
+          font-size: 30px;
+          color: #6c6c6c;
+          text-align: center;
+          border: thin solid #b9b7b7;
+          border-radius: 3px;
+          -moz-appearance: textfield;
+          background: white;
+      }
+
+      .paint-calculator__calculator-height-input input{
+        text-align: center;
+      }
+
+      #paint-calculator__calculator-height-input {
+          text-align: center;
+          padding-top: 10%;
+          color: #565959;
+      }
+
+      .paint-calculator__calculator-height-text {
+          position: relative;
+          margin-top: -18px;
+          text-align: center;
+          font-size: 11px;
+          color: #4c5758;
+      }
+
+      .paint-calculator__calculator-add-wall-wrapper {
+          display: flex;
+          margin: 0 0 10px 5px;
+      }
+
+      .paint-calculator__add-wall-img-wrapper {
+          background: #fff;
+          min-height: 40px;
+          border: thin solid #b9b7b7;
+          border-radius: 3px;
+          width: 50px;
+      }
+
+      .paint-calculator__add-wall-img {
+          height: 30px;
+          width: 100%;
+          object-fit: cover;
+          object-position: 0 110%;
+      }
+
+      .paint-calculator__plus-sign-img {
+          margin: 0 0 18px -52px;
+          transform: scale(1,1);
+      }
+
+      .paint-calculator__add-wall-btn {
+          display: inline-block;
+          padding-left: 60px;
+          margin-left: -10px;
+          border: none;
+          background: 0 0;
+          text-decoration: underline;
+      }
+
+      .paint-calculator__add-wall-text {
+          font-size: 13px;
+          font-weight: 200;
+          color: #373d3e;
+      }
+
+      .paint-calculator__sqr-m {
+          display: flex;
+          margin: 20px 0 0 20px;
+          word-break: break-word;
+          font-weight: 700;
+          font-size: 15px;
+          color: #5f5f5f;
+      }
+
+      .paint-calculator__sqr-m-text {
+          margin-left: 5px;
+      }
+
+      .paint-calculator__sq-m-gal-divider {
+          margin-top: 15px;
+          width: 100px;
+          border-top: thin solid #b9b7b7;
+      }
+
+      .paint-calculator__gal {
+          display: flex;
+          margin: 0 0 0 10px;
+          font-family: sans-serif;
+          font-weight: 100;
+          font-size: 17px;
+          color: #373D3E;
+          flex-wrap: wrap;
+      }
+
+      .paint-calculator__gal-number {
+          font-size: 30px;
+          line-height: 30px;
+          flex-basis: 100%;
+          padding-right: 10px;
+      }
+
+      .paint-calculator__gal-text {
+          margin: 50px 0 0 5px;
+          margin: 0;
+      }
+
+      .paint-calculator__calculator-recommended-text {
+          display: inline-block;
+          padding: 10px;
+          color: #373D3E;
+          font-family: sans-serif;
+          font-weight: 400;
+          font-size: 13px;
+      }
+
+
+
+
+
+      .paint-calculator__faqs {
+          background: #fff 0 0 no-repeat padding-box;
+          width: 100%;
+          min-height: 290px;
+          padding: 15px;
+          padding-right: 15px;
+          color: #6c7778;
+      }
+
+      .paint-calculator__faqs-title {
+          font-family: sans-serif;
+          font-weight: 200;
+          font-size: 22px;
+      }
+
+      .paint-calculator__faqs div {
+          padding-bottom: 15px;
+      }
+
+      .paint-calculator__faqs div h4 {
+          font-weight: 700;
+          font-size: 1.5rem;
+          line-height: 1.35;
+      }
+
+      .paint-calculator__faqs span {
+          font-family: sans-serif;
+          font-weight: 400;
+          font-size: 14px;
+      }
+
+      .paint-calculator__faqs div {
+          padding-bottom: 15px;
+      }
     }
-    
-    .paint-calculator__faqs div {
-        padding-bottom: 15px;
-    }
-  }
-  
 </style>
 <script>
   const addWallBtn{{ code }} = document.querySelector("#{{ sectId }} .paint-calculator__add-wall-btn");
@@ -1563,12 +1566,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
    paintCalculations();
- 
 </script>
-<!-- End Paint Calculator Style & Scripts  -->
-
-
-
+<!-- End Paint Calculator Style & Scripts -->
 
 <!-- Slide Style & Scripts -->
 <style>
@@ -1679,7 +1678,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       {% else %}
         height: 95vh;
       {% endif %}
-      
+
     }
 
     #{{ sectId }} .paint-slider-top-nav-item {
@@ -1694,7 +1693,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       {% else %}
         height: 95vh;
       {% endif %}
-      
+
     }
   }
 </style>
@@ -1707,21 +1706,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
   topNav{{ code }}.forEach((item, index) => {
     item.addEventListener("click", (e)=> {
       const target = e.target;
-      
+
       moveSlide(index);
       switchSelectedNav(target, index);
 
     });
   });
 
-  
+
   bottomNav{{ code }}.forEach((item, index) => {
     item.addEventListener("click", (e)=> {
       const target = e.target;
-      
+
       moveSlide(index);
       switchSelectedNav(target, index);
-      
+
     });
   });
 
@@ -1733,7 +1732,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         item.classList.remove("paint-slider-top-nav-item-selected");
       }
     });
-    
+
     bottomNav{{ code }}.forEach((item, i) =>  {
       if(i == index){
         item.classList.add("paint-slider-bottom-nav-item-selected");
@@ -1755,411 +1754,407 @@ document.addEventListener("DOMContentLoaded", function(event) {
 </script>
 <!-- End Slide Style & Scripts -->
 
-
-
 <!-- Paint Selector Style & Scripts -->
 <style>
-#{{ sectId }} .hix-scw-swatch-tabs-container {
-    margin-top: 25px;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    width: 100%;
-    padding-left: 40px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #d5dbdb;
-    overflow-x: scroll;
-    white-space: nowrap;
-}
-
-#{{ sectId }} .hix-scw-swatch-tabs-icon {
-    width: 14px;
-    vertical-align: middle;
-    margin-right: 8px;
-}
-
-#{{ sectId }} .hix-scw-swatch-tab-link {
-    color: #6c7778;
-    display: inline-block;
-    cursor: pointer;
-}
-
-#{{ sectId }} .hix-scw-swatch-tab-link {
-    position: relative;
-    margin: 0 10px 0 0;
-    word-wrap: break-word;
-}
-  
-#{{ sectId }} .hix-scw-swatch-tab-link:hover {
-    color: #373d3e;
-    transition: color .2s;
-}
-
-#{{ sectId }} .hix-scw-swatch-tab-link-selected {
-    color: #373d3e;
-}
-  
-#{{ sectId }} .hix-scw-swatch-tab-link-selected::after {
-    content: "";
-    position: absolute;
-    transform: translate(-50%);
-    left: 50%;
-    bottom: -5px;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid #6c7778;
-}
-
-#{{ sectId }} .hix-scw-swatch-tab-link-disabled {
-    opacity: .4;
-    cursor: text;
-}
-
-#{{ sectId }} .paint-sample-selection h3 {
-  margin-top: 10px !important;
-  margin-left: 5px; 
-  margin-bottom: 5px; 
-  line-height: 17px;
-}
-  
-#{{ sectId }} .a-dropdown-container{
-  margin-left: 5px; 
-}
-
-
-  
-@media only screen and (min-width: 768px){
   #{{ sectId }} .hix-scw-swatch-tabs-container {
-    position: relative;
-    background-color: #fff;
-    z-index: 2;
-    padding: 10px 10px 5px;
-    margin: 0;
-    overflow-x: hidden;
-    white-space: nowrap;
-  } 
-}
-
- @media only screen and (max-width: 769px){ 
-  #{{ sectId }} .hix-scw-swatch-tabs-container {
-    padding-left: 10px;
+      margin-top: 25px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      width: 100%;
+      padding-left: 40px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #d5dbdb;
+      overflow-x: scroll;
+      white-space: nowrap;
   }
+
+  #{{ sectId }} .hix-scw-swatch-tabs-icon {
+      width: 14px;
+      vertical-align: middle;
+      margin-right: 8px;
+  }
+
+  #{{ sectId }} .hix-scw-swatch-tab-link {
+      color: #6c7778;
+      display: inline-block;
+      cursor: pointer;
+  }
+
+  #{{ sectId }} .hix-scw-swatch-tab-link {
+      position: relative;
+      margin: 0 10px 0 0;
+      word-wrap: break-word;
+  }
+
+  #{{ sectId }} .hix-scw-swatch-tab-link:hover {
+      color: #373d3e;
+      transition: color .2s;
+  }
+
+  #{{ sectId }} .hix-scw-swatch-tab-link-selected {
+      color: #373d3e;
+  }
+
+  #{{ sectId }} .hix-scw-swatch-tab-link-selected::after {
+      content: "";
+      position: absolute;
+      transform: translate(-50%);
+      left: 50%;
+      bottom: -5px;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 5px solid #6c7778;
+  }
+
+  #{{ sectId }} .hix-scw-swatch-tab-link-disabled {
+      opacity: .4;
+      cursor: text;
+  }
+
   #{{ sectId }} .paint-sample-selection h3 {
-    margin-top: 10px; 
-    margin-left: 10px; 
-    margin-bottom: 5px; 
+    margin-top: 10px !important;
+    margin-left: 5px;
+    margin-bottom: 5px;
     line-height: 17px;
   }
+
   #{{ sectId }} .a-dropdown-container{
-    margin-left: 10px; 
-  }
- }
-</style>
-<style>
-  #{{ sectId }} .paint-selected{
-/*     padding: 25px; */
-    grid-column: span 2;
-    height: 0px;
-    padding: 0px;
-    overflow: hidden;
-    transition: all 300ms ease 0s;
+    margin-left: 5px;
   }
 
-  #{{ sectId }} .paint-selected-container{
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(350px,1fr));
-    grid-gap: 10px;
-  }
 
-  #{{ sectId }} .paint-selected-item{
-    width: 100%;
-    height: auto;
-    min-height: 135px;
-    padding: 5px;
-    border: 1px solid #eaeded;
-/*     background-color: #fff; */
-    border-radius: 4px;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-gap: 5px;
-    -ms-flex-align: center;
-    align-items: center;
-/*     height: 100%; */
-  }
-
-  #{{ sectId }} .paint-selected-image-container, #{{ sectId }} .paint-selected-info-container{
-    width: 100%;
-    height: 100%;
-  }
-
-  #{{ sectId }} .paint-selected-image-container{
-    border-radius: 3px;
-    border: 0.5px solid gainsboro;
-  }
-
-  #{{ sectId }} .paint-selected-info-container{
-    background: white;
-    padding: 10px;
-  }
-
-  #{{ sectId }} .paint-selected-delete{
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 18px;
-    line-height: 9px;
-    cursor: pointer;
-  }
-
-  @media screen and (max-width:769px){
-    #{{ sectId }} .paint-selected-container {
-      display: grid;
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
-<style>
-  #{{ sectId }} .paint-sample-image-foreground{
-    position: absolute;
-    height: 36px;
-    width: 100%;
-/*     background: blue; */
-    font-size: 0;
-  }
-  #{{ sectId }} .paint-sample-image-background{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-/*     background: black; */
-    z-index: -2;
-    font-size: 0;
-  }
-
-  #{{ sectId }} .paint-sector{
-    height: 100%;
-  }
-
-  #{{ sectId }} .paint-name-sector, #{{ sectId }} .paint-name-full-preview{
-    width: 100%;
-    font-size: 13px;
-    box-shadow: 0 3px 5px rgba(0,0,0,.1);
-    height: 36px;
-    line-height: 36px;
-    display: inline-block;
-    vertical-align: top;
-    padding: 2px 6px;
-    white-space: nowrap;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    text-overflow: ellipsis;
-  }
-  #{{ sectId }} .paint-color-sector, #{{ sectId }} .paint-color-full-preview{
-    height: 100%;
-    width: 100%;
-    display: inline-block;
-  }
-</style>
-<style>
- #{{ sectId }} .paint-selector{
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 1.3fr 1fr;
-    grid-template-columns: 1.3fr 1fr;
-    height: 100%;
-   {% unless section.settings.stacked %}
-    padding-top: 37px !important;
-    
-    padding-bottom: 37px !important;
-   {% endunless %}
-  }
-
- #{{ sectId }} .paint-sample-image-area{
-    display: -ms-grid;
-    display: grid;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    isolation: isolate;
-    min-height: unset !important;
-  }
-
-  #{{ sectId  }} .paint-sample-selection{
-    width: 100%;
-    height: 100%;
-    background: white;
-    overflow: hidden;
-    max-height: none !important;
-    display: grid;
-    align-content: flex-start;
-  }
-
-   #{{ sectId }} .paint-room-options{
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    gap:10px;
-    height: -webkit-fit-content;
-    height: -moz-fit-content;
-    height: fit-content;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-    margin: auto;
-    margin-bottom: 10px;
-    justify-content: center;
-  }
-  
-   #{{ sectId }} .paint-room-option-item{
-    display: inline-block;
-    border: 1px solid rgba(0,0,0,.2);
-    background: white;
-    padding: 5px;
-    font-size: 13px;
-    border-radius: 8px;
-    -webkit-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 50%);
-            box-shadow: 0 2px 5px 0 rgb(0 0 0 / 50%);
-    padding: 2px 10px;
-    line-height: 17px;
-    cursor: pointer;
-  }
-
-  #{{ sectId }} .paint-room-option-item.selected{
-    outline: 2.5px solid red;
-  }
-
-  #{{ sectId }} .paint-sample-wrapper{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    padding-top: 1px;
-    z-index: 1;
-    overflow-x: hidden;
-    max-width: 100vw;
-  }
-
-  #{{ sectId }} .paint-sample-wrapper::-webkit-scrollbar {
-      width: 11px;
-      height: 11px;
-  }
-
-  #{{ sectId }} .paint-sample-wrapper::-webkit-scrollbar-thumb {
-      background-color: #373d3e;
-      border-radius: 6px;
-      border: 3px solid #eaeded;
-  }
-
-  #{{ sectId }} .paint-sample-wrapper::-webkit-scrollbar-track {
-      background: #eaeded;
-  }
-
-  #{{ sectId }} .paint-bucket{
-    white-space: nowrap;
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-rows: 50px 3px 50px 3px 50px 3px 50px 3px 50px;
-    grid-template-rows: repeat(5,50px);
-    grid-gap: {{ section.settings.paint_gap }}px;
-    grid-auto-flow: column;
-    grid-auto-columns: 50px 50px;
-    padding-left: 3px;
-    padding-right: 3px;
-    padding-top: 15px;
-  }
-
-  #{{ sectId }} .paint-bucket-color-swatch {
-    display: inline-block;
-    padding: 2px;
-    height: 50px;
-    min-width: 50px;
-    border-radius: 3px;
-    cursor: pointer;
-    position: relative;
-    background-color: orange;
-    border: 0.5px solid gainsboro;
-  }
-
-  #{{ sectId }} .paint-bucket-color-swatch-highlight{
-    box-shadow: inset 0 0 0 2px rgba(255,255,255,.8),0 0 7px rgba(0,0,0,.45);
-    transform: scale(1.2,1.2);
-    transition: transform 150ms ease-out;
-    border-radius: 5px;
-    z-index: 2
-  }
-
-  #{{ sectId }} .paint-bucket-color-swatch-selected {
-    border: 1px solid #000;
-  }
-  
-  #{{ sectId }} .paint-bucket-color-swatch-selected::after {
-    content: "";
-    position: absolute;
-    transform: translate(-50%,-50%);
-    left: 50%;
-    top: 50%;
-    height: 14px;
-    width: 14px;
-    background-image: url(https://m.media-amazon.com/images/G/01/hix/test/check-circle-solid.svg);
-  }
 
   @media only screen and (min-width: 768px){
-    #{{ sectId }} .paint-bucket{
-        grid-column: 2;
-        -ms-grid-column: 2;
-        grid-template-columns: repeat(auto-fill,minmax(50px,1fr));
-        overflow-y: hidden;
-        grid-auto-flow: row;
-        grid-auto-columns: unset;
-        -ms-grid-rows: unset;
-        grid-template-rows: unset;
-        padding: 5px;
-        overflow-x: hidden;
+    #{{ sectId }} .hix-scw-swatch-tabs-container {
+      position: relative;
+      background-color: #fff;
+      z-index: 2;
+      padding: 10px 10px 5px;
+      margin: 0;
+      overflow-x: hidden;
+      white-space: nowrap;
     }
   }
 
-  @media only screen and (max-width: 769px){
-    #{{ sectId }} .paint-selector {
-      display: -ms-grid !important;
-      display: grid !important;
-      -ms-grid-columns: 1fr !important;
-      grid-template-columns: 1fr !important;
-      height: 100% !important;
-      grid-auto-rows: 1fr;
+   @media only screen and (max-width: 769px){
+    #{{ sectId }} .hix-scw-swatch-tabs-container {
+      padding-left: 10px;
     }
-    
-    #{{ sectId }} .paint-sample-selection {
-      height: auto !important;
-      align-content: unset;
+    #{{ sectId }} .paint-sample-selection h3 {
+      margin-top: 10px;
+      margin-left: 10px;
+      margin-bottom: 5px;
+      line-height: 17px;
     }
-    
-    #{{ sectId }} .paint-sample-image-area{
-      max-width: 100vw !important;
-      min-height: 430px !important;
+    #{{ sectId }} .a-dropdown-container{
+      margin-left: 10px;
+    }
+   }
+</style>
+<style>
+    #{{ sectId }} .paint-selected{
+  /*     padding: 25px; */
+      grid-column: span 2;
+      height: 0px;
+      padding: 0px;
+      overflow: hidden;
+      transition: all 300ms ease 0s;
+    }
+
+    #{{ sectId }} .paint-selected-container{
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(350px,1fr));
+      grid-gap: 10px;
+    }
+
+    #{{ sectId }} .paint-selected-item{
+      width: 100%;
+      height: auto;
+      min-height: 135px;
+      padding: 5px;
+      border: 1px solid #eaeded;
+  /*     background-color: #fff; */
+      border-radius: 4px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      grid-gap: 5px;
+      -ms-flex-align: center;
+      align-items: center;
+  /*     height: 100%; */
+    }
+
+    #{{ sectId }} .paint-selected-image-container, #{{ sectId }} .paint-selected-info-container{
+      width: 100%;
+      height: 100%;
+    }
+
+    #{{ sectId }} .paint-selected-image-container{
+      border-radius: 3px;
+      border: 0.5px solid gainsboro;
+    }
+
+    #{{ sectId }} .paint-selected-info-container{
+      background: white;
+      padding: 10px;
+    }
+
+    #{{ sectId }} .paint-selected-delete{
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 18px;
+      line-height: 9px;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width:769px){
+      #{{ sectId }} .paint-selected-container {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+    }
+</style>
+<style>
+    #{{ sectId }} .paint-sample-image-foreground{
+      position: absolute;
+      height: 36px;
+      width: 100%;
+  /*     background: blue; */
+      font-size: 0;
+    }
+    #{{ sectId }} .paint-sample-image-background{
+      position: absolute;
+      height: 100%;
+      width: 100%;
+  /*     background: black; */
+      z-index: -2;
+      font-size: 0;
+    }
+
+    #{{ sectId }} .paint-sector{
+      height: 100%;
+    }
+
+    #{{ sectId }} .paint-name-sector, #{{ sectId }} .paint-name-full-preview{
+      width: 100%;
+      font-size: 13px;
+      box-shadow: 0 3px 5px rgba(0,0,0,.1);
+      height: 36px;
+      line-height: 36px;
+      display: inline-block;
+      vertical-align: top;
+      padding: 2px 6px;
+      white-space: nowrap;
+      overflow-y: hidden;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+    }
+    #{{ sectId }} .paint-color-sector, #{{ sectId }} .paint-color-full-preview{
+      height: 100%;
+      width: 100%;
+      display: inline-block;
+    }
+</style>
+<style>
+   #{{ sectId }} .paint-selector{
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-columns: 1.3fr 1fr;
+      grid-template-columns: 1.3fr 1fr;
+      height: 100%;
+     {% unless section.settings.stacked %}
+      padding-top: 37px !important;
+
+      padding-bottom: 37px !important;
+     {% endunless %}
+    }
+
+   #{{ sectId }} .paint-sample-image-area{
+      display: -ms-grid;
+      display: grid;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      isolation: isolate;
+      min-height: unset !important;
+    }
+
+    #{{ sectId  }} .paint-sample-selection{
+      width: 100%;
+      height: 100%;
+      background: white;
+      overflow: hidden;
+      max-height: none !important;
+      display: grid;
+      align-content: flex-start;
+    }
+
+     #{{ sectId }} .paint-room-options{
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+      gap:10px;
+      height: -webkit-fit-content;
+      height: -moz-fit-content;
+      height: fit-content;
+      width: -webkit-fit-content;
+      width: -moz-fit-content;
+      width: fit-content;
+      margin: auto;
+      margin-bottom: 10px;
+      justify-content: center;
+    }
+
+     #{{ sectId }} .paint-room-option-item{
+      display: inline-block;
+      border: 1px solid rgba(0,0,0,.2);
+      background: white;
+      padding: 5px;
+      font-size: 13px;
+      border-radius: 8px;
+      -webkit-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 50%);
+              box-shadow: 0 2px 5px 0 rgb(0 0 0 / 50%);
+      padding: 2px 10px;
+      line-height: 17px;
+      cursor: pointer;
+    }
+
+    #{{ sectId }} .paint-room-option-item.selected{
+      outline: 2.5px solid red;
     }
 
     #{{ sectId }} .paint-sample-wrapper{
-      overflow-x: auto !important;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      padding-top: 1px;
+      z-index: 1;
+      overflow-x: hidden;
+      max-width: 100vw;
     }
-    #{{ sectId }} .paint-selected {
-/*       padding: 25px; */
-      grid-column: span 1;
-    }
-    #{{ sectId }} .paint-bucket{
-      grid-template-rows: repeat(4,50px) !important;
-    }
-  }
-</style>
 
+    #{{ sectId }} .paint-sample-wrapper::-webkit-scrollbar {
+        width: 11px;
+        height: 11px;
+    }
+
+    #{{ sectId }} .paint-sample-wrapper::-webkit-scrollbar-thumb {
+        background-color: #373d3e;
+        border-radius: 6px;
+        border: 3px solid #eaeded;
+    }
+
+    #{{ sectId }} .paint-sample-wrapper::-webkit-scrollbar-track {
+        background: #eaeded;
+    }
+
+    #{{ sectId }} .paint-bucket{
+      white-space: nowrap;
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-rows: 50px 3px 50px 3px 50px 3px 50px 3px 50px;
+      grid-template-rows: repeat(5,50px);
+      grid-gap: {{ section.settings.paint_gap }}px;
+      grid-auto-flow: column;
+      grid-auto-columns: 50px 50px;
+      padding-left: 3px;
+      padding-right: 3px;
+      padding-top: 15px;
+    }
+
+    #{{ sectId }} .paint-bucket-color-swatch {
+      display: inline-block;
+      padding: 2px;
+      height: 50px;
+      min-width: 50px;
+      border-radius: 3px;
+      cursor: pointer;
+      position: relative;
+      background-color: orange;
+      border: 0.5px solid gainsboro;
+    }
+
+    #{{ sectId }} .paint-bucket-color-swatch-highlight{
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.8),0 0 7px rgba(0,0,0,.45);
+      transform: scale(1.2,1.2);
+      transition: transform 150ms ease-out;
+      border-radius: 5px;
+      z-index: 2
+    }
+
+    #{{ sectId }} .paint-bucket-color-swatch-selected {
+      border: 1px solid #000;
+    }
+
+    #{{ sectId }} .paint-bucket-color-swatch-selected::after {
+      content: "";
+      position: absolute;
+      transform: translate(-50%,-50%);
+      left: 50%;
+      top: 50%;
+      height: 14px;
+      width: 14px;
+      background-image: url(https://m.media-amazon.com/images/G/01/hix/test/check-circle-solid.svg);
+    }
+
+    @media only screen and (min-width: 768px){
+      #{{ sectId }} .paint-bucket{
+          grid-column: 2;
+          -ms-grid-column: 2;
+          grid-template-columns: repeat(auto-fill,minmax(50px,1fr));
+          overflow-y: hidden;
+          grid-auto-flow: row;
+          grid-auto-columns: unset;
+          -ms-grid-rows: unset;
+          grid-template-rows: unset;
+          padding: 5px;
+          overflow-x: hidden;
+      }
+    }
+
+    @media only screen and (max-width: 769px){
+      #{{ sectId }} .paint-selector {
+        display: -ms-grid !important;
+        display: grid !important;
+        -ms-grid-columns: 1fr !important;
+        grid-template-columns: 1fr !important;
+        height: 100% !important;
+        grid-auto-rows: 1fr;
+      }
+
+      #{{ sectId }} .paint-sample-selection {
+        height: auto !important;
+        align-content: unset;
+      }
+
+      #{{ sectId }} .paint-sample-image-area{
+        max-width: 100vw !important;
+        min-height: 430px !important;
+      }
+
+      #{{ sectId }} .paint-sample-wrapper{
+        overflow-x: auto !important;
+      }
+      #{{ sectId }} .paint-selected {
+  /*       padding: 25px; */
+        grid-column: span 1;
+      }
+      #{{ sectId }} .paint-bucket{
+        grid-template-rows: repeat(4,50px) !important;
+      }
+    }
+</style>
 
 <!-- Imports for tooltip -->
 <script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://unpkg.com/tippy.js@6.3.6/dist/tippy.umd.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-
-       // Load the CSS files
+  document.addEventListener('DOMContentLoaded', function () {
+    // Load the CSS files
     var cssFile1 = document.createElement('link');
     cssFile1.rel = 'stylesheet';
     cssFile1.href = 'https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.css';
@@ -2172,15 +2167,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     document.head.appendChild(cssFile1);
     document.head.appendChild(cssFile2);
 
-
-    
     // Get all elements with the class 'swatch-tooltip'
     var buttons = document.querySelectorAll('#{{ sectId }} .swatch-tooltip');
 
     // Iterate over each button and create tooltips
-    buttons.forEach(function(button) {
+    buttons.forEach(function (button) {
       var colorName = button.getAttribute('data-colorname');
-      
+
       // Initialize the tooltip for each button
       tippy(button, {
         content: colorName,
@@ -2188,7 +2181,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
   });
 </script>
-<!-- End Imports for tooltip  -->
+<!-- End Imports for tooltip -->
 
 <script>
   function scrollToSection(tabName) {
@@ -2227,8 +2220,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
   });
 </script>
 
-
-  
 <script>
 function productItemUpdate(selectedOption){
     const paintProductsAmount{{ code }} = document.querySelectorAll("#{{ sectId }} .paint-selected-item[data-type='paint-main']"); 
@@ -2426,8 +2417,6 @@ document.addEventListener('DOMContentLoaded', function() {
 {% endcomment %}
 {% endcomment %}
 </script>
-
-  
 
 <script>
 {% comment %} 
@@ -3229,227 +3218,221 @@ function populateSelectedWithProducts(swatch, index){
   
 
 }
-  
 </script>
 <!-- End Paint Selector Style & Scripts -->
 
-
-
-
-
-
 {% schema %}
-  {
-    "name": "Paint Slider",
-    "limit": 1,
-    "settings": [
+{
+  "name": "Paint Slider",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "heading",
+      "default": "Pick your perfect palette",
+      "label": "t:sections.popular-products.settings.heading.label"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "description",
+      "default": "We understand how important it is finding the right product, so whether you're a business or a first time painter, We've made the best possible product finder to find the right product.",
+      "label": "Description"
+    },
+    {
+      "type": "checkbox",
+      "id": "stacked",
+      "label": "Stacked Layout",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay Featured Slide",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "colors",
+      "label": "Colors List",
+      "info": "Format { \"category\": \"Neutrals\", \"name\": \"White\", \"color\": \"#FFFFFF\" }",
+      "default": "{ \"category\": \"Neutrals\", \"name\": \"White\", \"color\": \"#FFFFFF\" },\n  { \"category\": \"Neutrals\", \"name\": \"Ultra White\", \"color\": \"#F7FBFF\" },\n  { \"category\": \"Neutrals\", \"name\": \"Shining White\", \"color\": \"#FCFCFC\" },\n  { \"category\": \"Neutrals\", \"name\": \"Signal White\", \"color\": \"#E5E5E5\" },\n  { \"category\": \"Neutrals\", \"name\": \"Light Grey\", \"color\": \"#EEEEEE\" },\n  { \"category\": \"Neutrals\", \"name\": \"Dove Grey\", \"color\": \"#C9C9C9\" },\n  { \"category\": \"Neutrals\", \"name\": \"Pigeon Grey\", \"color\": \"#CBCBCB\" },\n  { \"category\": \"Neutrals\", \"name\": \"Slate Grey\", \"color\": \"#BDC6CA\" },\n  { \"category\": \"Neutrals\", \"name\": \"Classic Grey\", \"color\": \"#4E5253\" },\n  { \"category\": \"Neutrals\", \"name\": \"Equinox\", \"color\": \"#53575A\" },\n  { \"category\": \"Neutrals\", \"name\": \"Jet Black\", \"color\": \"#0D0D0D\" },\n  { \"category\": \"Neutrals\", \"name\": \"Black\", \"color\": \"#221E1F\" },\n\n\n \n\n\n  { \"category\": \"Browns\", \"name\": \"Soft Almond\", \"color\": \"#C99663\" },\n  { \"category\": \"Browns\", \"name\": \"Sandstone\", \"color\": \"#B8A78B\" },\n  { \"category\": \"Browns\", \"name\": \"Moroccan Sand\", \"color\": \"#BCA78C\" },\n   \n  { \"category\": \"Browns\", \"name\": \"Terracota\", \"color\": \"#E2725B\" },\n  { \"category\": \"Browns\", \"name\": \"Winter Racing Green\", \"color\": \"#082E2B\" },\n  { \"category\": \"Browns\", \"name\": \"Dark Mud Brown\", \"color\": \"#463428\" },\n  { \"category\": \"Browns\", \"name\": \"Red Mud Brown\", \"color\": \"#672B17\" },\n  { \"category\": \"Browns\", \"name\": \"Brown\", \"color\": \"#463428\" },\n  { \"category\": \"Browns\", \"name\": \"Leaf Brown\", \"color\": \"#5D3521\" },\n  { \"category\": \"Browns\", \"name\": \"Light Brown\", \"color\": \"#D5964E\" },\n  { \"category\": \"Browns\", \"name\": \"Truffle\", \"color\": \"#A0644B\" },\n  { \"category\": \"Browns\", \"name\": \"Rustic Rich Red\", \"color\": \"#791B08\" },\n  { \"category\": \"Browns\", \"name\": \"Canyon\", \"color\": \"#9C4432\" },\n  { \"category\": \"Browns\", \"name\": \"Dark Brown\", \"color\": \"#463428\" },\n  \n\n\n  { \"category\": \"Reds\", \"name\": \"Red\", \"color\": \"#7E321D\" },\n  { \"category\": \"Reds\", \"name\": \"Rustic Red\", \"color\": \"#922312\" },\n  { \"category\": \"Reds\", \"name\": \"Red Brick\", \"color\": \"#9C4331\" },\n  { \"category\": \"Reds\", \"name\": \"Rich Red\", \"color\": \"#7E321D\" },\n  { \"category\": \"Reds\", \"name\": \"Bright Autumn\", \"color\": \"#C25F45\" },\n  { \"category\": \"Reds\", \"name\": \"Red Tile\", \"color\": \"#A73E24\" },\n\n\n  { \"category\": \"Oranges\", \"name\": \"Gentle Rose\", \"color\": \"#F9E7E6\" },\n   { \"category\": \"Oranges\", \"name\": \"Terracota\", \"color\": \"#E2725B\" },\n  { \"category\": \"Oranges\", \"name\": \"Terracotta\", \"color\": \"#C15E43\" },\n\n  { \"category\": \"Oranges\", \"name\": \"Spanish Sands\", \"color\": \"#E8B275\" },\n  { \"category\": \"Oranges\", \"name\": \"Lemon Spirit\", \"color\": \"#FFF5C2\" },\n  { \"category\": \"Oranges\", \"name\": \"Lemon Pie\", \"color\": \"#FCEBA1\" },\n  { \"category\": \"Oranges\", \"name\": \"Bright Lemon\", \"color\": \"#FFE78F\" },\n\n\n  { \"category\": \"Yellows\", \"name\": \"Morning Light\", \"color\": \"#FEF3E4\" },\n  { \"category\": \"Yellows\", \"name\": \"London's Magnolia\", \"color\": \"#FFEED2\" },\n  { \"category\": \"Yellows\", \"name\": \"Traffic Yellow\", \"color\": \"#FFFF00\" },\n  { \"category\": \"Yellows\", \"name\": \"Light Yellow\", \"color\": \"#FFF3B6\" },\n  { \"category\": \"Yellows\", \"name\": \"Ivory\", \"color\": \"#FBF7EC\" },\n  { \"category\": \"Yellows\", \"name\": \"Trench Coat\", \"color\": \"#F5DEB8\" },\n  { \"category\": \"Yellows\", \"name\": \"Magnolia\", \"color\": \"#FEE6D1\" },\n  \n\n\n  { \"category\": \"Greens\", \"name\": \"Racing Green\", \"color\": \"#2A4823\" },\n  { \"category\": \"Greens\", \"name\": \"Winter Green\", \"color\": \"#455E2D\" },\n  { \"category\": \"Greens\", \"name\": \"Sage Green\", \"color\": \"#C5CEB0\" },\n  { \"category\": \"Greens\", \"name\": \"Green Drop\", \"color\": \"#F4FDF1\" },\n  { \"category\": \"Greens\", \"name\": \"Olive Green\", \"color\": \"#809745\" },\n  { \"category\": \"Greens\", \"name\": \"The Garden\", \"color\": \"#D3F5DC\" },\n  { \"category\": \"Greens\", \"name\": \"Mint Green\", \"color\": \"#D3F5DD\" },\n  { \"category\": \"Greens\", \"name\": \"Green\", \"color\": \"#2A4823\" },\n  { \"category\": \"Greens\", \"name\": \"Light Green\", \"color\": \"#CDEBC7\" },\n\n\n  { \"category\": \"Blues\", \"name\": \"Classic Anthracite Grey\", \"color\": \"#474B4F\" },\n  { \"category\": \"Blues\", \"name\": \"Greek Blue\", \"color\": \"#1C6D8D\" },\n  { \"category\": \"Blues\", \"name\": \"Clouded Sky\", \"color\": \"#DFE7EB\" },\n  { \"category\": \"Blues\", \"name\": \"Milky Blue\", \"color\": \"#CFEEF3\" },\n  { \"category\": \"Blues\", \"name\": \"Ocean Blue\", \"color\": \"#58AEC8\" },\n  { \"category\": \"Blues\", \"name\": \"Sky Blue\", \"color\": \"#0A708D\" },\n  { \"category\": \"Blues\", \"name\": \"Light Blue\", \"color\": \"#CDEDF2\" },\n  { \"category\": \"Blues\", \"name\": \"Marina Blue\", \"color\": \"#086F8C\" },\n\n\n  { \"category\": \"Pinks\", \"name\": \"Baby Pink\", \"color\": \"#F6E6E3\" }"
+    },
+    {
+      "type": "range",
+      "id": "paint_gap",
+      "min": 5,
+      "max": 25,
+      "step": 1,
+      "unit": "px",
+      "label": "Paint Gap",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Paint Calculator"
+    },
+    {
+      "type": "image_picker",
+      "id": "calculator_bg",
+      "label": "Calculator Background",
+      "info": "2000 x 650px .jpg recommended"
+    },
+    {
+      "type": "text",
+      "id": "calculator_title",
+      "label": "Calculator Title",
+      "default": "How much paint do you need?"
+    },
+    {
+      "type": "color",
+      "id": "calculator_title_color",
+      "label": "Calculator Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "richtext",
+      "id": "calculator_text",
+      "label": "Calculator Text",
+      "default": "<p>FAQs Do I need primer?</p>"
+    },
+    {
+      "type": "color",
+      "id": "calculator_text_color",
+      "label": "Calculator Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "calculator_bg_color",
+      "label": "Calculator Text background",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Featured Image",
+      "type": "featured-image",
+      "settings": [
         {
-            "type": "textarea",
-            "id": "heading",
-            "default": "Pick your perfect palette",
-            "label": "t:sections.popular-products.settings.heading.label"
-          },
-          {
-              "type": "inline_richtext",
-              "id": "description",
-              "default": "We understand how important it is finding the right product, so whether you're a business or a first time painter, We've made the best possible product finder to find the right product.",
-              "label": "Description"
-         },
-      {
-        "type": "checkbox",
-        "id": "stacked",
-        "label": "Stacked Layout",
-        "default": false
-      },
-      {
-        "type": "checkbox",
-        "id": "autoplay",
-        "label": "Autoplay Featured Slide",
-        "default": true
-      },
-      {
-        "type": "textarea",
-        "id": "colors",
-        "label": "Colors List",
-        "info":"Format { \"category\": \"Neutrals\", \"name\": \"White\", \"color\": \"#FFFFFF\" }",
-        "default": "{ \"category\": \"Neutrals\", \"name\": \"White\", \"color\": \"#FFFFFF\" },\n  { \"category\": \"Neutrals\", \"name\": \"Ultra White\", \"color\": \"#F7FBFF\" },\n  { \"category\": \"Neutrals\", \"name\": \"Shining White\", \"color\": \"#FCFCFC\" },\n  { \"category\": \"Neutrals\", \"name\": \"Signal White\", \"color\": \"#E5E5E5\" },\n  { \"category\": \"Neutrals\", \"name\": \"Light Grey\", \"color\": \"#EEEEEE\" },\n  { \"category\": \"Neutrals\", \"name\": \"Dove Grey\", \"color\": \"#C9C9C9\" },\n  { \"category\": \"Neutrals\", \"name\": \"Pigeon Grey\", \"color\": \"#CBCBCB\" },\n  { \"category\": \"Neutrals\", \"name\": \"Slate Grey\", \"color\": \"#BDC6CA\" },\n  { \"category\": \"Neutrals\", \"name\": \"Classic Grey\", \"color\": \"#4E5253\" },\n  { \"category\": \"Neutrals\", \"name\": \"Equinox\", \"color\": \"#53575A\" },\n  { \"category\": \"Neutrals\", \"name\": \"Jet Black\", \"color\": \"#0D0D0D\" },\n  { \"category\": \"Neutrals\", \"name\": \"Black\", \"color\": \"#221E1F\" },\n\n\n \n\n\n  { \"category\": \"Browns\", \"name\": \"Soft Almond\", \"color\": \"#C99663\" },\n  { \"category\": \"Browns\", \"name\": \"Sandstone\", \"color\": \"#B8A78B\" },\n  { \"category\": \"Browns\", \"name\": \"Moroccan Sand\", \"color\": \"#BCA78C\" },\n   \n  { \"category\": \"Browns\", \"name\": \"Terracota\", \"color\": \"#E2725B\" },\n  { \"category\": \"Browns\", \"name\": \"Winter Racing Green\", \"color\": \"#082E2B\" },\n  { \"category\": \"Browns\", \"name\": \"Dark Mud Brown\", \"color\": \"#463428\" },\n  { \"category\": \"Browns\", \"name\": \"Red Mud Brown\", \"color\": \"#672B17\" },\n  { \"category\": \"Browns\", \"name\": \"Brown\", \"color\": \"#463428\" },\n  { \"category\": \"Browns\", \"name\": \"Leaf Brown\", \"color\": \"#5D3521\" },\n  { \"category\": \"Browns\", \"name\": \"Light Brown\", \"color\": \"#D5964E\" },\n  { \"category\": \"Browns\", \"name\": \"Truffle\", \"color\": \"#A0644B\" },\n  { \"category\": \"Browns\", \"name\": \"Rustic Rich Red\", \"color\": \"#791B08\" },\n  { \"category\": \"Browns\", \"name\": \"Canyon\", \"color\": \"#9C4432\" },\n  { \"category\": \"Browns\", \"name\": \"Dark Brown\", \"color\": \"#463428\" },\n  \n\n\n  { \"category\": \"Reds\", \"name\": \"Red\", \"color\": \"#7E321D\" },\n  { \"category\": \"Reds\", \"name\": \"Rustic Red\", \"color\": \"#922312\" },\n  { \"category\": \"Reds\", \"name\": \"Red Brick\", \"color\": \"#9C4331\" },\n  { \"category\": \"Reds\", \"name\": \"Rich Red\", \"color\": \"#7E321D\" },\n  { \"category\": \"Reds\", \"name\": \"Bright Autumn\", \"color\": \"#C25F45\" },\n  { \"category\": \"Reds\", \"name\": \"Red Tile\", \"color\": \"#A73E24\" },\n\n\n  { \"category\": \"Oranges\", \"name\": \"Gentle Rose\", \"color\": \"#F9E7E6\" },\n   { \"category\": \"Oranges\", \"name\": \"Terracota\", \"color\": \"#E2725B\" },\n  { \"category\": \"Oranges\", \"name\": \"Terracotta\", \"color\": \"#C15E43\" },\n\n  { \"category\": \"Oranges\", \"name\": \"Spanish Sands\", \"color\": \"#E8B275\" },\n  { \"category\": \"Oranges\", \"name\": \"Lemon Spirit\", \"color\": \"#FFF5C2\" },\n  { \"category\": \"Oranges\", \"name\": \"Lemon Pie\", \"color\": \"#FCEBA1\" },\n  { \"category\": \"Oranges\", \"name\": \"Bright Lemon\", \"color\": \"#FFE78F\" },\n\n\n  { \"category\": \"Yellows\", \"name\": \"Morning Light\", \"color\": \"#FEF3E4\" },\n  { \"category\": \"Yellows\", \"name\": \"London's Magnolia\", \"color\": \"#FFEED2\" },\n  { \"category\": \"Yellows\", \"name\": \"Traffic Yellow\", \"color\": \"#FFFF00\" },\n  { \"category\": \"Yellows\", \"name\": \"Light Yellow\", \"color\": \"#FFF3B6\" },\n  { \"category\": \"Yellows\", \"name\": \"Ivory\", \"color\": \"#FBF7EC\" },\n  { \"category\": \"Yellows\", \"name\": \"Trench Coat\", \"color\": \"#F5DEB8\" },\n  { \"category\": \"Yellows\", \"name\": \"Magnolia\", \"color\": \"#FEE6D1\" },\n  \n\n\n  { \"category\": \"Greens\", \"name\": \"Racing Green\", \"color\": \"#2A4823\" },\n  { \"category\": \"Greens\", \"name\": \"Winter Green\", \"color\": \"#455E2D\" },\n  { \"category\": \"Greens\", \"name\": \"Sage Green\", \"color\": \"#C5CEB0\" },\n  { \"category\": \"Greens\", \"name\": \"Green Drop\", \"color\": \"#F4FDF1\" },\n  { \"category\": \"Greens\", \"name\": \"Olive Green\", \"color\": \"#809745\" },\n  { \"category\": \"Greens\", \"name\": \"The Garden\", \"color\": \"#D3F5DC\" },\n  { \"category\": \"Greens\", \"name\": \"Mint Green\", \"color\": \"#D3F5DD\" },\n  { \"category\": \"Greens\", \"name\": \"Green\", \"color\": \"#2A4823\" },\n  { \"category\": \"Greens\", \"name\": \"Light Green\", \"color\": \"#CDEBC7\" },\n\n\n  { \"category\": \"Blues\", \"name\": \"Classic Anthracite Grey\", \"color\": \"#474B4F\" },\n  { \"category\": \"Blues\", \"name\": \"Greek Blue\", \"color\": \"#1C6D8D\" },\n  { \"category\": \"Blues\", \"name\": \"Clouded Sky\", \"color\": \"#DFE7EB\" },\n  { \"category\": \"Blues\", \"name\": \"Milky Blue\", \"color\": \"#CFEEF3\" },\n  { \"category\": \"Blues\", \"name\": \"Ocean Blue\", \"color\": \"#58AEC8\" },\n  { \"category\": \"Blues\", \"name\": \"Sky Blue\", \"color\": \"#0A708D\" },\n  { \"category\": \"Blues\", \"name\": \"Light Blue\", \"color\": \"#CDEDF2\" },\n  { \"category\": \"Blues\", \"name\": \"Marina Blue\", \"color\": \"#086F8C\" },\n\n\n  { \"category\": \"Pinks\", \"name\": \"Baby Pink\", \"color\": \"#F6E6E3\" }"
-      },
-      {
-        "type": "range",
-        "id": "paint_gap",
-        "min": 5,
-        "max": 25,
-        "step": 1,
-        "unit": "px",
-        "label": "Paint Gap",
-        "default": 15
-      },
-      { 
-        "type": "header",
-        "content": "Paint Calculator"
-      },
-      {
-        "type": "image_picker",
-        "id": "calculator_bg",
-        "label": "Calculator Background",
-        "info": "2000 x 650px .jpg recommended"
-      },
-      {
-        "type": "text",
-        "id": "calculator_title",
-        "label": "Calculator Title",
-        "default": "How much paint do you need?"
-      },
-      {
-        "type": "color",
-        "id": "calculator_title_color",
-        "label": "Calculator Title Color",
-        "default": "#000000"
-      },
-      {
-        "type": "richtext",
-        "id": "calculator_text",
-        "label": "Calculator Text",
-        "default": "<p>FAQs Do I need primer?</p>"
-      },
-      {
-        "type": "color",
-        "id": "calculator_text_color",
-        "label": "Calculator Text Color",
-        "default": "#000000"
-      },
-      {
-        "type": "color",
-        "id": "calculator_bg_color",
-        "label": "Calculator Text background",
-        "default": "#ffffff"
-      }
-    ],
-    "blocks": [
-      {
-        "name": "Featured Image",
-        "type": "featured-image",
-        "settings":[
-          {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Image",
-            "info": "2000 x 650px .jpg recommended"
-          },
-          {
-            "type": "header",
-            "content": "Title"
-          },
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Title",
-            "default": "Image with text overlay"
-          },
-          {
-            "type": "header",
-            "content": "Description"
-          },
-          {
-            "type": "richtext",
-            "id": "content",
-            "label": "Content",
-            "default": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.</p>"
-          },
-          {
-            "type": "select",
-            "id": "text_alignment",
-            "label": "Text alignment",
-            "options": [
-              {
-                "value": "left",
-                "label": "Left"
-              },
-              {
-                "value": "center",
-                "label": "Center"
-              },
-              {
-                "value": "right",
-                "label": "Right"
-              }
-            ],
-            "default": "center"
-          },
-          {
-            "type": "color",
-            "id": "color",
-            "label": "Text",
-            "default": "#ffffff"
-          },
-          {
-            "type": "header",
-            "content": "Button"
-          },
-          {
-            "type": "text",
-            "id": "button_text",
-            "label": "Button Text"
-          },
-          {
-            "type": "url",
-            "id": "button_link",
-            "label": "Button link"
-          },
-          {
-              "type": "color",
-              "id": "btn_text_color",
-              "label": "Button Text Color",
-              "default": "#000000"
-          },
-          {
-            "type": "color",
-            "id": "btn_bg_color",
-            "label": "Button Color",
-            "default": "#ffffff"
-          },
-          {
-            "type": "checkbox",
-            "id": "show_image_overlay",
-            "label": "Show image overlay",
-            "info": "Increase text readability on busy images.",
-            "default": false
-          }   
-        ]
-      },
-      {
-        "name": "Room Image",
-        "type": "room-image",
-        "settings": [
-          {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Room Image",
-            "info": "2000 x 650px .jpg recommended"
-          },
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Room Name",
-            "default": "Room"
-          }
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Paint Slider",        
-        "blocks": [
-          {
-            "type":"featured-image"
-          },
-          {
-            "type":"room-image"
-          }
-        ]
-      }
-    ]
-  }
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "2000 x 650px .jpg recommended"
+        },
+        {
+          "type": "header",
+          "content": "Title"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Image with text overlay"
+        },
+        {
+          "type": "header",
+          "content": "Description"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.</p>"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Text",
+          "default": "#ffffff"
+        },
+        {
+          "type": "header",
+          "content": "Button"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "color",
+          "id": "btn_text_color",
+          "label": "Button Text Color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "btn_bg_color",
+          "label": "Button Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_image_overlay",
+          "label": "Show image overlay",
+          "info": "Increase text readability on busy images.",
+          "default": false
+        }
+      ]
+    },
+    {
+      "name": "Room Image",
+      "type": "room-image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Room Image",
+          "info": "2000 x 650px .jpg recommended"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Room Name",
+          "default": "Room"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Paint Slider",
+      "blocks": [
+        {
+          "type": "featured-image"
+        },
+        {
+          "type": "room-image"
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}
 
 {% stylesheet %}

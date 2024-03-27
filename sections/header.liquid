@@ -40,6 +40,10 @@
 		display: flex;
 	}
 
+	li.active span {
+		filter: invert(100%);
+	}
+
 	.list-menu {
 		list-style: none;
 		padding: 0;
@@ -487,6 +491,12 @@ customElements.define('sticky-header', StickyHeader);
 			"info": "t:sections.header.settings.enable_search.info"
 		},
 		{
+		  "type": "checkbox",
+		  "id": "hide_mobile_search",
+		  "default": false,
+		  "label": "Hide search in mobile"
+		},
+		{
 			"type": "checkbox",
 			"id": "enable_search_modal",
 			"default": false,
@@ -733,10 +743,41 @@ customElements.define('sticky-header', StickyHeader);
 				"label": "Nav Label"
 			  },
 			  {
+				"type": "color",
+				"id": "heading_color",
+				"default": "#FFF",
+				"label": "Change color of Nav label"
+			  },
+			  {
+				"type": "range",
+				"id": "heading_size",
+				"default": 24,
+				"unit": "px",
+				"min": 0,
+				"max": 100,
+				"label": "Change Nav label size"
+			  },
+			  {
 				"type": "text",
 				"id": "small_text",
 				"default": "brands",
 				"label": "Small Text"
+			  },
+			  
+			  {
+				"type": "color",
+				"id": "small_text_color",
+				"default": "#FFF",
+				"label": "Change small text size"
+			  },
+			  {
+				"type": "range",
+				"id": "small_text_size",
+				"default": 16,
+				"unit": "px",
+				"min": 0,
+				"max": 100,
+				"label": "Change small text size"
 			  },
 			  {
 				"type": "checkbox",

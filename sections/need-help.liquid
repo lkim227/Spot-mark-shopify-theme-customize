@@ -4,7 +4,7 @@
     padding-top: {{ section.settings.padding_top_m }}px;
     padding-bottom: {{ section.settings.padding_bottom_m }}px;
   }
-  .section-{{ section.id }}-padding .need-help-wrap .box-content-area h4, 
+  .section-{{ section.id }}-padding .need-help-wrap .box-content-area h4,
   .section-{{ section.id }}-padding .need-help-wrap .box-content-area p{
     color: {{ section.settings.color_box }};
   }
@@ -22,16 +22,16 @@
         {%- case block.type -%}
           {%- when 'title' -%}
             {%- liquid
-                assign title = block.settings.title
+              assign title = block.settings.title
             -%}
-       
-              {%- if title != blank -%}
-                  <h1 class="need-help-title">{{ title }}</h1>
-              {%- endif -%}
+
+            {%- if title != blank -%}
+              <h1 class="need-help-title">{{ title }}</h1>
+            {%- endif -%}
 
           {% when 'info' %}
             {% liquid
-                assign info = block.settings.info
+              assign info = block.settings.info
             %}
             <div class="need-help-info" {{ block.shopify_attributes }}>
               {%- if info != blank -%}
@@ -40,8 +40,8 @@
             </div>
           {% when 'button' %}
             {% liquid
-                assign btn = block.settings.btn
-                assign link = block.settings.link
+              assign btn = block.settings.btn
+              assign link = block.settings.link
             %}
             <div class="need-help-button" {{ block.shopify_attributes }}>
               {%- if link != blank -%}
@@ -52,48 +52,58 @@
       {% endfor %}
     </div>
     <div class="need-help-bottom-area">
-        <div class="row row-cols-5">
-            {% for block in section.blocks %}
-                {% liquid
-                    assign image = block.settings.image
-                    assign box_title = block.settings.box_title 
-                    assign link = block.settings.link 
-                %}
-                {%- case block.type -%}
-                  {%- when 'box' -%}
-                    <div class="col" {{ block.shopify_attributes }}>
-                        <a href="{{ link }}" class="need-help-wrap">
-                            <div class="box-content-area">
-                                <h4>{{ box_title }}</h4>
-                            
-                            </div>
-                            <div class="box-image-area">
-                              {%- if image != blank -%}
-                                  {{
-                                      image | image_url: width: auto | image_tag: loading: 'lazy'
-                                  }}
-                                  {% else %}
-                                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg gray-plaecholder' }}
-                                {%- endif -%}
-                            </div>
-                        </a>
-                    </div>
-            {%- endcase -%}
+      <div class="row row-cols-5">
+        {% for block in section.blocks %}
+          {% liquid
+            assign image = block.settings.image
+            assign box_title = block.settings.box_title
+            assign link = block.settings.link
+          %}
+          {%- case block.type -%}
+            {%- when 'box' -%}
+              <div class="col" {{ block.shopify_attributes }}>
+                <a 
+                  href="{{ link }}" 
+                  class="need-help-wrap"
+                  style="border-radius: {{ section.settings.box_border_radius }}px;text-align:center;"
+                >
+                  <div class="box-content-area">
+                    <h4>{{ box_title }}</h4>
+                  </div>
+                  <div class="box-image-area">
+                    {%- if image != blank -%}
+                      {{ image | image_url: width: auto | image_tag: loading: 'lazy' }}
+                    {% else %}
+                      {{ 'image' | placeholder_svg_tag: 'placeholder-svg gray-plaecholder' }}
+                    {%- endif -%}
+                    {% if section.settings.show_button %}
+                      <div 
+                        class="textimage-card-btn d-flex align-items-center justify-content-center"
+                        style="position:relative;"
+                      >
+                        <span>SHOP NOW</span>
+                        {% render 'icon-right-arrow-fill' %}                            
+                      </div>
+                    {% endif %}
+                  </div>
+                </a>
+              </div>
+          {%- endcase -%}
         {% endfor %}
-        </div>
+      </div>
     </div>
   </div>
 </div>
 {% schema %}
-  {
-    "name": "Need Help",
-    "class": "need-help-section",
-    "tag": "section",
-    "enabled_on": {
-      "templates": ["*"]
-    },
-    "settings": [
-        {
+{
+  "name": "Need Help",
+  "class": "need-help-section",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+  "settings": [
+    {
       "type": "select",
       "id": "text_align",
       "options": [
@@ -113,100 +123,119 @@
       "default": "center",
       "label": "Text Align"
     },
-      {
-        "type": "header",
-        "content": "Section Padding"
-      },
-      {
-        "type": "range",
-        "id": "padding_top",
-        "min": 0,
-        "max": 200,
-        "step": 2,
-        "unit": "px",
-        "label": "Padding Top",
-        "default": 100
-      }, {
-        "type": "range",
-        "id": "padding_bottom",
-        "min": 0,
-        "max": 200,
-        "step": 2,
-        "unit": "px",
-        "label": "Padding Bottom",
-        "default": 100
-      }, {
-        "type": "range",
-        "id": "padding_top_m",
-        "min": 0,
-        "max": 200,
-        "step": 2,
-        "unit": "px",
-        "label": "Padding Top (Mobile)",
-        "default": 64
-      }, {
-        "type": "range",
-        "id": "padding_bottom_m",
-        "min": 0,
-        "max": 200,
-        "step": 2,
-        "unit": "px",
-        "label": "Padding Bottom (Mobile)",
-        "default": 68
-      }
-    ],
-    "blocks": [
-      {
-        "name": "Title",
-        "type": "title",
-        "settings": [
-          {
-            "type": "textarea",
-            "id": "title",
-            "default": "Need help finding a product?",
-            "label": "Text"
-          }
-        ]
-      },
     {
-        "name": "Info",
-        "type": "info",
-        "settings": [
-          {
-            "type": "richtext",
-            "id": "info",
-            "default": "<p>We understand how important it is finding the right product, so whether you're a business or a first time painter, We've made the best possible product finder to find the right product.</p>",
-            "label": "Description"
-          }
-        ]
-      }, 
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show button for shop",
+      "default": false
+    },
     {
-        "name": "Box",
-        "type": "box",
-        "settings": [
-          {
-            "type": "text",
-            "id": "box_title",
-            "default": "Bathroom paint",
-            "label": "Text"
-          },
-          {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Image"
-          },
-          {
-            "type": "url",
-            "id": "link",
-            "label": "Link"
-          }
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Need Help"
-      }
-    ]
-  }
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_top_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_m",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 68
+    },
+    {
+      "type": "range",
+      "id": "box_border_radius",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Box roundness",
+      "default": 30
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Title",
+      "type": "title",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "default": "Need help finding a product?",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "name": "Info",
+      "type": "info",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "info",
+          "default": "<p>We understand how important it is finding the right product, so whether you're a business or a first time painter, We've made the best possible product finder to find the right product.</p>",
+          "label": "Description"
+        }
+      ]
+    },
+    {
+      "name": "Box",
+      "type": "box",
+      "settings": [
+        {
+          "type": "text",
+          "id": "box_title",
+          "default": "Bathroom paint",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Need Help"
+    }
+  ]
+}
 {% endschema %}

@@ -441,7 +441,11 @@
           "type": "navlink",
           "settings": {
             "heading": "All",
+            "heading_color": "#FFF",
+            "heading_size": 24,
             "small_text": "brands",
+            "small_text_color": "#FFF",
+            "small_text_size": 16,
             "spilit": false,
             "nav_link": "shopify:\/\/collections"
           }
@@ -450,7 +454,11 @@
           "type": "navlink",
           "settings": {
             "heading": "HQC",
+            "heading_color": "#FFF",
+            "heading_size": 24,
             "small_text": "paints",
+            "small_text_color": "#FFF",
+            "small_text_size": 16,
             "spilit": true,
             "nav_link": "shopify:\/\/collections\/hqc"
           }
@@ -459,7 +467,11 @@
           "type": "navlink",
           "settings": {
             "heading": "PRO",
+            "heading_color": "#FFF",
+            "heading_size": 24,
             "small_text": "thermilate",
+            "small_text_color": "#FFF",
+            "small_text_size": 16,
             "spilit": true,
             "nav_link": "shopify:\/\/collections\/pro-range"
           }
@@ -468,7 +480,11 @@
           "type": "navlink",
           "settings": {
             "heading": "ultra",
+            "heading_color": "#FFF",
+            "heading_size": 24,
             "small_text": "insopaint",
+            "small_text_color": "#FFF",
+            "small_text_size": 16,
             "spilit": true,
             "nav_link": "shopify:\/\/collections\/insopaint-range"
           }
@@ -477,7 +493,11 @@
           "type": "navlink",
           "settings": {
             "heading": "Allpaints",
+            "heading_color": "#FFF",
+            "heading_size": 24,
             "small_text": "landlords",
+            "small_text_color": "#FFF",
+            "small_text_size": 16,
             "spilit": true,
             "nav_link": "shopify:\/\/collections\/landlords-paint"
           }
@@ -486,7 +506,11 @@
           "type": "navlink",
           "settings": {
             "heading": "evelin",
+            "heading_color": "#FFF",
+            "heading_size": 24,
             "small_text": "grant",
+            "small_text_color": "#FFF",
+            "small_text_size": 16,
             "spilit": true,
             "nav_link": "shopify:\/\/collections\/evelyn-grant"
           }
@@ -536,6 +560,7 @@
         "contact_text": "Description",
         "contact_text_accent": "<p>Contact info<\/p>",
         "enable_search": true,
+        "hide_mobile_search": true,
         "enable_search_modal": true,
         "show_collection_card": true,
         "collection_list": [
@@ -637,6 +662,7 @@
         "custom_block_XHRPQT"
       ],
       "settings": {
+        "custom-block-bgcolor": "#D5DEDB"
       }
     }
   },

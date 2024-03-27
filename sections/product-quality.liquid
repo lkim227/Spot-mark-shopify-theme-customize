@@ -71,16 +71,16 @@
           {% for block in image_over_texts %}
             {% assign b = block.settings %}
             <div class="left-overlay-item">
-              <span>{{ b.text }}</span>
+              <span style="color: {{ b.text_color }}">{{ b.text }}</span>
               <span>{% render 'all-icons', name: 'plus-circle' %}</span>
             </div>
           {% endfor %}
         
         </div>
       </div>
-      <div class="product-quality-right">
+      <div class="product-quality-right" style="color: {{ s.description_color }}">
         {% if heading != blank %}
-          <h3> {{ heading }} </h3>
+          <h3 style="color: {{ s.heading_color }}"> {{ heading }} </h3>
         {% endif %}
         
         {% if description != blank %}
@@ -100,7 +100,7 @@
                 <span><img src="{{ b.image | img_url: "master" }}" loading="lazy"></span>
               {% endif %}
       
-              <span>{{ b.text }}</span>
+              <span style="color: {{ b.text_color }}">{{ b.text }}</span>
             </div>
           {% endfor %}
         
@@ -160,9 +160,21 @@
       "label": "heading"
     },
     {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#fff"
+    },
+    {
       "type": "inline_richtext",
       "id": "description",
       "label": "Description"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description Color",
+      "default": "#fff"
     },
     {
       "type": "text",
@@ -274,6 +286,12 @@
           "id": "text",
           "label": "text",
           "default": "Easy clean"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#fff"
         }
       ]
     },
@@ -291,6 +309,12 @@
           "id": "text",
           "label": "text",
           "default": "Easy clean"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#fff"
         }
       ]
     }

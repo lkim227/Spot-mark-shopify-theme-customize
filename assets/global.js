@@ -31,7 +31,7 @@ const sliderInit = (isUpdate) => {
 					swiper: document.querySelectorAll(".js-media-sublist")[index].swiper,
 				},
 				on: {
-					afterInit: function() {
+					afterInit: function () {
 						setTimeout(() => {
 							/* Set fixed slider height */
 							// document.querySelectorAll('.product .product__media-list')[index].style.minHeight = `${document.querySelectorAll('.product .product__media-list')[index].offsetHeight}px`;
@@ -59,8 +59,8 @@ const sliderInit = (isUpdate) => {
 						if (this.slides[this.activeIndex].querySelector("model-viewer")) {
 							if (
 								!this.slides[this.activeIndex]
-									.querySelector("model-viewer")
-									.classList.contains("shopify-model-viewer-ui__disabled")
+								.querySelector("model-viewer")
+								.classList.contains("shopify-model-viewer-ui__disabled")
 							) {
 								this.params.noSwiping = true;
 								this.params.noSwipingClass = "swiper-slide";
@@ -110,9 +110,9 @@ const subSliderInit = (isUpdate) => {
 					},
 					touchEnd: function (s, e) {
 						let range = 5;
-						let diff = (s.touches.diff = s.isHorizontal()
-							? s.touches.currentX - s.touches.startX
-							: s.touches.currentY - s.touches.startY);
+						let diff = (s.touches.diff = s.isHorizontal() ?
+							s.touches.currentX - s.touches.startX :
+							s.touches.currentY - s.touches.startY);
 						if (diff < range || diff > -range) s.allowClick = true;
 					},
 				},
@@ -254,7 +254,9 @@ class QuantityInput extends HTMLElement {
 	constructor() {
 		super();
 		this.input = this.querySelector("input");
-		this.changeEvent = new Event("change", { bubbles: true });
+		this.changeEvent = new Event("change", {
+			bubbles: true
+		});
 
 		this.querySelectorAll("button").forEach((button) =>
 			button.addEventListener("click", this.onButtonClick.bind(this)),
@@ -348,9 +350,9 @@ Shopify.setSelectorByValue = function (selector, value) {
 };
 
 Shopify.addListener = function (target, eventName, callback) {
-	target.addEventListener
-		? target.addEventListener(eventName, callback, false)
-		: target.attachEvent("on" + eventName, callback);
+	target.addEventListener ?
+		target.addEventListener(eventName, callback, false) :
+		target.attachEvent("on" + eventName, callback);
 };
 
 Shopify.postLink = function (path, options) {
@@ -490,9 +492,9 @@ class MenuDrawer extends HTMLElement {
 		const openDetailsElement = event.target.closest("details[open]");
 		if (!openDetailsElement) return;
 
-		openDetailsElement === this.mainDetailsToggle
-			? this.closeMenuDrawer(this.mainDetailsToggle.querySelector("summary"))
-			: this.closeSubmenu(openDetailsElement);
+		openDetailsElement === this.mainDetailsToggle ?
+			this.closeMenuDrawer(this.mainDetailsToggle.querySelector("summary")) :
+			this.closeSubmenu(openDetailsElement);
 	}
 
 	onSummaryClick(event) {
@@ -503,8 +505,9 @@ class MenuDrawer extends HTMLElement {
 		if (detailsElement === this.mainDetailsToggle) {
 			if (isOpen) event.preventDefault();
 			isOpen
-				? this.closeMenuDrawer(summaryElement)
-				: this.openMenuDrawer(summaryElement);
+				?
+				this.closeMenuDrawer(summaryElement) :
+				this.openMenuDrawer(summaryElement);
 		} else {
 			trapFocus(
 				summaryElement.nextElementSibling,
@@ -606,9 +609,9 @@ class HeaderDrawer extends MenuDrawer {
 			this.borderOffset ||
 			this.closest(".header-wrapper").classList.contains(
 				"header-wrapper--border-bottom",
-			)
-				? 1
-				: 0;
+			) ?
+			1 :
+			0;
 		document.documentElement.style.setProperty(
 			"--header-bottom-position",
 			`${parseInt(
@@ -745,8 +748,7 @@ class DeferredMedia extends HTMLElement {
 								}
 								//entry.target.play()
 							}
-						}
-						else {
+						} else {
 							entry.target.pause()
 						}
 					})
@@ -755,16 +757,16 @@ class DeferredMedia extends HTMLElement {
 
 			const deferredElement = this.appendChild(
 				content.querySelector("video, model-viewer, iframe")
-			);			
+			);
 			//if (focus) deferredElement.focus();
-			
+
 			if (
 				deferredElement.nodeName == "VIDEO" ||
 				deferredElement.nodeName == "IFRAME"
 			) {
 				// force autoplay for safari
 
-				
+
 				if (this.classList.contains('video-section__media')) {
 					let playPromise = deferredElement.play();
 					if (playPromise !== undefined) {
@@ -772,8 +774,7 @@ class DeferredMedia extends HTMLElement {
 					}
 
 					videoObserver.observe(deferredElement);
-				}
-				else {
+				} else {
 					deferredElement.play();
 				}
 			}
@@ -785,10 +786,10 @@ class DeferredMedia extends HTMLElement {
 			) {
 				if (
 					!this.closest(".swiper")
-						.swiper.slides[
-							this.closest(".swiper").swiper.activeIndex
-						].querySelector("model-viewer")
-						.classList.contains("shopify-model-viewer-ui__disabled")
+					.swiper.slides[
+						this.closest(".swiper").swiper.activeIndex
+					].querySelector("model-viewer")
+					.classList.contains("shopify-model-viewer-ui__disabled")
 				) {
 					this.closest(".swiper").swiper.params.noSwiping = true;
 					this.closest(".swiper").swiper.params.noSwipingClass = "swiper-slide";
@@ -813,13 +814,13 @@ class VariantSelects extends HTMLElement {
 		this.updatePickupAvailability();
 		this.updateVariantStatuses();
 
-		if(this.currentVariant != null ){
+		if (this.currentVariant != null) {
 
-		
 
-	    const valueOption1 = this.currentVariant.option1;
-		const option1 = 	document.getElementById("selected-value-1");
-			if (valueOption1 != null && option1 != null ) {
+
+			const valueOption1 = this.currentVariant.option1;
+			const option1 = document.getElementById("selected-value-1");
+			if (valueOption1 != null && option1 != null) {
 				option1.innerHTML = valueOption1;
 			}
 
@@ -828,7 +829,7 @@ class VariantSelects extends HTMLElement {
 			if (valueOption2 != null && option2 != null) {
 				option2.innerHTML = valueOption2;
 			}
-			
+
 			const valueOption3 = this.currentVariant.option3;
 			const option3 = document.getElementById("selected-value-3");
 			if (valueOption3 != null && option3 != null) {
@@ -905,8 +906,7 @@ class VariantSelects extends HTMLElement {
 	updateURL() {
 		if (!this.classList.contains("featured-product-radios")) {
 			if (!this.currentVariant || this.dataset.updateUrl === "false") return;
-			window.history.replaceState(
-				{},
+			window.history.replaceState({},
 				"",
 				`${this.dataset.url}?variant=${this.currentVariant.id}`,
 			);
@@ -920,7 +920,9 @@ class VariantSelects extends HTMLElement {
 		productForms.forEach((productForm) => {
 			const input = productForm.querySelector('input[name="id"]');
 			input.value = this.currentVariant.id;
-			input.dispatchEvent(new Event("change", { bubbles: true }));
+			input.dispatchEvent(new Event("change", {
+				bubbles: true
+			}));
 		});
 	}
 
@@ -939,8 +941,8 @@ class VariantSelects extends HTMLElement {
 			const availableOptionInputsValue = selectedOptionOneVariants
 				.filter(
 					(variant) =>
-						variant.available &&
-						variant[`option${index}`] === previousOptionSelected,
+					variant.available &&
+					variant[`option${index}`] === previousOptionSelected,
 				)
 				.map((variantOption) => variantOption[`option${index + 1}`]);
 			this.setInputAvailability(optionInputs, availableOptionInputsValue);
@@ -982,17 +984,17 @@ class VariantSelects extends HTMLElement {
 
 	renderProductInfo() {
 		const requestedVariantId = this.currentVariant.id;
-		const sectionId = this.dataset.originalSection
-			? this.dataset.originalSection
-			: this.dataset.section;
+		const sectionId = this.dataset.originalSection ?
+			this.dataset.originalSection :
+			this.dataset.section;
 
 		fetch(
-			`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${
+				`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${
 				this.dataset.originalSection
 					? this.dataset.originalSection
 					: this.dataset.section
 			}`,
-		)
+			)
 			.then((response) => response.text())
 			.then((responseText) => {
 				// prevent unnecessary ui changes from abandoned selections
@@ -1065,7 +1067,7 @@ class VariantSelects extends HTMLElement {
 		if (!productForm) return;
 		const addButton = productForm.querySelector('[name="add"]');
 		const addButtonText = productForm.querySelector('[name="add"] > span');
-		if (!addButton) return; 
+		if (!addButton) return;
 
 		if (disable) {
 			addButton.setAttribute("disabled", "disabled");
@@ -1137,17 +1139,19 @@ class VariantRadios extends VariantSelects {
 }
 
 customElements.define("variant-radios", VariantRadios);
+$('.paint-calculator-area .paint-calculator .paint-calculator__calculator').hide();
+$('.paint-calculator__faqs').hide();
 
 $(".promo-icons-area > .row > :first-child").on('click', () => {
-	$('.paint-calculator-area .paint-calculator .paint-calculator__calculator').collapse('toggle');
+	$('.paint-calculator-area .paint-calculator .paint-calculator__calculator').slideToggle(1000);
 });
 
 $(".promo-icons-area > .row > :nth-child(2)").on('click', () => {
-	$('.paint-calculator__faqs > :first-child + h4, .paint-calculator__faqs > :first-child + h4 + p').collapse('toggle');
+	$('.paint-calculator__faqs > :first-child + h4, .paint-calculator__faqs > :first-child + h4 + p').slideToggle(500);
 });
 
 $(".promo-icons-area > .row > :nth-child(3)").on('click', () => {
-	$('.paint-calculator__faqs').collapse('toggle');
+	$('.paint-calculator__faqs').slideToggle(800);
 });
 
 $(".promo-card-wrap").on('click', (e) => {
