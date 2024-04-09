@@ -430,6 +430,7 @@
       ],
       "settings": {
         "text_align": "center",
+        "show_button": true,
         "padding_top": 28,
         "padding_bottom": 28,
         "padding_top_m": 48,

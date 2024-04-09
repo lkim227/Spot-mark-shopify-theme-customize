@@ -1,27 +1,36 @@
 {{ 'section-custom-block.css' | asset_url | stylesheet_tag: preload: true }}
 
+
 <div class="custom-block-wrapper"> 
 
       <ul class="custom-block-list" style="background-color:{{section.settings.custom-block-bgcolor}}">
         {%- for block in section.blocks -%}
+
           {%- case block.type -%}
           {%- when 'custom_block' -%}
               {%liquid 
             
                   assign heading = block.settings.heading 
+                  assign heading_color = block.settings.heading_color
                   assign text = block.settings.text 
+                  assign text_color = block.settings.text_color
                   assign link = block.settings.link 
        
                 %}
           <li class="block-item">
-         
+                
                 <div class="text-wtap">
+                  {% style %}
+                    .text-wtap p {
+                      color: {{ text_color }} !important;
+                    }
+                  {% endstyle %}
                   {% if link != blank %}
                     <a href="{{link}}">
                   {% endif %}
              
                   {% if heading != blank %}
-                    <span class="custom__heading">{{heading}}</span>
+                    <span class="custom__heading" style="color:{{ heading_color }}">{{heading}}</span>
                    {% endif %} 
                    {% if link != blank %}  </a>  {% endif %}
                   {% if text != blank %}
@@ -61,10 +70,22 @@
             "default":"PREMIUM TRACKED & FAST SHIPPING"
           },
           {
+            	"type": "color",
+              "id": "heading_color",
+              "label": "Heading color",
+              "default": "#000"
+          },
+          {
             "type": "richtext",
             "id": "text",
             "label": "Text",
             "default":"<p>MON - FRI Nextday - 48 hour shipping</p>"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color",
+            "default":"#000"
           },
           {
             "type": "url",
